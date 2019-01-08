@@ -310,7 +310,7 @@ function (_Component) {
           propsTheme = _this$props3.theme,
           rest = _objectWithoutProperties(_this$props3, ["align", "children", "onClickOutside", "onEsc", "onKeyDown", "elevation", "plain", "theme"]);
 
-      var theme = _objectSpread({}, propsTheme || {}, this.context || {});
+      var theme = _objectSpread({}, this.context || {}, propsTheme || {});
 
       var content = _react.default.createElement(_StyledDrop.StyledDrop, _extends({
         as: _Box.Box,
