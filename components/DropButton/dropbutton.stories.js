@@ -39,7 +39,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var customTheme = {
   global: {
     colors: {
-      custom: '#ff00ff'
+      custom: '#ff00ff',
+      brand: '#00ff00'
     }
   }
 };
@@ -183,7 +184,7 @@ function (_Component2) {
           date = _this$state.date,
           open = _this$state.open;
       return _react.default.createElement(_grommet.Grommet, {
-        theme: _themes.grommet
+        theme: customTheme
       }, _react.default.createElement(_grommet.Box, {
         align: "center",
         pad: "large"

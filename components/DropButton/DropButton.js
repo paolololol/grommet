@@ -129,14 +129,14 @@ function (_Component) {
       var drop;
 
       if (show && (forwardRef || this.buttonRef).current) {
-        drop = _react.default.createElement(_Drop.Drop, {
+        drop = _react.default.createElement(_Drop.Drop, _extends({
           id: id ? "".concat(id, "__drop") : undefined,
           restrictFocus: true,
           align: dropAlign,
           target: dropTarget || (forwardRef || this.buttonRef).current,
           onClickOutside: this.onDropClose,
           onEsc: this.onDropClose
-        }, dropContent);
+        }, rest), dropContent);
       }
 
       return _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Button.Button, _extends({

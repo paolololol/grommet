@@ -84,7 +84,7 @@ function (_Component) {
           propsTheme = _this$props.theme,
           rest = _objectWithoutProperties(_this$props, ["a11yTitle", "background", "children", "direction", "elevation", "fill", "forwardRef", "gap", "overflow", "responsive", "tag", "as", "wrap", "width", "height", "theme"]);
 
-      var theme = propsTheme || this.context;
+      var theme = this.context || propsTheme;
       var contents = children;
 
       if (gap) {
