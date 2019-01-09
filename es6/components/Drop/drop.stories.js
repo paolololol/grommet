@@ -43,7 +43,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 var customTheme = {
   global: {
     colors: {
-      custom: '#cc6633'
+      custom: '#ff00ff'
     }
   }
 };
@@ -100,7 +100,9 @@ function (_Component) {
         target: this.targetRef.current
       }, _react.default.createElement(_grommet.Box, {
         pad: "large"
-      }, "Drop Contents"), _react.default.createElement(Coso, null))));
+      }, _react.default.createElement(_grommet.Text, {
+        color: "custom"
+      }, "Drop Contents")), _react.default.createElement(Coso, null))));
     }
   }]);
 
@@ -108,7 +110,7 @@ function (_Component) {
 }(_react.Component);
 
 var Coso = (0, _styledComponents.withTheme)(function (props) {
-  console.log(props);
+  console.log(props.theme.global.colors);
   return null;
 });
 

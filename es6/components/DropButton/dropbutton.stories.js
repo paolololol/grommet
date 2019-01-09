@@ -38,6 +38,14 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+var customTheme = {
+  global: {
+    colors: {
+      custom: '#ff00ff'
+    }
+  }
+};
+
 var DropContent = function DropContent(_ref) {
   var onClose = _ref.onClose;
   return _react.default.createElement(_grommet.Box, {
@@ -47,6 +55,7 @@ var DropContent = function DropContent(_ref) {
     justify: "between",
     align: "center"
   }, _react.default.createElement(_grommet.Heading, {
+    color: "custom",
     level: 3,
     margin: "small"
   }, "Heading"), _react.default.createElement(_grommet.Button, {
@@ -101,7 +110,7 @@ function (_Component) {
 
       var open = this.state.open;
       return _react.default.createElement(_grommet.Grommet, {
-        theme: _themes.grommet
+        theme: customTheme
       }, _react.default.createElement(_grommet.Box, {
         align: "center",
         pad: "large"
