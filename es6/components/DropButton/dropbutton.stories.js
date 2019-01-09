@@ -69,45 +69,122 @@ DropContent.propTypes = {
   onClose: _propTypes.default.func.isRequired
 };
 
-var SimpleDropButton =
+var Calendar2 =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(SimpleDropButton, _Component);
+  _inherits(Calendar2, _Component);
 
-  function SimpleDropButton() {
+  function Calendar2() {
     var _getPrototypeOf2;
 
     var _this;
 
-    _classCallCheck(this, SimpleDropButton);
+    _classCallCheck(this, Calendar2);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SimpleDropButton)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Calendar2)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {});
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
+      open: false
+    });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "onClose", function () {
-      _this.setState({
-        open: false
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "toggle", function () {
+      return _this.setState({
+        open: !_this.state.open
       });
+    });
 
-      setTimeout(function () {
-        return _this.setState({
-          open: undefined
-        });
-      }, 1);
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "handleClick", function (date) {
+      return _this.setState({
+        date: date
+      });
     });
 
     return _this;
   }
 
+  _createClass(Calendar2, [{
+    key: "render",
+    value: function render() {
+      return _react.default.createElement(_grommet.Grommet, {
+        theme: customTheme
+      }, _react.default.createElement(_grommet.DropButton, {
+        open: this.state.open,
+        onOpen: this.toggle,
+        onClose: this.toggle,
+        pad: "small",
+        dropAlign: {
+          top: "bottom",
+          right: "right"
+        },
+        dropContent: _react.default.createElement(_grommet.Box, {
+          width: "small",
+          plain: true
+        }, _react.default.createElement(_grommet.Calendar, {
+          date: this.state.date,
+          onSelect: this.handleClick,
+          size: "small"
+        }))
+      }, _react.default.createElement(_grommet.Box, {
+        direction: "row",
+        align: "center",
+        gap: "xsmall",
+        justify: "between",
+        pad: {
+          horizontal: "small",
+          vertical: "none"
+        }
+      }, _react.default.createElement(_grommet.Text, {
+        size: "small"
+      }, "Calendario"))));
+    }
+  }]);
+
+  return Calendar2;
+}(_react.Component);
+
+var SimpleDropButton =
+/*#__PURE__*/
+function (_Component2) {
+  _inherits(SimpleDropButton, _Component2);
+
+  function SimpleDropButton() {
+    var _getPrototypeOf3;
+
+    var _this2;
+
+    _classCallCheck(this, SimpleDropButton);
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(SimpleDropButton)).call.apply(_getPrototypeOf3, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "state", {});
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "onClose", function () {
+      _this2.setState({
+        open: false
+      });
+
+      setTimeout(function () {
+        return _this2.setState({
+          open: undefined
+        });
+      }, 1);
+    });
+
+    return _this2;
+  }
+
   _createClass(SimpleDropButton, [{
     key: "render",
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var open = this.state.open;
       return _react.default.createElement(_grommet.Grommet, {
@@ -119,7 +196,7 @@ function (_Component) {
         label: "Open",
         open: open,
         onClose: function onClose() {
-          return _this2.setState({
+          return _this3.setState({
             open: undefined
           });
         },
@@ -135,52 +212,52 @@ function (_Component) {
 
 var CalendarDropButton =
 /*#__PURE__*/
-function (_Component2) {
-  _inherits(CalendarDropButton, _Component2);
+function (_Component3) {
+  _inherits(CalendarDropButton, _Component3);
 
   function CalendarDropButton() {
-    var _getPrototypeOf3;
+    var _getPrototypeOf4;
 
-    var _this3;
+    var _this4;
 
     _classCallCheck(this, CalendarDropButton);
 
-    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      args[_key3] = arguments[_key3];
     }
 
-    _this3 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(CalendarDropButton)).call.apply(_getPrototypeOf3, [this].concat(args)));
+    _this4 = _possibleConstructorReturn(this, (_getPrototypeOf4 = _getPrototypeOf(CalendarDropButton)).call.apply(_getPrototypeOf4, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this3)), "state", {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this4)), "state", {
       date: undefined
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this3)), "onClose", function () {
-      _this3.setState({
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this4)), "onClose", function () {
+      _this4.setState({
         open: false
       });
 
       setTimeout(function () {
-        return _this3.setState({
+        return _this4.setState({
           open: undefined
         });
       }, 1);
     });
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this3)), "onSelect", function (date) {
-      return _this3.setState({
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this4)), "onSelect", function (date) {
+      return _this4.setState({
         date: date,
         open: false
       });
     });
 
-    return _this3;
+    return _this4;
   }
 
   _createClass(CalendarDropButton, [{
     key: "render",
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var _this$state = this.state,
           date = _this$state.date,
@@ -193,12 +270,12 @@ function (_Component2) {
       }, _react.default.createElement(_grommet.DropButton, {
         open: open,
         onClose: function onClose() {
-          return _this4.setState({
+          return _this5.setState({
             open: false
           });
         },
         onOpen: function onOpen() {
-          return _this4.setState({
+          return _this5.setState({
             open: true
           });
         },
@@ -222,27 +299,27 @@ function (_Component2) {
 
 var UserMenuDropButton =
 /*#__PURE__*/
-function (_Component3) {
-  _inherits(UserMenuDropButton, _Component3);
+function (_Component4) {
+  _inherits(UserMenuDropButton, _Component4);
 
   function UserMenuDropButton() {
-    var _getPrototypeOf4;
+    var _getPrototypeOf5;
 
-    var _this5;
+    var _this6;
 
     _classCallCheck(this, UserMenuDropButton);
 
-    for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-      args[_key3] = arguments[_key3];
+    for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+      args[_key4] = arguments[_key4];
     }
 
-    _this5 = _possibleConstructorReturn(this, (_getPrototypeOf4 = _getPrototypeOf(UserMenuDropButton)).call.apply(_getPrototypeOf4, [this].concat(args)));
+    _this6 = _possibleConstructorReturn(this, (_getPrototypeOf5 = _getPrototypeOf(UserMenuDropButton)).call.apply(_getPrototypeOf5, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this5)), "renderItems", function () {
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this6)), "renderItems", function () {
       return _react.default.createElement(_grommet.Box, null, _react.default.createElement("span", null, "hi"), _react.default.createElement("span", null, "hi"), _react.default.createElement("span", null, "hi"), _react.default.createElement("span", null, "hi"), _react.default.createElement("span", null, "hi"));
     });
 
-    return _this5;
+    return _this6;
   }
 
   _createClass(UserMenuDropButton, [{
@@ -287,6 +364,8 @@ function (_Component3) {
 
 (0, _react2.storiesOf)('DropButton', module).add('Simple', function () {
   return _react.default.createElement(SimpleDropButton, null);
+}).add('Calendar 2', function () {
+  return _react.default.createElement(Calendar2, null);
 }).add('Calendar', function () {
   return _react.default.createElement(CalendarDropButton, null);
 }).add('UserMenu', function () {

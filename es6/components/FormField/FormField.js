@@ -138,8 +138,7 @@ function (_Component) {
         style: outerStyle
       }, rest), label || help ? _react.default.createElement(_Box.Box, {
         margin: {
-          vertical: 'xsmall',
-          horizontal: 'small'
+          vertical: 'xsmall'
         },
         gap: "xsmall"
       }, label ? _react.default.createElement(_Text.Text, _extends({
@@ -149,8 +148,7 @@ function (_Component) {
         color: formField.help.color[theme.dark ? 'dark' : 'light']
       }), help) : undefined) : undefined, contents, error ? _react.default.createElement(_Box.Box, {
         margin: {
-          vertical: 'xsmall',
-          horizontal: 'small'
+          vertical: 'xsmall'
         }
       }, _react.default.createElement(_Text.Text, _extends({}, formField.error, {
         color: formField.error.color[theme.dark ? 'dark' : 'light']
