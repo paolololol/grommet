@@ -12,12 +12,12 @@ export interface AccordionProps {
   activeIndex?: number | number[];
   animate?: boolean;
   children?: React.ReactNode;
-  onActive?: (...args: any[]) => any;
+  onActive?: ((...args: any[]) => any);
   multiple?: boolean;
   messages?: {tabContents?: string};
 }
 
-declare const Accordion: React.ComponentType<AccordionProps>;
+declare const Accordion: React.ComponentType<AccordionProps & JSX.IntrinsicElements['div']>;
 
 export { Accordion };
 ",
@@ -28,7 +28,7 @@ export interface AccordionPanelProps {
   header?: React.ReactNode;
 }
 
-declare const AccordionPanel: React.ComponentType<AccordionPanelProps>;
+declare const AccordionPanel: React.ComponentType<AccordionPanelProps & JSX.IntrinsicElements['div']>;
 
 export { AccordionPanel };
 ",
@@ -43,7 +43,7 @@ export interface AnchorProps {
   href?: string;
   icon?: JSX.Element;
   label?: React.ReactNode;
-  onClick?: (...args: any[]) => any;
+  onClick?: ((...args: any[]) => any);
   reverse?: boolean;
   size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"xxlarge\\" | string;
   as?: string;
@@ -62,13 +62,13 @@ export interface BoxProps {
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
   align?: \\"start\\" | \\"center\\" | \\"end\\" | \\"baseline\\" | \\"stretch\\";
   alignContent?: \\"start\\" | \\"center\\" | \\"end\\" | \\"between\\" | \\"around\\" | \\"stretch\\";
-  animation?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\" | {type?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\",delay?: number,duration?: number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\"} | \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\" | {type?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\",delay?: number,duration?: number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\"}[];
+  animation?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\" | {type?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\",delay?: number,duration?: number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\"} | (\\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\" | {type?: \\"fadeIn\\" | \\"fadeOut\\" | \\"jiggle\\" | \\"pulse\\" | \\"slideUp\\" | \\"slideDown\\" | \\"slideLeft\\" | \\"slideRight\\" | \\"zoomIn\\" | \\"zoomOut\\",delay?: number,duration?: number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\"})[];
   background?: string | {color?: string,dark?: boolean | string,image?: string,position?: string,opacity?: \\"weak\\" | \\"medium\\" | \\"strong\\" | boolean,light?: string};
   basis?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"auto\\" | string;
-  border?: boolean | \\"top\\" | \\"left\\" | \\"bottom\\" | \\"right\\" | \\"horizontal\\" | \\"vertical\\" | \\"all\\" | {color?: string | {dark?: string,light?: string},side?: \\"top\\" | \\"left\\" | \\"bottom\\" | \\"right\\" | \\"horizontal\\" | \\"vertical\\" | \\"all\\",size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string};
+  border?: boolean | \\"top\\" | \\"left\\" | \\"bottom\\" | \\"right\\" | \\"horizontal\\" | \\"vertical\\" | \\"all\\" | {color?: string | {dark?: string,light?: string},side?: \\"top\\" | \\"left\\" | \\"bottom\\" | \\"right\\" | \\"horizontal\\" | \\"vertical\\" | \\"all\\",size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,style?: \\"solid\\" | \\"dashed\\" | \\"dotted\\" | \\"double\\" | \\"groove\\" | \\"ridge\\" | \\"inset\\" | \\"outset\\" | \\"hidden\\"};
   direction?: \\"row\\" | \\"column\\" | \\"row-responsive\\";
   elevation?: \\"none\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
-  flex?: \\"grow\\" | \\"shrink\\" | boolean;
+  flex?: \\"grow\\" | \\"shrink\\" | boolean | {grow?: number,shrink?: number};
   fill?: \\"horizontal\\" | \\"vertical\\" | boolean;
   gap?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   height?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
@@ -83,7 +83,7 @@ export interface BoxProps {
   wrap?: boolean;
 }
 
-declare const Box: React.ComponentType<BoxProps>;
+declare const Box: React.ComponentType<BoxProps & JSX.IntrinsicElements['div']>;
 
 export { Box };
 ",
@@ -103,7 +103,7 @@ export interface ButtonProps {
   href?: string;
   icon?: JSX.Element;
   label?: React.ReactNode;
-  onClick?: (...args: any[]) => any;
+  onClick?: ((...args: any[]) => any);
   plain?: boolean;
   primary?: boolean;
   reverse?: boolean;
@@ -125,20 +125,20 @@ export interface CalendarProps {
   animate?: boolean;
   bounds?: string[];
   date?: string;
-  dates?: string | string[][];
-  disabled?: string | string[][];
+  dates?: (string | string[])[];
+  disabled?: (string | string[])[];
   firstDayOfWeek?: \\"0\\" | \\"1\\";
-  header?: (...args: any[]) => any;
+  header?: ((...args: any[]) => any);
   locale?: string;
-  onReference?: (...args: any[]) => any;
-  onSelect?: (...args: any[]) => any;
+  onReference?: ((...args: any[]) => any);
+  onSelect?: ((...args: any[]) => any);
   range?: boolean;
   reference?: string;
   showAdjacentDays?: boolean;
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | string;
 }
 
-declare const Calendar: React.ComponentType<CalendarProps>;
+declare const Calendar: React.ComponentType<CalendarProps & JSX.IntrinsicElements['div']>;
 
 export { Calendar };
 ",
@@ -153,7 +153,7 @@ export interface CarouselProps {
   play?: number;
 }
 
-declare const Carousel: React.ComponentType<CarouselProps>;
+declare const Carousel: React.ComponentType<CarouselProps & JSX.IntrinsicElements['div']>;
 
 export { Carousel };
 ",
@@ -166,17 +166,17 @@ export interface ChartProps {
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
   bounds?: number[][];
   color?: string | {color?: string,opacity?: \\"weak\\" | \\"medium\\" | \\"strong\\" | boolean};
-  onClick?: (...args: any[]) => any;
-  onHover?: (...args: any[]) => any;
+  onClick?: ((...args: any[]) => any);
+  onHover?: ((...args: any[]) => any);
   overflow?: boolean;
   round?: boolean;
   size?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | {height?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | string,width?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | string} | string;
   thickness?: \\"hair\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"none\\" | string;
   type?: \\"bar\\" | \\"line\\" | \\"area\\";
-  values: number | number[] | {label?: string,onClick?: (...args: any[]) => any,onHover?: (...args: any[]) => any,value: number | number[]}[];
+  values: (number | number[] | {label?: string,onClick?: ((...args: any[]) => any),onHover?: ((...args: any[]) => any),value: number | number[]})[];
 }
 
-declare const Chart: React.ComponentType<ChartProps>;
+declare const Chart: React.ComponentType<ChartProps & JSX.IntrinsicElements['svg']>;
 
 export { Chart };
 ",
@@ -188,13 +188,13 @@ export interface CheckBoxProps {
   id?: string;
   label?: React.ReactNode;
   name?: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   reverse?: boolean;
   toggle?: boolean;
   indeterminate?: boolean;
 }
 
-declare const CheckBox: React.ComponentType<CheckBoxProps>;
+declare const CheckBox: React.ComponentType<CheckBoxProps & JSX.IntrinsicElements['input']>;
 
 export { CheckBox };
 ",
@@ -206,7 +206,7 @@ export interface ClockProps {
   gridArea?: string;
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
   hourLimit?: \\"12\\" | \\"24\\" | \\"12\\" | \\"24\\";
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   precision?: \\"hours\\" | \\"minutes\\" | \\"seconds\\";
   run?: boolean | \\"backward\\" | \\"forward\\";
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
@@ -214,7 +214,7 @@ export interface ClockProps {
   type?: \\"analog\\" | \\"digital\\";
 }
 
-declare const Clock: React.ComponentType<ClockProps>;
+declare const Clock: React.ComponentType<ClockProps & (JSX.IntrinsicElements['div'] | JSX.IntrinsicElements['svg'])>;
 
 export { Clock };
 ",
@@ -225,7 +225,7 @@ export interface CollapsibleProps {
   direction?: \\"horizontal\\" | \\"vertical\\";
 }
 
-declare const Collapsible: React.ComponentType<CollapsibleProps>;
+declare const Collapsible: React.ComponentType<CollapsibleProps & JSX.IntrinsicElements['div']>;
 
 export { Collapsible };
 ",
@@ -236,17 +236,18 @@ export interface DataTableProps {
   alignSelf?: \\"start\\" | \\"center\\" | \\"end\\" | \\"stretch\\";
   gridArea?: string;
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
-  columns?: {align?: \\"center\\" | \\"start\\" | \\"end\\",aggregate?: \\"avg\\" | \\"max\\" | \\"min\\" | \\"sum\\",footer?: React.ReactNode | {aggregate?: boolean},header?: string | React.ReactNode | {aggregate?: boolean},property: string,render?: (...args: any[]) => any,search?: boolean}[];
+  columns?: {align?: \\"center\\" | \\"start\\" | \\"end\\",aggregate?: \\"avg\\" | \\"max\\" | \\"min\\" | \\"sum\\",footer?: React.ReactNode | {aggregate?: boolean},header?: string | React.ReactNode | {aggregate?: boolean},primary?: boolean,property: string,render?: ((...args: any[]) => any),search?: boolean,sortable?: boolean}[];
   data?: {}[];
   groupBy?: string;
-  onMore?: (...args: any[]) => any;
-  onSearch?: (...args: any[]) => any;
+  onMore?: ((...args: any[]) => any);
+  onSearch?: ((...args: any[]) => any);
+  primaryKey?: string;
   resizeable?: boolean;
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   sortable?: boolean;
 }
 
-declare const DataTable: React.ComponentType<DataTableProps>;
+declare const DataTable: React.ComponentType<DataTableProps & JSX.IntrinsicElements['table']>;
 
 export { DataTable };
 ",
@@ -256,7 +257,7 @@ export interface DiagramProps {
   connections: {anchor?: \\"center\\" | \\"vertical\\" | \\"horizontal\\",color?: string | {dark?: string,light?: string},fromTarget: string | object,label?: string,offset?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,thickness?: \\"hair\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,toTarget: string | object,type?: \\"direct\\" | \\"curved\\" | \\"rectilinear\\"}[];
 }
 
-declare const Diagram: React.ComponentType<DiagramProps>;
+declare const Diagram: React.ComponentType<DiagramProps & JSX.IntrinsicElements['svg']>;
 
 export { Diagram };
 ",
@@ -267,13 +268,13 @@ export interface DistributionProps {
   alignSelf?: \\"start\\" | \\"center\\" | \\"end\\" | \\"stretch\\";
   gridArea?: string;
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
-  children?: (...args: any[]) => any;
+  children?: ((...args: any[]) => any);
   fill?: boolean;
   gap?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   values: {value: number}[];
 }
 
-declare const Distribution: React.ComponentType<DistributionProps>;
+declare const Distribution: React.ComponentType<DistributionProps & JSX.IntrinsicElements['div']>;
 
 export { Distribution };
 ",
@@ -281,8 +282,8 @@ export { Distribution };
 
 export interface DropProps {
   align?: {top?: \\"top\\" | \\"bottom\\",bottom?: \\"top\\" | \\"bottom\\",right?: \\"left\\" | \\"right\\",left?: \\"left\\" | \\"right\\"};
-  onClickOutside?: (...args: any[]) => any;
-  onEsc?: (...args: any[]) => any;
+  onClickOutside?: ((...args: any[]) => any);
+  onEsc?: ((...args: any[]) => any);
   responsive?: boolean;
   restrictFocus?: boolean;
   stretch?: boolean;
@@ -291,7 +292,7 @@ export interface DropProps {
   plain?: boolean;
 }
 
-declare const Drop: React.ComponentType<DropProps>;
+declare const Drop: React.ComponentType<DropProps & JSX.IntrinsicElements['div']>;
 
 export { Drop };
 ",
@@ -306,14 +307,28 @@ export interface DropButtonProps {
   dropAlign?: {top?: \\"top\\" | \\"bottom\\",bottom?: \\"top\\" | \\"bottom\\",right?: \\"left\\" | \\"right\\",left?: \\"left\\" | \\"right\\"};
   dropContent: JSX.Element;
   dropTarget?: object;
-  onClose?: (...args: any[]) => any;
-  onOpen?: (...args: any[]) => any;
+  onClose?: ((...args: any[]) => any);
+  onOpen?: ((...args: any[]) => any);
   open?: boolean;
 }
 
-declare const DropButton: React.ComponentType<DropButtonProps>;
+declare const DropButton: React.ComponentType<DropButtonProps & JSX.IntrinsicElements['button']>;
 
 export { DropButton };
+",
+  "Form": "import * as React from \\"react\\";
+
+export interface FormProps {
+  errors?: {};
+  messages?: {invalid?: string,required?: string};
+  onChange?: ((...args: any[]) => any);
+  onSubmit?: ((...args: any[]) => any);
+  value?: {};
+}
+
+declare const Form: React.ComponentType<FormProps & JSX.IntrinsicElements['form']>;
+
+export { Form };
 ",
   "FormField": "import * as React from \\"react\\";
 
@@ -322,9 +337,13 @@ export interface FormFieldProps {
   help?: string | React.ReactNode;
   htmlFor?: string;
   label?: string | React.ReactNode;
+  name?: string;
+  pad?: boolean;
+  required?: boolean;
+  validate?: {regexp?: object,message?: string} | ((...args: any[]) => any);
 }
 
-declare const FormField: React.ComponentType<FormFieldProps>;
+declare const FormField: React.ComponentType<FormFieldProps & JSX.IntrinsicElements['div']>;
 
 export { FormField };
 ",
@@ -338,17 +357,17 @@ export interface GridProps {
   align?: \\"start\\" | \\"center\\" | \\"end\\" | \\"stretch\\";
   alignContent?: \\"start\\" | \\"center\\" | \\"end\\" | \\"between\\" | \\"around\\" | \\"stretch\\";
   areas?: {name?: string,start?: number[],end?: number[]}[];
-  columns?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string[] | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {count?: \\"fit\\" | \\"fill\\" | number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string} | string;
+  columns?: (\\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string)[] | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {count?: \\"fit\\" | \\"fill\\" | number,size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string} | string;
   fill?: \\"horizontal\\" | \\"vertical\\" | boolean;
   gap?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"none\\" | {row?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"none\\" | string,column?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"none\\" | string} | string;
   justify?: \\"start\\" | \\"center\\" | \\"end\\" | \\"stretch\\";
   justifyContent?: \\"start\\" | \\"center\\" | \\"end\\" | \\"between\\" | \\"around\\" | \\"stretch\\";
-  rows?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string[] | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
+  rows?: (\\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | \\"1/2\\" | \\"1/3\\" | \\"2/3\\" | \\"1/4\\" | \\"2/4\\" | \\"3/4\\" | \\"flex\\" | \\"auto\\"[] | string)[] | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   tag?: string;
   as?: string;
 }
 
-declare const Grid: React.ComponentType<GridProps>;
+declare const Grid: React.ComponentType<GridProps & JSX.IntrinsicElements['div']>;
 
 export { Grid };
 ",
@@ -361,7 +380,7 @@ export interface GrommetProps {
   userAgent?: string;
 }
 
-declare const Grommet: React.ComponentType<GrommetProps>;
+declare const Grommet: React.ComponentType<GrommetProps & JSX.IntrinsicElements['div']>;
 
 export { Grommet };
 ",
@@ -380,7 +399,7 @@ export interface HeadingProps {
   truncate?: boolean;
 }
 
-declare const Heading: React.ComponentType<HeadingProps>;
+declare const Heading: React.ComponentType<HeadingProps & (JSX.IntrinsicElements['h1'] | JSX.IntrinsicElements['h2'] | JSX.IntrinsicElements['h3'] | JSX.IntrinsicElements['h4'])>;
 
 export { Heading };
 ",
@@ -401,10 +420,10 @@ export { Image };
   "InfiniteScroll": "import * as React from \\"react\\";
 
 export interface InfiniteScrollProps {
-  children?: (...args: any[]) => any;
+  children?: ((...args: any[]) => any);
   items?: any[];
-  onMore?: (...args: any[]) => any;
-  renderMarker?: (...args: any[]) => any;
+  onMore?: ((...args: any[]) => any);
+  renderMarker?: ((...args: any[]) => any);
   replace?: boolean;
   scrollableAncestor?: React.ReactNode | \\"window\\";
   show?: number;
@@ -419,17 +438,18 @@ export { InfiniteScroll };
 
 export interface KeyboardProps {
   target?: \\"component\\" | \\"document\\";
-  onBackspace?: (...args: any[]) => any;
-  onComma?: (...args: any[]) => any;
-  onDown?: (...args: any[]) => any;
-  onEnter?: (...args: any[]) => any;
-  onEsc?: (...args: any[]) => any;
-  onLeft?: (...args: any[]) => any;
-  onRight?: (...args: any[]) => any;
-  onShift?: (...args: any[]) => any;
-  onSpace?: (...args: any[]) => any;
-  onTab?: (...args: any[]) => any;
-  onUp?: (...args: any[]) => any;
+  onBackspace?: ((...args: any[]) => any);
+  onComma?: ((...args: any[]) => any);
+  onDown?: ((...args: any[]) => any);
+  onEnter?: ((...args: any[]) => any);
+  onEsc?: ((...args: any[]) => any);
+  onKeyDown?: ((...args: any[]) => any);
+  onLeft?: ((...args: any[]) => any);
+  onRight?: ((...args: any[]) => any);
+  onShift?: ((...args: any[]) => any);
+  onSpace?: ((...args: any[]) => any);
+  onTab?: ((...args: any[]) => any);
+  onUp?: ((...args: any[]) => any);
 }
 
 declare const Keyboard: React.ComponentType<KeyboardProps>;
@@ -439,27 +459,28 @@ export { Keyboard };
   "Layer": "import * as React from \\"react\\";
 
 export interface LayerProps {
+  animate?: boolean;
   full?: boolean | \\"vertical\\" | \\"horizontal\\";
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | string} | string;
   modal?: boolean;
-  onClickOutside?: (...args: any[]) => any;
-  onEsc?: (...args: any[]) => any;
+  onClickOutside?: ((...args: any[]) => any);
+  onEsc?: ((...args: any[]) => any);
   plain?: boolean;
-  position?: \\"bottom\\" | \\"center\\" | \\"hidden\\" | \\"left\\" | \\"right\\" | \\"top\\";
+  position?: \\"bottom\\" | \\"bottom-left\\" | \\"bottom-right\\" | \\"center\\" | \\"hidden\\" | \\"left\\" | \\"right\\" | \\"top\\" | \\"top-left\\" | \\"top-right\\";
   responsive?: boolean;
 }
 
-declare const Layer: React.ComponentType<LayerProps>;
+declare const Layer: React.ComponentType<LayerProps & JSX.IntrinsicElements['div']>;
 
 export { Layer };
 ",
   "Markdown": "import * as React from \\"react\\";
 
 export interface MarkdownProps {
-  
+  components?: {};
 }
 
-declare const Markdown: React.ComponentType<MarkdownProps>;
+declare const Markdown: React.ComponentType<MarkdownProps & JSX.IntrinsicElements['div']>;
 
 export { Markdown };
 ",
@@ -468,13 +489,13 @@ export { Markdown };
 export interface MaskedInputProps {
   id?: string;
   name?: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   mask?: {length?: number | number[],fixed?: string,options?: string[],regexp?: {}}[];
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   value?: string;
 }
 
-declare const MaskedInput: React.ComponentType<MaskedInputProps>;
+declare const MaskedInput: React.ComponentType<MaskedInputProps & JSX.IntrinsicElements['input']>;
 
 export { MaskedInput };
 ",
@@ -496,7 +517,7 @@ export interface MenuProps {
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
 }
 
-declare const Menu: React.ComponentType<MenuProps>;
+declare const Menu: React.ComponentType<MenuProps & JSX.IntrinsicElements['button']>;
 
 export { Menu };
 ",
@@ -512,10 +533,10 @@ export interface MeterProps {
   size?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | string;
   thickness?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   type?: \\"bar\\" | \\"circle\\";
-  values?: {color?: string,highlight?: boolean,label: string,onClick?: (...args: any[]) => any,onHover?: (...args: any[]) => any,value: number}[];
+  values?: {color?: string,highlight?: boolean,label: string,onClick?: ((...args: any[]) => any),onHover?: ((...args: any[]) => any),value: number}[];
 }
 
-declare const Meter: React.ComponentType<MeterProps>;
+declare const Meter: React.ComponentType<MeterProps & JSX.IntrinsicElements['svg']>;
 
 export { Meter };
 ",
@@ -544,10 +565,10 @@ export interface RadioButtonProps {
   id?: string;
   label?: React.ReactNode;
   name: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
 }
 
-declare const RadioButton: React.ComponentType<RadioButtonProps>;
+declare const RadioButton: React.ComponentType<RadioButtonProps & JSX.IntrinsicElements['input']>;
 
 export { RadioButton };
 ",
@@ -558,12 +579,12 @@ export interface RangeInputProps {
   min?: number | string;
   max?: number | string;
   name?: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   step?: number;
   value?: number | string;
 }
 
-declare const RangeInput: React.ComponentType<RangeInputProps>;
+declare const RangeInput: React.ComponentType<RangeInputProps & JSX.IntrinsicElements['input']>;
 
 export { RangeInput };
 ",
@@ -576,7 +597,7 @@ export interface RangeSelectorProps {
   max?: number;
   messages?: {lower?: string,upper?: string};
   min?: number;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   opacity?: \\"weak\\" | \\"medium\\" | \\"strong\\";
   round?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"full\\" | string;
   size?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | \\"full\\" | string;
@@ -584,7 +605,7 @@ export interface RangeSelectorProps {
   values: number[];
 }
 
-declare const RangeSelector: React.ComponentType<RangeSelectorProps>;
+declare const RangeSelector: React.ComponentType<RangeSelectorProps & JSX.IntrinsicElements['div']>;
 
 export { RangeSelector };
 ",
@@ -595,7 +616,7 @@ export interface RoutedAnchorProps {
   method?: \\"push\\" | \\"replace\\";
 }
 
-declare const RoutedAnchor: React.ComponentType<RoutedAnchorProps>;
+declare const RoutedAnchor: React.ComponentType<RoutedAnchorProps & JSX.IntrinsicElements['a']>;
 
 export { RoutedAnchor };
 ",
@@ -606,7 +627,7 @@ export interface RoutedButtonProps {
   method?: \\"push\\" | \\"replace\\";
 }
 
-declare const RoutedButton: React.ComponentType<RoutedButtonProps>;
+declare const RoutedButton: React.ComponentType<RoutedButtonProps & JSX.IntrinsicElements['button']>;
 
 export { RoutedButton };
 ",
@@ -617,34 +638,34 @@ export interface SelectProps {
   alignSelf?: \\"start\\" | \\"center\\" | \\"end\\" | \\"stretch\\";
   gridArea?: string;
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
-  children?: (...args: any[]) => any;
+  children?: ((...args: any[]) => any);
   closeOnChange?: boolean;
-  disabled?: boolean | number | string | object[];
-  disabledKey?: string | (...args: any[]) => any;
+  disabled?: boolean | (number | string | object)[];
+  disabledKey?: string | ((...args: any[]) => any);
   dropAlign?: {top?: \\"top\\" | \\"bottom\\",bottom?: \\"top\\" | \\"bottom\\",right?: \\"left\\" | \\"right\\",left?: \\"left\\" | \\"right\\"};
+  dropHeight?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   dropTarget?: object;
   focusIndicator?: boolean;
-  labelKey?: string | (...args: any[]) => any;
+  labelKey?: string | ((...args: any[]) => any);
   messages?: {multiple?: string};
   multiple?: boolean;
-  onChange?: (...args: any[]) => any;
-  onClose?: (...args: any[]) => any;
-  onOpen?: (...args: any[]) => any;
-  onSearch?: (...args: any[]) => any;
-  options: string | JSX.Element | object[];
+  onChange?: ((...args: any[]) => any);
+  onClose?: ((...args: any[]) => any);
+  onOpen?: ((...args: any[]) => any);
+  onSearch?: ((...args: any[]) => any);
+  options: (string | JSX.Element | object)[];
   placeholder?: string | React.ReactNode;
   plain?: boolean;
   searchPlaceholder?: string;
   selected?: number | number[];
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
-  dropHeight?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
-  value?: string | JSX.Element | object | string | object[];
+  value?: string | JSX.Element | object | (string | object)[];
   valueLabel?: React.ReactNode;
-  valueKey?: string | (...args: any[]) => any;
+  valueKey?: string | ((...args: any[]) => any);
   emptySearchMessage?: string;
 }
 
-declare const Select: React.ComponentType<SelectProps>;
+declare const Select: React.ComponentType<SelectProps & JSX.IntrinsicElements['select']>;
 
 export { Select };
 ",
@@ -671,7 +692,7 @@ export interface StackProps {
   guidingChild?: number | \\"first\\" | \\"last\\";
 }
 
-declare const Stack: React.ComponentType<StackProps>;
+declare const Stack: React.ComponentType<StackProps & JSX.IntrinsicElements['div']>;
 
 export { Stack };
 ",
@@ -682,7 +703,7 @@ export interface TabProps {
   title?: string | React.ReactNode;
 }
 
-declare const Tab: React.ComponentType<TabProps>;
+declare const Tab: React.ComponentType<TabProps & JSX.IntrinsicElements['button']>;
 
 export { Tab };
 ",
@@ -765,10 +786,10 @@ export interface TabsProps {
   flex?: \\"grow\\" | \\"shrink\\" | boolean;
   justify?: \\"start\\" | \\"center\\" | \\"end\\";
   messages?: {tabContents?: string};
-  onActive?: (...args: any[]) => any;
+  onActive?: ((...args: any[]) => any);
 }
 
-declare const Tabs: React.ComponentType<TabsProps>;
+declare const Tabs: React.ComponentType<TabsProps & JSX.IntrinsicElements['div']>;
 
 export { Tabs };
 ",
@@ -799,10 +820,11 @@ export interface TextAreaProps {
   fill?: boolean;
   focusIndicator?: boolean;
   name?: string;
-  onChange?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
   placeholder?: string;
   plain?: boolean;
   value?: string;
+  resize?: \\"vertical\\" | \\"horizontal\\" | boolean;
 }
 
 declare const TextArea: React.ComponentType<TextAreaProps & JSX.IntrinsicElements['textarea']>;
@@ -813,19 +835,20 @@ export { TextArea };
 
 export interface TextInputProps {
   dropAlign?: {top?: \\"top\\" | \\"bottom\\",bottom?: \\"top\\" | \\"bottom\\",right?: \\"left\\" | \\"right\\",left?: \\"left\\" | \\"right\\"};
+  dropHeight?: \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
   dropTarget?: object;
   id?: string;
   focusIndicator?: boolean;
   messages?: {enterSelect?: string,suggestionsCount?: string,suggestionsExist?: string,suggestionIsOpen?: string};
   name?: string;
-  onChange?: (...args: any[]) => any;
-  onSelect?: (...args: any[]) => any;
-  onSuggestionsOpen?: (...args: any[]) => any;
-  onSuggestionsClose?: (...args: any[]) => any;
+  onChange?: ((...args: any[]) => any);
+  onSelect?: ((...args: any[]) => any);
+  onSuggestionsOpen?: ((...args: any[]) => any);
+  onSuggestionsClose?: ((...args: any[]) => any);
   placeholder?: string | React.ReactNode;
   plain?: boolean;
   size?: \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string;
-  suggestions?: {label?: React.ReactNode,value?: any} | string[];
+  suggestions?: ({label?: React.ReactNode,value?: any} | string)[];
   value?: string;
 }
 
@@ -847,7 +870,7 @@ export interface VideoProps {
   mute?: boolean;
 }
 
-declare const Video: React.ComponentType<VideoProps>;
+declare const Video: React.ComponentType<VideoProps & JSX.IntrinsicElements['video']>;
 
 export { Video };
 ",
@@ -859,13 +882,13 @@ export interface WorldMapProps {
   gridArea?: string;
   margin?: \\"none\\" | \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | {bottom?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,horizontal?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,left?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,right?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,top?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string,vertical?: \\"xxsmall\\" | \\"xsmall\\" | \\"small\\" | \\"medium\\" | \\"large\\" | \\"xlarge\\" | string} | string;
   color?: string | {dark?: string,light?: string};
-  continents?: {color?: string | {dark?: string,light?: string},name: \\"Africa\\" | \\"Asia\\" | \\"Australia\\" | \\"Europe\\" | \\"North America\\" | \\"South America\\",onClick?: (...args: any[]) => any,onHover?: (...args: any[]) => any}[];
-  onSelectPlace?: (...args: any[]) => any;
-  places?: {color?: string | {dark?: string,light?: string},name?: string,location: number[],onClick?: (...args: any[]) => any,onHover?: (...args: any[]) => any}[];
+  continents?: {color?: string | {dark?: string,light?: string},name: \\"Africa\\" | \\"Asia\\" | \\"Australia\\" | \\"Europe\\" | \\"North America\\" | \\"South America\\",onClick?: ((...args: any[]) => any),onHover?: ((...args: any[]) => any)}[];
+  onSelectPlace?: ((...args: any[]) => any);
+  places?: {color?: string | {dark?: string,light?: string},name?: string,location: number[],onClick?: ((...args: any[]) => any),onHover?: ((...args: any[]) => any)}[];
   hoverColor?: string | {dark?: string,light?: string};
 }
 
-declare const WorldMap: React.ComponentType<WorldMapProps>;
+declare const WorldMap: React.ComponentType<WorldMapProps & JSX.IntrinsicElements['svg']>;
 
 export { WorldMap };
 ",

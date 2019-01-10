@@ -25,6 +25,8 @@ var _TextInput = require("../TextInput");
 
 var _SelectOption = require("./SelectOption");
 
+var _StyledSelect = require("./StyledSelect");
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -47,19 +49,14 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var ContainerBox = (0, _styledComponents.default)(_Box.Box).withConfig({
-  displayName: "SelectContainer__ContainerBox",
-  componentId: "sc-1wi0ul8-0"
-})(["max-height:inherit;@media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){width:100%;}", ";"], function (props) {
-  return props.theme.select.container && props.theme.select.container.extend;
-});
+// position relative is so scroll can be managed correctly
 var OptionsBox = (0, _styledComponents.default)(_Box.Box).withConfig({
   displayName: "SelectContainer__OptionsBox",
-  componentId: "sc-1wi0ul8-1"
-})(["scroll-behavior:smooth;"]);
+  componentId: "sc-1wi0ul8-0"
+})(["position:relative;scroll-behavior:smooth;"]);
 var OptionBox = (0, _styledComponents.default)(_Box.Box).withConfig({
   displayName: "SelectContainer__OptionBox",
-  componentId: "sc-1wi0ul8-2"
+  componentId: "sc-1wi0ul8-1"
 })(["", ""], function (props) {
   return props.selected && _utils.selectedStyle;
 });
@@ -82,11 +79,11 @@ function (_Component) {
 
     _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(SelectContainer)).call.apply(_getPrototypeOf2, [this].concat(args)));
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "optionsRef", {});
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "optionRefs", {});
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "searchRef", (0, _react.createRef)());
 
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "selectRef", (0, _react.createRef)());
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "optionsRef", (0, _react.createRef)());
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       search: '',
@@ -184,11 +181,11 @@ function (_Component) {
           activeIndex: nextActiveIndex,
           keyboardNavigating: true
         }, function () {
-          var buttonNode = _this.optionsRef[nextActiveIndex];
-          var selectNode = _this.selectRef.current;
+          var buttonNode = _this.optionRefs[nextActiveIndex];
+          var optionsNode = _this.optionsRef.current;
 
-          if (buttonNode && (0, _utils.isNodeAfterScroll)(buttonNode, selectNode) && selectNode.scrollBy) {
-            selectNode.scrollBy(0, buttonNode.getBoundingClientRect().height);
+          if (buttonNode && (0, _utils.isNodeAfterScroll)(buttonNode, optionsNode) && optionsNode.scrollTo) {
+            optionsNode.scrollTo(0, buttonNode.offsetTop - (optionsNode.getBoundingClientRect().height - buttonNode.getBoundingClientRect().height));
           }
 
           _this.clearKeyboardNavigation();
@@ -210,11 +207,11 @@ function (_Component) {
           activeIndex: nextActiveIndex,
           keyboardNavigating: true
         }, function () {
-          var buttonNode = _this.optionsRef[nextActiveIndex];
-          var selectNode = _this.selectRef.current;
+          var buttonNode = _this.optionRefs[nextActiveIndex];
+          var optionsNode = _this.optionsRef.current;
 
-          if (buttonNode && (0, _utils.isNodeBeforeScroll)(buttonNode, selectNode) && selectNode.scrollBy) {
-            selectNode.scrollBy(0, -buttonNode.getBoundingClientRect().height);
+          if (buttonNode && (0, _utils.isNodeBeforeScroll)(buttonNode, optionsNode) && optionsNode.scrollTo) {
+            optionsNode.scrollTo(0, buttonNode.offsetTop);
           }
 
           _this.clearKeyboardNavigation();
@@ -360,7 +357,7 @@ function (_Component) {
       // to be available
 
       setTimeout(function () {
-        var selectNode = _this2.selectRef.current;
+        var optionsNode = _this2.optionsRef.current;
 
         if (onSearch) {
           var input = _this2.searchRef.current;
@@ -368,16 +365,16 @@ function (_Component) {
           if (input && input.focus) {
             (0, _utils.setFocusWithoutScroll)(input);
           }
-        } else if (selectNode) {
-          (0, _utils.setFocusWithoutScroll)(selectNode);
+        } else if (optionsNode) {
+          (0, _utils.setFocusWithoutScroll)(optionsNode);
         } // scroll to active option if it is below the fold
 
 
-        if (activeIndex >= 0 && selectNode) {
-          var optionNode = _this2.optionsRef[activeIndex];
+        if (activeIndex >= 0 && optionsNode) {
+          var optionNode = _this2.optionRefs[activeIndex];
 
-          var _selectNode$getBoundi = selectNode.getBoundingClientRect(),
-              containerBottom = _selectNode$getBoundi.bottom;
+          var _optionsNode$getBound = optionsNode.getBoundingClientRect(),
+              containerBottom = _optionsNode$getBound.bottom;
 
           if (optionNode) {
             var _optionNode$getBoundi = optionNode.getBoundingClientRect(),
@@ -415,9 +412,10 @@ function (_Component) {
         onUp: this.onPreviousOption,
         onDown: this.onNextOption,
         onKeyDown: onKeyDown
-      }, _react.default.createElement(ContainerBox, {
-        height: dropHeight,
-        id: id ? "".concat(id, "__select-drop") : undefined
+      }, _react.default.createElement(_StyledSelect.StyledContainer, {
+        as: _Box.Box,
+        id: id ? "".concat(id, "__select-drop") : undefined,
+        dropHeight: dropHeight
       }, onSearch && _react.default.createElement(_Box.Box, {
         pad: !customSearchInput ? 'xsmall' : undefined,
         flex: false
@@ -433,7 +431,7 @@ function (_Component) {
         flex: "shrink",
         role: "menubar",
         tabIndex: "-1",
-        ref: this.selectRef,
+        ref: this.optionsRef,
         overflow: "auto"
       }, options.length > 0 ? _react.default.createElement(_InfiniteScroll.InfiniteScroll, {
         items: options,
@@ -445,13 +443,15 @@ function (_Component) {
         var isSelected = _this3.isSelected(index);
 
         var isActive = activeIndex === index;
-        return _react.default.createElement(_SelectOption.SelectOption, {
-          key: "option_".concat(index),
+        return _react.default.createElement(_SelectOption.SelectOption // eslint-disable-next-line react/no-array-index-key
+        , {
+          key: index,
           ref: function ref(_ref) {
-            _this3.optionsRef[index] = _ref;
+            _this3.optionRefs[index] = _ref;
           },
           disabled: isDisabled || undefined,
           active: isActive,
+          selected: isSelected,
           option: option,
           onMouseOver: !isDisabled ? _this3.onActiveOption(index) : undefined,
           onClick: !isDisabled ? _this3.selectOption(option, index) : undefined

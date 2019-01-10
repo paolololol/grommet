@@ -200,6 +200,19 @@ describe('Box', function () {
       flex: "grow"
     }), _react.default.createElement(_.Box, {
       flex: "shrink"
+    }), _react.default.createElement(_.Box, {
+      flex: {
+        grow: 2
+      }
+    }), _react.default.createElement(_.Box, {
+      flex: {
+        shrink: 2
+      }
+    }), _react.default.createElement(_.Box, {
+      flex: {
+        grow: 2,
+        shrink: 2
+      }
     }))));
 
     var tree = component.toJSON();
@@ -423,6 +436,18 @@ describe('Box', function () {
     }), _react.default.createElement(_.Box, {
       border: {
         size: 'xlarge'
+      }
+    }), _react.default.createElement(_.Box, {
+      border: {
+        style: 'dotted'
+      }
+    }), _react.default.createElement(_.Box, {
+      border: {
+        style: 'double'
+      }
+    }), _react.default.createElement(_.Box, {
+      border: {
+        style: 'dashed'
       }
     })));
 

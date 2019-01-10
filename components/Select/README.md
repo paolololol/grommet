@@ -1,5 +1,5 @@
 ## Select
-An select-like field with optional search capability.
+A control to select a value, with optional search.
 
 [![](https://cdn-images-1.medium.com/fit/c/120/120/1*TD1P0HtIH9zF0UEH28zYtw.png)](https://storybook.grommet.io/?selectedKind=Select&full=0&addons=0&stories=1&panelRight=0) [![](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/grommet/grommet-sandbox?initialpath=select&module=%2Fsrc%2FSelect.js)
 ## Usage
@@ -182,6 +182,19 @@ How to align the drop. Defaults to `{
 }
 ```
 
+**dropHeight**
+
+The height of the drop container.
+
+```
+xsmall
+small
+medium
+large
+xlarge
+string
+```
+
 **dropTarget**
 
 Target where the options drop will be aligned to. This should be
@@ -327,19 +340,6 @@ xlarge
 string
 ```
 
-**dropHeight**
-
-The height of the drop container.
-
-```
-xsmall
-small
-medium
-large
-xlarge
-string
-```
-
 **value**
 
 Currently selected value. This can be an array
@@ -387,6 +387,11 @@ Empty option message to display when no matching results were found Defaults to 
 string
 ```
   
+## Intrinsic element
+
+```
+select
+```
 ## Theme
   
 **select.background**

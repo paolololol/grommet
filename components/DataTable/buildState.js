@@ -53,7 +53,8 @@ var aggregateColumn = function aggregateColumn(column, data) {
 };
 
 var findPrimary = function findPrimary(nextProps, prevState, nextState) {
-  var columns = nextProps.columns;
+  var columns = nextProps.columns,
+      primaryKey = nextProps.primaryKey;
   var primaryProperty;
   columns.forEach(function (column) {
     // remember the first key property
@@ -63,7 +64,7 @@ var findPrimary = function findPrimary(nextProps, prevState, nextState) {
   });
 
   if (!primaryProperty && columns.length > 0) {
-    primaryProperty = columns[0].property;
+    primaryProperty = primaryKey || columns[0].property;
   }
 
   return _objectSpread({}, nextState, {

@@ -75,8 +75,17 @@ var elevationStyle = (0, _styledComponents.css)(["box-shadow:", ";"], function (
   return props.theme.global.elevation[props.theme.dark ? 'dark' : 'light'][props.elevationProp];
 });
 var FLEX_MAP = (_FLEX_MAP = {}, _defineProperty(_FLEX_MAP, true, '1 1'), _defineProperty(_FLEX_MAP, false, '0 0'), _defineProperty(_FLEX_MAP, "grow", '1 0'), _defineProperty(_FLEX_MAP, "shrink", '0 1'), _FLEX_MAP);
+
+var flexGrowShrinkProp = function flexGrowShrinkProp(flex) {
+  if (typeof flex === 'boolean' || typeof flex === 'string') {
+    return FLEX_MAP[flex];
+  }
+
+  return "".concat(flex.grow ? flex.grow : 0, " ").concat(flex.shrink ? flex.shrink : 0);
+};
+
 var flexStyle = (0, _styledComponents.css)(["flex:", ";"], function (props) {
-  return "".concat(FLEX_MAP[props.flex]).concat(props.flex !== true && !props.basis ? ' auto' : '');
+  return "".concat(flexGrowShrinkProp(props.flex)).concat(props.flex !== true && !props.basis ? ' auto' : '');
 });
 
 var fillStyle = function fillStyle(fillProp) {
@@ -110,10 +119,11 @@ var borderStyle = function borderStyle(data, responsive, theme) {
   var styles = [];
   var color = (0, _utils.normalizeColor)(data.color || 'border', theme);
   var borderSize = data.size || 'xsmall';
+  var style = data.style || 'solid';
   var side = typeof data === 'string' ? data : data.side || 'all';
-  var value = "solid ".concat(theme.global.borderSize[borderSize] || borderSize, " ").concat(color);
+  var value = "".concat(style, " ").concat(theme.global.borderSize[borderSize] || borderSize, " ").concat(color);
   var breakpoint = theme.box.responsiveBreakpoint && theme.global.breakpoints[theme.box.responsiveBreakpoint];
-  var responsiveValue = breakpoint && (breakpoint.borderSize[borderSize] || borderSize) && "solid ".concat(breakpoint.borderSize[borderSize] || borderSize, " ").concat(color);
+  var responsiveValue = breakpoint && (breakpoint.borderSize[borderSize] || borderSize) && "".concat(style, " ").concat(breakpoint.borderSize[borderSize] || borderSize, " ").concat(color);
 
   if (side === 'top' || side === 'bottom' || side === 'left' || side === 'right') {
     styles.push((0, _styledComponents.css)(["border-", ":", ";"], side, value));
@@ -153,8 +163,8 @@ var roundStyle = function roundStyle(data, responsive, theme) {
   var styles = [];
 
   if (_typeof(data) === 'object') {
-    var size = ROUND_MAP[data.size] || theme.global.edgeSize[data.size || 'medium'];
-    var responsiveSize = breakpoint && breakpoint.edgeSize[data.size] && breakpoint.edgeSize[data.size];
+    var size = ROUND_MAP[data.size] || theme.global.edgeSize[data.size || 'medium'] || data.size;
+    var responsiveSize = breakpoint && breakpoint.edgeSize[data.size] && (breakpoint.edgeSize[data.size] || data.size);
 
     if (data.corner === 'top') {
       styles.push((0, _styledComponents.css)(["border-top-left-radius:", ";border-top-right-radius:", ";"], size, size));

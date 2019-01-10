@@ -17,6 +17,20 @@ var _Paragraph = require("../Paragraph");
 
 var _Anchor = require("../Anchor");
 
+var _Image = require("../Image");
+
+var _Table = require("../Table");
+
+var _TableBody = require("../TableBody");
+
+var _TableCell = require("../TableCell");
+
+var _TableFooter = require("../TableFooter");
+
+var _TableHeader = require("../TableHeader");
+
+var _TableRow = require("../TableRow");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
@@ -65,8 +79,9 @@ function (_Component) {
     value: function render() {
       var _this$props = this.props,
           components = _this$props.components,
+          options = _this$props.options,
           theme = _this$props.theme,
-          rest = _objectWithoutProperties(_this$props, ["components", "theme"]);
+          rest = _objectWithoutProperties(_this$props, ["components", "options", "theme"]);
 
       var heading = [1, 2, 3, 4].reduce(function (obj, level) {
         var result = _objectSpread({}, obj);
@@ -80,17 +95,41 @@ function (_Component) {
         return result;
       }, {});
       var overrides = (0, _utils.deepMerge)({
+        a: {
+          component: _Anchor.Anchor
+        },
+        img: {
+          component: _Image.Image
+        },
         p: {
           component: _Paragraph.Paragraph
         },
-        a: {
-          component: _Anchor.Anchor
+        table: {
+          component: _Table.Table
+        },
+        td: {
+          component: _TableCell.TableCell
+        },
+        tbody: {
+          component: _TableBody.TableBody
+        },
+        tfoot: {
+          component: _TableFooter.TableFooter
+        },
+        th: {
+          component: _TableCell.TableCell
+        },
+        thead: {
+          component: _TableHeader.TableHeader
+        },
+        tr: {
+          component: _TableRow.TableRow
         }
-      }, heading, components);
+      }, heading, components, options && options.overrides);
       return _react.default.createElement(_markdownToJsx.default, _extends({
-        options: {
+        options: _objectSpread({}, options, {
           overrides: overrides
-        }
+        })
       }, rest));
     }
   }]);

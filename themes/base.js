@@ -542,6 +542,7 @@ var generate = function generate() {
       level: {
         1: {
           font: {// family: undefined,
+            // weight: undefined,
           },
           small: _objectSpread({}, fontSizing(4)),
           medium: _objectSpread({}, fontSizing(8)),
@@ -550,6 +551,7 @@ var generate = function generate() {
         },
         2: {
           font: {// family: undefined,
+            // weight: undefined,
           },
           small: _objectSpread({}, fontSizing(2)),
           medium: _objectSpread({}, fontSizing(4)),
@@ -558,19 +560,39 @@ var generate = function generate() {
         },
         3: {
           font: {// family: undefined,
+            // weight: undefined,
           },
           small: _objectSpread({}, fontSizing(1)),
-          medium: _objectSpread({}, fontSizing(1)),
+          medium: _objectSpread({}, fontSizing(2)),
           large: _objectSpread({}, fontSizing(4)),
           xlarge: _objectSpread({}, fontSizing(6))
         },
         4: {
           font: {// family: undefined,
+            // weight: undefined,
           },
           small: _objectSpread({}, fontSizing(0)),
           medium: _objectSpread({}, fontSizing(0)),
           large: _objectSpread({}, fontSizing(0)),
           xlarge: _objectSpread({}, fontSizing(0))
+        },
+        5: {
+          font: {// family: undefined,
+            // weight: undefined,
+          },
+          small: _objectSpread({}, fontSizing(-0.5)),
+          medium: _objectSpread({}, fontSizing(-0.5)),
+          large: _objectSpread({}, fontSizing(-0.5)),
+          xlarge: _objectSpread({}, fontSizing(-0.5))
+        },
+        6: {
+          font: {// family: undefined,
+            // weight: undefined,
+          },
+          small: _objectSpread({}, fontSizing(-1)),
+          medium: _objectSpread({}, fontSizing(-1)),
+          large: _objectSpread({}, fontSizing(-1)),
+          xlarge: _objectSpread({}, fontSizing(-1))
         }
       },
       responsiveBreakpoint: 'small',

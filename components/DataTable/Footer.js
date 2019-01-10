@@ -41,8 +41,9 @@ var Footer = function Footer(_ref) {
   var columns = _ref.columns,
       footerValues = _ref.footerValues,
       groups = _ref.groups,
+      primaryProperty = _ref.primaryProperty,
       theme = _ref.theme,
-      rest = _objectWithoutProperties(_ref, ["columns", "footerValues", "groups", "theme"]);
+      rest = _objectWithoutProperties(_ref, ["columns", "footerValues", "groups", "primaryProperty", "theme"]);
 
   return _react.default.createElement(_StyledDataTable.StyledDataTableFooter, _extends({
     as: _TableFooter.TableFooter
@@ -55,7 +56,8 @@ var Footer = function Footer(_ref) {
       key: column.property,
       context: "footer",
       column: column,
-      datum: footerValues
+      datum: footerValues,
+      primaryProperty: primaryProperty
     });
   })));
 };

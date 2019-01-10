@@ -1,6 +1,7 @@
 ## Menu
-Presents a list of choices within a drop down via a control that
-      opens it.
+A control that opens a Drop containing plain Buttons. The labels
+      and behavior of the contained Buttons are described via the `items`
+      property.
 
 [![](https://cdn-images-1.medium.com/fit/c/120/120/1*TD1P0HtIH9zF0UEH28zYtw.png)](https://storybook.grommet.io/?selectedKind=Menu&full=0&addons=0&stories=1&panelRight=0) [![](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/grommet/grommet-sandbox?initialpath=menu&module=%2Fsrc%2FMenu.js)
 ## Usage
@@ -223,3 +224,49 @@ xlarge
 string
 ```
   
+## Intrinsic element
+
+```
+button
+```
+## Theme
+  
+**global.colors.control**
+
+The color to use for the icon. Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+undefined
+```
+
+**menu.background**
+
+The color for the background of the menu Drop when it is open. Expects `string`.
+
+Defaults to
+
+```
+undefined
+```
+
+**menu.extend**
+
+Any additional style for the Menu. Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
+```
+
+**menu.icons.down**
+
+The icon to show to the right of the label. Expects `React.element`.
+
+Defaults to
+
+```
+<FormDown />
+```

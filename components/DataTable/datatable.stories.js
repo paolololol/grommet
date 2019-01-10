@@ -10,6 +10,14 @@ var _themes = require("grommet/themes");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -280,6 +288,106 @@ function (_Component) {
   return ServedDataTable;
 }(_react.Component);
 
+var controlledColumns = [].concat(columns);
+var name = controlledColumns[0];
+var totals = controlledColumns[4];
+delete name.footer;
+delete totals.footer;
+delete totals.aggregate;
+
+var ControlledDataTable =
+/*#__PURE__*/
+function (_Component2) {
+  _inherits(ControlledDataTable, _Component2);
+
+  function ControlledDataTable() {
+    var _getPrototypeOf3;
+
+    var _this2;
+
+    _classCallCheck(this, ControlledDataTable);
+
+    for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    _this2 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(ControlledDataTable)).call.apply(_getPrototypeOf3, [this].concat(args)));
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "state", {
+      checked: []
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "onCheck", function (event, value) {
+      var checked = _this2.state.checked;
+
+      if (event.target.checked) {
+        checked.push(value);
+
+        _this2.setState({
+          checked: checked
+        });
+      } else {
+        _this2.setState({
+          checked: checked.filter(function (item) {
+            return item !== value;
+          })
+        });
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this2)), "onCheckAll", function (event) {
+      return _this2.setState({
+        checked: event.target.checked ? DATA.map(function (datum) {
+          return datum.name;
+        }) : []
+      });
+    });
+
+    return _this2;
+  }
+
+  _createClass(ControlledDataTable, [{
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var checked = this.state.checked;
+      return _react.default.createElement(_grommet.Grommet, {
+        theme: _themes.grommet
+      }, _react.default.createElement(_grommet.Box, {
+        align: "center",
+        pad: "medium"
+      }, _react.default.createElement(_grommet.DataTable, {
+        columns: [{
+          property: 'checkbox',
+          render: function render(datum) {
+            return _react.default.createElement(_grommet.CheckBox, {
+              key: datum.name,
+              checked: checked.indexOf(datum.name) !== -1,
+              onChange: function onChange(e) {
+                return _this3.onCheck(e, datum.name);
+              }
+            });
+          },
+          header: _react.default.createElement(_grommet.CheckBox, {
+            checked: checked.length === DATA.length,
+            indeterminate: checked.length > 0 && checked.length < DATA.length,
+            onChange: this.onCheckAll
+          }),
+          sortable: false
+        }].concat(_toConsumableArray(controlledColumns)).map(function (col) {
+          return _objectSpread({}, col);
+        }),
+        data: DATA,
+        sortable: true,
+        size: "medium"
+      })));
+    }
+  }]);
+
+  return ControlledDataTable;
+}(_react.Component);
+
 (0, _react2.storiesOf)('DataTable', module).add('Simple DataTable', function () {
   return _react.default.createElement(SimpleDataTable, null);
 }).add('Sized DataTable', function () {
@@ -290,4 +398,6 @@ function (_Component) {
   return _react.default.createElement(GroupedDataTable, null);
 }).add('Served DataTable', function () {
   return _react.default.createElement(ServedDataTable, null);
+}).add('Controlled DataTable', function () {
+  return _react.default.createElement(ControlledDataTable, null);
 });

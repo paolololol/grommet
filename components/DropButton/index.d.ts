@@ -9,11 +9,11 @@ export interface DropButtonProps {
   dropAlign?: {top?: "top" | "bottom",bottom?: "top" | "bottom",right?: "left" | "right",left?: "left" | "right"};
   dropContent: JSX.Element;
   dropTarget?: object;
-  onClose?: (...args: any[]) => any;
-  onOpen?: (...args: any[]) => any;
+  onClose?: ((...args: any[]) => any);
+  onOpen?: ((...args: any[]) => any);
   open?: boolean;
 }
 
-declare const DropButton: React.ComponentType<DropButtonProps>;
+declare const DropButton: React.ComponentType<DropButtonProps & JSX.IntrinsicElements['button']>;
 
 export { DropButton };

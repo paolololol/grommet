@@ -3,6 +3,12 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "withTheme", {
+  enumerable: true,
+  get: function get() {
+    return _styledComponents.withTheme;
+  }
+});
 exports.withAnnounce = exports.withForwardRef = exports.withFocus = exports.withDocs = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -10,6 +16,8 @@ var _react = _interopRequireWildcard(require("react"));
 var _getDisplayName = _interopRequireDefault(require("recompose/getDisplayName"));
 
 var _hoistNonReactStatics = _interopRequireDefault(require("hoist-non-react-statics"));
+
+var _styledComponents = require("styled-components");
 
 var _contexts = require("../contexts");
 

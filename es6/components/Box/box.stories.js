@@ -91,9 +91,11 @@ var FixedSizesBox = function FixedSizesBox() {
       vertical: 'scroll'
     }
   }, Array(20).fill().map(function (_, i) {
-    return _react.default.createElement(_2.Text, {
-      key: "".concat(i + 0)
-    }, "Small (".concat(i, ")"));
+    return (// eslint-disable-next-line react/no-array-index-key
+      _react.default.createElement(_2.Text, {
+        key: i
+      }, "Small (".concat(i, ")"))
+    );
   })), _react.default.createElement(_2.Box, {
     width: "medium",
     height: "medium",
@@ -147,6 +149,19 @@ var BorderBox = function BorderBox() {
         size: size
       }
     }, size);
+  })), _react.default.createElement(_2.Box, {
+    direction: "row-responsive",
+    gap: "small",
+    align: "start"
+  }, ['solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset'].map(function (type) {
+    return _react.default.createElement(_2.Box, {
+      key: type,
+      pad: "small",
+      border: {
+        type: type,
+        size: 'medium'
+      }
+    }, type);
   }))));
 };
 
@@ -185,7 +200,14 @@ var RoundBox = function RoundBox() {
         corner: corner
       }
     }, corner);
-  }))));
+  }), _react.default.createElement(_2.Box, {
+    background: "brand",
+    pad: "small",
+    round: {
+      corner: 'left',
+      size: '15px'
+    }
+  }, "left rounded corner px value"))));
 };
 
 var BackgroundBox = function BackgroundBox() {

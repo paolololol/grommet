@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.doc = void 0;
+exports.themeDoc = exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
@@ -17,7 +17,7 @@ var VERTICAL_ALIGN_OPTIONS = ['top', 'bottom'];
 var HORIZONTAL_ALIGN_OPTIONS = ['right', 'left'];
 
 var doc = function doc(Menu) {
-  var DocumentedMenu = (0, _reactDesc.describe)(Menu).availableAt((0, _utils.getAvailableAtBadge)('Menu')).description("Presents a list of choices within a drop down via a control that\n      opens it.").usage("import { Menu } from 'grommet';\n<Menu />");
+  var DocumentedMenu = (0, _reactDesc.describe)(Menu).availableAt((0, _utils.getAvailableAtBadge)('Menu')).description("A control that opens a Drop containing plain Buttons. The labels\n      and behavior of the contained Buttons are described via the `items`\n      property.").usage("import { Menu } from 'grommet';\n<Menu />").intrinsicElement('button');
   DocumentedMenu.propTypes = _objectSpread({}, _utils.genericProps, {
     disabled: _reactDesc.PropTypes.bool.description('Whether the menu should be disabled.').defaultValue(false),
     dropAlign: _reactDesc.PropTypes.shape({
@@ -50,3 +50,26 @@ var doc = function doc(Menu) {
 };
 
 exports.doc = doc;
+var themeDoc = {
+  'global.colors.control': {
+    description: 'The color to use for the icon.',
+    type: 'string | { dark: string, light: string }',
+    defaultValue: undefined
+  },
+  'menu.background': {
+    description: 'The color for the background of the menu Drop when it is open.',
+    type: 'string',
+    defaultValue: undefined
+  },
+  'menu.extend': {
+    description: 'Any additional style for the Menu.',
+    type: 'string | (props) => {}',
+    defaultValue: undefined
+  },
+  'menu.icons.down': {
+    description: 'The icon to show to the right of the label.',
+    type: 'React.element',
+    defaultValue: '<FormDown />'
+  }
+};
+exports.themeDoc = themeDoc;
