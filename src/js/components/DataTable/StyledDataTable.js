@@ -6,7 +6,7 @@ import { defaultProps } from '../../default-props';
 const StyledDataTable = styled.table`
   border-spacing: 0;
   border-collapse: collapse;
-  height: 100%;
+  width: 100%;
   ${genericStyles};
 `;
 
@@ -18,7 +18,6 @@ const StyledDataTableRow = styled.tr`
     props.size &&
     `
     display: table;
-    width: 100%;
     table-layout: fixed;
   `};
 `;
@@ -31,7 +30,6 @@ const StyledDataTableBody = styled.tbody`
     props.size &&
     `
     display: block;
-    width: 100%;
     max-height: ${props.theme.global.size[props.size]};
     overflow: auto;
   `};
@@ -45,7 +43,6 @@ const StyledDataTableHeader = styled.thead`
     props.size &&
     `
     display: table;
-    width: 100%;
     table-layout: fixed;
   `};
 `;

@@ -47,7 +47,6 @@ class FormField extends Component {
         name={name}
         value={value[name] || ''}
         onChange={event => update(name, event.value || event.target.value)}
-        plain
         focusIndicator={false}
         {...rest}
       />
@@ -110,7 +109,6 @@ class FormField extends Component {
               ? Children.map(children, child => {
                   if (child) {
                     return cloneElement(child, {
-                      plain: true,
                       focusIndicator: false,
                     });
                   }
@@ -123,15 +121,6 @@ class FormField extends Component {
                 ref={ref => {
                   this.childContainerRef = ref;
                 }}
-                border={
-                  border.position === 'inner'
-                    ? {
-                        ...border,
-                        side: border.side || 'bottom',
-                        color: borderColor,
-                      }
-                    : undefined
-                }
               >
                 {normalizedChildren}
               </Box>
@@ -161,11 +150,6 @@ class FormField extends Component {
 
           return (
             <Box
-              border={
-                border && border.position === 'outer'
-                  ? { ...border, color: borderColor }
-                  : undefined
-              }
               margin={abut ? undefined : { bottom: 'small' }}
               style={outerStyle}
             >

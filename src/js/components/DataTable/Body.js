@@ -14,6 +14,7 @@ export const Body = ({
   primaryProperty,
   size,
   theme,
+  rowClickHandler,
   ...rest
 }) => (
   <StyledDataTableBody size={size} {...rest}>
@@ -31,6 +32,7 @@ export const Body = ({
         <StyledDataTableRow key={datum[primaryProperty]} size={size}>
           {columns.map(column => (
             <Cell
+              onClick={() => rowClickHandler(datum)}
               key={column.property}
               context="body"
               column={column}
