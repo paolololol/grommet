@@ -1,17 +1,8 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Chart, calcs } from '..';
 var VALUES = [{
   value: [1, 60],
   label: 'sixty'
@@ -20,88 +11,83 @@ var VALUES = [{
   label: 'zero'
 }];
 test('Chart renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Chart, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Chart, {
     values: VALUES
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Chart type renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Chart, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Chart, {
     type: "bar",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     type: "line",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     type: "area",
     values: VALUES
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Chart size renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Chart, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Chart, {
     size: "xsmall",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     size: "small",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     size: "medium",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     size: "large",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     size: "xlarge",
     values: VALUES
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Chart thickness renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Chart, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Chart, {
     thickness: "xsmall",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     thickness: "small",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     thickness: "medium",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     thickness: "large",
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     thickness: "xlarge",
     values: VALUES
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Chart cap renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Chart, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Chart, {
     round: true,
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     type: "line",
     round: true,
     values: VALUES
-  }), _react.default.createElement(_.Chart, {
+  }), React.createElement(Chart, {
     type: "area",
     round: true,
     values: VALUES
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Chart calcs', function () {
-  var result = (0, _.calcs)([1, 2, 3]);
+  var result = calcs([1, 2, 3]);
   expect(result).toMatchSnapshot();
 });

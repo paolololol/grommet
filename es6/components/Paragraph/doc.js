@@ -1,31 +1,18 @@
-"use strict";
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.themeDoc = exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var _utils = require("../../utils");
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var doc = function doc(Paragraph) {
-  var DocumentedParagraph = (0, _reactDesc.describe)(Paragraph).availableAt((0, _utils.getAvailableAtBadge)('Paragraph')).description('A paragraph of text.').usage("import { Paragraph } from 'grommet';\n<Paragraph />").intrinsicElement('p');
-  DocumentedParagraph.propTypes = _objectSpread({}, _utils.genericProps, {
-    color: _utils.colorPropType.description('A color identifier to use for the text color.'),
-    responsive: _reactDesc.PropTypes.bool.description("Whether margin should be scaled for mobile environments.").defaultValue(true),
-    size: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'xxlarge']), _reactDesc.PropTypes.string]).description('The size of the Paragraph text.').defaultValue('medium'),
-    textAlign: _reactDesc.PropTypes.oneOf(['start', 'center', 'end']).description('How to align the text inside the paragraph.').defaultValue('start')
+import { describe, PropTypes } from 'react-desc';
+import { colorPropType, getAvailableAtBadge, genericProps } from '../../utils';
+export var doc = function doc(Paragraph) {
+  var DocumentedParagraph = describe(Paragraph).availableAt(getAvailableAtBadge('Paragraph')).description('A paragraph of text.').usage("import { Paragraph } from 'grommet';\n<Paragraph />").intrinsicElement('p');
+  DocumentedParagraph.propTypes = _extends({}, genericProps, {
+    color: colorPropType.description('A color identifier to use for the text color.'),
+    responsive: PropTypes.bool.description("Whether margin should be scaled for mobile environments.").defaultValue(true),
+    size: PropTypes.oneOfType([PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'xxlarge']), PropTypes.string]).description('The size of the Paragraph text.').defaultValue('medium'),
+    textAlign: PropTypes.oneOf(['start', 'center', 'end']).description('How to align the text inside the paragraph.').defaultValue('start')
   });
   return DocumentedParagraph;
 };
-
-exports.doc = doc;
-var themeDoc = {
+export var themeDoc = {
   'global.colors.text': {
     description: 'The text color used inside the Paragraph.',
     type: 'string | { dark: string, light: string }',
@@ -52,4 +39,3 @@ var themeDoc = {
     defaultValue: undefined
   }
 };
-exports.themeDoc = themeDoc;

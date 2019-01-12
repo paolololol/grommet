@@ -1,49 +1,21 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Header = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _recompose = require("recompose");
-
-var _styledComponents = require("styled-components");
-
-var _defaultProps = require("../../default-props");
-
-var _Box = require("../Box");
-
-var _TableHeader = require("../TableHeader");
-
-var _TableRow = require("../TableRow");
-
-var _TableCell = require("../TableCell");
-
-var _Text = require("../Text");
-
-var _Resizer = require("./Resizer");
-
-var _Searcher = require("./Searcher");
-
-var _Sorter = require("./Sorter");
-
-var _ExpanderCell = require("./ExpanderCell");
-
-var _StyledDataTable = require("./StyledDataTable");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+import React from 'react';
+import { compose } from 'recompose';
+import { withTheme } from 'styled-components';
+import { defaultProps } from '../../default-props';
+import { Box } from '../Box';
+import { TableHeader } from '../TableHeader';
+import { TableRow } from '../TableRow';
+import { TableCell } from '../TableCell';
+import { Text } from '../Text';
+import { Resizer } from './Resizer';
+import { Searcher } from './Searcher';
+import { Sorter } from './Sorter';
+import { ExpanderCell } from './ExpanderCell';
+import { StyledDataTableHeader, StyledDataTableRow } from './StyledDataTable';
 
 var Header = function Header(_ref) {
   var columns = _ref.columns,
@@ -59,9 +31,9 @@ var Header = function Header(_ref) {
       sort = _ref.sort,
       theme = _ref.theme,
       widths = _ref.widths,
-      rest = _objectWithoutProperties(_ref, ["columns", "filtering", "filters", "groups", "groupState", "onFilter", "onFiltering", "onResize", "onSort", "onToggle", "sort", "theme", "widths"]);
+      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "filtering", "filters", "groups", "groupState", "onFilter", "onFiltering", "onResize", "onSort", "onToggle", "sort", "theme", "widths"]);
 
-  var dataTableContextTheme = _objectSpread({}, theme.table.header, theme.dataTable.header); // The tricky part here is that we need to manage the theme styling
+  var dataTableContextTheme = _extends({}, theme.table.header, theme.dataTable.header); // The tricky part here is that we need to manage the theme styling
   // to make sure that the background, border, and padding are applied
   // at the right places depending on the mix of controls in each header cell.
 
@@ -77,13 +49,13 @@ var Header = function Header(_ref) {
 
   var border = dataTableContextTheme.border,
       background = dataTableContextTheme.background,
-      innerThemeProps = _objectWithoutProperties(dataTableContextTheme, ["border", "background"]);
+      innerThemeProps = _objectWithoutPropertiesLoose(dataTableContextTheme, ["border", "background"]);
 
-  return _react.default.createElement(_StyledDataTable.StyledDataTableHeader, _extends({
-    as: _TableHeader.TableHeader
-  }, rest), _react.default.createElement(_StyledDataTable.StyledDataTableRow, {
-    as: _TableRow.TableRow
-  }, groups && _react.default.createElement(_ExpanderCell.ExpanderCell, {
+  return React.createElement(StyledDataTableHeader, _extends({
+    as: TableHeader
+  }, rest), React.createElement(StyledDataTableRow, {
+    as: TableRow
+  }, groups && React.createElement(ExpanderCell, {
     context: "header",
     expanded: Object.keys(groupState).filter(function (k) {
       return !groupState[k].expanded;
@@ -95,10 +67,10 @@ var Header = function Header(_ref) {
         align = _ref3.align,
         search = _ref3.search,
         sortable = _ref3.sortable;
-    var content = typeof header === 'string' ? _react.default.createElement(_Text.Text, null, header) : header;
+    var content = typeof header === 'string' ? React.createElement(Text, null, header) : header;
 
     if (onSort && sortable !== false) {
-      content = _react.default.createElement(_Sorter.Sorter, {
+      content = React.createElement(Sorter, {
         align: align,
         fill: !search,
         property: property,
@@ -110,18 +82,18 @@ var Header = function Header(_ref) {
 
     if (search && filters) {
       if (!onSort) {
-        content = _react.default.createElement(_Box.Box, _extends({
+        content = React.createElement(Box, _extends({
           justify: "center",
           align: align
         }, innerThemeProps), content);
       }
 
-      content = _react.default.createElement(_Box.Box, _extends({
+      content = React.createElement(Box, _extends({
         fill: true,
         direction: "row",
         justify: "between",
         align: "center"
-      }, outerThemeProps), content, _react.default.createElement(_Searcher.Searcher, {
+      }, outerThemeProps), content, React.createElement(Searcher, {
         filtering: filtering,
         filters: filters,
         property: property,
@@ -129,7 +101,7 @@ var Header = function Header(_ref) {
         onFiltering: onFiltering
       }));
     } else if (!onSort || sortable === false) {
-      content = _react.default.createElement(_Box.Box, _extends({}, dataTableContextTheme, {
+      content = React.createElement(Box, _extends({}, dataTableContextTheme, {
         fill: true,
         justify: "center",
         align: align
@@ -137,13 +109,13 @@ var Header = function Header(_ref) {
     }
 
     if (onResize) {
-      content = _react.default.createElement(_Resizer.Resizer, {
+      content = React.createElement(Resizer, {
         property: property,
         onResize: onResize
       }, content);
     }
 
-    return _react.default.createElement(_TableCell.TableCell, {
+    return React.createElement(TableCell, {
       key: property,
       scope: "col",
       plain: true,
@@ -155,6 +127,6 @@ var Header = function Header(_ref) {
 };
 
 Header.defaultProps = {};
-Object.setPrototypeOf(Header.defaultProps, _defaultProps.defaultProps);
-var HeaderWrapper = (0, _recompose.compose)(_styledComponents.withTheme)(Header);
-exports.Header = HeaderWrapper;
+Object.setPrototypeOf(Header.defaultProps, defaultProps);
+var HeaderWrapper = compose(withTheme)(Header);
+export { HeaderWrapper as Header };

@@ -1,21 +1,17 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
 var _utils = require("../../utils");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var doc = function doc(Accordion) {
   var DocumentedAccordion = (0, _reactDesc.describe)(Accordion).availableAt((0, _utils.getAvailableAtBadge)('Accordion')).description('An accordion containing collapsible panels.').usage("import { Accordion, AccordionPanel } from 'grommet';\n<Accordion>\n  <AccordionPanel label='Panel 1'>...</AccordionPanel>\n  <AccordionPanel label='Panek 2'>...</AccordionPanel>\n</Accordion>").intrinsicElement('div');
-  DocumentedAccordion.propTypes = _objectSpread({}, _utils.genericProps, {
+  DocumentedAccordion.propTypes = _extends({}, _utils.genericProps, {
     activeIndex: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.number, _reactDesc.PropTypes.arrayOf(_reactDesc.PropTypes.number)]).description("Active panel index. If specified, Accordion will be a controlled component. This means that future\npanel changes will not work unless you subscribe to onActive function and update activeIndex\naccordingly.").defaultValue(0),
     animate: _reactDesc.PropTypes.bool.description('Transition content in & out with a slide down animation.').defaultValue(true),
     children: _reactDesc.PropTypes.node.description('Array of AccordionPanels.'),

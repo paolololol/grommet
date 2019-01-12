@@ -1,11 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.isNodeBeforeScroll = exports.isNodeAfterScroll = exports.findVisibleParent = exports.makeNodeUnfocusable = exports.makeNodeFocusable = exports.copyAttribute = exports.setTabIndex = exports.setFocusWithoutScroll = exports.getNewContainer = exports.getBodyChildElements = exports.getFirstFocusableDescendant = exports.findScrollParents = exports.filterByFocusable = void 0;
-
-var filterByFocusable = function filterByFocusable(elements) {
+export var filterByFocusable = function filterByFocusable(elements) {
   return Array.prototype.filter.call(elements || [], function (element) {
     var currentTag = element.tagName.toLowerCase();
     var validTags = /(svg|a|area|input|select|textarea|button|iframe|div)$/;
@@ -22,10 +15,7 @@ var filterByFocusable = function filterByFocusable(elements) {
     return isValidTag;
   });
 };
-
-exports.filterByFocusable = filterByFocusable;
-
-var findScrollParents = function findScrollParents(element, horizontal) {
+export var findScrollParents = function findScrollParents(element, horizontal) {
   var result = [];
 
   if (element) {
@@ -54,10 +44,7 @@ var findScrollParents = function findScrollParents(element, horizontal) {
 
   return result;
 };
-
-exports.findScrollParents = findScrollParents;
-
-var getFirstFocusableDescendant = function getFirstFocusableDescendant(element) {
+export var getFirstFocusableDescendant = function getFirstFocusableDescendant(element) {
   var children = element.getElementsByTagName('*');
 
   for (var i = 0; i < children.length; i += 1) {
@@ -71,10 +58,7 @@ var getFirstFocusableDescendant = function getFirstFocusableDescendant(element) 
 
   return undefined;
 };
-
-exports.getFirstFocusableDescendant = getFirstFocusableDescendant;
-
-var getBodyChildElements = function getBodyChildElements() {
+export var getBodyChildElements = function getBodyChildElements() {
   var excludeMatch = /^(script|link)$/i;
   var children = [];
   [].forEach.call(document.body.children, function (node) {
@@ -84,44 +68,30 @@ var getBodyChildElements = function getBodyChildElements() {
   });
   return children;
 };
-
-exports.getBodyChildElements = getBodyChildElements;
-
-var getNewContainer = function getNewContainer() {
+export var getNewContainer = function getNewContainer() {
   // setup DOM
   var container = document.createElement('div');
   document.body.appendChild(container);
   return container;
 };
-
-exports.getNewContainer = getNewContainer;
-
-var setFocusWithoutScroll = function setFocusWithoutScroll(element) {
+export var setFocusWithoutScroll = function setFocusWithoutScroll(element) {
   var x = window.scrollX;
   var y = window.scrollY;
   element.focus();
   window.scrollTo(x, y);
 };
-
-exports.setFocusWithoutScroll = setFocusWithoutScroll;
-
-var setTabIndex = function setTabIndex(tabIndex) {
+export var setTabIndex = function setTabIndex(tabIndex) {
   return function (element) {
     element.setAttribute('tabindex', tabIndex);
   };
 };
-
-exports.setTabIndex = setTabIndex;
-
-var copyAttribute = function copyAttribute(source) {
+export var copyAttribute = function copyAttribute(source) {
   return function (target) {
     return function (element) {
       element.setAttribute(target, element.getAttribute(source));
     };
   };
 };
-
-exports.copyAttribute = copyAttribute;
 
 var deleteAttribute = function deleteAttribute(attribute) {
   return function (element) {
@@ -134,8 +104,7 @@ var saveTabIndex = copyAttribute('tabindex')('data-g-tabindex');
 var restoreTabIndex = copyAttribute('data-g-tabindex')('tabindex');
 var deleteTabIndex = deleteAttribute('tabindex');
 var deleteTabIndexCopy = deleteAttribute('data-g-tabindex');
-
-var makeNodeFocusable = function makeNodeFocusable(node) {
+export var makeNodeFocusable = function makeNodeFocusable(node) {
   // do not touch aria live containers so that announcements work
   if (!node.hasAttribute('aria-live')) {
     node.setAttribute('aria-hidden', false); // allow children to receive focus again
@@ -151,10 +120,7 @@ var makeNodeFocusable = function makeNodeFocusable(node) {
     });
   }
 };
-
-exports.makeNodeFocusable = makeNodeFocusable;
-
-var makeNodeUnfocusable = function makeNodeUnfocusable(node) {
+export var makeNodeUnfocusable = function makeNodeUnfocusable(node) {
   // do not touch aria live containers so that announcements work
   if (!node.hasAttribute('aria-live')) {
     node.setAttribute('aria-hidden', true); // prevent children to receive focus
@@ -168,21 +134,17 @@ var makeNodeUnfocusable = function makeNodeUnfocusable(node) {
     });
   }
 };
-
-exports.makeNodeUnfocusable = makeNodeUnfocusable;
-
-var findVisibleParent = function findVisibleParent(element) {
+export var findVisibleParent = function findVisibleParent(element) {
   if (element) {
     return element.offsetParent ? element : findVisibleParent(element.parentElement) || element;
   }
 
   return undefined;
 };
-
-exports.findVisibleParent = findVisibleParent;
-
-var isNodeAfterScroll = function isNodeAfterScroll(node) {
-  var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+export var isNodeAfterScroll = function isNodeAfterScroll(node, target) {
+  if (target === void 0) {
+    target = window;
+  }
 
   var _node$getBoundingClie = node.getBoundingClientRect(),
       bottom = _node$getBoundingClie.bottom;
@@ -193,11 +155,10 @@ var isNodeAfterScroll = function isNodeAfterScroll(node) {
 
   return bottom >= top + height;
 };
-
-exports.isNodeAfterScroll = isNodeAfterScroll;
-
-var isNodeBeforeScroll = function isNodeBeforeScroll(node) {
-  var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+export var isNodeBeforeScroll = function isNodeBeforeScroll(node, target) {
+  if (target === void 0) {
+    target = window;
+  }
 
   var _node$getBoundingClie2 = node.getBoundingClientRect(),
       top = _node$getBoundingClie2.top;
@@ -207,5 +168,3 @@ var isNodeBeforeScroll = function isNodeBeforeScroll(node) {
 
   return top <= targetTop;
 };
-
-exports.isNodeBeforeScroll = isNodeBeforeScroll;

@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Diagram", {
-  enumerable: true,
-  get: function get() {
-    return _Diagram.Diagram;
-  }
-});
+exports.__esModule = true;
+exports.Diagram = void 0;
 
 var _Diagram = require("./Diagram");
+
+exports.Diagram = _Diagram.Diagram;

@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Layer", {
-  enumerable: true,
-  get: function get() {
-    return _Layer.Layer;
-  }
-});
+exports.__esModule = true;
+exports.Layer = void 0;
 
 var _Layer = require("./Layer");
+
+exports.Layer = _Layer.Layer;

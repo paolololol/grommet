@@ -1,17 +1,12 @@
-"use strict";
+import { normalizeValues } from './utils';
+export var calcs = function calcs(values, options) {
+  if (options === void 0) {
+    options = {};
+  }
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.calcs = void 0;
-
-var _utils = require("./utils");
-
-var calcs = function calcs(values) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
   var coarseness = options.coarseness || 5;
   var steps = options.steps || [1, 1];
-  var calcValues = (0, _utils.normalizeValues)(values); // Calculate the max and min y values.
+  var calcValues = normalizeValues(values); // Calculate the max and min y values.
 
   var min = calcValues[0].value[1];
   var max = min;
@@ -54,5 +49,3 @@ var calcs = function calcs(values) {
     dimensions: dimensions
   };
 };
-
-exports.calcs = calcs;

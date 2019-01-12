@@ -1,75 +1,60 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-require("jest-styled-components");
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-var _reactTestingLibrary = require("react-testing-library");
-
-var _ = require("../..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import 'jest-styled-components';
+import renderer from 'react-test-renderer';
+import { cleanup, render, fireEvent } from 'react-testing-library';
+import { Accordion, AccordionPanel, Box, Grommet } from '../..';
 describe('Accordion', function () {
-  afterEach(_reactTestingLibrary.cleanup);
+  afterEach(cleanup);
   test('no AccordionPanel', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, null)));
-
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Accordion, null)));
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('AccordionPanel', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, null, _react.default.createElement(_.AccordionPanel, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Accordion, null, React.createElement(AccordionPanel, {
       label: "Panel 1"
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2"
-    }, "Panel body 2"), false && _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 2"), false && React.createElement(AccordionPanel, {
       label: "Panel 2"
     }, "Panel body 2"))));
-
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('complex title', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       background: "dark-1"
-    }, _react.default.createElement(_.Accordion, null, _react.default.createElement(_.AccordionPanel, {
-      label: _react.default.createElement("div", null, "Panel 1 complex")
-    }, "Panel body 1"), undefined, _react.default.createElement(_.AccordionPanel, {
-      label: _react.default.createElement("div", null, "Panel 2 complex")
+    }, React.createElement(Accordion, null, React.createElement(AccordionPanel, {
+      label: React.createElement("div", null, "Panel 1 complex")
+    }, "Panel body 1"), undefined, React.createElement(AccordionPanel, {
+      label: React.createElement("div", null, "Panel 2 complex")
     }, "Panel body 2")))));
-
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('complex header', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Accordion, {
       activeIndex: 1,
       animate: false
-    }, _react.default.createElement(_.AccordionPanel, {
-      header: _react.default.createElement("div", null, "Panel 1 header")
-    }, "Panel body 1"), undefined, _react.default.createElement(_.AccordionPanel, {
-      header: _react.default.createElement("div", null, "Panel 2 header")
+    }, React.createElement(AccordionPanel, {
+      header: React.createElement("div", null, "Panel 1 header")
+    }, "Panel body 1"), undefined, React.createElement(AccordionPanel, {
+      header: React.createElement("div", null, "Panel 2 header")
     }, "Panel body 2"))));
-
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('change to second Panel', function (done) {
     var onActive = jest.fn();
 
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, {
+    var _render = render(React.createElement(Grommet, null, React.createElement(Accordion, {
       onActive: onActive
-    }, _react.default.createElement(_.AccordionPanel, {
+    }, React.createElement(AccordionPanel, {
       label: "Panel 1"
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2"
     }, "Panel body 2")))),
         getByText = _render.getByText,
         container = _render.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 2')); // wait for panel animation to finish
-
+    fireEvent.click(getByText('Panel 2')); // wait for panel animation to finish
 
     setTimeout(function () {
       expect(onActive).toBeCalled();
@@ -78,89 +63,77 @@ describe('Accordion', function () {
     }, 500);
   });
   test('change to second Panel without onActive', function () {
-    var _render2 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, {
+    var _render2 = render(React.createElement(Grommet, null, React.createElement(Accordion, {
       animate: false
-    }, _react.default.createElement(_.AccordionPanel, {
+    }, React.createElement(AccordionPanel, {
       label: "Panel 1"
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2"
     }, "Panel body 2")))),
         getByText = _render2.getByText,
         container = _render2.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 2'));
-
+    fireEvent.click(getByText('Panel 2'));
     expect(container.firstChild).toMatchSnapshot();
   });
   test('multiple panels', function () {
     var onActive = jest.fn();
 
-    var _render3 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, {
+    var _render3 = render(React.createElement(Grommet, null, React.createElement(Accordion, {
       animate: false,
       multiple: true,
       onActive: onActive
-    }, _react.default.createElement(_.AccordionPanel, {
+    }, React.createElement(AccordionPanel, {
       label: "Panel 1"
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2"
     }, "Panel body 2")))),
         getByText = _render3.getByText,
         container = _render3.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 2'));
-
+    fireEvent.click(getByText('Panel 2'));
     expect(onActive).toBeCalledWith([1]);
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 1'));
-
+    fireEvent.click(getByText('Panel 1'));
     expect(onActive).toBeCalledWith([1, 0]);
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 2'));
-
+    fireEvent.click(getByText('Panel 2'));
     expect(onActive).toBeCalledWith([0]);
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 1'));
-
+    fireEvent.click(getByText('Panel 1'));
     expect(onActive).toBeCalledWith([]);
     expect(container.firstChild).toMatchSnapshot();
   });
   test('change active index', function () {
     var onActive = jest.fn();
 
-    var _render4 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, {
+    var _render4 = render(React.createElement(Grommet, null, React.createElement(Accordion, {
       animate: false,
       activeIndex: 1,
       onActive: onActive
-    }, _react.default.createElement(_.AccordionPanel, {
+    }, React.createElement(AccordionPanel, {
       label: "Panel 1"
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2"
     }, "Panel body 2")))),
         getByText = _render4.getByText,
         container = _render4.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Panel 1'));
-
+    fireEvent.click(getByText('Panel 1'));
     expect(onActive).toBeCalledWith([0]);
     expect(container.firstChild).toMatchSnapshot();
   });
   test('set on hover', function () {
-    var _render5 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Accordion, null, _react.default.createElement(_.AccordionPanel, {
+    var _render5 = render(React.createElement(Grommet, null, React.createElement(Accordion, null, React.createElement(AccordionPanel, {
       label: "Panel 1",
       onMouseOver: function onMouseOver() {},
       onMouseOut: function onMouseOut() {},
       onFocus: function onFocus() {},
       onBlur: function onBlur() {}
-    }, "Panel body 1"), _react.default.createElement(_.AccordionPanel, {
+    }, "Panel body 1"), React.createElement(AccordionPanel, {
       label: "Panel 2",
       onMouseOver: function onMouseOver() {},
       onMouseOut: function onMouseOut() {},
@@ -171,21 +144,13 @@ describe('Accordion', function () {
         container = _render5.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.mouseOver(getByText('Panel 1'));
-
+    fireEvent.mouseOver(getByText('Panel 1'));
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.mouseOver(getByText('Panel 2'));
-
+    fireEvent.mouseOver(getByText('Panel 2'));
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.mouseOut(getByText('Panel 1'));
-
+    fireEvent.mouseOut(getByText('Panel 1'));
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.mouseOut(getByText('Panel 2'));
-
+    fireEvent.mouseOut(getByText('Panel 2'));
     expect(container.firstChild).toMatchSnapshot();
   });
 });

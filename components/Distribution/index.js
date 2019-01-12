@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Distribution", {
-  enumerable: true,
-  get: function get() {
-    return _Distribution.Distribution;
-  }
-});
+exports.__esModule = true;
+exports.Distribution = void 0;
 
 var _Distribution = require("./Distribution");
+
+exports.Distribution = _Distribution.Distribution;

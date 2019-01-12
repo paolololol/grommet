@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.dark = void 0;
 
 var _polished = require("polished");
@@ -41,14 +39,14 @@ var colors = {
 
 var colorArray = function colorArray(array, prefix) {
   return array.forEach(function (color, index) {
-    colors["".concat(prefix, "-").concat(index + 1)] = color;
+    colors[prefix + "-" + (index + 1)] = color;
   });
 };
 
 colorArray(accentColors, 'accent');
 colorArray(neutralColors, 'neutral');
 Object.keys(statusColors).forEach(function (color) {
-  colors["status-".concat(color)] = statusColors[color];
+  colors["status-" + color] = statusColors[color];
 });
 var dark = (0, _utils.deepFreeze)({
   global: {

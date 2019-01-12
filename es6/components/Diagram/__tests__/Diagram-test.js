@@ -1,37 +1,29 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-require("jest-styled-components");
-
-var _reactTestingLibrary = require("react-testing-library");
-
-var _ = require("../..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import 'jest-styled-components';
+import { cleanup, render } from 'react-testing-library';
+import { Grommet, Box, Diagram, Stack } from '../..';
 
 var Context = function Context(_ref) {
   var children = _ref.children;
-  return _react.default.createElement(_.Grommet, null, _react.default.createElement(_.Stack, null, _react.default.createElement(_.Box, {
+  return React.createElement(Grommet, null, React.createElement(Stack, null, React.createElement(Box, {
     direction: "row"
-  }, _react.default.createElement(_.Box, {
+  }, React.createElement(Box, {
     id: "1",
     pad: "medium"
-  }), _react.default.createElement(_.Box, {
+  }), React.createElement(Box, {
     id: "2",
     pad: "medium"
   })), children));
 };
 
 Context.propTypes = {
-  children: _propTypes.default.node.isRequired
+  children: PropTypes.node.isRequired
 };
 describe('Diagram', function () {
-  afterEach(_reactTestingLibrary.cleanup);
+  afterEach(cleanup);
   test('basic', function () {
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2'
@@ -42,7 +34,7 @@ describe('Diagram', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   test('type', function () {
-    var _render2 = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render2 = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2',
@@ -62,7 +54,7 @@ describe('Diagram', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   test('color', function () {
-    var _render3 = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render3 = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2',
@@ -74,7 +66,7 @@ describe('Diagram', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   test('offset', function () {
-    var _render4 = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render4 = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2',
@@ -94,7 +86,7 @@ describe('Diagram', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   test('thickness', function () {
-    var _render5 = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render5 = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2',
@@ -126,7 +118,7 @@ describe('Diagram', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   test('anchor', function () {
-    var _render6 = (0, _reactTestingLibrary.render)(_react.default.createElement(Context, null, _react.default.createElement(_.Diagram, {
+    var _render6 = render(React.createElement(Context, null, React.createElement(Diagram, {
       connections: [{
         fromTarget: '1',
         toTarget: '2',

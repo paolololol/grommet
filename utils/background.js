@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.selectedStyle = exports.activeStyle = exports.backgroundStyle = exports.backgroundIsDark = exports.normalizeBackground = void 0;
 
 var _styledComponents = require("styled-components");
@@ -10,8 +8,6 @@ var _styledComponents = require("styled-components");
 var _colors = require("./colors");
 
 var _styles = require("./styles");
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 var normalizeBackground = function normalizeBackground(background, theme) {
   // If the background has a light or dark object, use that
@@ -37,7 +33,7 @@ var backgroundIsDark = function backgroundIsDark(backgroundArg, theme) {
   var result;
 
   if (background) {
-    if (_typeof(background) === 'object') {
+    if (typeof background === 'object') {
       var color = background.color,
           dark = background.dark,
           opacity = background.opacity;
@@ -71,7 +67,7 @@ var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorAr
   var background = normalizeBackground(backgroundArg, theme);
   var textColor = textColorArg || theme.global.colors.text;
 
-  if (_typeof(background) === 'object') {
+  if (typeof background === 'object') {
     var styles = [];
 
     if (background.image) {
@@ -93,7 +89,7 @@ var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorAr
 
       var backgroundColor = (0, _colors.getRGBA)(_color2, background.opacity === true ? theme.global.opacity.medium : theme.global.opacity[background.opacity] || background.opacity) || _color2;
 
-      styles.push((0, _styledComponents.css)(["background-color:", ";", ""], backgroundColor, (!background.opacity || background.opacity !== 'weak') && "color: ".concat(textColor[background.dark || (0, _colors.colorIsDark)(backgroundColor) ? 'dark' : 'light'], ";")));
+      styles.push((0, _styledComponents.css)(["background-color:", ";", ""], backgroundColor, (!background.opacity || background.opacity !== 'weak') && "color: " + textColor[background.dark || (0, _colors.colorIsDark)(backgroundColor) ? 'dark' : 'light'] + ";"));
     }
 
     if (background.dark === false) {

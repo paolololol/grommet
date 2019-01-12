@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "ThemeContext", {
-  enumerable: true,
-  get: function get() {
-    return _ThemeContext.ThemeContext;
-  }
-});
+exports.__esModule = true;
+exports.ThemeContext = void 0;
 
 var _ThemeContext = require("./ThemeContext");
+
+exports.ThemeContext = _ThemeContext.ThemeContext;

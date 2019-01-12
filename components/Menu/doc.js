@@ -1,24 +1,20 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.themeDoc = exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
 var _utils = require("../../utils");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var VERTICAL_ALIGN_OPTIONS = ['top', 'bottom'];
 var HORIZONTAL_ALIGN_OPTIONS = ['right', 'left'];
 
 var doc = function doc(Menu) {
   var DocumentedMenu = (0, _reactDesc.describe)(Menu).availableAt((0, _utils.getAvailableAtBadge)('Menu')).description("A control that opens a Drop containing plain Buttons. The labels\n      and behavior of the contained Buttons are described via the `items`\n      property.").usage("import { Menu } from 'grommet';\n<Menu />").intrinsicElement('button');
-  DocumentedMenu.propTypes = _objectSpread({}, _utils.genericProps, {
+  DocumentedMenu.propTypes = _extends({}, _utils.genericProps, {
     disabled: _reactDesc.PropTypes.bool.description('Whether the menu should be disabled.').defaultValue(false),
     dropAlign: _reactDesc.PropTypes.shape({
       top: _reactDesc.PropTypes.oneOf(VERTICAL_ALIGN_OPTIONS),

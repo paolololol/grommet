@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.GroupedBody = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -19,8 +17,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var GroupedBody = function GroupedBody(_ref) {
@@ -32,7 +28,7 @@ var GroupedBody = function GroupedBody(_ref) {
       onToggle = _ref.onToggle,
       size = _ref.size,
       theme = _ref.theme,
-      rest = _objectWithoutProperties(_ref, ["columns", "groupBy", "groups", "groupState", "primaryProperty", "onToggle", "size", "theme"]);
+      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "groupBy", "groups", "groupState", "primaryProperty", "onToggle", "size", "theme"]);
 
   return _react.default.createElement(_StyledDataTable.StyledDataTableBody, _extends({
     size: size

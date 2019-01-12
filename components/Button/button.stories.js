@@ -139,7 +139,7 @@ var customTheme = {
         extraStyles = "\n          text-transform: uppercase;\n        ";
       }
 
-      return "\n        color: white;\n        font-size: 12px;\n        font-weight: bold;\n\n        ".concat(extraStyles, "\n      ");
+      return "\n        color: white;\n        font-size: 12px;\n        font-weight: bold;\n\n        " + extraStyles + "\n      ";
     }
   }
 };

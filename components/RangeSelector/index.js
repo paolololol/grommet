@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "RangeSelector", {
-  enumerable: true,
-  get: function get() {
-    return _RangeSelector.RangeSelector;
-  }
-});
+exports.__esModule = true;
+exports.RangeSelector = void 0;
 
 var _RangeSelector = require("./RangeSelector");
+
+exports.RangeSelector = _RangeSelector.RangeSelector;

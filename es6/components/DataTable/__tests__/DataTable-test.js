@@ -1,29 +1,18 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _reactTestingLibrary = require("react-testing-library");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { cleanup, render, fireEvent } from 'react-testing-library';
+import { Grommet } from '../../Grommet';
+import { DataTable } from '..';
 describe('DataTable', function () {
-  afterEach(_reactTestingLibrary.cleanup);
+  afterEach(cleanup);
   test('empty', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, null)));
-
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, null)));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('basic', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -39,12 +28,11 @@ describe('DataTable', function () {
         b: 2
       }]
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('primaryKey', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -61,12 +49,11 @@ describe('DataTable', function () {
       }],
       primaryKey: "b"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('footer', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A',
@@ -83,12 +70,11 @@ describe('DataTable', function () {
         b: 2
       }]
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('sort', function () {
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var _render = render(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -113,13 +99,11 @@ describe('DataTable', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     var headerCell = getByText('A');
-
-    _reactTestingLibrary.fireEvent.click(headerCell, {});
-
+    fireEvent.click(headerCell, {});
     expect(container.firstChild).toMatchSnapshot();
   });
   test('resizeable', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -136,12 +120,11 @@ describe('DataTable', function () {
       }],
       resizeable: true
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('aggregate', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -161,12 +144,11 @@ describe('DataTable', function () {
         b: 2
       }]
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('groupBy', function () {
-    var _render2 = (0, _reactTestingLibrary.render)(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.DataTable, {
+    var _render2 = render(React.createElement(Grommet, null, React.createElement(DataTable, {
       columns: [{
         property: 'a',
         header: 'A'
@@ -194,9 +176,7 @@ describe('DataTable', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     var headerCell = getByText('A');
-
-    _reactTestingLibrary.fireEvent.click(headerCell, {});
-
+    fireEvent.click(headerCell, {});
     expect(container.firstChild).toMatchSnapshot();
   });
 });

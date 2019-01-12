@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledBoxGap = exports.StyledBox = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -14,10 +12,6 @@ var _utils = require("../../utils");
 var _FLEX_MAP;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 var ALIGN_MAP = {
   baseline: 'baseline',
@@ -74,18 +68,18 @@ var directionStyle = function directionStyle(direction, theme) {
 var elevationStyle = (0, _styledComponents.css)(["box-shadow:", ";"], function (props) {
   return props.theme.global.elevation[props.theme.dark ? 'dark' : 'light'][props.elevationProp];
 });
-var FLEX_MAP = (_FLEX_MAP = {}, _defineProperty(_FLEX_MAP, true, '1 1'), _defineProperty(_FLEX_MAP, false, '0 0'), _defineProperty(_FLEX_MAP, "grow", '1 0'), _defineProperty(_FLEX_MAP, "shrink", '0 1'), _FLEX_MAP);
+var FLEX_MAP = (_FLEX_MAP = {}, _FLEX_MAP[true] = '1 1', _FLEX_MAP[false] = '0 0', _FLEX_MAP.grow = '1 0', _FLEX_MAP.shrink = '0 1', _FLEX_MAP);
 
 var flexGrowShrinkProp = function flexGrowShrinkProp(flex) {
   if (typeof flex === 'boolean' || typeof flex === 'string') {
     return FLEX_MAP[flex];
   }
 
-  return "".concat(flex.grow ? flex.grow : 0, " ").concat(flex.shrink ? flex.shrink : 0);
+  return (flex.grow ? flex.grow : 0) + " " + (flex.shrink ? flex.shrink : 0);
 };
 
 var flexStyle = (0, _styledComponents.css)(["flex:", ";"], function (props) {
-  return "".concat(flexGrowShrinkProp(props.flex)).concat(props.flex !== true && !props.basis ? ' auto' : '');
+  return "" + flexGrowShrinkProp(props.flex) + (props.flex !== true && !props.basis ? ' auto' : '');
 });
 
 var fillStyle = function fillStyle(fillProp) {
@@ -121,33 +115,33 @@ var borderStyle = function borderStyle(data, responsive, theme) {
   var borderSize = data.size || 'xsmall';
   var style = data.style || 'solid';
   var side = typeof data === 'string' ? data : data.side || 'all';
-  var value = "".concat(style, " ").concat(theme.global.borderSize[borderSize] || borderSize, " ").concat(color);
+  var value = style + " " + (theme.global.borderSize[borderSize] || borderSize) + " " + color;
   var breakpoint = theme.box.responsiveBreakpoint && theme.global.breakpoints[theme.box.responsiveBreakpoint];
-  var responsiveValue = breakpoint && (breakpoint.borderSize[borderSize] || borderSize) && "".concat(style, " ").concat(breakpoint.borderSize[borderSize] || borderSize, " ").concat(color);
+  var responsiveValue = breakpoint && (breakpoint.borderSize[borderSize] || borderSize) && style + " " + (breakpoint.borderSize[borderSize] || borderSize) + " " + color;
 
   if (side === 'top' || side === 'bottom' || side === 'left' || side === 'right') {
     styles.push((0, _styledComponents.css)(["border-", ":", ";"], side, value));
 
     if (responsiveValue) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-".concat(side, ": ").concat(responsiveValue, ";\n      ")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-" + side + ": " + responsiveValue + ";\n      "));
     }
   } else if (side === 'vertical') {
     styles.push((0, _styledComponents.css)(["border-left:", ";border-right:", ";"], value, value));
 
     if (responsiveValue) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-left: ".concat(responsiveValue, ";\n        border-right: ").concat(responsiveValue, ";\n      ")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-left: " + responsiveValue + ";\n        border-right: " + responsiveValue + ";\n      "));
     }
   } else if (side === 'horizontal') {
     styles.push((0, _styledComponents.css)(["border-top:", ";border-bottom:", ";"], value, value));
 
     if (responsiveValue) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-top: ".concat(responsiveValue, ";\n        border-bottom: ").concat(responsiveValue, ";\n      ")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-top: " + responsiveValue + ";\n        border-bottom: " + responsiveValue + ";\n      "));
     }
   } else {
     styles.push((0, _styledComponents.css)(["border:", ";"], value));
 
     if (responsiveValue) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "border: ".concat(responsiveValue, ";")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "border: " + responsiveValue + ";"));
     }
   }
 
@@ -162,7 +156,7 @@ var roundStyle = function roundStyle(data, responsive, theme) {
   var breakpoint = theme.box.responsiveBreakpoint && theme.global.breakpoints[theme.box.responsiveBreakpoint];
   var styles = [];
 
-  if (_typeof(data) === 'object') {
+  if (typeof data === 'object') {
     var size = ROUND_MAP[data.size] || theme.global.edgeSize[data.size || 'medium'] || data.size;
     var responsiveSize = breakpoint && breakpoint.edgeSize[data.size] && (breakpoint.edgeSize[data.size] || data.size);
 
@@ -170,37 +164,37 @@ var roundStyle = function roundStyle(data, responsive, theme) {
       styles.push((0, _styledComponents.css)(["border-top-left-radius:", ";border-top-right-radius:", ";"], size, size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-left-radius: ".concat(responsiveSize, ";\n          border-top-right-radius: ").concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-left-radius: " + responsiveSize + ";\n          border-top-right-radius: " + responsiveSize + ";\n        "));
       }
     } else if (data.corner === 'bottom') {
       styles.push((0, _styledComponents.css)(["border-bottom-left-radius:", ";border-bottom-right-radius:", ";"], size, size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-bottom-left-radius: ".concat(responsiveSize, ";\n          border-bottom-right-radius: ").concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-bottom-left-radius: " + responsiveSize + ";\n          border-bottom-right-radius: " + responsiveSize + ";\n        "));
       }
     } else if (data.corner === 'left') {
       styles.push((0, _styledComponents.css)(["border-top-left-radius:", ";border-bottom-left-radius:", ";"], size, size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-left-radius: ".concat(responsiveSize, ";\n          border-bottom-left-radius: ").concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-left-radius: " + responsiveSize + ";\n          border-bottom-left-radius: " + responsiveSize + ";\n        "));
       }
     } else if (data.corner === 'right') {
       styles.push((0, _styledComponents.css)(["border-top-right-radius:", ";border-bottom-right-radius:", ";"], size, size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-right-radius: ".concat(responsiveSize, ";\n          border-bottom-right-radius: ").concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-top-right-radius: " + responsiveSize + ";\n          border-bottom-right-radius: " + responsiveSize + ";\n        "));
       }
     } else if (data.corner) {
       styles.push((0, _styledComponents.css)(["border-", "-radius:", ";"], data.corner, size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-".concat(data.corner, "-radius: ").concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-" + data.corner + "-radius: " + responsiveSize + ";\n        "));
       }
     } else {
       styles.push((0, _styledComponents.css)(["border-radius:", ";"], size));
 
       if (responsiveSize) {
-        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-radius: ".concat(responsiveSize, ";\n        ")));
+        styles.push((0, _utils.breakpointStyle)(breakpoint, "\n          border-radius: " + responsiveSize + ";\n        "));
       }
     }
   } else {
@@ -211,7 +205,7 @@ var roundStyle = function roundStyle(data, responsive, theme) {
     var _responsiveSize = breakpoint && breakpoint.edgeSize[_size];
 
     if (_responsiveSize) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-radius: ".concat(_responsiveSize, ";\n      ")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        border-radius: " + _responsiveSize + ";\n      "));
     }
   }
 
@@ -247,8 +241,10 @@ var ZOOM_SIZES = {
   xlarge: 0.5
 };
 
-var animationBounds = function animationBounds(type) {
-  var size = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'medium';
+var animationBounds = function animationBounds(type, size) {
+  if (size === void 0) {
+    size = 'medium';
+  }
 
   if (type === 'fadeIn') {
     return ['opacity: 0;', 'opacity: 1;'];
@@ -260,11 +256,11 @@ var animationBounds = function animationBounds(type) {
 
   if (type === 'jiggle') {
     var deg = JIGGLE_SIZES[size];
-    return ["transform: rotate(-".concat(deg, "deg);"), "transform: rotate(".concat(deg, "deg);")];
+    return ["transform: rotate(-" + deg + "deg);", "transform: rotate(" + deg + "deg);"];
   }
 
   if (type === 'pulse') {
-    return ['transform: scale(1);', "transform: scale(".concat(PULSE_SIZES[size], ")")];
+    return ['transform: scale(1);', "transform: scale(" + PULSE_SIZES[size] + ")"];
   }
 
   if (type === 'flipIn') {
@@ -276,34 +272,34 @@ var animationBounds = function animationBounds(type) {
   }
 
   if (type === 'slideDown') {
-    return ["transform: translateY(-".concat(SLIDE_SIZES[size], "%);"), 'transform: none;'];
+    return ["transform: translateY(-" + SLIDE_SIZES[size] + "%);", 'transform: none;'];
   }
 
   if (type === 'slideLeft') {
-    return ["transform: translateX(".concat(SLIDE_SIZES[size], "%);"), 'transform: none;'];
+    return ["transform: translateX(" + SLIDE_SIZES[size] + "%);", 'transform: none;'];
   }
 
   if (type === 'slideRight') {
-    return ["transform: translateX(-".concat(SLIDE_SIZES[size], "%);"), 'transform: none;'];
+    return ["transform: translateX(-" + SLIDE_SIZES[size] + "%);", 'transform: none;'];
   }
 
   if (type === 'slideUp') {
-    return ["transform: translateY(".concat(SLIDE_SIZES[size], "%);"), 'transform: none;'];
+    return ["transform: translateY(" + SLIDE_SIZES[size] + "%);", 'transform: none;'];
   }
 
   if (type === 'zoomIn') {
-    return ["transform: scale(".concat(1 - ZOOM_SIZES[size], ");"), 'transform: none;'];
+    return ["transform: scale(" + (1 - ZOOM_SIZES[size]) + ");", 'transform: none;'];
   }
 
   if (type === 'zoomOut') {
-    return ["transform: scale(".concat(1 + ZOOM_SIZES[size], ");"), 'transform: none;'];
+    return ["transform: scale(" + (1 + ZOOM_SIZES[size]) + ");", 'transform: none;'];
   }
 
   return [];
 };
 
 var normalizeTiming = function normalizeTiming(time, defaultTiming) {
-  return time ? "".concat(time / 1000.0, "s") : defaultTiming;
+  return time ? time / 1000.0 + "s" : defaultTiming;
 };
 
 var animationEnding = function animationEnding(type) {
@@ -342,7 +338,7 @@ var animationItemStyle = function animationItemStyle(item, theme) {
     }, '');
   }
 
-  if (_typeof(item) === 'object') {
+  if (typeof item === 'object') {
     return animationObjectStyle(item, theme);
   }
 
@@ -361,7 +357,7 @@ var animationObjectInitialStyle = function animationObjectInitialStyle(animation
   var bounds = animationBounds(animation.type, animation.size);
 
   if (bounds) {
-    return "".concat(bounds[0], " ").concat(animationAncilaries(animation));
+    return bounds[0] + " " + animationAncilaries(animation);
   }
 
   return '';
@@ -382,7 +378,7 @@ var animationInitialStyle = function animationInitialStyle(item) {
     }).join('');
   }
 
-  if (_typeof(item) === 'object') {
+  if (typeof item === 'object') {
     return animationObjectInitialStyle(item);
   }
 
@@ -399,9 +395,9 @@ var StyledBox = _styledComponents.default.div.withConfig({
 })(["display:flex;box-sizing:border-box;outline:none;", ";", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ""], function (props) {
   return !props.basis && 'max-width: 100%;';
 }, _utils.genericStyles, function (props) {
-  return props.heightProp && "height: ".concat(props.theme.global.size[props.heightProp] || props.heightProp, ";");
+  return props.heightProp && "height: " + (props.theme.global.size[props.heightProp] || props.heightProp) + ";";
 }, function (props) {
-  return props.widthProp && "width: ".concat(props.theme.global.size[props.widthProp] || props.widthProp, ";");
+  return props.widthProp && "width: " + (props.theme.global.size[props.widthProp] || props.widthProp) + ";";
 }, function (props) {
   return props.align && alignStyle;
 }, function (props) {
@@ -447,13 +443,13 @@ var gapStyle = function gapStyle(directionProp, gap, responsive, theme) {
     styles.push((0, _styledComponents.css)(["height:", ";"], theme.global.edgeSize[gap]));
 
     if (responsiveSize) {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "height: ".concat(responsiveSize, ";")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "height: " + responsiveSize + ";"));
     }
   } else {
-    styles.push("width: ".concat(theme.global.edgeSize[gap], ";"));
+    styles.push("width: " + theme.global.edgeSize[gap] + ";");
 
     if (responsive && directionProp === 'row-responsive') {
-      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        width: auto;\n        height: ".concat(responsiveSize, ";\n      ")));
+      styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        width: auto;\n        height: " + responsiveSize + ";\n      "));
     }
   }
 

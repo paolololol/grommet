@@ -1,26 +1,14 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.theme = void 0;
-
-var _polished = require("polished");
-
-var _FormCheckmark = require("grommet-icons/es6/icons/FormCheckmark");
-
-var _utils = require("../../../utils");
-
-var _ArrowDown = require("./components/icons/ArrowDown");
-
-var _SearchInput = require("./components/SearchInput");
-
-var theme = {
+import { rgba } from 'polished';
+import { FormCheckmark } from "grommet-icons/es6/icons/FormCheckmark";
+import { normalizeColor } from '../../../utils';
+import { ArrowDown } from './components/icons/ArrowDown';
+import { SearchInput } from './components/SearchInput';
+export var theme = {
   global: {
     colors: {
       border: '#e0e0e0',
       focus: '#2196F3',
-      gray: (0, _polished.rgba)(0, 0, 0, 0.54)
+      gray: rgba(0, 0, 0, 0.54)
     },
     drop: {
       background: '#ffffff'
@@ -54,7 +42,7 @@ var theme = {
       extend: function extend(_ref) {
         var extendTheme = _ref.theme,
             checked = _ref.checked;
-        return "\n        ".concat(checked && "background-color: ".concat((0, _utils.normalizeColor)('brand', extendTheme), ";"), "\n      ");
+        return "\n        " + (checked && "background-color: " + normalizeColor('brand', extendTheme) + ";") + "\n      ";
       }
     },
     hover: {
@@ -67,7 +55,7 @@ var theme = {
       extend: 'stroke: white;'
     },
     icons: {
-      checked: _FormCheckmark.FormCheckmark
+      checked: FormCheckmark
     },
     gap: 'small',
     size: '18px',
@@ -78,17 +66,16 @@ var theme = {
   },
   select: {
     icons: {
-      down: _ArrowDown.ArrowDown
+      down: ArrowDown
     },
-    searchInput: _SearchInput.SearchInput,
+    searchInput: SearchInput,
     container: {
       extend: 'max-height: 250px;'
     }
   },
   textInput: {
     extend: function extend(props) {
-      return "\n      color: ".concat((0, _utils.normalizeColor)('gray', props.theme), ";\n      font-weight: 400;\n      font-size: 13px;\n      padding: 14px;\n    ");
+      return "\n      color: " + normalizeColor('gray', props.theme) + ";\n      font-weight: 400;\n      font-size: 13px;\n      padding: 14px;\n    ";
     }
   }
 };
-exports.theme = theme;

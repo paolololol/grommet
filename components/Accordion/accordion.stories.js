@@ -12,27 +12,11 @@ var _themes = require("grommet/themes");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
@@ -48,7 +32,7 @@ var richAccordionTheme = {
 var SimpleAccordion = function SimpleAccordion(props) {
   var animate = props.animate,
       multiple = props.multiple,
-      rest = _objectWithoutProperties(props, ["animate", "multiple"]);
+      rest = _objectWithoutPropertiesLoose(props, ["animate", "multiple"]);
 
   return _react.default.createElement(_grommet.Grommet, {
     theme: _themes.grommet
@@ -82,20 +66,16 @@ var SimpleAccordion = function SimpleAccordion(props) {
 var RichPanel =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(RichPanel, _Component);
+  _inheritsLoose(RichPanel, _Component);
 
   function RichPanel() {
-    var _getPrototypeOf2;
-
     var _this;
-
-    _classCallCheck(this, RichPanel);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(RichPanel)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       hovering: false
@@ -123,38 +103,37 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(RichPanel, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  var _proto = RichPanel.prototype;
 
-      /* eslint-disable-next-line react/prop-types */
-      var children = this.props.children;
-      return _react.default.createElement(_grommet.AccordionPanel, {
-        label: this.renderPanelTitle(),
-        onMouseOver: function onMouseOver() {
-          return _this2.setState({
-            hovering: true
-          });
-        },
-        onMouseOut: function onMouseOut() {
-          return _this2.setState({
-            hovering: false
-          });
-        },
-        onFocus: function onFocus() {
-          return _this2.setState({
-            hovering: true
-          });
-        },
-        onBlur: function onBlur() {
-          return _this2.setState({
-            hovering: false
-          });
-        }
-      }, children);
-    }
-  }]);
+  _proto.render = function render() {
+    var _this2 = this;
+
+    /* eslint-disable-next-line react/prop-types */
+    var children = this.props.children;
+    return _react.default.createElement(_grommet.AccordionPanel, {
+      label: this.renderPanelTitle(),
+      onMouseOver: function onMouseOver() {
+        return _this2.setState({
+          hovering: true
+        });
+      },
+      onMouseOut: function onMouseOut() {
+        return _this2.setState({
+          hovering: false
+        });
+      },
+      onFocus: function onFocus() {
+        return _this2.setState({
+          hovering: true
+        });
+      },
+      onBlur: function onBlur() {
+        return _this2.setState({
+          hovering: false
+        });
+      }
+    }, children);
+  };
 
   return RichPanel;
 }(_react.Component);
@@ -190,20 +169,16 @@ var loading = _react.default.createElement(_grommet.Box, {
 var RichAccordion =
 /*#__PURE__*/
 function (_Component2) {
-  _inherits(RichAccordion, _Component2);
+  _inheritsLoose(RichAccordion, _Component2);
 
   function RichAccordion() {
-    var _getPrototypeOf3;
-
     var _this3;
-
-    _classCallCheck(this, RichAccordion);
 
     for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
       args[_key2] = arguments[_key2];
     }
 
-    _this3 = _possibleConstructorReturn(this, (_getPrototypeOf3 = _getPrototypeOf(RichAccordion)).call.apply(_getPrototypeOf3, [this].concat(args)));
+    _this3 = _Component2.call.apply(_Component2, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this3)), "state", {
       highlightLoaded: false
@@ -212,96 +187,95 @@ function (_Component2) {
     return _this3;
   }
 
-  _createClass(RichAccordion, [{
-    key: "render",
-    value: function render() {
-      var _this4 = this;
+  var _proto2 = RichAccordion.prototype;
 
-      var highlightLoaded = this.state.highlightLoaded;
-      return _react.default.createElement(_grommet.Grommet, {
-        full: true,
-        theme: _themes.grommet
-      }, _react.default.createElement(_grommet.Box, {
-        fill: true,
-        direction: "row"
-      }, _react.default.createElement(_grommet.Box, {
-        basis: "medium",
-        border: "all"
-      }, _react.default.createElement(_grommet.Box, {
-        flex: false,
-        border: "bottom",
-        background: "light-2",
-        as: "header",
-        pad: {
-          horizontal: 'small'
+  _proto2.render = function render() {
+    var _this4 = this;
+
+    var highlightLoaded = this.state.highlightLoaded;
+    return _react.default.createElement(_grommet.Grommet, {
+      full: true,
+      theme: _themes.grommet
+    }, _react.default.createElement(_grommet.Box, {
+      fill: true,
+      direction: "row"
+    }, _react.default.createElement(_grommet.Box, {
+      basis: "medium",
+      border: "all"
+    }, _react.default.createElement(_grommet.Box, {
+      flex: false,
+      border: "bottom",
+      background: "light-2",
+      as: "header",
+      pad: {
+        horizontal: 'small'
+      }
+    }, _react.default.createElement(_grommet.Heading, {
+      level: 3
+    }, _react.default.createElement("strong", null, "About #announcements"))), _react.default.createElement(_grommet.ThemeContext.Extend, {
+      value: richAccordionTheme
+    }, _react.default.createElement(_grommet.Accordion, {
+      multiple: true,
+      onActive: function onActive(activeIndexes) {
+        if (activeIndexes.includes(1)) {
+          // give sometime to emulate an async call
+          setTimeout(function () {
+            _this4.setState({
+              highlightLoaded: true
+            });
+          }, 1000);
         }
-      }, _react.default.createElement(_grommet.Heading, {
-        level: 3
-      }, _react.default.createElement("strong", null, "About #announcements"))), _react.default.createElement(_grommet.ThemeContext.Extend, {
-        value: richAccordionTheme
-      }, _react.default.createElement(_grommet.Accordion, {
-        multiple: true,
-        onActive: function onActive(activeIndexes) {
-          if (activeIndexes.includes(1)) {
-            // give sometime to emulate an async call
-            setTimeout(function () {
-              _this4.setState({
-                highlightLoaded: true
-              });
-            }, 1000);
-          }
-        }
-      }, _react.default.createElement(RichPanel, {
-        icon: _react.default.createElement(_grommetIcons.CircleInformation, null),
-        label: "Channel Details"
-      }, _react.default.createElement(_grommet.Box, {
-        pad: {
-          bottom: 'medium',
-          horizontal: 'small',
-          top: 'small'
-        },
-        gap: "medium"
-      }, _react.default.createElement(_grommet.Box, {
-        gap: "xsmall"
-      }, _react.default.createElement(_grommet.Text, {
-        color: "dark-3"
-      }, _react.default.createElement("strong", null, "Purpose")), _react.default.createElement(_grommet.Text, null, "Used for general announcements like new releases, trainings...")), _react.default.createElement(_grommet.Box, {
-        gap: "xsmall"
-      }, _react.default.createElement(_grommet.Text, {
-        color: "dark-3"
-      }, _react.default.createElement("strong", null, "Created")), _react.default.createElement(_grommet.Text, null, "Created by Bryan Jacquot on January 19, 2016")))), _react.default.createElement(RichPanel, {
-        icon: _react.default.createElement(_grommetIcons.Bookmark, {
-          color: "accent-1"
-        }),
-        label: "Highlights"
-      }, highlightLoaded ? _react.default.createElement(_grommet.Box, {
-        pad: {
-          bottom: 'medium',
-          horizontal: 'small',
-          top: 'small'
-        },
-        gap: "medium",
-        overflow: "auto",
-        style: {
-          maxHeight: '400px'
-        }
-      }, _react.default.createElement(_grommet.Text, {
-        color: "dark-3"
-      }, "Below is the top message in", _react.default.createElement("strong", null, "#announcements"), "."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")) : loading), _react.default.createElement(RichPanel, {
-        icon: _react.default.createElement(_grommetIcons.User, {
-          color: "accent-2"
-        }),
-        label: "2,000 members"
-      }, _react.default.createElement(_grommet.Box, {
-        pad: {
-          bottom: 'medium',
-          horizontal: 'small',
-          top: 'small'
-        },
-        gap: "medium"
-      }, "Yeah believe me, this channel has 2,000 members.")))))));
-    }
-  }]);
+      }
+    }, _react.default.createElement(RichPanel, {
+      icon: _react.default.createElement(_grommetIcons.CircleInformation, null),
+      label: "Channel Details"
+    }, _react.default.createElement(_grommet.Box, {
+      pad: {
+        bottom: 'medium',
+        horizontal: 'small',
+        top: 'small'
+      },
+      gap: "medium"
+    }, _react.default.createElement(_grommet.Box, {
+      gap: "xsmall"
+    }, _react.default.createElement(_grommet.Text, {
+      color: "dark-3"
+    }, _react.default.createElement("strong", null, "Purpose")), _react.default.createElement(_grommet.Text, null, "Used for general announcements like new releases, trainings...")), _react.default.createElement(_grommet.Box, {
+      gap: "xsmall"
+    }, _react.default.createElement(_grommet.Text, {
+      color: "dark-3"
+    }, _react.default.createElement("strong", null, "Created")), _react.default.createElement(_grommet.Text, null, "Created by Bryan Jacquot on January 19, 2016")))), _react.default.createElement(RichPanel, {
+      icon: _react.default.createElement(_grommetIcons.Bookmark, {
+        color: "accent-1"
+      }),
+      label: "Highlights"
+    }, highlightLoaded ? _react.default.createElement(_grommet.Box, {
+      pad: {
+        bottom: 'medium',
+        horizontal: 'small',
+        top: 'small'
+      },
+      gap: "medium",
+      overflow: "auto",
+      style: {
+        maxHeight: '400px'
+      }
+    }, _react.default.createElement(_grommet.Text, {
+      color: "dark-3"
+    }, "Below is the top message in", _react.default.createElement("strong", null, "#announcements"), "."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."), _react.default.createElement(_grommet.Text, null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.")) : loading), _react.default.createElement(RichPanel, {
+      icon: _react.default.createElement(_grommetIcons.User, {
+        color: "accent-2"
+      }),
+      label: "2,000 members"
+    }, _react.default.createElement(_grommet.Box, {
+      pad: {
+        bottom: 'medium',
+        horizontal: 'small',
+        top: 'small'
+      },
+      gap: "medium"
+    }, "Yeah believe me, this channel has 2,000 members.")))))));
+  };
 
   return RichAccordion;
 }(_react.Component);
@@ -320,20 +294,16 @@ var renderPanelHeader = function renderPanelHeader(title, active) {
 var CustomHeaderAccordion =
 /*#__PURE__*/
 function (_Component3) {
-  _inherits(CustomHeaderAccordion, _Component3);
+  _inheritsLoose(CustomHeaderAccordion, _Component3);
 
   function CustomHeaderAccordion() {
-    var _getPrototypeOf4;
-
     var _this5;
-
-    _classCallCheck(this, CustomHeaderAccordion);
 
     for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
       args[_key3] = arguments[_key3];
     }
 
-    _this5 = _possibleConstructorReturn(this, (_getPrototypeOf4 = _getPrototypeOf(CustomHeaderAccordion)).call.apply(_getPrototypeOf4, [this].concat(args)));
+    _this5 = _Component3.call.apply(_Component3, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this5)), "state", {
       activeIndex: [0]
@@ -342,48 +312,47 @@ function (_Component3) {
     return _this5;
   }
 
-  _createClass(CustomHeaderAccordion, [{
-    key: "render",
-    value: function render() {
-      var _this6 = this;
+  var _proto3 = CustomHeaderAccordion.prototype;
 
-      var activeIndex = this.state.activeIndex;
-      return _react.default.createElement(_grommet.Grommet, {
-        theme: _themes.grommet
-      }, _react.default.createElement(_grommet.Accordion, {
-        activeIndex: activeIndex,
-        onActive: function onActive(newActiveIndex) {
-          return _this6.setState({
-            activeIndex: newActiveIndex
-          });
-        }
-      }, _react.default.createElement(_grommet.AccordionPanel, {
-        header: renderPanelHeader('Panel 1', activeIndex.includes(0))
-      }, _react.default.createElement(_grommet.Box, {
-        pad: "medium",
-        background: "light-2",
-        style: {
-          height: '800px'
-        }
-      }, _react.default.createElement(_grommet.Text, null, "Panel 1 contents"), _react.default.createElement(_grommet.TextInput, null))), _react.default.createElement(_grommet.AccordionPanel, {
-        header: renderPanelHeader('Panel 2', activeIndex.includes(1))
-      }, _react.default.createElement(_grommet.Box, {
-        pad: "medium",
-        background: "light-2",
-        style: {
-          height: '50px'
-        }
-      }, _react.default.createElement(_grommet.Text, null, "Panel 2 contents"))), _react.default.createElement(_grommet.AccordionPanel, {
-        header: renderPanelHeader('Panel 3', activeIndex.includes(2))
-      }, _react.default.createElement(_grommet.Box, {
-        pad: "medium",
-        background: "light-2",
-        style: {
-          height: '300px'
-        }
-      }, _react.default.createElement(_grommet.Text, null, "Panel 3 contents")))));
-    }
-  }]);
+  _proto3.render = function render() {
+    var _this6 = this;
+
+    var activeIndex = this.state.activeIndex;
+    return _react.default.createElement(_grommet.Grommet, {
+      theme: _themes.grommet
+    }, _react.default.createElement(_grommet.Accordion, {
+      activeIndex: activeIndex,
+      onActive: function onActive(newActiveIndex) {
+        return _this6.setState({
+          activeIndex: newActiveIndex
+        });
+      }
+    }, _react.default.createElement(_grommet.AccordionPanel, {
+      header: renderPanelHeader('Panel 1', activeIndex.includes(0))
+    }, _react.default.createElement(_grommet.Box, {
+      pad: "medium",
+      background: "light-2",
+      style: {
+        height: '800px'
+      }
+    }, _react.default.createElement(_grommet.Text, null, "Panel 1 contents"), _react.default.createElement(_grommet.TextInput, null))), _react.default.createElement(_grommet.AccordionPanel, {
+      header: renderPanelHeader('Panel 2', activeIndex.includes(1))
+    }, _react.default.createElement(_grommet.Box, {
+      pad: "medium",
+      background: "light-2",
+      style: {
+        height: '50px'
+      }
+    }, _react.default.createElement(_grommet.Text, null, "Panel 2 contents"))), _react.default.createElement(_grommet.AccordionPanel, {
+      header: renderPanelHeader('Panel 3', activeIndex.includes(2))
+    }, _react.default.createElement(_grommet.Box, {
+      pad: "medium",
+      background: "light-2",
+      style: {
+        height: '300px'
+      }
+    }, _react.default.createElement(_grommet.Text, null, "Panel 3 contents")))));
+  };
 
   return CustomHeaderAccordion;
 }(_react.Component);

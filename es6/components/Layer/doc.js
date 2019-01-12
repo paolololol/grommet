@@ -1,41 +1,29 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.themeDoc = exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var _utils = require("../../utils");
-
+import { describe, PropTypes } from 'react-desc';
+import { getAvailableAtBadge } from '../../utils';
 var PAD_SIZES = ['xxsmall', 'xsmall', 'small', 'medium', 'large'];
-
-var doc = function doc(Layer) {
-  var DocumentedLayer = (0, _reactDesc.describe)(Layer).availableAt((0, _utils.getAvailableAtBadge)('Layer')).description("An overlay. Layer is typically modal and anchored to an edge, corner, or\n      center of the window. It is the caller's responsibility to provide a\n      control for the user to close the layer.").usage("import { Layer } from 'grommet';\n<Layer />").intrinsicElement('div');
+export var doc = function doc(Layer) {
+  var DocumentedLayer = describe(Layer).availableAt(getAvailableAtBadge('Layer')).description("An overlay. Layer is typically modal and anchored to an edge, corner, or\n      center of the window. It is the caller's responsibility to provide a\n      control for the user to close the layer.").usage("import { Layer } from 'grommet';\n<Layer />").intrinsicElement('div');
   DocumentedLayer.propTypes = {
-    animate: _reactDesc.PropTypes.bool.description('Animation transition of the Layer content when it opens.').defaultValue(true),
-    full: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.bool, _reactDesc.PropTypes.oneOf(['vertical', 'horizontal'])]).description('Whether the width and/or height should fill the current viewport size.').defaultValue(false),
-    margin: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['none'].concat(PAD_SIZES)), _reactDesc.PropTypes.shape({
-      bottom: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
-      horizontal: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
-      left: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
-      right: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
-      top: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
-      vertical: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string])
-    }), _reactDesc.PropTypes.string]).description("The amount of margin around the Layer. An object can be specified to\ndistinguish horizontal margin, vertical margin, and margin on a\nparticular side of the layer"),
-    modal: _reactDesc.PropTypes.bool.description('Whether there should be an overlay preventing interaction underneath the layer.').defaultValue(true),
-    onClickOutside: _reactDesc.PropTypes.func.description('Function that will be invoked when the user clicks outside the layer.'),
-    onEsc: _reactDesc.PropTypes.func.description('Function that will be called when the user presses the escape key inside the layer.'),
-    plain: _reactDesc.PropTypes.bool.description('Whether this is a plain Layer with no background color or border.').defaultValue(false),
-    position: _reactDesc.PropTypes.oneOf(['bottom', 'bottom-left', 'bottom-right', 'center', 'hidden', 'left', 'right', 'top', 'top-left', 'top-right']).description('Position of the layer content.').defaultValue('center'),
-    responsive: _reactDesc.PropTypes.bool.description('Whether the layer should take full width and height on mobile').defaultValue(true)
+    animate: PropTypes.bool.description('Animation transition of the Layer content when it opens.').defaultValue(true),
+    full: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['vertical', 'horizontal'])]).description('Whether the width and/or height should fill the current viewport size.').defaultValue(false),
+    margin: PropTypes.oneOfType([PropTypes.oneOf(['none'].concat(PAD_SIZES)), PropTypes.shape({
+      bottom: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string]),
+      horizontal: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string]),
+      left: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string]),
+      right: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string]),
+      top: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string]),
+      vertical: PropTypes.oneOfType([PropTypes.oneOf(PAD_SIZES), PropTypes.string])
+    }), PropTypes.string]).description("The amount of margin around the Layer. An object can be specified to\ndistinguish horizontal margin, vertical margin, and margin on a\nparticular side of the layer"),
+    modal: PropTypes.bool.description('Whether there should be an overlay preventing interaction underneath the layer.').defaultValue(true),
+    onClickOutside: PropTypes.func.description('Function that will be invoked when the user clicks outside the layer.'),
+    onEsc: PropTypes.func.description('Function that will be called when the user presses the escape key inside the layer.'),
+    plain: PropTypes.bool.description('Whether this is a plain Layer with no background color or border.').defaultValue(false),
+    position: PropTypes.oneOf(['bottom', 'bottom-left', 'bottom-right', 'center', 'hidden', 'left', 'right', 'top', 'top-left', 'top-right']).description('Position of the layer content.').defaultValue('center'),
+    responsive: PropTypes.bool.description('Whether the layer should take full width and height on mobile').defaultValue(true)
   };
   return DocumentedLayer;
 };
-
-exports.doc = doc;
-var themeDoc = {
+export var themeDoc = {
   'global.breakpoints': {
     description: 'The possible breakpoints that could affect border, direction, gap, margin, pad, and round.',
     type: 'object',
@@ -77,4 +65,3 @@ var themeDoc = {
     defaultValue: '10'
   }
 };
-exports.themeDoc = themeDoc;

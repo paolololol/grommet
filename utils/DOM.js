@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.isNodeBeforeScroll = exports.isNodeAfterScroll = exports.findVisibleParent = exports.makeNodeUnfocusable = exports.makeNodeFocusable = exports.copyAttribute = exports.setTabIndex = exports.setFocusWithoutScroll = exports.getNewContainer = exports.getBodyChildElements = exports.getFirstFocusableDescendant = exports.findScrollParents = exports.filterByFocusable = void 0;
 
 var filterByFocusable = function filterByFocusable(elements) {
@@ -181,8 +179,10 @@ var findVisibleParent = function findVisibleParent(element) {
 
 exports.findVisibleParent = findVisibleParent;
 
-var isNodeAfterScroll = function isNodeAfterScroll(node) {
-  var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+var isNodeAfterScroll = function isNodeAfterScroll(node, target) {
+  if (target === void 0) {
+    target = window;
+  }
 
   var _node$getBoundingClie = node.getBoundingClientRect(),
       bottom = _node$getBoundingClie.bottom;
@@ -196,8 +196,10 @@ var isNodeAfterScroll = function isNodeAfterScroll(node) {
 
 exports.isNodeAfterScroll = isNodeAfterScroll;
 
-var isNodeBeforeScroll = function isNodeBeforeScroll(node) {
-  var target = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : window;
+var isNodeBeforeScroll = function isNodeBeforeScroll(node, target) {
+  if (target === void 0) {
+    target = window;
+  }
 
   var _node$getBoundingClie2 = node.getBoundingClientRect(),
       top = _node$getBoundingClie2.top;

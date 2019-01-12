@@ -1,32 +1,21 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.themeDoc = exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var _utils = require("../../utils");
-
-var doc = function doc(TextArea) {
-  var DocumentedTextArea = (0, _reactDesc.describe)(TextArea).availableAt((0, _utils.getAvailableAtBadge)('TextArea')).description('A control to input multiple lines of text.').usage("import { TextArea } from 'grommet';\n<TextArea id='item' name='item' />").intrinsicElement('textarea');
+import { describe, PropTypes } from 'react-desc';
+import { getAvailableAtBadge } from '../../utils';
+export var doc = function doc(TextArea) {
+  var DocumentedTextArea = describe(TextArea).availableAt(getAvailableAtBadge('TextArea')).description('A control to input multiple lines of text.').usage("import { TextArea } from 'grommet';\n<TextArea id='item' name='item' />").intrinsicElement('textarea');
   DocumentedTextArea.propTypes = {
-    id: _reactDesc.PropTypes.string.description('The id attribute of the textarea.'),
-    fill: _reactDesc.PropTypes.bool.description('Whether the width and height should fill the container.').defaultValue(false),
-    focusIndicator: _reactDesc.PropTypes.bool.description('Whether the plain textarea should receive a focus outline.'),
-    name: _reactDesc.PropTypes.string.description('The name attribute of the textarea.'),
-    onChange: _reactDesc.PropTypes.func.description('Function that will be called when the user types in the textarea.'),
-    placeholder: _reactDesc.PropTypes.string.description('Placeholder text to use when no value is provided.'),
-    plain: _reactDesc.PropTypes.bool.description("Whether this is a plain textarea with no border or padding.\nOnly use this when the containing context provides sufficient affordance."),
-    value: _reactDesc.PropTypes.string.description('What text to put in the textarea.'),
-    resize: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['vertical', 'horizontal']), _reactDesc.PropTypes.bool]).description('Whether user is allowed to resize the textarea.').defaultValue(true)
+    id: PropTypes.string.description('The id attribute of the textarea.'),
+    fill: PropTypes.bool.description('Whether the width and height should fill the container.').defaultValue(false),
+    focusIndicator: PropTypes.bool.description('Whether the plain textarea should receive a focus outline.'),
+    name: PropTypes.string.description('The name attribute of the textarea.'),
+    onChange: PropTypes.func.description('Function that will be called when the user types in the textarea.'),
+    placeholder: PropTypes.string.description('Placeholder text to use when no value is provided.'),
+    plain: PropTypes.bool.description("Whether this is a plain textarea with no border or padding.\nOnly use this when the containing context provides sufficient affordance."),
+    value: PropTypes.string.description('What text to put in the textarea.'),
+    resize: PropTypes.oneOfType([PropTypes.oneOf(['vertical', 'horizontal']), PropTypes.bool]).description('Whether user is allowed to resize the textarea.').defaultValue(true)
   };
   return DocumentedTextArea;
 };
-
-exports.doc = doc;
-var themeDoc = {
+export var themeDoc = {
   'global.colors.placeholder': {
     description: 'The placeholder color used for TextArea.',
     type: 'string',
@@ -58,4 +47,3 @@ var themeDoc = {
     defaultValue: undefined
   }
 };
-exports.themeDoc = themeDoc;

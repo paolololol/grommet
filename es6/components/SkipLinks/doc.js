@@ -1,23 +1,12 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var _utils = require("../../utils");
-
-var doc = function doc(SkipLinks) {
-  var DocumentedSkipLinks = (0, _reactDesc.describe)(SkipLinks).availableAt((0, _utils.getAvailableAtBadge)('SkipLinks')).description('Describe a list of elements to skip to.').usage("import { SkipLinks } from 'grommet';\n<SkipLinks elements={['main', 'footer']} />");
+import { describe, PropTypes } from 'react-desc';
+import { getAvailableAtBadge } from '../../utils';
+export var doc = function doc(SkipLinks) {
+  var DocumentedSkipLinks = describe(SkipLinks).availableAt(getAvailableAtBadge('SkipLinks')).description('Describe a list of elements to skip to.').usage("import { SkipLinks } from 'grommet';\n<SkipLinks elements={['main', 'footer']} />");
   DocumentedSkipLinks.propTypes = {
-    children: _reactDesc.PropTypes.node.description('Array of SkipLink').isRequired,
-    messages: _reactDesc.PropTypes.shape({
-      skipTo: _reactDesc.PropTypes.string
+    children: PropTypes.node.description('Array of SkipLink').isRequired,
+    messages: PropTypes.shape({
+      skipTo: PropTypes.string
     }).description('Custom messages for SkipLinks. Used for accessibility by screen readers.')
   };
   return DocumentedSkipLinks;
 };
-
-exports.doc = doc;

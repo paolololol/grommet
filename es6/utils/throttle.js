@@ -1,16 +1,15 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.throttle = void 0;
-
-var _this = void 0;
+var _this = this;
 
 // (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
-var throttle = function throttle(fn) {
-  var threshhold = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 250;
-  var scope = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : _this;
+export var throttle = function throttle(fn, threshhold, scope) {
+  if (threshhold === void 0) {
+    threshhold = 250;
+  }
+
+  if (scope === void 0) {
+    scope = _this;
+  }
+
   var last;
   var deferTimer;
   return function () {
@@ -32,5 +31,3 @@ var throttle = function throttle(fn) {
     }
   };
 };
-
-exports.throttle = throttle;

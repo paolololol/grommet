@@ -323,7 +323,7 @@ describe('Select', function () {
     expect(document.getElementById('test-select__drop')).toBeNull();
   });
   ['small', 'medium', 'large'].forEach(function (dropHeight) {
-    test("".concat(dropHeight, " drop container height"), function () {
+    test(dropHeight + " drop container height", function () {
       var _render11 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Select, {
         id: "test-select",
         size: "large",

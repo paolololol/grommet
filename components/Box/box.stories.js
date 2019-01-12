@@ -92,7 +92,7 @@ var FixedSizesBox = function FixedSizesBox() {
     return (// eslint-disable-next-line react/no-array-index-key
       _react.default.createElement(_2.Text, {
         key: i
-      }, "Small (".concat(i, ")"))
+      }, "Small (" + i + ")")
     );
   })), _react.default.createElement(_2.Box, {
     width: "medium",

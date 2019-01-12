@@ -1,516 +1,485 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Box } from '..';
 describe('Box', function () {
   test('default', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, null)));
-
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, null)));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('direction', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       direction: "row"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       direction: "row-responsive"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       direction: "column"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('responsive', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       responsive: true
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       responsive: false
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('wrap', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       wrap: true
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       wrap: false
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('justify', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       justify: "start"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       justify: "center"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       justify: "between"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       justify: "end"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('align', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       align: "start"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       align: "center"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       align: "baseline"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       align: "stretch"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       align: "end"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('alignContent', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       alignContent: "start"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignContent: "center"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignContent: "between"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignContent: "around"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignContent: "stretch"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignContent: "end"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('alignSelf', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       alignSelf: "start"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignSelf: "center"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignSelf: "stretch"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       alignSelf: "end"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('background', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       background: "brand"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "accent-1"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "neutral-1"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "light-1"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "dark-1"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "status-critical"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         dark: false
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         dark: true
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         position: 'top center'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         color: 'accent-1'
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('basis', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, null, React.createElement(Box, {
       basis: "xsmall"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "xlarge"
-    })), _react.default.createElement(_.Box, {
+    })), React.createElement(Box, {
       direction: "row"
-    }, _react.default.createElement(_.Box, {
+    }, React.createElement(Box, {
       basis: "full"
-    })), _react.default.createElement(_.Box, {
+    })), React.createElement(Box, {
       direction: "row"
-    }, _react.default.createElement(_.Box, {
+    }, React.createElement(Box, {
       basis: "1/2"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "2/4"
-    })), _react.default.createElement(_.Box, {
+    })), React.createElement(Box, {
       direction: "row"
-    }, _react.default.createElement(_.Box, {
+    }, React.createElement(Box, {
       basis: "1/3"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "2/3"
-    })), _react.default.createElement(_.Box, {
+    })), React.createElement(Box, {
       direction: "row"
-    }, _react.default.createElement(_.Box, {
+    }, React.createElement(Box, {
       basis: "1/4"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       basis: "3/4"
     }))));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('flex', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, null, React.createElement(Box, {
       flex: true
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: false
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: "grow"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: "shrink"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: {
         grow: 2
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: {
         shrink: 2
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       flex: {
         grow: 2,
         shrink: 2
       }
     }))));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('fill', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, null, React.createElement(Box, {
       fill: true
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       fill: false
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       fill: "horizontal"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       fill: "vertical"
     }))));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('gap', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, ['xsmall', 'small', 'medium', 'large'].map(function (gap) {
-      return _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, ['xsmall', 'small', 'medium', 'large'].map(function (gap) {
+      return React.createElement(Box, {
         key: gap,
         gap: gap,
         direction: "row"
-      }, _react.default.createElement(_.Box, null));
+      }, React.createElement(Box, null));
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('margin', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       margin: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         horizontal: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         vertical: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         bottom: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         left: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         right: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       margin: {
         top: 'small'
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('pad', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       pad: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         horizontal: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         vertical: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         bottom: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         left: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         right: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       pad: {
         top: 'small'
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('gridArea', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       gridArea: "header"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('round', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       round: true
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: "xsmall"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: "full"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'left'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'top'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'right'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'bottom'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'top-left'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'top-right'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'bottom-left'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         corner: 'bottom-right'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         size: 'xsmall'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         size: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         size: 'medium'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         size: 'large'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       round: {
         size: 'xlarge'
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('border', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       border: "all"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "horizontal"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "vertical"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "top"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "left"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "bottom"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: "right"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         color: 'accent-1'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         side: 'all'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         size: 'xsmall'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         size: 'small'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         size: 'medium'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         size: 'large'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         size: 'xlarge'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         style: 'dotted'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         style: 'double'
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       border: {
         style: 'dashed'
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('elevation', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       elevation: "none"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       elevation: "xsmall"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       elevation: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       elevation: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       elevation: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       elevation: "xlarge"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       background: "dark-1",
       elevation: "small"
-    }, _react.default.createElement(_.Box, {
+    }, React.createElement(Box, {
       elevation: "small"
     }))));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('as', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       as: "header"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('tag proxied', function () {
-    var tagComponent = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var tagComponent = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       tag: "header"
     })));
-
-    var asComponent = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var asComponent = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       as: "header"
     })));
-
     expect(tagComponent.toJSON()).toEqual(asComponent.toJSON());
   });
   test('animation', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, ['fadeIn', 'fadeOut', 'jiggle', 'pulse', 'slideUp', 'slideDown', 'slideLeft', 'slideRight', 'zoomIn', 'zoomOut'].map(function (type) {
-      return _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, ['fadeIn', 'fadeOut', 'jiggle', 'pulse', 'slideUp', 'slideDown', 'slideLeft', 'slideRight', 'zoomIn', 'zoomOut'].map(function (type) {
+      return React.createElement(Box, {
         key: type,
         animation: type
       });
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       animation: ['fadeIn', 'slideUp']
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       animation: {
         type: 'fadeIn',
         duration: 1000,
         delay: 500
       }
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       animation: [{
         type: 'fadeIn',
         duration: 1000,
@@ -521,43 +490,40 @@ describe('Box', function () {
         delay: 500
       }]
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('width', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       width: "xsmall"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       width: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       width: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       width: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       width: "xlarge"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       width: "111px"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('height', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Box, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Box, {
       height: "xsmall"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       height: "small"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       height: "medium"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       height: "large"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       height: "xlarge"
-    }), _react.default.createElement(_.Box, {
+    }), React.createElement(Box, {
       height: "111px"
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

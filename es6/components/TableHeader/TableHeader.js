@@ -1,22 +1,11 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TableHeader = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _TableContext = require("../Table/TableContext");
-
-var _StyledTable = require("../Table/StyledTable");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { TableContext } from '../Table/TableContext';
+import { StyledTableHeader } from '../Table/StyledTable';
 
 var TableHeader = function TableHeader(props) {
-  return _react.default.createElement(_TableContext.TableContext.Provider, {
+  return React.createElement(TableContext.Provider, {
     value: "header"
-  }, _react.default.createElement(_StyledTable.StyledTableHeader, props));
+  }, React.createElement(StyledTableHeader, props));
 };
 
 var TableHeaderDoc;
@@ -26,4 +15,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var TableHeaderWrapper = TableHeaderDoc || TableHeader;
-exports.TableHeader = TableHeaderWrapper;
+export { TableHeaderWrapper as TableHeader };

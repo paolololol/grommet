@@ -1,19 +1,6 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StyledGrid = void 0;
-
-var _styledComponents = _interopRequireWildcard(require("styled-components"));
-
-var _utils = require("../../utils");
-
-var _defaultProps = require("../../default-props");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+import styled, { css } from 'styled-components';
+import { genericStyles } from '../../utils';
+import { defaultProps } from '../../default-props';
 
 var fillStyle = function fillStyle(fill) {
   if (fill === 'horizontal') {
@@ -37,7 +24,7 @@ var ALIGN_MAP = {
   start: 'flex-start',
   stretch: 'stretch'
 };
-var alignStyle = (0, _styledComponents.css)(["align-items:", ";"], function (props) {
+var alignStyle = css(["align-items:", ";"], function (props) {
   return ALIGN_MAP[props.align];
 });
 var ALIGN_CONTENT_MAP = {
@@ -48,7 +35,7 @@ var ALIGN_CONTENT_MAP = {
   start: 'flex-start',
   stretch: 'stretch'
 };
-var alignContentStyle = (0, _styledComponents.css)(["align-content:", ";"], function (props) {
+var alignContentStyle = css(["align-content:", ";"], function (props) {
   return ALIGN_CONTENT_MAP[props.alignContent];
 });
 var JUSTIFY_MAP = {
@@ -57,7 +44,7 @@ var JUSTIFY_MAP = {
   start: 'flex-start',
   stretch: 'stretch'
 };
-var justifyStyle = (0, _styledComponents.css)(["justify-items:", ";"], function (props) {
+var justifyStyle = css(["justify-items:", ";"], function (props) {
   return JUSTIFY_MAP[props.justify];
 });
 var JUSTIFY_CONTENT_MAP = {
@@ -68,26 +55,26 @@ var JUSTIFY_CONTENT_MAP = {
   start: 'flex-start',
   stretch: 'stretch'
 };
-var justifyContentStyle = (0, _styledComponents.css)(["justify-content:", ";"], function (props) {
+var justifyContentStyle = css(["justify-content:", ";"], function (props) {
   return JUSTIFY_CONTENT_MAP[props.justifyContent];
 });
 
 var gapStyle = function gapStyle(props) {
   if (typeof props.gap === 'string') {
     var gapSize = props.theme.global.edgeSize[props.gap];
-    return "grid-gap: ".concat(gapSize, " ").concat(gapSize, ";");
+    return "grid-gap: " + gapSize + " " + gapSize + ";";
   }
 
   if (props.gap.row && props.gap.column) {
-    return "\n      grid-row-gap: ".concat(props.theme.global.edgeSize[props.gap.row], ";\n      grid-column-gap: ").concat(props.theme.global.edgeSize[props.gap.column], ";\n    ");
+    return "\n      grid-row-gap: " + props.theme.global.edgeSize[props.gap.row] + ";\n      grid-column-gap: " + props.theme.global.edgeSize[props.gap.column] + ";\n    ";
   }
 
   if (props.gap.row) {
-    return "\n      grid-row-gap: ".concat(props.theme.global.edgeSize[props.gap.row], ";\n    ");
+    return "\n      grid-row-gap: " + props.theme.global.edgeSize[props.gap.row] + ";\n    ";
   }
 
   if (props.gap.column) {
-    return "\n      grid-column-gap: ".concat(props.theme.global.edgeSize[props.gap.column], ";\n    ");
+    return "\n      grid-column-gap: " + props.theme.global.edgeSize[props.gap.column] + ";\n    ";
   }
 
   return '';
@@ -105,11 +92,11 @@ var SIZE_MAP = {
 };
 
 var getRepeatCount = function getRepeatCount(count) {
-  return typeof count === 'number' ? count : "auto-".concat(count);
+  return typeof count === 'number' ? count : "auto-" + count;
 };
 
 var getRepeatSize = function getRepeatSize(size, theme) {
-  return "minmax(".concat(theme.global.size[size] || size, ", 1fr)");
+  return "minmax(" + (theme.global.size[size] || size) + ", 1fr)";
 };
 
 var sizeFor = function sizeFor(size, props, isRow) {
@@ -124,34 +111,34 @@ var sizeFor = function sizeFor(size, props, isRow) {
 
 var columnsStyle = function columnsStyle(props) {
   if (Array.isArray(props.columns)) {
-    return (0, _styledComponents.css)(["grid-template-columns:", ";"], props.columns.map(function (s) {
+    return css(["grid-template-columns:", ";"], props.columns.map(function (s) {
       if (Array.isArray(s)) {
-        return "minmax(".concat(sizeFor(s[0], props), ", ").concat(sizeFor(s[1], props), ")");
+        return "minmax(" + sizeFor(s[0], props) + ", " + sizeFor(s[1], props) + ")";
       }
 
       return sizeFor(s, props);
     }).join(' '));
   }
 
-  if (_typeof(props.columns) === 'object') {
-    return (0, _styledComponents.css)(["grid-template-columns:repeat( ", ",", " );"], getRepeatCount(props.columns.count), getRepeatSize(props.columns.size, props.theme));
+  if (typeof props.columns === 'object') {
+    return css(["grid-template-columns:repeat( ", ",", " );"], getRepeatCount(props.columns.count), getRepeatSize(props.columns.size, props.theme));
   }
 
-  return (0, _styledComponents.css)(["grid-template-columns:repeat( auto-fill,", " );"], getRepeatSize(props.columns, props.theme));
+  return css(["grid-template-columns:repeat( auto-fill,", " );"], getRepeatSize(props.columns, props.theme));
 };
 
 var rowsStyle = function rowsStyle(props) {
   if (Array.isArray(props.rowsProp)) {
-    return (0, _styledComponents.css)(["grid-template-rows:", ";"], props.rowsProp.map(function (s) {
+    return css(["grid-template-rows:", ";"], props.rowsProp.map(function (s) {
       if (Array.isArray(s)) {
-        return "minmax(".concat(sizeFor(s[0], props, true), ", ").concat(sizeFor(s[1], props, true), ")");
+        return "minmax(" + sizeFor(s[0], props, true) + ", " + sizeFor(s[1], props, true) + ")";
       }
 
       return sizeFor(s, props, true);
     }).join(' '));
   }
 
-  return (0, _styledComponents.css)(["grid-auto-rows:", ";"], props.theme.global.size[props.rowsProp]);
+  return css(["grid-auto-rows:", ";"], props.theme.global.size[props.rowsProp]);
 };
 
 var areasStyle = function areasStyle(props) {
@@ -172,15 +159,15 @@ var areasStyle = function areasStyle(props) {
       }
     }
   });
-  return "grid-template-areas: ".concat(cells.map(function (r) {
-    return "\"".concat(r.join(' '), "\"");
-  }).join(' '), ";");
+  return "grid-template-areas: " + cells.map(function (r) {
+    return "\"" + r.join(' ') + "\"";
+  }).join(' ') + ";";
 };
 
-var StyledGrid = _styledComponents.default.div.withConfig({
+var StyledGrid = styled.div.withConfig({
   displayName: "StyledGrid",
   componentId: "sc-1wofa1l-0"
-})(["display:grid;box-sizing:border-box;", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ""], _utils.genericStyles, function (props) {
+})(["display:grid;box-sizing:border-box;", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", ""], genericStyles, function (props) {
   return props.fillContainer && fillStyle(props.fillContainer);
 }, function (props) {
   return props.align && alignStyle;
@@ -201,7 +188,6 @@ var StyledGrid = _styledComponents.default.div.withConfig({
 }, function (props) {
   return props.theme.grid && props.theme.grid.extend;
 });
-
-exports.StyledGrid = StyledGrid;
 StyledGrid.defaultProps = {};
-Object.setPrototypeOf(StyledGrid.defaultProps, _defaultProps.defaultProps);
+Object.setPrototypeOf(StyledGrid.defaultProps, defaultProps);
+export { StyledGrid };

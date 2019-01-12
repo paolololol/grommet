@@ -1,91 +1,43 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Video = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _recompose = require("recompose");
-
-var _styledComponents = require("styled-components");
-
-var _defaultProps = require("../../default-props");
-
-var _Box = require("../Box");
-
-var _Button = require("../Button");
-
-var _Menu = require("../Menu");
-
-var _Meter = require("../Meter");
-
-var _Stack = require("../Stack");
-
-var _Text = require("../Text");
-
-var _hocs = require("../hocs");
-
-var _utils = require("../../utils");
-
-var _StyledVideo = require("./StyledVideo");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
-function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-// Split the volume control into 6 segments. Empirically determined.
+import React, { Component } from 'react';
+import { compose } from 'recompose';
+import { withTheme } from 'styled-components';
+import { defaultProps } from '../../default-props';
+import { Box } from '../Box';
+import { Button } from '../Button';
+import { Menu } from '../Menu';
+import { Meter } from '../Meter';
+import { Stack } from '../Stack';
+import { Text } from '../Text';
+import { withForwardRef } from '../hocs';
+import { throttle } from '../../utils';
+import { StyledVideo, StyledVideoContainer, StyledVideoControls, StyledVideoScrubber } from './StyledVideo'; // Split the volume control into 6 segments. Empirically determined.
+
 var VOLUME_STEP = 0.166667;
 
 var formatTime = function formatTime(time) {
   var minutes = Math.round(time / 60);
 
   if (minutes < 10) {
-    minutes = "0".concat(minutes);
+    minutes = "0" + minutes;
   }
 
   var seconds = Math.round(time) % 60;
 
   if (seconds < 10) {
-    seconds = "0".concat(seconds);
+    seconds = "0" + seconds;
   }
 
-  return "".concat(minutes, ":").concat(seconds);
+  return minutes + ":" + seconds;
 };
 
 var videoEvents = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange', 'onEmptied', 'onEncrypted', 'onEnded', 'onError', 'onLoadedData', 'onLoadedMetadata', 'onLoadStart', 'onPause', 'onPlay', 'onPlaying', 'onProgress', 'onRateChange', 'onSeeked', 'onSeeking', 'onStalled', 'onSuspend', 'onTimeUpdate', 'onVolumeChange', 'onWaiting'];
@@ -93,43 +45,38 @@ var videoEvents = ['onAbort', 'onCanPlay', 'onCanPlayThrough', 'onDurationChange
 var Video =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Video, _Component);
+  _inheritsLoose(Video, _Component);
 
-  _createClass(Video, null, [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var forwardRef = nextProps.forwardRef;
-      var videoRef = prevState.videoRef;
-      var nextVideoRef = forwardRef || videoRef;
+  Video.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+    var forwardRef = nextProps.forwardRef;
+    var videoRef = prevState.videoRef;
+    var nextVideoRef = forwardRef || videoRef;
 
-      if (nextVideoRef !== videoRef) {
-        return {
-          videoRef: nextVideoRef
-        };
-      }
-
-      return null;
+    if (nextVideoRef !== videoRef) {
+      return {
+        videoRef: nextVideoRef
+      };
     }
-  }]);
+
+    return null;
+  };
 
   function Video(props) {
     var _this;
 
-    _classCallCheck(this, Video);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Video).call(this, props));
+    _this = _Component.call(this, props) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       captions: [],
-      scrubberRef: _react.default.createRef(),
-      videoRef: _react.default.createRef()
+      scrubberRef: React.createRef(),
+      videoRef: React.createRef()
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "hasPlayed", false);
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "injectUpdateVideoEvents", function () {
       return videoEvents.reduce(function (previousValue, currentValue) {
-        var nextValue = _objectSpread({}, previousValue);
+        var nextValue = _extends({}, previousValue);
 
         nextValue[currentValue] = function (e) {
           if (currentValue in _this.props &&
@@ -373,244 +320,239 @@ function (_Component) {
       }
     });
 
-    _this.update = (0, _utils.throttle)(_this.update, 100, _assertThisInitialized(_assertThisInitialized(_this)));
+    _this.update = throttle(_this.update, 100, _assertThisInitialized(_assertThisInitialized(_this)));
     _this.mediaEventProps = _this.injectUpdateVideoEvents();
     return _this;
   }
 
-  _createClass(Video, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
-      var mute = this.props.mute;
-      var videoRef = this.state.videoRef;
-      var video = videoRef.current;
+  var _proto = Video.prototype;
 
-      if (mute) {
-        this.mute();
-      }
+  _proto.componentDidMount = function componentDidMount() {
+    var mute = this.props.mute;
+    var videoRef = this.state.videoRef;
+    var video = videoRef.current;
 
-      if (video) {
-        // hide all captioning to start with
-        var textTracks = video.textTracks;
-
-        for (var i = 0; i < textTracks.length; i += 1) {
-          textTracks[i].mode = 'hidden';
-        }
-
-        this.restate();
-      }
+    if (mute) {
+      this.mute();
     }
-  }, {
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps) {
-      var autoPlay = this.props.autoPlay;
 
-      if (autoPlay && !prevProps.autoPlay) {
-        // Caller wants the video to play now.
-        this.play();
+    if (video) {
+      // hide all captioning to start with
+      var textTracks = video.textTracks;
+
+      for (var i = 0; i < textTracks.length; i += 1) {
+        textTracks[i].mode = 'hidden';
       }
 
       this.restate();
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      this.unmounted = true;
-    }
-  }, {
-    key: "renderControls",
-    value: function renderControls() {
-      var _this2 = this;
+  };
 
-      var _this$props = this.props,
-          controls = _this$props.controls,
-          theme = _this$props.theme;
-      var _this$state4 = this.state,
-          captions = _this$state4.captions,
-          currentTime = _this$state4.currentTime,
-          duration = _this$state4.duration,
-          interacting = _this$state4.interacting,
-          percentagePlayed = _this$state4.percentagePlayed,
-          playing = _this$state4.playing,
-          scrubberRef = _this$state4.scrubberRef,
-          scrubTime = _this$state4.scrubTime,
-          volume = _this$state4.volume;
-      var over = controls === 'over';
-      var background = over && (theme.video.controls && theme.video.controls.background || {
-        color: 'dark-1',
-        opacity: 'strong'
-      });
-      var iconColor = over && (theme.video.icons.color || 'light-1');
-      var formattedTime = formatTime(scrubTime || currentTime || duration);
-      var Icons = {
-        ClosedCaption: theme.video.icons.closedCaption,
-        Configure: theme.video.icons.configure,
-        FullScreen: theme.video.icons.fullScreen,
-        Pause: theme.video.icons.pause,
-        Play: theme.video.icons.play,
-        ReduceVolume: theme.video.icons.reduceVolume,
-        Volume: theme.video.icons.volume
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps) {
+    var autoPlay = this.props.autoPlay;
+
+    if (autoPlay && !prevProps.autoPlay) {
+      // Caller wants the video to play now.
+      this.play();
+    }
+
+    this.restate();
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    this.unmounted = true;
+  };
+
+  _proto.renderControls = function renderControls() {
+    var _this2 = this;
+
+    var _this$props = this.props,
+        controls = _this$props.controls,
+        theme = _this$props.theme;
+    var _this$state4 = this.state,
+        captions = _this$state4.captions,
+        currentTime = _this$state4.currentTime,
+        duration = _this$state4.duration,
+        interacting = _this$state4.interacting,
+        percentagePlayed = _this$state4.percentagePlayed,
+        playing = _this$state4.playing,
+        scrubberRef = _this$state4.scrubberRef,
+        scrubTime = _this$state4.scrubTime,
+        volume = _this$state4.volume;
+    var over = controls === 'over';
+    var background = over && (theme.video.controls && theme.video.controls.background || {
+      color: 'dark-1',
+      opacity: 'strong'
+    });
+    var iconColor = over && (theme.video.icons.color || 'light-1');
+    var formattedTime = formatTime(scrubTime || currentTime || duration);
+    var Icons = {
+      ClosedCaption: theme.video.icons.closedCaption,
+      Configure: theme.video.icons.configure,
+      FullScreen: theme.video.icons.fullScreen,
+      Pause: theme.video.icons.pause,
+      Play: theme.video.icons.play,
+      ReduceVolume: theme.video.icons.reduceVolume,
+      Volume: theme.video.icons.volume
+    };
+    var captionControls = captions.map(function (caption) {
+      return {
+        icon: caption.label ? undefined : React.createElement(Icons.ClosedCaption, {
+          color: iconColor
+        }),
+        label: caption.label,
+        active: caption.active,
+        onClick: function onClick() {
+          return _this2.showCaptions(caption.active ? -1 : 0);
+        }
       };
-      var captionControls = captions.map(function (caption) {
-        return {
-          icon: caption.label ? undefined : _react.default.createElement(Icons.ClosedCaption, {
-            color: iconColor
-          }),
-          label: caption.label,
-          active: caption.active,
-          onClick: function onClick() {
-            return _this2.showCaptions(caption.active ? -1 : 0);
-          }
-        };
-      });
-      return _react.default.createElement(_StyledVideo.StyledVideoControls, {
-        over: over,
-        active: !this.hasPlayed || controls === 'below' || over && interacting
-      }, _react.default.createElement(_Box.Box, {
-        direction: "row",
-        align: "center",
-        justify: "between",
-        background: background
-      }, _react.default.createElement(_Button.Button, {
-        icon: playing ? _react.default.createElement(Icons.Pause, {
-          color: iconColor
-        }) : _react.default.createElement(Icons.Play, {
+    });
+    return React.createElement(StyledVideoControls, {
+      over: over,
+      active: !this.hasPlayed || controls === 'below' || over && interacting
+    }, React.createElement(Box, {
+      direction: "row",
+      align: "center",
+      justify: "between",
+      background: background
+    }, React.createElement(Button, {
+      icon: playing ? React.createElement(Icons.Pause, {
+        color: iconColor
+      }) : React.createElement(Icons.Play, {
+        color: iconColor
+      }),
+      hoverIndicator: "background",
+      onClick: playing ? this.pause : this.play
+    }), React.createElement(Box, {
+      direction: "row",
+      align: "center",
+      flex: true
+    }, React.createElement(Box, {
+      flex: true
+    }, React.createElement(Stack, null, React.createElement(Meter, {
+      "aria-label": "Video progress",
+      background: over && (theme.video.scrubber && theme.video.scrubber.track.color || 'dark-3'),
+      size: "full",
+      thickness: "small",
+      values: [{
+        value: percentagePlayed || 0
+      }]
+    }), React.createElement(StyledVideoScrubber, {
+      ref: scrubberRef,
+      tabIndex: 0,
+      role: "button",
+      value: scrubTime ? Math.round(scrubTime / duration * 100) : undefined,
+      onMouseMove: this.scrub,
+      onMouseLeave: function onMouseLeave() {
+        return _this2.setState({
+          scrubTime: undefined
+        });
+      },
+      onClick: this.seek
+    }))), React.createElement(Box, {
+      pad: {
+        horizontal: 'small'
+      }
+    }, React.createElement(Text, {
+      margin: "none"
+    }, formattedTime))), React.createElement(Menu, {
+      icon: React.createElement(Icons.Configure, {
+        color: iconColor
+      }),
+      dropAlign: {
+        bottom: 'top',
+        right: 'right'
+      },
+      dropBackground: background,
+      items: [{
+        icon: React.createElement(Icons.Volume, {
           color: iconColor
         }),
-        hoverIndicator: "background",
-        onClick: playing ? this.pause : this.play
-      }), _react.default.createElement(_Box.Box, {
-        direction: "row",
-        align: "center",
-        flex: true
-      }, _react.default.createElement(_Box.Box, {
-        flex: true
-      }, _react.default.createElement(_Stack.Stack, null, _react.default.createElement(_Meter.Meter, {
-        "aria-label": "Video progress",
-        background: over && (theme.video.scrubber && theme.video.scrubber.track.color || 'dark-3'),
-        size: "full",
-        thickness: "small",
-        values: [{
-          value: percentagePlayed || 0
-        }]
-      }), _react.default.createElement(_StyledVideo.StyledVideoScrubber, {
-        ref: scrubberRef,
-        tabIndex: 0,
-        role: "button",
-        value: scrubTime ? Math.round(scrubTime / duration * 100) : undefined,
-        onMouseMove: this.scrub,
-        onMouseLeave: function onMouseLeave() {
-          return _this2.setState({
-            scrubTime: undefined
-          });
-        },
-        onClick: this.seek
-      }))), _react.default.createElement(_Box.Box, {
-        pad: {
-          horizontal: 'small'
-        }
-      }, _react.default.createElement(_Text.Text, {
-        margin: "none"
-      }, formattedTime))), _react.default.createElement(_Menu.Menu, {
-        icon: _react.default.createElement(Icons.Configure, {
+        onClick: volume <= 1 - VOLUME_STEP ? this.louder : undefined,
+        close: false
+      }, {
+        icon: React.createElement(Icons.ReduceVolume, {
           color: iconColor
         }),
-        dropAlign: {
-          bottom: 'top',
-          right: 'right'
-        },
-        dropBackground: background,
-        items: [{
-          icon: _react.default.createElement(Icons.Volume, {
-            color: iconColor
-          }),
-          onClick: volume <= 1 - VOLUME_STEP ? this.louder : undefined,
-          close: false
-        }, {
-          icon: _react.default.createElement(Icons.ReduceVolume, {
-            color: iconColor
-          }),
-          onClick: volume >= VOLUME_STEP ? this.quieter : undefined,
-          close: false
-        }].concat(_toConsumableArray(captionControls), [{
-          icon: _react.default.createElement(Icons.FullScreen, {
-            color: iconColor
-          }),
-          onClick: this.fullscreen
-        }])
-      })));
+        onClick: volume >= VOLUME_STEP ? this.quieter : undefined,
+        close: false
+      }].concat(captionControls, [{
+        icon: React.createElement(Icons.FullScreen, {
+          color: iconColor
+        }),
+        onClick: this.fullscreen
+      }])
+    })));
+  };
+
+  _proto.render = function render() {
+    var _this$props2 = this.props,
+        alignSelf = _this$props2.alignSelf,
+        autoPlay = _this$props2.autoPlay,
+        children = _this$props2.children,
+        controls = _this$props2.controls,
+        gridArea = _this$props2.gridArea,
+        loop = _this$props2.loop,
+        margin = _this$props2.margin,
+        theme = _this$props2.theme,
+        rest = _objectWithoutPropertiesLoose(_this$props2, ["alignSelf", "autoPlay", "children", "controls", "gridArea", "loop", "margin", "theme"]);
+
+    var _this$state5 = this.state,
+        height = _this$state5.height,
+        videoRef = _this$state5.videoRef,
+        width = _this$state5.width;
+    var controlsElement = controls ? this.renderControls() : undefined;
+    var mouseEventListeners;
+
+    if (controls === 'over') {
+      mouseEventListeners = {
+        onMouseEnter: this.interactionStart,
+        onMouseMove: this.interactionStart,
+        onTouchStart: this.interactionStart
+      };
     }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this$props2 = this.props,
-          alignSelf = _this$props2.alignSelf,
-          autoPlay = _this$props2.autoPlay,
-          children = _this$props2.children,
-          controls = _this$props2.controls,
-          gridArea = _this$props2.gridArea,
-          loop = _this$props2.loop,
-          margin = _this$props2.margin,
-          theme = _this$props2.theme,
-          rest = _objectWithoutProperties(_this$props2, ["alignSelf", "autoPlay", "children", "controls", "gridArea", "loop", "margin", "theme"]);
 
-      var _this$state5 = this.state,
-          height = _this$state5.height,
-          videoRef = _this$state5.videoRef,
-          width = _this$state5.width;
-      var controlsElement = controls ? this.renderControls() : undefined;
-      var mouseEventListeners;
+    var style;
 
-      if (controls === 'over') {
-        mouseEventListeners = {
-          onMouseEnter: this.interactionStart,
-          onMouseMove: this.interactionStart,
-          onTouchStart: this.interactionStart
+    if (rest.fit === 'contain' && controls === 'over') {
+      // constrain the size to fit the aspect ratio so the controls overlap correctly
+      if (width) {
+        style = {
+          width: width
+        };
+      } else if (height) {
+        style = {
+          height: height
         };
       }
-
-      var style;
-
-      if (rest.fit === 'contain' && controls === 'over') {
-        // constrain the size to fit the aspect ratio so the controls overlap correctly
-        if (width) {
-          style = {
-            width: width
-          };
-        } else if (height) {
-          style = {
-            height: height
-          };
-        }
-      }
-
-      return _react.default.createElement(_StyledVideo.StyledVideoContainer, _extends({}, mouseEventListeners, {
-        alignSelf: alignSelf,
-        gridArea: gridArea,
-        margin: margin,
-        style: style
-      }), _react.default.createElement(_StyledVideo.StyledVideo, _extends({}, rest, {
-        ref: videoRef
-      }, this.mediaEventProps, {
-        autoPlay: autoPlay || false,
-        loop: loop || false
-      }), children), controlsElement);
     }
-  }]);
+
+    return React.createElement(StyledVideoContainer, _extends({}, mouseEventListeners, {
+      alignSelf: alignSelf,
+      gridArea: gridArea,
+      margin: margin,
+      style: style
+    }), React.createElement(StyledVideo, _extends({}, rest, {
+      ref: videoRef
+    }, this.mediaEventProps, {
+      autoPlay: autoPlay || false,
+      loop: loop || false
+    }), children), controlsElement);
+  };
 
   return Video;
-}(_react.Component);
+}(Component);
 
 _defineProperty(Video, "defaultProps", {
   controls: 'over'
 });
 
-Object.setPrototypeOf(Video.defaultProps, _defaultProps.defaultProps);
+Object.setPrototypeOf(Video.defaultProps, defaultProps);
 var VideoDoc;
 
 if (process.env.NODE_ENV !== 'production') {
   VideoDoc = require('./doc').doc(Video); // eslint-disable-line global-require
 }
 
-var VideoWrapper = (0, _recompose.compose)(_styledComponents.withTheme, _hocs.withForwardRef)(VideoDoc || Video);
-exports.Video = VideoWrapper;
+var VideoWrapper = compose(withTheme, withForwardRef)(VideoDoc || Video);
+export { VideoWrapper as Video };

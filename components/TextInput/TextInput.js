@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.TextInput = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -33,32 +31,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function renderLabel(suggestion) {
-  if (suggestion && _typeof(suggestion) === 'object') {
+  if (suggestion && typeof suggestion === 'object') {
     return suggestion.label || suggestion.value;
   }
 
@@ -66,7 +48,7 @@ function renderLabel(suggestion) {
 }
 
 function stringLabel(suggestion) {
-  if (suggestion && _typeof(suggestion) === 'object') {
+  if (suggestion && typeof suggestion === 'object') {
     if (suggestion.label && typeof suggestion.label === 'string') {
       return suggestion.label;
     }
@@ -87,20 +69,16 @@ var ContainerBox = (0, _styledComponents.default)(_Box.Box).withConfig({
 var TextInput =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(TextInput, _Component);
+  _inheritsLoose(TextInput, _Component);
 
   function TextInput() {
-    var _getPrototypeOf2;
-
     var _this;
-
-    _classCallCheck(this, TextInput);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(TextInput)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       activeSuggestionIndex: -1,
@@ -124,7 +102,7 @@ function (_Component) {
           suggestions = _this$props2.suggestions,
           suggestionsCount = _this$props2.messages.suggestionsCount;
 
-      _this.announce("".concat(suggestions.length, " ").concat(suggestionsCount));
+      _this.announce(suggestions.length + " " + suggestionsCount);
     });
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "announceSuggestionsExist", function () {
@@ -147,7 +125,7 @@ function (_Component) {
       if (suggestions && suggestions.length > 0) {
         var labelMessage = stringLabel(suggestions[index]);
 
-        _this.announce("".concat(labelMessage, " ").concat(enterSelect));
+        _this.announce(labelMessage + " " + enterSelect);
       }
     });
 
@@ -175,7 +153,7 @@ function (_Component) {
           suggestions = _this$props4.suggestions,
           value = _this$props4.value;
       var suggestionValues = suggestions.map(function (suggestion) {
-        if (_typeof(suggestion) === 'object') {
+        if (typeof suggestion === 'object') {
           return suggestion.value;
         }
 
@@ -340,10 +318,9 @@ function (_Component) {
         items: suggestions,
         step: theme.select.step
       }, function (suggestion, index) {
-        var plain = _typeof(suggestion) === 'object' && _typeof((0, _react.isValidElement)(suggestion.label));
-
+        var plain = typeof suggestion === 'object' && typeof (0, _react.isValidElement)(suggestion.label);
         return _react.default.createElement("li", {
-          key: "".concat(stringLabel(suggestion), "-").concat(index)
+          key: stringLabel(suggestion) + "-" + index
         }, _react.default.createElement(_Button.Button, {
           active: activeSuggestionIndex === index || selectedSuggestionIndex === index,
           fill: true,
@@ -361,121 +338,117 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(TextInput, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate(prevProps, prevState) {
-      var _this$props9 = this.props,
-          onSuggestionsOpen = _this$props9.onSuggestionsOpen,
-          onSuggestionsClose = _this$props9.onSuggestionsClose,
-          suggestions = _this$props9.suggestions;
-      var showDrop = this.state.showDrop;
+  TextInput.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+    var suggestions = nextProps.suggestions;
+    var showDrop = prevState.showDrop;
 
-      if (showDrop !== prevState.showDrop) {
-        if (showDrop && onSuggestionsOpen) {
-          onSuggestionsOpen();
-        } else if (onSuggestionsClose) {
-          onSuggestionsClose();
+    if (showDrop && (!suggestions || !suggestions.length)) {
+      return {
+        showDrop: false
+      };
+    }
+
+    return null;
+  };
+
+  var _proto = TextInput.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate(prevProps, prevState) {
+    var _this$props9 = this.props,
+        onSuggestionsOpen = _this$props9.onSuggestionsOpen,
+        onSuggestionsClose = _this$props9.onSuggestionsClose,
+        suggestions = _this$props9.suggestions;
+    var showDrop = this.state.showDrop;
+
+    if (showDrop !== prevState.showDrop) {
+      if (showDrop && onSuggestionsOpen) {
+        onSuggestionsOpen();
+      } else if (onSuggestionsClose) {
+        onSuggestionsClose();
+      }
+    }
+
+    if (!showDrop && suggestions && (!prevProps.suggestions || !prevProps.suggestions.length)) {
+      this.resetSuggestions();
+    }
+  };
+
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    clearTimeout(this.resetTimer);
+  };
+
+  _proto.render = function render() {
+    var _this2 = this;
+
+    var _this$props10 = this.props,
+        defaultValue = _this$props10.defaultValue,
+        dropAlign = _this$props10.dropAlign,
+        dropHeight = _this$props10.dropHeight,
+        dropTarget = _this$props10.dropTarget,
+        forwardRef = _this$props10.forwardRef,
+        id = _this$props10.id,
+        placeholder = _this$props10.placeholder,
+        plain = _this$props10.plain,
+        theme = _this$props10.theme,
+        value = _this$props10.value,
+        onKeyDown = _this$props10.onKeyDown,
+        rest = _objectWithoutPropertiesLoose(_this$props10, ["defaultValue", "dropAlign", "dropHeight", "dropTarget", "forwardRef", "id", "placeholder", "plain", "theme", "value", "onKeyDown"]);
+
+    delete rest.onChange; // se we can manage in this.onChange()
+
+    delete rest.onSuggestionsOpen;
+    delete rest.onSuggestionsClose;
+    var showDrop = this.state.showDrop; // needed so that styled components does not invoke
+    // onSelect when text input is clicked
+
+    delete rest.onSelect;
+    var drop;
+
+    if (showDrop) {
+      drop = _react.default.createElement(_Drop.Drop, {
+        id: id ? "text-input-drop__" + id : undefined,
+        align: dropAlign,
+        responsive: false,
+        target: dropTarget || (forwardRef || this.inputRef).current,
+        onClickOutside: function onClickOutside() {
+          return _this2.setState({
+            showDrop: false
+          });
+        },
+        onEsc: function onEsc() {
+          return _this2.setState({
+            showDrop: false
+          });
         }
-      }
-
-      if (!showDrop && suggestions && (!prevProps.suggestions || !prevProps.suggestions.length)) {
-        this.resetSuggestions();
-      }
+      }, _react.default.createElement(ContainerBox, {
+        overflow: "auto",
+        dropHeight: dropHeight
+      }, this.renderSuggestions()));
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearTimeout(this.resetTimer);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
 
-      var _this$props10 = this.props,
-          defaultValue = _this$props10.defaultValue,
-          dropAlign = _this$props10.dropAlign,
-          dropHeight = _this$props10.dropHeight,
-          dropTarget = _this$props10.dropTarget,
-          forwardRef = _this$props10.forwardRef,
-          id = _this$props10.id,
-          placeholder = _this$props10.placeholder,
-          plain = _this$props10.plain,
-          theme = _this$props10.theme,
-          value = _this$props10.value,
-          onKeyDown = _this$props10.onKeyDown,
-          rest = _objectWithoutProperties(_this$props10, ["defaultValue", "dropAlign", "dropHeight", "dropTarget", "forwardRef", "id", "placeholder", "plain", "theme", "value", "onKeyDown"]);
-
-      delete rest.onChange; // se we can manage in this.onChange()
-
-      delete rest.onSuggestionsOpen;
-      delete rest.onSuggestionsClose;
-      var showDrop = this.state.showDrop; // needed so that styled components does not invoke
-      // onSelect when text input is clicked
-
-      delete rest.onSelect;
-      var drop;
-
-      if (showDrop) {
-        drop = _react.default.createElement(_Drop.Drop, {
-          id: id ? "text-input-drop__".concat(id) : undefined,
-          align: dropAlign,
-          responsive: false,
-          target: dropTarget || (forwardRef || this.inputRef).current,
-          onClickOutside: function onClickOutside() {
-            return _this2.setState({
-              showDrop: false
-            });
-          },
-          onEsc: function onEsc() {
-            return _this2.setState({
-              showDrop: false
-            });
-          }
-        }, _react.default.createElement(ContainerBox, {
-          overflow: "auto",
-          dropHeight: dropHeight
-        }, this.renderSuggestions()));
-      }
-
-      return _react.default.createElement(_StyledTextInput.StyledTextInputContainer, {
-        plain: plain
-      }, placeholder && typeof placeholder !== 'string' && !value ? _react.default.createElement(_StyledTextInput.StyledPlaceholder, null, placeholder) : null, _react.default.createElement(_Keyboard.Keyboard, {
-        onEnter: this.onSuggestionSelect,
-        onEsc: this.onEsc,
-        onTab: this.onTab,
-        onUp: this.onPreviousSuggestion,
-        onDown: this.onNextSuggestion,
-        onKeyDown: onKeyDown
-      }, _react.default.createElement(_StyledTextInput.StyledTextInput, _extends({
-        id: id,
-        ref: forwardRef || this.inputRef,
-        autoComplete: "off",
-        plain: plain,
-        placeholder: typeof placeholder === 'string' ? placeholder : undefined
-      }, rest, {
-        defaultValue: renderLabel(defaultValue),
-        value: renderLabel(value),
-        onFocus: this.onFocus,
-        onBlur: this.onBlur,
-        onChange: this.onChange
-      }))), drop);
-    }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var suggestions = nextProps.suggestions;
-      var showDrop = prevState.showDrop;
-
-      if (showDrop && (!suggestions || !suggestions.length)) {
-        return {
-          showDrop: false
-        };
-      }
-
-      return null;
-    }
-  }]);
+    return _react.default.createElement(_StyledTextInput.StyledTextInputContainer, {
+      plain: plain
+    }, placeholder && typeof placeholder !== 'string' && !value ? _react.default.createElement(_StyledTextInput.StyledPlaceholder, null, placeholder) : null, _react.default.createElement(_Keyboard.Keyboard, {
+      onEnter: this.onSuggestionSelect,
+      onEsc: this.onEsc,
+      onTab: this.onTab,
+      onUp: this.onPreviousSuggestion,
+      onDown: this.onNextSuggestion,
+      onKeyDown: onKeyDown
+    }, _react.default.createElement(_StyledTextInput.StyledTextInput, _extends({
+      id: id,
+      ref: forwardRef || this.inputRef,
+      autoComplete: "off",
+      plain: plain,
+      placeholder: typeof placeholder === 'string' ? placeholder : undefined
+    }, rest, {
+      defaultValue: renderLabel(defaultValue),
+      value: renderLabel(value),
+      onFocus: this.onFocus,
+      onBlur: this.onBlur,
+      onChange: this.onChange
+    }))), drop);
+  };
 
   return TextInput;
 }(_react.Component);

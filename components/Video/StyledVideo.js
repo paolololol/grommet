@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledVideoScrubber = exports.StyledVideoControls = exports.StyledVideoContainer = exports.StyledVideo = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -63,7 +61,7 @@ var headStyle = (0, _styledComponents.css)(["::after{content:'';height:100%;widt
 }, function (props) {
   return (0, _utils.normalizeColor)('light-4', props.theme);
 }, function (props) {
-  return "".concat(props.value, "%");
+  return props.value + "%";
 });
 
 var StyledVideoScrubber = _styledComponents.default.div.withConfig({

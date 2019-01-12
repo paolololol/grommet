@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledDrop = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -26,7 +24,7 @@ function getTransformOriginStyle(align) {
     horizontal = 'right';
   }
 
-  return "".concat(vertical, " ").concat(horizontal);
+  return vertical + " " + horizontal;
 }
 
 var dropKeyFrames = (0, _styledComponents.keyframes)(["0%{opacity:0.5;transform:scale(0.8);}100%{opacity:1;transform:scale(1);}"]);

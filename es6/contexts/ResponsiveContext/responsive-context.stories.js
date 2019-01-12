@@ -1,18 +1,9 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _utils = require("grommet/utils");
-
-var _themes = require("grommet/themes");
-
-var _grommet = require("grommet");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var customBreakpoints = (0, _utils.deepMerge)(_themes.grommet, {
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { deepMerge } from 'grommet/utils';
+import { grommet } from 'grommet/themes';
+import { Box, Grommet, Heading, ResponsiveContext } from 'grommet';
+var customBreakpoints = deepMerge(grommet, {
   global: {
     breakpoints: {
       xsmall: {
@@ -28,14 +19,14 @@ var customBreakpoints = (0, _utils.deepMerge)(_themes.grommet, {
     }
   }
 });
-(0, _react2.storiesOf)('ResponsiveContext', module).add('Custom Breakpoints', function () {
-  return _react.default.createElement(_grommet.Grommet, {
+storiesOf('ResponsiveContext', module).add('Custom Breakpoints', function () {
+  return React.createElement(Grommet, {
     theme: customBreakpoints,
     full: true
-  }, _react.default.createElement(_grommet.ResponsiveContext.Consumer, null, function (size) {
-    return _react.default.createElement(_grommet.Box, {
+  }, React.createElement(ResponsiveContext.Consumer, null, function (size) {
+    return React.createElement(Box, {
       fill: true,
       background: "brand"
-    }, _react.default.createElement(_grommet.Heading, null, "Hi, I'm ".concat(size, ", resize me!")));
+    }, React.createElement(Heading, null, "Hi, I'm " + size + ", resize me!"));
   }));
 });

@@ -1,35 +1,17 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "base", {
-  enumerable: true,
-  get: function get() {
-    return _base.base;
-  }
-});
-Object.defineProperty(exports, "generate", {
-  enumerable: true,
-  get: function get() {
-    return _base.generate;
-  }
-});
-Object.defineProperty(exports, "grommet", {
-  enumerable: true,
-  get: function get() {
-    return _grommet.grommet;
-  }
-});
-Object.defineProperty(exports, "dark", {
-  enumerable: true,
-  get: function get() {
-    return _dark.dark;
-  }
-});
+exports.__esModule = true;
+exports.dark = exports.grommet = exports.generate = exports.base = void 0;
 
 var _base = require("./base");
 
+exports.base = _base.base;
+exports.generate = _base.generate;
+
 var _grommet = require("./grommet");
 
+exports.grommet = _grommet.grommet;
+
 var _dark = require("./dark");
+
+exports.dark = _dark.dark;

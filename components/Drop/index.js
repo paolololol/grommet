@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Drop", {
-  enumerable: true,
-  get: function get() {
-    return _Drop.Drop;
-  }
-});
+exports.__esModule = true;
+exports.Drop = void 0;
 
 var _Drop = require("./Drop");
+
+exports.Drop = _Drop.Drop;

@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.normalizeBounds = exports.normalizeValues = void 0;
 
 var normalizeValues = function normalizeValues(values) {

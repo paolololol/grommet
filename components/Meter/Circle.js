@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.Circle = void 0;
 
 var _react = _interopRequireDefault(require("react"));
@@ -23,8 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var Circle = function Circle(props) {
@@ -35,7 +31,7 @@ var Circle = function Circle(props) {
       theme = props.theme,
       thickness = props.thickness,
       values = props.values,
-      rest = _objectWithoutProperties(props, ["background", "max", "round", "size", "theme", "thickness", "values"]);
+      rest = _objectWithoutPropertiesLoose(props, ["background", "max", "round", "size", "theme", "thickness", "values"]);
 
   var width = size === 'full' ? 288 : (0, _utils.parseMetricToNum)(theme.global.size[size]);
   var height = (0, _utils.parseMetricToNum)(theme.global.edgeSize[thickness] || thickness);
@@ -57,9 +53,9 @@ var Circle = function Circle(props) {
         label = valueArg.label,
         onHover = valueArg.onHover,
         value = valueArg.value,
-        pathRest = _objectWithoutProperties(valueArg, ["color", "highlight", "label", "onHover", "value"]);
+        pathRest = _objectWithoutPropertiesLoose(valueArg, ["color", "highlight", "label", "onHover", "value"]);
 
-    var key = "p-".concat(index);
+    var key = "p-" + index;
     var colorName = color || (index === values.length - 1 ? 'accent-1' : (0, _utils2.defaultColor)(index, theme));
     var endAngle;
 
@@ -100,7 +96,7 @@ var Circle = function Circle(props) {
       var d2 = (0, _utils.arcCommands)(width / 2, width / 2, radius, endAngle - 0.5, endAngle);
 
       var pathCap = _react.default.createElement("path", _extends({
-        key: "".concat(key, "-"),
+        key: key + "-",
         d: d2,
         fill: "none"
       }, stroke, {
@@ -131,7 +127,7 @@ var Circle = function Circle(props) {
     startAngle = endAngle;
   });
   return _react.default.createElement(_StyledMeter.StyledMeter, _extends({
-    viewBox: "0 0 ".concat(width, " ").concat(width),
+    viewBox: "0 0 " + width + " " + width,
     width: size === 'full' ? '100%' : width,
     height: size === 'full' ? '100%' : width
   }, rest), _react.default.createElement("circle", _extends({

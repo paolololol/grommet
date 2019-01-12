@@ -1,41 +1,32 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _Attraction = require("grommet-icons/es6/icons/Attraction");
-
-var _Car = require("grommet-icons/es6/icons/Car");
-
-var _TreeOption = require("grommet-icons/es6/icons/TreeOption");
-
-var _grommet = require("grommet");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Attraction } from "grommet-icons/es6/icons/Attraction";
+import { Car } from "grommet-icons/es6/icons/Car";
+import { TreeOption } from "grommet-icons/es6/icons/TreeOption";
+import { Grommet, Box, Carousel } from 'grommet';
 
 var SimpleCarousel = function SimpleCarousel() {
-  return _react.default.createElement(_grommet.Grommet, null, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, null, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Carousel, null, _react.default.createElement(_grommet.Box, {
+  }, React.createElement(Carousel, null, React.createElement(Box, {
     pad: "xlarge",
     background: "accent-1"
-  }, _react.default.createElement(_Attraction.Attraction, {
+  }, React.createElement(Attraction, {
     size: "xlarge"
-  })), _react.default.createElement(_grommet.Box, {
+  })), React.createElement(Box, {
     pad: "xlarge",
     background: "accent-2"
-  }, _react.default.createElement(_TreeOption.TreeOption, {
+  }, React.createElement(TreeOption, {
     size: "xlarge"
-  })), _react.default.createElement(_grommet.Box, {
+  })), React.createElement(Box, {
     pad: "xlarge",
     background: "accent-3"
-  }, _react.default.createElement(_Car.Car, {
+  }, React.createElement(Car, {
     size: "xlarge"
   })))));
 };
 
-(0, _react2.storiesOf)('Carousel', module).add('Simple Carousel', function () {
-  return _react.default.createElement(SimpleCarousel, null);
+storiesOf('Carousel', module).add('Simple Carousel', function () {
+  return React.createElement(SimpleCarousel, null);
 });

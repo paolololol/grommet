@@ -1,84 +1,75 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _Add = require("grommet-icons/es6/icons/Add");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-(0, _react2.storiesOf)('Anchor', module).add('Default', function () {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Add } from "grommet-icons/es6/icons/Add";
+import { Anchor, Box, Grommet, Paragraph } from 'grommet';
+import { grommet } from 'grommet/themes';
+storiesOf('Anchor', module).add('Default', function () {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Anchor, {
+  }, React.createElement(Anchor, {
     href: "#"
   }, "Link")));
 }).add('Colors', function () {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     pad: "medium",
     gap: "medium"
-  }, _react.default.createElement(_grommet.Anchor, {
-    icon: _react.default.createElement(_Add.Add, null),
+  }, React.createElement(Anchor, {
+    icon: React.createElement(Add, null),
     href: "#"
-  }), _react.default.createElement(_grommet.Anchor, {
-    icon: _react.default.createElement(_Add.Add, null),
+  }), React.createElement(Anchor, {
+    icon: React.createElement(Add, null),
     label: "Add",
     href: "#"
-  }), _react.default.createElement(_grommet.Anchor, {
+  }), React.createElement(Anchor, {
     label: "Add",
     href: "#"
-  })), _react.default.createElement(_grommet.Box, {
+  })), React.createElement(Box, {
     background: "dark-1",
     pad: "medium",
     gap: "medium"
-  }, _react.default.createElement(_grommet.Anchor, {
-    icon: _react.default.createElement(_Add.Add, null),
+  }, React.createElement(Anchor, {
+    icon: React.createElement(Add, null),
     href: "#"
-  }), _react.default.createElement(_grommet.Anchor, {
-    icon: _react.default.createElement(_Add.Add, null),
+  }), React.createElement(Anchor, {
+    icon: React.createElement(Add, null),
     label: "Add",
     href: "#"
-  }), _react.default.createElement(_grommet.Anchor, {
-    icon: _react.default.createElement(_Add.Add, null),
+  }), React.createElement(Anchor, {
+    icon: React.createElement(Add, null),
     label: "Add",
     href: "#"
-  }), _react.default.createElement(_grommet.Anchor, {
+  }), React.createElement(Anchor, {
     label: "Add",
     href: "#"
   })));
 }).add('Size', function () {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
   }, ['xxlarge', 'xlarge', 'large', 'medium', 'small', 'xsmall'].map(function (size) {
-    return _react.default.createElement(_grommet.Box, {
+    return React.createElement(Box, {
       key: size,
       margin: "small"
-    }, _react.default.createElement(_grommet.Anchor, {
+    }, React.createElement(Anchor, {
       size: size,
       label: size,
       href: "#"
     }));
   })));
 }).add('Inline', function () {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Paragraph, null, "This is ", _react.default.createElement(_grommet.Anchor, {
+  }, React.createElement(Paragraph, null, "This is ", React.createElement(Anchor, {
     label: "an inline link",
     href: "#"
   }), " with surrounding text.")));

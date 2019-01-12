@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "TextInput", {
-  enumerable: true,
-  get: function get() {
-    return _TextInput.TextInput;
-  }
-});
+exports.__esModule = true;
+exports.TextInput = void 0;
 
 var _TextInput = require("./TextInput");
+
+exports.TextInput = _TextInput.TextInput;

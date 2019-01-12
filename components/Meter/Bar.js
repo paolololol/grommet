@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.Bar = void 0;
 
 var _react = _interopRequireDefault(require("react"));
@@ -23,8 +21,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 var Bar = function Bar(props) {
@@ -35,7 +31,7 @@ var Bar = function Bar(props) {
       theme = props.theme,
       thickness = props.thickness,
       values = props.values,
-      rest = _objectWithoutProperties(props, ["background", "max", "round", "size", "theme", "thickness", "values"]);
+      rest = _objectWithoutPropertiesLoose(props, ["background", "max", "round", "size", "theme", "thickness", "values"]);
 
   var width = size === 'full' ? 288 : (0, _utils.parseMetricToNum)(theme.global.size[size]);
   var height = (0, _utils.parseMetricToNum)(theme.global.edgeSize[thickness] || thickness); // account for the round cap, if any
@@ -54,11 +50,11 @@ var Bar = function Bar(props) {
         label = valueArg.label,
         onHover = valueArg.onHover,
         value = valueArg.value,
-        pathRest = _objectWithoutProperties(valueArg, ["color", "highlight", "label", "onHover", "value"]);
+        pathRest = _objectWithoutPropertiesLoose(valueArg, ["color", "highlight", "label", "onHover", "value"]);
 
-    var key = "p-".concat(index);
+    var key = "p-" + index;
     var delta = value * (width - 2 * capOffset) / max;
-    var d = "M ".concat(start, ",").concat(mid, " L ").concat(start + delta, ",").concat(mid);
+    var d = "M " + start + "," + mid + " L " + (start + delta) + "," + mid;
     var colorName = color || (index === values.length - 1 ? 'accent-1' : (0, _utils2.defaultColor)(index, theme));
     var hoverProps;
 
@@ -85,7 +81,7 @@ var Bar = function Bar(props) {
   }).reverse(); // reverse so the caps looks right
 
   return _react.default.createElement(_StyledMeter.StyledMeter, _extends({
-    viewBox: "0 0 ".concat(width, " ").concat(height),
+    viewBox: "0 0 " + width + " " + height,
     preserveAspectRatio: "none",
     width: size === 'full' ? '100%' : width,
     height: height,
@@ -93,7 +89,7 @@ var Bar = function Bar(props) {
       size: thickness
     } : undefined
   }, rest), _react.default.createElement("path", _extends({
-    d: "M ".concat(capOffset, ",").concat(mid, " L ").concat(width - capOffset, ",").concat(mid),
+    d: "M " + capOffset + "," + mid + " L " + (width - capOffset) + "," + mid,
     fill: "none"
   }, (0, _utils2.strokeProps)(background, theme), {
     strokeWidth: height,

@@ -1,27 +1,16 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-require("jest-styled-components");
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-var _reactTestingLibrary = require("react-testing-library");
-
-var _domTestingLibrary = require("dom-testing-library");
-
-var _portal = require("../../../utils/portal");
-
-var _ = require("../..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import 'jest-styled-components';
+import renderer from 'react-test-renderer';
+import { cleanup, fireEvent, render } from 'react-testing-library';
+import { getByText as getByTextDOM } from 'dom-testing-library';
+import { createPortal, expectPortal } from '../../../utils/portal';
+import { Grommet, Menu } from '../..';
 describe('Menu', function () {
-  beforeEach(_portal.createPortal);
-  afterEach(_reactTestingLibrary.cleanup);
+  beforeEach(createPortal);
+  afterEach(cleanup);
   test('basic', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
-      icon: _react.default.createElement("svg", null),
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Menu, {
+      icon: React.createElement("svg", null),
       label: "Test Menu",
       id: "test-menu",
       items: [{
@@ -30,11 +19,10 @@ describe('Menu', function () {
         label: 'Item 2'
       }]
     })));
-
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('custom message', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Menu, {
       label: "Test Menu",
       messages: {
         openMenu: 'Abrir Menu'
@@ -45,13 +33,12 @@ describe('Menu', function () {
         label: 'Item 2'
       }]
     })));
-
     expect(component.toJSON()).toMatchSnapshot();
   });
   test('open and close on click', function () {
     window.scrollTo = jest.fn();
 
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -69,19 +56,15 @@ describe('Menu', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     expect(document.getElementById('test-menu__drop')).toBeNull();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Test'));
-
+    fireEvent.click(getByText('Test'));
     expect(container.firstChild).toMatchSnapshot();
-    (0, _portal.expectPortal)('test-menu__drop').toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Test'));
-
+    expectPortal('test-menu__drop').toMatchSnapshot();
+    fireEvent.click(getByText('Test'));
     expect(document.getElementById('test-menu__drop')).toBeNull();
     expect(window.scrollTo).toBeCalled();
   });
   test('close by clicking outside', function (done) {
-    var _render2 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render2 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -95,11 +78,9 @@ describe('Menu', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     expect(document.getElementById('test-menu__drop')).toBeNull();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Test'));
-
-    (0, _portal.expectPortal)('test-menu__drop').toMatchSnapshot();
-    (0, _reactTestingLibrary.fireEvent)(document, new MouseEvent('mousedown', {
+    fireEvent.click(getByText('Test'));
+    expectPortal('test-menu__drop').toMatchSnapshot();
+    fireEvent(document, new MouseEvent('mousedown', {
       bubbles: true,
       cancelable: true
     }));
@@ -111,7 +92,7 @@ describe('Menu', function () {
   test('select an item', function () {
     var onClick = jest.fn();
 
-    var _render3 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render3 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -125,19 +106,16 @@ describe('Menu', function () {
         container = _render3.container;
 
     expect(container.firstChild).toMatchSnapshot();
+    fireEvent.click(getByText('Test')); // click in the first menu item
 
-    _reactTestingLibrary.fireEvent.click(getByText('Test')); // click in the first menu item
-
-
-    _reactTestingLibrary.fireEvent.click((0, _domTestingLibrary.getByText)(document, 'Item 1'));
-
+    fireEvent.click(getByTextDOM(document, 'Item 1'));
     expect(onClick).toBeCalled();
     expect(document.getElementById('test-menu__drop')).toBeNull();
   });
   test('navigate through suggestions and select', function () {
     var onClick = jest.fn();
 
-    var _render4 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render4 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -154,43 +132,38 @@ describe('Menu', function () {
     // second moves to the first suggestion
     // third moves to the last suggestion
 
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     });
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     });
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     }); // moves to the first suggestion
 
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Up',
       keyCode: 38,
       which: 38
     }); // select that by pressing enter
 
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Enter',
       keyCode: 13,
       which: 13
     });
-
     expect(onClick).toBeCalled();
     expect(document.getElementById('test-menu__drop')).toBeNull();
   });
   test('close on esc', function () {
-    var _render5 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render5 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -203,23 +176,20 @@ describe('Menu', function () {
         container = _render5.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     });
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Esc',
       keyCode: 27,
       which: 27
     });
-
     expect(document.getElementById('test-menu__drop')).toBeNull();
   });
   test('close on tab', function () {
-    var _render6 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render6 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       label: "Test",
       items: [{
@@ -232,23 +202,20 @@ describe('Menu', function () {
         container = _render6.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     });
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Tab',
       keyCode: 9,
       which: 9
     });
-
     expect(document.getElementById('test-menu__drop')).toBeNull();
   });
   test('with dropAlign renders', function () {
-    var _render7 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render7 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       dropAlign: {
         top: 'top',
@@ -265,17 +232,15 @@ describe('Menu', function () {
         container = _render7.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.keyDown(getByText('Test'), {
+    fireEvent.keyDown(getByText('Test'), {
       key: 'Down',
       keyCode: 40,
       which: 40
     });
-
-    (0, _portal.expectPortal)('test-menu__drop').toMatchSnapshot();
+    expectPortal('test-menu__drop').toMatchSnapshot();
   });
   test('disabled', function () {
-    var _render8 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Menu, {
+    var _render8 = render(React.createElement(Grommet, null, React.createElement(Menu, {
       id: "test-menu",
       disabled: true,
       label: "Test",
@@ -296,9 +261,7 @@ describe('Menu', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     expect(document.getElementById('test-menu__drop')).toBeNull();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Test'));
-
+    fireEvent.click(getByText('Test'));
     expect(document.getElementById('test-menu__drop')).toBeNull();
   });
 });

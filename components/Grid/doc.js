@@ -1,17 +1,13 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.themeDoc = exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
 var _utils = require("../../utils");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var fixedSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 var sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'full', '1/2', '1/3', '2/3', '1/4', '2/4', '3/4', 'flex', 'auto'];
@@ -19,7 +15,7 @@ var edgeSizes = ['small', 'medium', 'large', 'none'];
 
 var doc = function doc(Grid) {
   var DocumentedGrid = (0, _reactDesc.describe)(Grid).availableAt((0, _utils.getAvailableAtBadge)('Grid')).description("A grid system for laying out content. To use, define the\nrows and columns, create area names for adjacent cells, and then\nplace Box components inside those areas using the gridArea property.\nSee https://css-tricks.com/snippets/css/complete-guide-grid/.\nThe availability of Grid can be tested via `Grid.available`. Use this\nto create fallback rendering for older browsers, like ie11.").usage("import { Grid } from 'grommet';\n<Grid />").intrinsicElement('div');
-  DocumentedGrid.propTypes = _objectSpread({}, _utils.genericProps, {
+  DocumentedGrid.propTypes = _extends({}, _utils.genericProps, {
     align: _reactDesc.PropTypes.oneOf(['start', 'center', 'end', 'stretch']).description("How to align the individual items inside the grid when there is extra\nspace in the column axis.").defaultValue('stretch'),
     alignContent: _reactDesc.PropTypes.oneOf(['start', 'center', 'end', 'between', 'around', 'stretch']).description('How to align the contents along the column axis.'),
     areas: _reactDesc.PropTypes.arrayOf(_reactDesc.PropTypes.shape({

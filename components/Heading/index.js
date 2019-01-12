@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Heading", {
-  enumerable: true,
-  get: function get() {
-    return _Heading.Heading;
-  }
-});
+exports.__esModule = true;
+exports.Heading = void 0;
 
 var _Heading = require("./Heading");
+
+exports.Heading = _Heading.Heading;

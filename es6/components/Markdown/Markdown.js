@@ -1,141 +1,93 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.Markdown = void 0;
-
-var _react = _interopRequireWildcard(require("react"));
-
-var _markdownToJsx = _interopRequireDefault(require("markdown-to-jsx"));
-
-var _utils = require("../../utils");
-
-var _Heading = require("../Heading");
-
-var _Paragraph = require("../Paragraph");
-
-var _Anchor = require("../Anchor");
-
-var _Image = require("../Image");
-
-var _Table = require("../Table");
-
-var _TableBody = require("../TableBody");
-
-var _TableCell = require("../TableCell");
-
-var _TableFooter = require("../TableFooter");
-
-var _TableHeader = require("../TableHeader");
-
-var _TableRow = require("../TableRow");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+import React, { Component } from 'react';
+import Markdown from 'markdown-to-jsx';
+import { deepMerge } from '../../utils';
+import { Heading } from '../Heading';
+import { Paragraph } from '../Paragraph';
+import { Anchor } from '../Anchor';
+import { Image } from '../Image';
+import { Table } from '../Table';
+import { TableBody } from '../TableBody';
+import { TableCell } from '../TableCell';
+import { TableFooter } from '../TableFooter';
+import { TableHeader } from '../TableHeader';
+import { TableRow } from '../TableRow';
 
 var GrommetMarkdown =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(GrommetMarkdown, _Component);
+  _inheritsLoose(GrommetMarkdown, _Component);
 
   function GrommetMarkdown() {
-    _classCallCheck(this, GrommetMarkdown);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(GrommetMarkdown).apply(this, arguments));
+    return _Component.apply(this, arguments) || this;
   }
 
-  _createClass(GrommetMarkdown, [{
-    key: "render",
-    value: function render() {
-      var _this$props = this.props,
-          components = _this$props.components,
-          options = _this$props.options,
-          theme = _this$props.theme,
-          rest = _objectWithoutProperties(_this$props, ["components", "options", "theme"]);
+  var _proto = GrommetMarkdown.prototype;
 
-      var heading = [1, 2, 3, 4].reduce(function (obj, level) {
-        var result = _objectSpread({}, obj);
+  _proto.render = function render() {
+    var _this$props = this.props,
+        components = _this$props.components,
+        options = _this$props.options,
+        theme = _this$props.theme,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["components", "options", "theme"]);
 
-        result["h".concat(level)] = {
-          component: _Heading.Heading,
-          props: {
-            level: level
-          }
-        };
-        return result;
-      }, {});
-      var overrides = (0, _utils.deepMerge)({
-        a: {
-          component: _Anchor.Anchor
-        },
-        img: {
-          component: _Image.Image
-        },
-        p: {
-          component: _Paragraph.Paragraph
-        },
-        table: {
-          component: _Table.Table
-        },
-        td: {
-          component: _TableCell.TableCell
-        },
-        tbody: {
-          component: _TableBody.TableBody
-        },
-        tfoot: {
-          component: _TableFooter.TableFooter
-        },
-        th: {
-          component: _TableCell.TableCell
-        },
-        thead: {
-          component: _TableHeader.TableHeader
-        },
-        tr: {
-          component: _TableRow.TableRow
+    var heading = [1, 2, 3, 4].reduce(function (obj, level) {
+      var result = _extends({}, obj);
+
+      result["h" + level] = {
+        component: Heading,
+        props: {
+          level: level
         }
-      }, heading, components, options && options.overrides);
-      return _react.default.createElement(_markdownToJsx.default, _extends({
-        options: _objectSpread({}, options, {
-          overrides: overrides
-        })
-      }, rest));
-    }
-  }]);
+      };
+      return result;
+    }, {});
+    var overrides = deepMerge({
+      a: {
+        component: Anchor
+      },
+      img: {
+        component: Image
+      },
+      p: {
+        component: Paragraph
+      },
+      table: {
+        component: Table
+      },
+      td: {
+        component: TableCell
+      },
+      tbody: {
+        component: TableBody
+      },
+      tfoot: {
+        component: TableFooter
+      },
+      th: {
+        component: TableCell
+      },
+      thead: {
+        component: TableHeader
+      },
+      tr: {
+        component: TableRow
+      }
+    }, heading, components, options && options.overrides);
+    return React.createElement(Markdown, _extends({
+      options: _extends({}, options, {
+        overrides: overrides
+      })
+    }, rest));
+  };
 
   return GrommetMarkdown;
-}(_react.Component);
+}(Component);
 
 var GrommetMarkdownDoc;
 
@@ -144,4 +96,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var GrommetMarkdownWrapper = GrommetMarkdownDoc || GrommetMarkdown;
-exports.Markdown = GrommetMarkdownWrapper;
+export { GrommetMarkdownWrapper as Markdown };

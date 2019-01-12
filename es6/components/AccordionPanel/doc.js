@@ -1,23 +1,13 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.doc = doc;
-exports.themeDoc = void 0;
-
-var _reactDesc = require("react-desc");
-
-function doc(Panel) {
-  var DocumentedAccordionPanel = (0, _reactDesc.describe)(Panel).description('An Accordion panel.').intrinsicElement('div');
+import { describe, PropTypes } from 'react-desc';
+export function doc(Panel) {
+  var DocumentedAccordionPanel = describe(Panel).description('An Accordion panel.').intrinsicElement('div');
   DocumentedAccordionPanel.propTypes = {
-    label: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.node]).description('The panel label.'),
-    header: _reactDesc.PropTypes.node.description('If specified, the entire panel header will be managed by the caller.')
+    label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).description('The panel label.'),
+    header: PropTypes.node.description('If specified, the entire panel header will be managed by the caller.')
   };
   return DocumentedAccordionPanel;
 }
-
-var themeDoc = {
+export var themeDoc = {
   'accordion.icons.collapse': {
     description: 'The icon to use when the panel is expanded.',
     type: 'React.element',
@@ -29,4 +19,3 @@ var themeDoc = {
     defaultValue: '<FormDown />'
   }
 };
-exports.themeDoc = themeDoc;

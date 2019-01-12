@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.extendDefaultTheme = exports.defaultProps = void 0;
 
 var _utils = require("./utils");

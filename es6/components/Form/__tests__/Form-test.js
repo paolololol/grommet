@@ -1,36 +1,22 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-var _reactTestingLibrary = require("react-testing-library");
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-var _FormField = require("../../FormField");
-
-var _Button = require("../../Button");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import { cleanup, render, fireEvent } from 'react-testing-library';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Form } from '..';
+import { FormField } from '../../FormField';
+import { Button } from '../../Button';
 describe('Form', function () {
-  afterEach(_reactTestingLibrary.cleanup);
+  afterEach(cleanup);
   test('empty', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Form, null)));
-
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Form, null)));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('with field', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Form, null, _react.default.createElement(_FormField.FormField, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Form, null, React.createElement(FormField, {
       name: "test"
     }))));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -38,14 +24,14 @@ describe('Form', function () {
     var validate = jest.fn().mockReturnValueOnce('too short').mockReturnValueOnce(undefined);
     var onSubmit = jest.fn();
 
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Form, {
+    var _render = render(React.createElement(Grommet, null, React.createElement(Form, {
       onSubmit: onSubmit
-    }, _react.default.createElement(_FormField.FormField, {
+    }, React.createElement(FormField, {
       name: "test",
       required: true,
       validate: validate,
       placeholder: "test input"
-    }), _react.default.createElement(_Button.Button, {
+    }), React.createElement(Button, {
       type: "submit",
       primary: true,
       label: "Submit"
@@ -55,27 +41,20 @@ describe('Form', function () {
         container = _render.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.click(getByText('Submit'));
-
-    _reactTestingLibrary.fireEvent.change(getByPlaceholderText('test input'), {
+    fireEvent.click(getByText('Submit'));
+    fireEvent.change(getByPlaceholderText('test input'), {
       target: {
         value: 'v'
       }
     });
-
     expect(validate).toBeCalledWith('v');
-
-    _reactTestingLibrary.fireEvent.change(getByPlaceholderText('test input'), {
+    fireEvent.change(getByPlaceholderText('test input'), {
       target: {
         value: 'value'
       }
     });
-
     expect(validate).toBeCalledWith('value');
-
-    _reactTestingLibrary.fireEvent.click(getByText('Submit'));
-
+    fireEvent.click(getByText('Submit'));
     expect(onSubmit).toBeCalledWith(expect.objectContaining({
       value: {
         test: 'value'

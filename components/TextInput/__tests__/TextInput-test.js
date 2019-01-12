@@ -250,7 +250,7 @@ describe('TextInput', function () {
     expect(container.firstChild).toMatchSnapshot();
   });
   ['small', 'medium', 'large'].forEach(function (dropHeight) {
-    test("".concat(dropHeight, " drop height"), function (done) {
+    test(dropHeight + " drop height", function (done) {
       var _render8 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.TextInput, {
         "data-testid": "test-input",
         id: "item",

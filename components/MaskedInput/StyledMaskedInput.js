@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledMaskedInputContainer = exports.StyledMaskedInput = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));

@@ -1,9 +1,6 @@
-"use strict";
-
-var _ = require("..");
-
+import { deepFreeze, deepMerge } from '..';
 test('Object freezes', function () {
-  var obj = (0, _.deepFreeze)({
+  var obj = deepFreeze({
     a: 'b'
   });
 
@@ -15,7 +12,7 @@ test('Object freezes', function () {
   }
 });
 test('Object merges deep', function () {
-  var obj = (0, _.deepMerge)({
+  var obj = deepMerge({
     name: 'Someone',
     address: {
       city: 'Palo Alto'
@@ -33,12 +30,12 @@ test('Object merges deep', function () {
   expect(obj).toMatchSnapshot();
 });
 test('Object merges deep with freezed object', function () {
-  var obj = (0, _.deepMerge)((0, _.deepFreeze)({
+  var obj = deepMerge(deepFreeze({
     name: 'Someone',
     address: {
       city: 'Palo Alto'
     }
-  }), (0, _.deepFreeze)({
+  }), deepFreeze({
     name: 'someone else',
     age: '15',
     address: {

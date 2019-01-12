@@ -1,21 +1,12 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Form", {
-  enumerable: true,
-  get: function get() {
-    return _Form.Form;
-  }
-});
-Object.defineProperty(exports, "FormContext", {
-  enumerable: true,
-  get: function get() {
-    return _FormContext.FormContext;
-  }
-});
+exports.__esModule = true;
+exports.FormContext = exports.Form = void 0;
 
 var _Form = require("./Form");
 
+exports.Form = _Form.Form;
+
 var _FormContext = require("./FormContext");
+
+exports.FormContext = _FormContext.FormContext;

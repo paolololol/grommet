@@ -1,23 +1,13 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.themeDoc = exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var doc = function doc(Collapsible) {
-  var DocumentedCollapsible = (0, _reactDesc.describe)(Collapsible).description('Expand or collapse animation.').usage("import { Collapsible } from 'grommet';\n<Collapsible open={true}>test</Collapsible>").intrinsicElement('div');
+import { describe, PropTypes } from 'react-desc';
+export var doc = function doc(Collapsible) {
+  var DocumentedCollapsible = describe(Collapsible).description('Expand or collapse animation.').usage("import { Collapsible } from 'grommet';\n<Collapsible open={true}>test</Collapsible>").intrinsicElement('div');
   DocumentedCollapsible.propTypes = {
-    open: _reactDesc.PropTypes.bool.description('Whether or not the component should be open.'),
-    direction: _reactDesc.PropTypes.oneOf(['horizontal', 'vertical']).description('Direction to animate the collapsible content.').defaultValue('vertical')
+    open: PropTypes.bool.description('Whether or not the component should be open.'),
+    direction: PropTypes.oneOf(['horizontal', 'vertical']).description('Direction to animate the collapsible content.').defaultValue('vertical')
   };
   return DocumentedCollapsible;
 };
-
-exports.doc = doc;
-var themeDoc = {
+export var themeDoc = {
   'collapsible.minSpeed': {
     description: 'The minimum speed of Collapsible animation in milliseconds.',
     type: 'number',
@@ -34,4 +24,3 @@ var themeDoc = {
     defaultValue: undefined
   }
 };
-exports.themeDoc = themeDoc;

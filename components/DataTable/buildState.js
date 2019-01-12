@@ -1,21 +1,9 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.buildState = void 0;
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var sumReducer = function sumReducer(accumulated, next) {
   return accumulated + next;
@@ -67,7 +55,7 @@ var findPrimary = function findPrimary(nextProps, prevState, nextState) {
     primaryProperty = primaryKey || columns[0].property;
   }
 
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     primaryProperty: primaryProperty
   });
 };
@@ -103,7 +91,7 @@ var filter = function filter(nextProps, prevState, nextState) {
     });
   }
 
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     filters: nextFilters,
     data: nextData
   });
@@ -118,7 +106,7 @@ var aggregate = function aggregate(nextProps, prevState, nextState) {
       aggregateValues[column.property] = aggregateColumn(column, data);
     }
   });
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     aggregateValues: aggregateValues
   });
 };
@@ -139,7 +127,7 @@ var buildFooterValues = function buildFooterValues(nextProps, prevState, nextSta
       }
     }
   });
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     footerValues: footerValues,
     showFooter: showFooter
   });
@@ -153,7 +141,7 @@ var sortData = function sortData(nextProps, prevState, nextState) {
   if (sort) {
     var property = sort.property,
         ascending = sort.ascending;
-    nextData = _toConsumableArray(data);
+    nextData = [].concat(data);
     var before = ascending ? 1 : -1;
     var after = ascending ? -1 : 1;
     nextData.sort(function (d1, d2) {
@@ -163,7 +151,7 @@ var sortData = function sortData(nextProps, prevState, nextState) {
     });
   }
 
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     data: nextData
   });
 };
@@ -208,7 +196,7 @@ var groupData = function groupData(nextProps, prevState, nextState) {
     });
   }
 
-  return _objectSpread({}, nextState, {
+  return _extends({}, nextState, {
     groups: groups,
     groupState: groupState
   });

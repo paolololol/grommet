@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.genericStyles = exports.evalStyle = exports.placeholderStyle = exports.overflowStyle = exports.inputStyle = exports.focusStyle = exports.edgeStyle = exports.controlBorderStyle = exports.baseStyle = void 0;
 
 var _styledComponents = require("styled-components");
@@ -36,33 +34,33 @@ var edgeStyle = function edgeStyle(kind, data, responsive, responsiveBreakpoint,
   var breakpoint = responsiveBreakpoint && theme.global.breakpoints[responsiveBreakpoint];
 
   if (typeof data === 'string') {
-    return (0, _styledComponents.css)(["", ":", ";", ";"], kind, theme.global.edgeSize[data] || data, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, ": ").concat(breakpoint.edgeSize[data] || data, ";\n      ")) : '');
+    return (0, _styledComponents.css)(["", ":", ";", ";"], kind, theme.global.edgeSize[data] || data, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + ": " + (breakpoint.edgeSize[data] || data) + ";\n      ") : '');
   }
 
   var result = [];
 
   if (data.horizontal) {
-    result.push((0, _styledComponents.css)(["", "-left:", ";", "-right:", ";", ";"], kind, theme.global.edgeSize[data.horizontal] || data.horizontal, kind, theme.global.edgeSize[data.horizontal] || data.horizontal, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-left: ").concat(breakpoint.edgeSize[data.horizontal] || data.horizontal, ";\n        ").concat(kind, "-right: ").concat(breakpoint.edgeSize[data.horizontal] || data.horizontal, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-left:", ";", "-right:", ";", ";"], kind, theme.global.edgeSize[data.horizontal] || data.horizontal, kind, theme.global.edgeSize[data.horizontal] || data.horizontal, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-left: " + (breakpoint.edgeSize[data.horizontal] || data.horizontal) + ";\n        " + kind + "-right: " + (breakpoint.edgeSize[data.horizontal] || data.horizontal) + ";\n      ") : ''));
   }
 
   if (data.vertical) {
-    result.push((0, _styledComponents.css)(["", "-top:", ";", "-bottom:", ";", ";"], kind, theme.global.edgeSize[data.vertical] || data.vertical, kind, theme.global.edgeSize[data.vertical] || data.vertical, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-top: ").concat(breakpoint.edgeSize[data.vertical] || data.vertical, ";\n        ").concat(kind, "-bottom: ").concat(breakpoint.edgeSize[data.vertical] || data.vertical, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-top:", ";", "-bottom:", ";", ";"], kind, theme.global.edgeSize[data.vertical] || data.vertical, kind, theme.global.edgeSize[data.vertical] || data.vertical, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-top: " + (breakpoint.edgeSize[data.vertical] || data.vertical) + ";\n        " + kind + "-bottom: " + (breakpoint.edgeSize[data.vertical] || data.vertical) + ";\n      ") : ''));
   }
 
   if (data.top) {
-    result.push((0, _styledComponents.css)(["", "-top:", ";", ";"], kind, theme.global.edgeSize[data.top] || data.top, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-top: ").concat(breakpoint.edgeSize[data.top] || data.top, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-top:", ";", ";"], kind, theme.global.edgeSize[data.top] || data.top, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-top: " + (breakpoint.edgeSize[data.top] || data.top) + ";\n      ") : ''));
   }
 
   if (data.bottom) {
-    result.push((0, _styledComponents.css)(["", "-bottom:", ";", ";"], kind, theme.global.edgeSize[data.bottom] || data.bottom, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-bottom: ").concat(breakpoint.edgeSize[data.bottom] || data.bottom, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-bottom:", ";", ";"], kind, theme.global.edgeSize[data.bottom] || data.bottom, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-bottom: " + (breakpoint.edgeSize[data.bottom] || data.bottom) + ";\n      ") : ''));
   }
 
   if (data.left) {
-    result.push((0, _styledComponents.css)(["", "-left:", ";", ";"], kind, theme.global.edgeSize[data.left] || data.left, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-left: ").concat(breakpoint.edgeSize[data.left] || data.left, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-left:", ";", ";"], kind, theme.global.edgeSize[data.left] || data.left, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-left: " + (breakpoint.edgeSize[data.left] || data.left) + ";\n      ") : ''));
   }
 
   if (data.right) {
-    result.push((0, _styledComponents.css)(["", "-right:", ";", ";"], kind, theme.global.edgeSize[data.right] || data.right, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        ".concat(kind, "-right: ").concat(breakpoint.edgeSize[data.right] || data.right, ";\n      ")) : ''));
+    result.push((0, _styledComponents.css)(["", "-right:", ";", ";"], kind, theme.global.edgeSize[data.right] || data.right, responsive && breakpoint ? (0, _mixins.breakpointStyle)(breakpoint, "\n        " + kind + "-right: " + (breakpoint.edgeSize[data.right] || data.right) + ";\n      ") : ''));
   }
 
   return result;
@@ -92,7 +90,7 @@ var overflowStyle = function overflowStyle(overflowProp) {
     return (0, _styledComponents.css)(["overflow:", ";"], overflowProp);
   }
 
-  return (0, _styledComponents.css)(["", " ", ";"], overflowProp.horizontal && "overflow-x: ".concat(overflowProp.horizontal, ";"), overflowProp.vertical && "overflow-y: ".concat(overflowProp.vertical, ";"));
+  return (0, _styledComponents.css)(["", " ", ";"], overflowProp.horizontal && "overflow-x: " + overflowProp.horizontal + ";", overflowProp.vertical && "overflow-y: " + overflowProp.vertical + ";");
 };
 
 exports.overflowStyle = overflowStyle;
@@ -121,9 +119,9 @@ var ALIGN_SELF_MAP = {
   stretch: 'stretch'
 };
 var genericStyles = (0, _styledComponents.css)(["", " ", " ", ""], function (props) {
-  return props.alignSelf && "align-self: ".concat(ALIGN_SELF_MAP[props.alignSelf], ";");
+  return props.alignSelf && "align-self: " + ALIGN_SELF_MAP[props.alignSelf] + ";";
 }, function (props) {
-  return props.gridArea && "grid-area: ".concat(props.gridArea, ";");
+  return props.gridArea && "grid-area: " + props.gridArea + ";";
 }, function (props) {
   return props.margin && edgeStyle('margin', props.margin, props.responsive, props.theme.global.edgeSize.responsiveBreakpoint, props.theme);
 });

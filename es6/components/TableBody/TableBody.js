@@ -1,22 +1,11 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TableBody = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _TableContext = require("../Table/TableContext");
-
-var _StyledTable = require("../Table/StyledTable");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { TableContext } from '../Table/TableContext';
+import { StyledTableBody } from '../Table/StyledTable';
 
 var TableBody = function TableBody(props) {
-  return _react.default.createElement(_TableContext.TableContext.Provider, {
+  return React.createElement(TableContext.Provider, {
     value: "body"
-  }, _react.default.createElement(_StyledTable.StyledTableBody, props));
+  }, React.createElement(StyledTableBody, props));
 };
 
 var TableBodyDoc;
@@ -26,4 +15,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var TableBodyWrapper = TableBodyDoc || TableBody;
-exports.TableBody = TableBodyWrapper;
+export { TableBodyWrapper as TableBody };

@@ -1,13 +1,6 @@
-"use strict";
+var _this = this;
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.debounceDelay = exports.debounce = void 0;
-
-var _this = void 0;
-
-var debounce = function debounce(cb, timer) {
+export var debounce = function debounce(cb, timer) {
   var timeout;
   return function () {
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -21,12 +14,7 @@ var debounce = function debounce(cb, timer) {
     }, timer);
   };
 };
-
-exports.debounce = debounce;
-
-var debounceDelay = function debounceDelay(_ref) {
+export var debounceDelay = function debounceDelay(_ref) {
   var theme = _ref.theme;
   return theme.global.debounceDelay;
 };
-
-exports.debounceDelay = debounceDelay;

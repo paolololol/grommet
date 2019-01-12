@@ -1,16 +1,8 @@
-"use strict";
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Box, Grommet, Table, TableBody, TableCell, TableFooter, TableHeader, TableRow, Text } from 'grommet';
+import { grommet } from 'grommet/themes'; // Always should store amount in cents to avoid precision errors
 
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// Always should store amount in cents to avoid precision errors
 var DATA = [{
   id: 1,
   name: 'Eric',
@@ -41,7 +33,7 @@ var COLUMNS = [{
   label: 'Name',
   dataScope: 'row',
   format: function format(datum) {
-    return _react.default.createElement(_grommet.Text, {
+    return React.createElement(Text, {
       weight: "bold"
     }, datum.name);
   }
@@ -59,34 +51,34 @@ var COLUMNS = [{
 }];
 
 var DefaultTable = function DefaultTable() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Table, {
+  }, React.createElement(Table, {
     caption: "Default Table"
-  }, _react.default.createElement(_grommet.TableHeader, null, _react.default.createElement(_grommet.TableRow, null, COLUMNS.map(function (c) {
-    return _react.default.createElement(_grommet.TableCell, {
+  }, React.createElement(TableHeader, null, React.createElement(TableRow, null, COLUMNS.map(function (c) {
+    return React.createElement(TableCell, {
       key: c.property,
       scope: "col",
       align: c.align
-    }, _react.default.createElement(_grommet.Text, null, c.label));
-  }))), _react.default.createElement(_grommet.TableBody, null, DATA.map(function (datum) {
-    return _react.default.createElement(_grommet.TableRow, {
+    }, React.createElement(Text, null, c.label));
+  }))), React.createElement(TableBody, null, DATA.map(function (datum) {
+    return React.createElement(TableRow, {
       key: datum.id
     }, COLUMNS.map(function (c) {
-      return _react.default.createElement(_grommet.TableCell, {
+      return React.createElement(TableCell, {
         key: c.property,
         scope: c.dataScope,
         align: c.align
-      }, _react.default.createElement(_grommet.Text, null, c.format ? c.format(datum) : datum[c.property]));
+      }, React.createElement(Text, null, c.format ? c.format(datum) : datum[c.property]));
     }));
-  })), _react.default.createElement(_grommet.TableFooter, null, _react.default.createElement(_grommet.TableRow, null, COLUMNS.map(function (c) {
-    return _react.default.createElement(_grommet.TableCell, {
+  })), React.createElement(TableFooter, null, React.createElement(TableRow, null, COLUMNS.map(function (c) {
+    return React.createElement(TableCell, {
       key: c.property,
       align: c.align
-    }, _react.default.createElement(_grommet.Text, null, c.footer));
+    }, React.createElement(Text, null, c.footer));
   }))))));
 };
 
@@ -109,39 +101,39 @@ var customTheme = {
 };
 
 var CustomThemeTable = function CustomThemeTable() {
-  return _react.default.createElement(_grommet.Grommet, {
+  return React.createElement(Grommet, {
     theme: customTheme
-  }, _react.default.createElement(_grommet.Box, {
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Table, {
+  }, React.createElement(Table, {
     caption: "Custom Theme Table"
-  }, _react.default.createElement(_grommet.TableHeader, null, _react.default.createElement(_grommet.TableRow, null, COLUMNS.map(function (c) {
-    return _react.default.createElement(_grommet.TableCell, {
+  }, React.createElement(TableHeader, null, React.createElement(TableRow, null, COLUMNS.map(function (c) {
+    return React.createElement(TableCell, {
       key: c.property,
       scope: "col",
       align: c.align
-    }, _react.default.createElement(_grommet.Text, null, c.label));
-  }))), _react.default.createElement(_grommet.TableBody, null, DATA.map(function (datum) {
-    return _react.default.createElement(_grommet.TableRow, {
+    }, React.createElement(Text, null, c.label));
+  }))), React.createElement(TableBody, null, DATA.map(function (datum) {
+    return React.createElement(TableRow, {
       key: datum.id
     }, COLUMNS.map(function (c) {
-      return _react.default.createElement(_grommet.TableCell, {
+      return React.createElement(TableCell, {
         key: c.property,
         scope: c.dataScope,
         align: c.align
-      }, _react.default.createElement(_grommet.Text, null, c.format ? c.format(datum) : datum[c.property]));
+      }, React.createElement(Text, null, c.format ? c.format(datum) : datum[c.property]));
     }));
-  })), _react.default.createElement(_grommet.TableFooter, null, _react.default.createElement(_grommet.TableRow, null, COLUMNS.map(function (c) {
-    return _react.default.createElement(_grommet.TableCell, {
+  })), React.createElement(TableFooter, null, React.createElement(TableRow, null, COLUMNS.map(function (c) {
+    return React.createElement(TableCell, {
       key: c.property,
       align: c.align
-    }, _react.default.createElement(_grommet.Text, null, c.footer));
+    }, React.createElement(Text, null, c.footer));
   }))))));
 };
 
-(0, _react2.storiesOf)('Table', module).add('Default', function () {
-  return _react.default.createElement(DefaultTable, null);
+storiesOf('Table', module).add('Default', function () {
+  return React.createElement(DefaultTable, null);
 }).add('Custom Theme', function () {
-  return _react.default.createElement(CustomThemeTable, null);
+  return React.createElement(CustomThemeTable, null);
 });

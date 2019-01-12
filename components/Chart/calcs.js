@@ -1,14 +1,15 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.calcs = void 0;
 
 var _utils = require("./utils");
 
-var calcs = function calcs(values) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+var calcs = function calcs(values, options) {
+  if (options === void 0) {
+    options = {};
+  }
+
   var coarseness = options.coarseness || 5;
   var steps = options.steps || [1, 1];
   var calcValues = (0, _utils.normalizeValues)(values); // Calculate the max and min y values.

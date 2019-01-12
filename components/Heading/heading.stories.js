@@ -20,7 +20,7 @@ var H = function H(_ref) {
   return _react.default.createElement(_grommet.Heading, {
     level: level,
     size: size
-  }, "Heading ".concat(level, " ").concat(size));
+  }, "Heading " + level + " " + size);
 };
 
 H.propTypes = {

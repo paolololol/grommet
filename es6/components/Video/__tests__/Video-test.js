@@ -1,68 +1,54 @@
-"use strict";
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components'; // import { mount } from 'enzyme';
 
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _ = require("../..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// import { mount } from 'enzyme';
-var CONTENTS = [_react.default.createElement("source", {
+import { Grommet, Video } from '../..';
+var CONTENTS = [React.createElement("source", {
   key: "source"
-}), _react.default.createElement("track", {
+}), React.createElement("track", {
   key: "track"
 })];
 test('Video renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, null, CONTENTS)));
-
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, null, CONTENTS)));
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Video autoPlay renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, {
     autoPlay: true
   }, CONTENTS)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Video loop renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, {
     loop: true
   }, CONTENTS)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Video mute renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, {
     mute: true
   }, CONTENTS)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Video controls renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, {
     controls: "over"
-  }, CONTENTS), _react.default.createElement(_.Video, {
+  }, CONTENTS), React.createElement(Video, {
     controls: "below"
   }, CONTENTS)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Video fit renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Video, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Video, {
     fit: "cover"
-  }, CONTENTS), _react.default.createElement(_.Video, {
+  }, CONTENTS), React.createElement(Video, {
     fit: "contain"
   }, CONTENTS)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 }); // test('Video plays', () => {

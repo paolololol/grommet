@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.getAvailableAtBadge = exports.findAllByType = exports.breakpointStyle = exports.fontSize = exports.parseMetricToNum = void 0;
 
 var _styledComponents = require("styled-components");
@@ -15,16 +13,16 @@ exports.parseMetricToNum = parseMetricToNum;
 
 var fontSize = function fontSize(size, lineHeight) {
   return (0, _styledComponents.css)(["font-size:", ";line-height:", ";"], function (props) {
-    return "".concat(parseMetricToNum(size) / parseMetricToNum(props.theme.global.font.size) * 1, "rem");
+    return parseMetricToNum(size) / parseMetricToNum(props.theme.global.font.size) * 1 + "rem";
   }, function (props) {
-    return lineHeight || "".concat(Math.ceil(parseMetricToNum(size) / parseMetricToNum(props.theme.global.lineHeight)) * (parseMetricToNum(props.theme.global.lineHeight) / parseMetricToNum(size)), "px");
+    return lineHeight || Math.ceil(parseMetricToNum(size) / parseMetricToNum(props.theme.global.lineHeight)) * (parseMetricToNum(props.theme.global.lineHeight) / parseMetricToNum(size)) + "px";
   });
 };
 
 exports.fontSize = fontSize;
 
 var breakpointStyle = function breakpointStyle(breakpoint, content) {
-  return (0, _styledComponents.css)(["@media only screen ", "{", ";}"], breakpoint.value && "and (max-width: ".concat(breakpoint.value, "px)"), content);
+  return (0, _styledComponents.css)(["@media only screen ", "{", ";}"], breakpoint.value && "and (max-width: " + breakpoint.value + "px)", content);
 };
 
 exports.breakpointStyle = breakpointStyle;
@@ -49,11 +47,11 @@ exports.findAllByType = findAllByType;
 
 var getAvailableAtBadge = function getAvailableAtBadge(availableAt) {
   return [{
-    url: "https://storybook.grommet.io/?selectedKind=".concat(availableAt, "&full=0&addons=0&stories=1&panelRight=0"),
+    url: "https://storybook.grommet.io/?selectedKind=" + availableAt + "&full=0&addons=0&stories=1&panelRight=0",
     badge: 'https://cdn-images-1.medium.com/fit/c/120/120/1*TD1P0HtIH9zF0UEH28zYtw.png',
     label: 'Storybook'
   }, {
-    url: "https://codesandbox.io/s/github/grommet/grommet-sandbox?initialpath=".concat(availableAt.toLowerCase(), "&module=%2Fsrc%2F").concat(availableAt, ".js"),
+    url: "https://codesandbox.io/s/github/grommet/grommet-sandbox?initialpath=" + availableAt.toLowerCase() + "&module=%2Fsrc%2F" + availableAt + ".js",
     badge: 'https://codesandbox.io/static/img/play-codesandbox.svg',
     label: 'CodeSandbox'
   }];

@@ -1,38 +1,21 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StyledTabs = exports.StyledTabPanel = exports.StyledTabsHeader = void 0;
-
-var _styledComponents = _interopRequireWildcard(require("styled-components"));
-
-var _utils = require("../../utils");
-
-var _defaultProps = require("../../default-props");
-
 var _FLEX_MAP;
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-var StyledTabsHeader = _styledComponents.default.div.withConfig({
+import styled, { css } from 'styled-components';
+import { genericStyles } from '../../utils';
+import { defaultProps } from '../../default-props';
+var StyledTabsHeader = styled.div.withConfig({
   displayName: "StyledTabs__StyledTabsHeader",
   componentId: "a4fwxl-0"
 })(["", ";"], function (props) {
   return props.theme.tabs.header.extend;
 });
-
-exports.StyledTabsHeader = StyledTabsHeader;
 StyledTabsHeader.defaultProps = {};
-Object.setPrototypeOf(StyledTabsHeader.defaultProps, _defaultProps.defaultProps);
-var FLEX_MAP = (_FLEX_MAP = {}, _defineProperty(_FLEX_MAP, true, '1 1'), _defineProperty(_FLEX_MAP, false, '0 0'), _defineProperty(_FLEX_MAP, "grow", '1 0'), _defineProperty(_FLEX_MAP, "shrink", '0 1'), _FLEX_MAP);
-var flexStyle = (0, _styledComponents.css)(["flex:", ";"], function (props) {
-  return "".concat(FLEX_MAP[props.flex]).concat(props.flex !== true ? ' auto' : '');
+Object.setPrototypeOf(StyledTabsHeader.defaultProps, defaultProps);
+var FLEX_MAP = (_FLEX_MAP = {}, _FLEX_MAP[true] = '1 1', _FLEX_MAP[false] = '0 0', _FLEX_MAP.grow = '1 0', _FLEX_MAP.shrink = '0 1', _FLEX_MAP);
+var flexStyle = css(["flex:", ";"], function (props) {
+  return "" + FLEX_MAP[props.flex] + (props.flex !== true ? ' auto' : '');
 });
-
-var StyledTabPanel = _styledComponents.default.div.withConfig({
+var StyledTabPanel = styled.div.withConfig({
   displayName: "StyledTabs__StyledTabPanel",
   componentId: "a4fwxl-1"
 })(["min-height:0;", " ", ";"], function (props) {
@@ -40,18 +23,14 @@ var StyledTabPanel = _styledComponents.default.div.withConfig({
 }, function (props) {
   return props.theme.tabs.panel.extend;
 });
-
-exports.StyledTabPanel = StyledTabPanel;
 StyledTabPanel.defaultProps = {};
-Object.setPrototypeOf(StyledTabPanel.defaultProps, _defaultProps.defaultProps);
-
-var StyledTabs = _styledComponents.default.div.withConfig({
+Object.setPrototypeOf(StyledTabPanel.defaultProps, defaultProps);
+var StyledTabs = styled.div.withConfig({
   displayName: "StyledTabs",
   componentId: "a4fwxl-2"
-})(["", " ", ";"], _utils.genericStyles, function (props) {
+})(["", " ", ";"], genericStyles, function (props) {
   return props.theme.tabs.extend;
 });
-
-exports.StyledTabs = StyledTabs;
 StyledTabs.defaultProps = {};
-Object.setPrototypeOf(StyledTabs.defaultProps, _defaultProps.defaultProps);
+Object.setPrototypeOf(StyledTabs.defaultProps, defaultProps);
+export { StyledTabsHeader, StyledTabPanel, StyledTabs };

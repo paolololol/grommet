@@ -1,21 +1,12 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Chart", {
-  enumerable: true,
-  get: function get() {
-    return _Chart.Chart;
-  }
-});
-Object.defineProperty(exports, "calcs", {
-  enumerable: true,
-  get: function get() {
-    return _calcs.calcs;
-  }
-});
+exports.__esModule = true;
+exports.calcs = exports.Chart = void 0;
 
 var _Chart = require("./Chart");
 
+exports.Chart = _Chart.Chart;
+
 var _calcs = require("./calcs");
+
+exports.calcs = _calcs.calcs;

@@ -20,7 +20,7 @@ var All = function All() {
     return _react.default.createElement(_grommet.Paragraph, {
       key: size,
       size: size
-    }, "Paragraph ".concat(size), paragraphFiller);
+    }, "Paragraph " + size, paragraphFiller);
   }), _react.default.createElement(_grommet.Paragraph, {
     color: "status-critical"
   }, "This is an error message."));

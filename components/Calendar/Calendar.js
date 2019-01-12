@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.Calendar = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -27,33 +25,15 @@ var _utils = require("./utils");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
-
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var headingPadMap = {
   small: 'xsmall',
@@ -98,7 +78,7 @@ var buildState = function buildState(props) {
     normalizedReference = new Date();
   }
 
-  return _objectSpread({}, buildStartEnd(normalizedReference, firstDayOfWeek), {
+  return _extends({}, buildStartEnd(normalizedReference, firstDayOfWeek), {
     reference: normalizedReference
   });
 };
@@ -106,20 +86,16 @@ var buildState = function buildState(props) {
 var Calendar =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(Calendar, _Component);
+  _inheritsLoose(Calendar, _Component);
 
   function Calendar() {
-    var _getPrototypeOf2;
-
     var _this;
-
-    _classCallCheck(this, Calendar);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(Calendar)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {});
 
@@ -297,188 +273,184 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(Calendar, [{
-    key: "componentDidUpdate",
-    value: function componentDidUpdate() {
-      var focused = this.state.focused;
+  Calendar.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+    var reference = nextProps.reference;
+    var prevReference = prevState.reference;
 
-      if (focused) {
-        var ref = this.dayRefs[focused.toISOString()];
+    if (Object.prototype.hasOwnProperty.call(nextProps, 'date') || Object.prototype.hasOwnProperty.call(nextProps, 'dates') || !prevReference || reference) {
+      var state = {};
 
-        if (ref && ref.current && ref.current !== document.activeElement) {
-          ref.current.focus();
-        }
+      if (Object.prototype.hasOwnProperty.call(nextProps, 'date') || Object.prototype.hasOwnProperty.call(nextProps, 'dates')) {
+        state.date = nextProps.date;
+        state.dates = nextProps.dates;
+      }
+
+      if (!prevReference || reference) {
+        state = _extends({}, state, buildState(nextProps));
+      }
+
+      return state;
+    }
+
+    return null;
+  };
+
+  var _proto = Calendar.prototype;
+
+  _proto.componentDidUpdate = function componentDidUpdate() {
+    var focused = this.state.focused;
+
+    if (focused) {
+      var ref = this.dayRefs[focused.toISOString()];
+
+      if (ref && ref.current && ref.current !== document.activeElement) {
+        ref.current.focus();
       }
     }
-  }, {
-    key: "componentWillUnmount",
-    value: function componentWillUnmount() {
-      clearTimeout(this.timer);
-    }
-  }, {
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  };
 
-      var _this$props4 = this.props,
-          bounds = _this$props4.bounds,
-          dateProp = _this$props4.date,
-          datesProp = _this$props4.dates,
-          disabled = _this$props4.disabled,
-          firstDayOfWeek = _this$props4.firstDayOfWeek,
-          header = _this$props4.header,
-          locale = _this$props4.locale,
-          onReference = _this$props4.onReference,
-          onSelect = _this$props4.onSelect,
-          range = _this$props4.range,
-          showAdjacentDays = _this$props4.showAdjacentDays,
-          size = _this$props4.size,
-          theme = _this$props4.theme,
-          rest = _objectWithoutProperties(_this$props4, ["bounds", "date", "dates", "disabled", "firstDayOfWeek", "header", "locale", "onReference", "onSelect", "range", "showAdjacentDays", "size", "theme"]);
+  _proto.componentWillUnmount = function componentWillUnmount() {
+    clearTimeout(this.timer);
+  };
 
-      var _this$state2 = this.state,
-          date = _this$state2.date,
-          dates = _this$state2.dates,
-          focused = _this$state2.focused,
-          start = _this$state2.start,
-          reference = _this$state2.reference,
-          end = _this$state2.end,
-          slide = _this$state2.slide; // We have to deal with reference being the end of a month with more
-      // days than the month we are changing to. So, we always set reference
-      // to the first of the month before changing the month.
+  _proto.render = function render() {
+    var _this2 = this;
 
-      var previousMonth = (0, _utils.endOfMonth)((0, _utils.subtractMonths)((0, _utils.startOfMonth)(reference), 1));
-      var nextMonth = (0, _utils.startOfMonth)((0, _utils.addMonths)((0, _utils.startOfMonth)(reference), 1));
-      var weeks = [];
-      var day = new Date(start);
-      var days;
-      this.dayRefs = {};
+    var _this$props4 = this.props,
+        bounds = _this$props4.bounds,
+        dateProp = _this$props4.date,
+        datesProp = _this$props4.dates,
+        disabled = _this$props4.disabled,
+        firstDayOfWeek = _this$props4.firstDayOfWeek,
+        header = _this$props4.header,
+        locale = _this$props4.locale,
+        onReference = _this$props4.onReference,
+        onSelect = _this$props4.onSelect,
+        range = _this$props4.range,
+        showAdjacentDays = _this$props4.showAdjacentDays,
+        size = _this$props4.size,
+        theme = _this$props4.theme,
+        rest = _objectWithoutPropertiesLoose(_this$props4, ["bounds", "date", "dates", "disabled", "firstDayOfWeek", "header", "locale", "onReference", "onSelect", "range", "showAdjacentDays", "size", "theme"]);
 
-      while (day.getTime() < end.getTime()) {
-        if (day.getDay() === firstDayOfWeek) {
-          if (days) {
-            weeks.push(_react.default.createElement(_StyledCalendar.StyledWeek, {
-              key: day.getTime()
-            }, days));
+    var _this$state2 = this.state,
+        date = _this$state2.date,
+        dates = _this$state2.dates,
+        focused = _this$state2.focused,
+        start = _this$state2.start,
+        reference = _this$state2.reference,
+        end = _this$state2.end,
+        slide = _this$state2.slide; // We have to deal with reference being the end of a month with more
+    // days than the month we are changing to. So, we always set reference
+    // to the first of the month before changing the month.
+
+    var previousMonth = (0, _utils.endOfMonth)((0, _utils.subtractMonths)((0, _utils.startOfMonth)(reference), 1));
+    var nextMonth = (0, _utils.startOfMonth)((0, _utils.addMonths)((0, _utils.startOfMonth)(reference), 1));
+    var weeks = [];
+    var day = new Date(start);
+    var days;
+    this.dayRefs = {};
+
+    while (day.getTime() < end.getTime()) {
+      if (day.getDay() === firstDayOfWeek) {
+        if (days) {
+          weeks.push(_react.default.createElement(_StyledCalendar.StyledWeek, {
+            key: day.getTime()
+          }, days));
+        }
+
+        days = [];
+      }
+
+      var otherMonth = day.getMonth() !== reference.getMonth();
+
+      if (!showAdjacentDays && otherMonth) {
+        days.push(_react.default.createElement(_StyledCalendar.StyledDayContainer, {
+          key: day.getTime(),
+          sizeProp: size
+        }, _react.default.createElement(_StyledCalendar.StyledDay, {
+          sizeProp: size
+        })));
+      } else {
+        var dateString = day.toISOString();
+        this.dayRefs[dateString] = _react.default.createRef();
+        var selected = false;
+        var inRange = false;
+        var selectedState = (0, _utils.withinDates)(day, date || dates);
+
+        if (selectedState === 2) {
+          selected = true;
+        } else if (selectedState === 1) {
+          inRange = true;
+        }
+
+        var dayDisabled = (0, _utils.withinDates)(day, disabled) || bounds && !(0, _utils.betweenDates)(day, bounds);
+        days.push(_react.default.createElement(_StyledCalendar.StyledDayContainer, {
+          key: day.getTime(),
+          sizeProp: size
+        }, _react.default.createElement(_Button.Button, {
+          ref: this.dayRefs[dateString],
+          a11yTitle: day.toDateString(),
+          plain: true,
+          hoverIndicator: !dayDisabled,
+          disabled: dayDisabled,
+          onClick: this.onClickDay(dateString),
+          onFocus: this.onFocus(day),
+          onBlur: function onBlur() {
+            return _this2.setState({
+              focused: false
+            });
           }
-
-          days = [];
-        }
-
-        var otherMonth = day.getMonth() !== reference.getMonth();
-
-        if (!showAdjacentDays && otherMonth) {
-          days.push(_react.default.createElement(_StyledCalendar.StyledDayContainer, {
-            key: day.getTime(),
-            sizeProp: size
-          }, _react.default.createElement(_StyledCalendar.StyledDay, {
-            sizeProp: size
-          })));
-        } else {
-          var dateString = day.toISOString();
-          this.dayRefs[dateString] = _react.default.createRef();
-          var selected = false;
-          var inRange = false;
-          var selectedState = (0, _utils.withinDates)(day, date || dates);
-
-          if (selectedState === 2) {
-            selected = true;
-          } else if (selectedState === 1) {
-            inRange = true;
-          }
-
-          var dayDisabled = (0, _utils.withinDates)(day, disabled) || bounds && !(0, _utils.betweenDates)(day, bounds);
-          days.push(_react.default.createElement(_StyledCalendar.StyledDayContainer, {
-            key: day.getTime(),
-            sizeProp: size
-          }, _react.default.createElement(_Button.Button, {
-            ref: this.dayRefs[dateString],
-            a11yTitle: day.toDateString(),
-            plain: true,
-            hoverIndicator: !dayDisabled,
-            disabled: dayDisabled,
-            onClick: this.onClickDay(dateString),
-            onFocus: this.onFocus(day),
-            onBlur: function onBlur() {
-              return _this2.setState({
-                focused: false
-              });
-            }
-          }, _react.default.createElement(_StyledCalendar.StyledDay, {
-            inRange: inRange,
-            otherMonth: day.getMonth() !== reference.getMonth(),
-            isSelected: selected,
-            sizeProp: size
-          }, day.getDate()))));
-        }
-
-        day = (0, _utils.addDays)(day, 1);
+        }, _react.default.createElement(_StyledCalendar.StyledDay, {
+          inRange: inRange,
+          otherMonth: day.getMonth() !== reference.getMonth(),
+          isSelected: selected,
+          sizeProp: size
+        }, day.getDate()))));
       }
 
-      weeks.push(_react.default.createElement(_StyledCalendar.StyledWeek, {
-        key: day.getTime()
-      }, days));
-      return _react.default.createElement(_StyledCalendar.StyledCalendar, _extends({
-        sizeProp: size
-      }, rest), _react.default.createElement(_Keyboard.Keyboard, {
-        onUp: function onUp(event) {
-          event.preventDefault();
-
-          _this2.setFocus((0, _utils.addDays)(focused, -7));
-        },
-        onDown: function onDown(event) {
-          event.preventDefault();
-
-          _this2.setFocus((0, _utils.addDays)(focused, 7));
-        },
-        onLeft: function onLeft() {
-          return focused && _this2.setFocus((0, _utils.addDays)(focused, -1));
-        },
-        onRight: function onRight() {
-          return focused && _this2.setFocus((0, _utils.addDays)(focused, 1));
-        }
-      }, _react.default.createElement(_Box.Box, null, header ? header({
-        date: reference,
-        locale: locale,
-        onPreviousMonth: function onPreviousMonth() {
-          return _this2.setReference(previousMonth);
-        },
-        onNextMonth: function onNextMonth() {
-          return _this2.setReference(nextMonth);
-        },
-        previousInBound: (0, _utils.betweenDates)(previousMonth, bounds),
-        nextInBound: (0, _utils.betweenDates)(nextMonth, bounds)
-      }) : this.renderCalendarHeader(previousMonth, nextMonth), _react.default.createElement(_StyledCalendar.StyledWeeksContainer, {
-        sizeProp: size
-      }, _react.default.createElement(_StyledCalendar.StyledWeeks, {
-        slide: slide,
-        sizeProp: size
-      }, weeks)))));
+      day = (0, _utils.addDays)(day, 1);
     }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      var reference = nextProps.reference;
-      var prevReference = prevState.reference;
 
-      if (Object.prototype.hasOwnProperty.call(nextProps, 'date') || Object.prototype.hasOwnProperty.call(nextProps, 'dates') || !prevReference || reference) {
-        var state = {};
+    weeks.push(_react.default.createElement(_StyledCalendar.StyledWeek, {
+      key: day.getTime()
+    }, days));
+    return _react.default.createElement(_StyledCalendar.StyledCalendar, _extends({
+      sizeProp: size
+    }, rest), _react.default.createElement(_Keyboard.Keyboard, {
+      onUp: function onUp(event) {
+        event.preventDefault();
 
-        if (Object.prototype.hasOwnProperty.call(nextProps, 'date') || Object.prototype.hasOwnProperty.call(nextProps, 'dates')) {
-          state.date = nextProps.date;
-          state.dates = nextProps.dates;
-        }
+        _this2.setFocus((0, _utils.addDays)(focused, -7));
+      },
+      onDown: function onDown(event) {
+        event.preventDefault();
 
-        if (!prevReference || reference) {
-          state = _objectSpread({}, state, buildState(nextProps));
-        }
-
-        return state;
+        _this2.setFocus((0, _utils.addDays)(focused, 7));
+      },
+      onLeft: function onLeft() {
+        return focused && _this2.setFocus((0, _utils.addDays)(focused, -1));
+      },
+      onRight: function onRight() {
+        return focused && _this2.setFocus((0, _utils.addDays)(focused, 1));
       }
-
-      return null;
-    }
-  }]);
+    }, _react.default.createElement(_Box.Box, null, header ? header({
+      date: reference,
+      locale: locale,
+      onPreviousMonth: function onPreviousMonth() {
+        return _this2.setReference(previousMonth);
+      },
+      onNextMonth: function onNextMonth() {
+        return _this2.setReference(nextMonth);
+      },
+      previousInBound: (0, _utils.betweenDates)(previousMonth, bounds),
+      nextInBound: (0, _utils.betweenDates)(nextMonth, bounds)
+    }) : this.renderCalendarHeader(previousMonth, nextMonth), _react.default.createElement(_StyledCalendar.StyledWeeksContainer, {
+      sizeProp: size
+    }, _react.default.createElement(_StyledCalendar.StyledWeeks, {
+      slide: slide,
+      sizeProp: size
+    }, weeks)))));
+  };
 
   return Calendar;
 }(_react.Component);

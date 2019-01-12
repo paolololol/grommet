@@ -1,19 +1,7 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.selectedStyle = exports.activeStyle = exports.backgroundStyle = exports.backgroundIsDark = exports.normalizeBackground = void 0;
-
-var _styledComponents = require("styled-components");
-
-var _colors = require("./colors");
-
-var _styles = require("./styles");
-
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-var normalizeBackground = function normalizeBackground(background, theme) {
+import { css } from 'styled-components';
+import { colorIsDark, getRGBA, normalizeColor } from './colors';
+import { evalStyle } from './styles';
+export var normalizeBackground = function normalizeBackground(background, theme) {
   // If the background has a light or dark object, use that
   var result = background;
 
@@ -24,20 +12,17 @@ var normalizeBackground = function normalizeBackground(background, theme) {
       result = background.light;
     }
 
-    result = (0, _styles.evalStyle)(result, theme);
+    result = evalStyle(result, theme);
   }
 
   return result;
 };
-
-exports.normalizeBackground = normalizeBackground;
-
-var backgroundIsDark = function backgroundIsDark(backgroundArg, theme) {
+export var backgroundIsDark = function backgroundIsDark(backgroundArg, theme) {
   var background = normalizeBackground(backgroundArg, theme);
   var result;
 
   if (background) {
-    if (_typeof(background) === 'object') {
+    if (typeof background === 'object') {
       var color = background.color,
           dark = background.dark,
           opacity = background.opacity;
@@ -46,32 +31,29 @@ var backgroundIsDark = function backgroundIsDark(backgroundArg, theme) {
         result = dark;
       } else if (color && ( // weak opacity means we keep the existing darkness
       !opacity || opacity !== 'weak')) {
-        var backgroundColor = (0, _colors.normalizeColor)(background.color, theme);
+        var backgroundColor = normalizeColor(background.color, theme);
 
         if (backgroundColor) {
-          result = (0, _colors.colorIsDark)(backgroundColor);
+          result = colorIsDark(backgroundColor);
         }
       }
     } else {
-      var _color = (0, _colors.normalizeColor)(background, theme);
+      var _color = normalizeColor(background, theme);
 
       if (_color) {
-        result = (0, _colors.colorIsDark)(_color);
+        result = colorIsDark(_color);
       }
     }
   }
 
   return result;
 };
-
-exports.backgroundIsDark = backgroundIsDark;
-
-var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorArg) {
+export var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorArg) {
   // If the background has a light or dark object, use that
   var background = normalizeBackground(backgroundArg, theme);
   var textColor = textColorArg || theme.global.colors.text;
 
-  if (_typeof(background) === 'object') {
+  if (typeof background === 'object') {
     var styles = [];
 
     if (background.image) {
@@ -85,21 +67,21 @@ var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorAr
         color = 'inherit';
       }
 
-      styles.push((0, _styledComponents.css)(["background-image:", ";background-repeat:no-repeat;background-position:", ";background-size:cover;color:", ";"], background.image, background.position || 'center center', color));
+      styles.push(css(["background-image:", ";background-repeat:no-repeat;background-position:", ";background-size:cover;color:", ";"], background.image, background.position || 'center center', color));
     }
 
     if (background.color) {
-      var _color2 = (0, _colors.normalizeColor)(background.color, theme);
+      var _color2 = normalizeColor(background.color, theme);
 
-      var backgroundColor = (0, _colors.getRGBA)(_color2, background.opacity === true ? theme.global.opacity.medium : theme.global.opacity[background.opacity] || background.opacity) || _color2;
+      var backgroundColor = getRGBA(_color2, background.opacity === true ? theme.global.opacity.medium : theme.global.opacity[background.opacity] || background.opacity) || _color2;
 
-      styles.push((0, _styledComponents.css)(["background-color:", ";", ""], backgroundColor, (!background.opacity || background.opacity !== 'weak') && "color: ".concat(textColor[background.dark || (0, _colors.colorIsDark)(backgroundColor) ? 'dark' : 'light'], ";")));
+      styles.push(css(["background-color:", ";", ""], backgroundColor, (!background.opacity || background.opacity !== 'weak') && "color: " + textColor[background.dark || colorIsDark(backgroundColor) ? 'dark' : 'light'] + ";"));
     }
 
     if (background.dark === false) {
-      styles.push((0, _styledComponents.css)(["color:", ";"], textColor.light));
+      styles.push(css(["color:", ";"], textColor.light));
     } else if (background.dark) {
-      styles.push((0, _styledComponents.css)(["color:", ";"], textColor.dark));
+      styles.push(css(["color:", ";"], textColor.dark));
     }
 
     return styles;
@@ -107,29 +89,25 @@ var backgroundStyle = function backgroundStyle(backgroundArg, theme, textColorAr
 
   if (background) {
     if (background.lastIndexOf('url', 0) === 0) {
-      return (0, _styledComponents.css)(["background:", " no-repeat center center;background-size:cover;"], background);
+      return css(["background:", " no-repeat center center;background-size:cover;"], background);
     }
 
-    var _color3 = (0, _colors.normalizeColor)(background, theme);
+    var _color3 = normalizeColor(background, theme);
 
     if (_color3) {
-      return (0, _styledComponents.css)(["background:", ";color:", ";"], _color3, textColor[(0, _colors.colorIsDark)(_color3) ? 'dark' : 'light']);
+      return css(["background:", ";color:", ";"], _color3, textColor[colorIsDark(_color3) ? 'dark' : 'light']);
     }
   }
 
   return undefined;
 };
-
-exports.backgroundStyle = backgroundStyle;
-var activeStyle = (0, _styledComponents.css)(["", " color:", ";"], function (props) {
-  return backgroundStyle((0, _colors.normalizeColor)(props.theme.global.hover.background, props.theme), props.theme);
+export var activeStyle = css(["", " color:", ";"], function (props) {
+  return backgroundStyle(normalizeColor(props.theme.global.hover.background, props.theme), props.theme);
 }, function (props) {
-  return (0, _colors.normalizeColor)(props.theme.global.hover.color, props.theme);
+  return normalizeColor(props.theme.global.hover.color, props.theme);
 });
-exports.activeStyle = activeStyle;
-var selectedStyle = (0, _styledComponents.css)(["", " color:", ";"], function (props) {
-  return backgroundStyle((0, _colors.normalizeColor)(props.theme.global.selected.background, props.theme), props.theme);
+export var selectedStyle = css(["", " color:", ";"], function (props) {
+  return backgroundStyle(normalizeColor(props.theme.global.selected.background, props.theme), props.theme);
 }, function (props) {
-  return (0, _colors.normalizeColor)(props.theme.global.selected.color, props.theme);
+  return normalizeColor(props.theme.global.selected.color, props.theme);
 });
-exports.selectedStyle = selectedStyle;

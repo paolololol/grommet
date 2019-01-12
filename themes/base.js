@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.base = exports.generate = void 0;
 
 var _polished = require("polished");
@@ -15,9 +13,7 @@ var _themes = require("grommet-icons/themes");
 
 var _utils = require("../utils");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var brandColor = '#7D4CDB';
 var accentColors = ['#6FFFB0', '#FD6FFF', '#81FCED', '#FFCA58'];
@@ -61,7 +57,7 @@ var colors = {
 
 var colorArray = function colorArray(array, prefix) {
   return array.forEach(function (color, index) {
-    colors["".concat(prefix, "-").concat(index + 1)] = color;
+    colors[prefix + "-" + (index + 1)] = color;
   });
 };
 
@@ -70,12 +66,18 @@ colorArray(darkColors, 'dark');
 colorArray(lightColors, 'light');
 colorArray(neutralColors, 'neutral');
 Object.keys(statusColors).forEach(function (color) {
-  colors["status-".concat(color)] = statusColors[color];
+  colors["status-" + color] = statusColors[color];
 });
 
-var generate = function generate() {
-  var baseSpacing = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 24;
-  var scale = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+var generate = function generate(baseSpacing, scale) {
+  if (baseSpacing === void 0) {
+    baseSpacing = 24;
+  }
+
+  if (scale === void 0) {
+    scale = 6;
+  }
+
   // 24
   var baseFontSize = baseSpacing * 0.75; // 18
 
@@ -83,11 +85,11 @@ var generate = function generate() {
 
   var fontSizing = function fontSizing(factor) {
     return {
-      size: "".concat(baseFontSize + factor * fontScale, "px"),
-      height: "".concat(baseSpacing + factor * fontScale, "px"),
+      size: baseFontSize + factor * fontScale + "px",
+      height: baseSpacing + factor * fontScale + "px",
       // maxWidth chosen to be ~50 characters wide
       // see: https://ux.stackexchange.com/a/34125
-      maxWidth: "".concat(baseSpacing * (baseFontSize + factor * fontScale), "px")
+      maxWidth: baseSpacing * (baseFontSize + factor * fontScale) + "px"
     };
   };
 
@@ -103,11 +105,11 @@ var generate = function generate() {
       borderSize: {
         xsmall: '1px',
         small: '2px',
-        medium: "".concat(baseSpacing / 6, "px"),
+        medium: baseSpacing / 6 + "px",
         // 4
-        large: "".concat(baseSpacing / 2, "px"),
+        large: baseSpacing / 2 + "px",
         // 12
-        xlarge: "".concat(baseSpacing, "px") // 24
+        xlarge: baseSpacing + "px" // 24
 
       },
       breakpoints: {
@@ -117,11 +119,11 @@ var generate = function generate() {
           borderSize: {
             xsmall: '1px',
             small: '2px',
-            medium: "".concat(baseSpacing / 6, "px"),
+            medium: baseSpacing / 6 + "px",
             // 4
-            large: "".concat(baseSpacing / 4, "px"),
+            large: baseSpacing / 4 + "px",
             // 6
-            xlarge: "".concat(baseSpacing / 2, "px") // 12
+            xlarge: baseSpacing / 2 + "px" // 12
 
           },
           edgeSize: {
@@ -129,29 +131,29 @@ var generate = function generate() {
             hair: '1px',
             // for Chart
             xxsmall: '2px',
-            xsmall: "".concat(baseSpacing / 8, "px"),
+            xsmall: baseSpacing / 8 + "px",
             // 3
-            small: "".concat(baseSpacing / 4, "px"),
+            small: baseSpacing / 4 + "px",
             // 6
-            medium: "".concat(baseSpacing / 2, "px"),
+            medium: baseSpacing / 2 + "px",
             // 12
-            large: "".concat(baseSpacing, "px"),
+            large: baseSpacing + "px",
             // 24
-            xlarge: "".concat(baseSpacing * 2, "px") // 48
+            xlarge: baseSpacing * 2 + "px" // 48
 
           },
           size: {
-            xxsmall: "".concat(baseSpacing, "px"),
+            xxsmall: baseSpacing + "px",
             // 24
-            xsmall: "".concat(baseSpacing * 2, "px"),
+            xsmall: baseSpacing * 2 + "px",
             // 48
-            small: "".concat(baseSpacing * 4, "px"),
+            small: baseSpacing * 4 + "px",
             // 96
-            medium: "".concat(baseSpacing * 8, "px"),
+            medium: baseSpacing * 8 + "px",
             // 192
-            large: "".concat(baseSpacing * 16, "px"),
+            large: baseSpacing * 16 + "px",
             // 384
-            xlarge: "".concat(baseSpacing * 32, "px"),
+            xlarge: baseSpacing * 32 + "px",
             // 768
             full: '100%'
           }
@@ -193,17 +195,17 @@ var generate = function generate() {
         none: '0px',
         hair: '1px',
         // for Chart
-        xxsmall: "".concat(baseSpacing / 8, "px"),
+        xxsmall: baseSpacing / 8 + "px",
         // 3
-        xsmall: "".concat(baseSpacing / 4, "px"),
+        xsmall: baseSpacing / 4 + "px",
         // 6
-        small: "".concat(baseSpacing / 2, "px"),
+        small: baseSpacing / 2 + "px",
         // 12
-        medium: "".concat(baseSpacing, "px"),
+        medium: baseSpacing + "px",
         // 24
-        large: "".concat(baseSpacing * 2, "px"),
+        large: baseSpacing * 2 + "px",
         // 48
-        xlarge: "".concat(baseSpacing * 4, "px"),
+        xlarge: baseSpacing * 4 + "px",
         // 96
         responsiveBreakpoint: 'small'
       },
@@ -230,7 +232,7 @@ var generate = function generate() {
           color: 'focus'
         }
       },
-      font: _objectSpread({}, fontSizing(0)),
+      font: _extends({}, fontSizing(0)),
       hover: {
         background: {
           dark: {
@@ -248,7 +250,7 @@ var generate = function generate() {
         }
       },
       input: {
-        padding: "".concat(baseSpacing / 2, "px"),
+        padding: baseSpacing / 2 + "px",
         weight: 600
       },
       opacity: {
@@ -260,21 +262,21 @@ var generate = function generate() {
         background: 'selected',
         color: 'white'
       },
-      spacing: "".concat(baseSpacing, "px"),
+      spacing: baseSpacing + "px",
       size: {
-        xxsmall: "".concat(baseSpacing * 2, "px"),
+        xxsmall: baseSpacing * 2 + "px",
         // 48
-        xsmall: "".concat(baseSpacing * 4, "px"),
+        xsmall: baseSpacing * 4 + "px",
         // 96
-        small: "".concat(baseSpacing * 8, "px"),
+        small: baseSpacing * 8 + "px",
         // 192
-        medium: "".concat(baseSpacing * 16, "px"),
+        medium: baseSpacing * 16 + "px",
         // 384
-        large: "".concat(baseSpacing * 32, "px"),
+        large: baseSpacing * 32 + "px",
         // 768
-        xlarge: "".concat(baseSpacing * 48, "px"),
+        xlarge: baseSpacing * 48 + "px",
         // 1152
-        xxlarge: "".concat(baseSpacing * 64, "px"),
+        xxlarge: baseSpacing * 64 + "px",
         // 1536
         full: '100%'
       }
@@ -308,8 +310,8 @@ var generate = function generate() {
     button: {
       border: {
         // color: { dark: undefined, light: undefined }
-        width: "".concat(borderWidth, "px"),
-        radius: "".concat(baseSpacing * 0.75, "px")
+        width: borderWidth + "px",
+        radius: baseSpacing * 0.75 + "px"
       },
       // color: { dark: undefined, light: undefined }
       primary: {// color: { dark: undefined, light: undefined }
@@ -317,31 +319,31 @@ var generate = function generate() {
       disabled: {
         opacity: 0.3
       },
-      minWidth: "".concat(baseSpacing * 4, "px"),
-      maxWidth: "".concat(baseSpacing * 16, "px"),
+      minWidth: baseSpacing * 4 + "px",
+      maxWidth: baseSpacing * 16 + "px",
       padding: {
-        vertical: "".concat(baseSpacing / 4 - borderWidth, "px"),
-        horizontal: "".concat(baseSpacing - borderWidth, "px")
+        vertical: baseSpacing / 4 - borderWidth + "px",
+        horizontal: baseSpacing - borderWidth + "px"
       }
     },
     calendar: {
       // daySize must align with global.size
       small: {
-        fontSize: "".concat(baseFontSize - fontScale, "px"),
+        fontSize: baseFontSize - fontScale + "px",
         lineHeight: 1.375,
-        daySize: "".concat(baseSpacing * 8 / 7, "px"),
+        daySize: baseSpacing * 8 / 7 + "px",
         slideDuration: '0.2s'
       },
       medium: {
-        fontSize: "".concat(baseFontSize, "px"),
+        fontSize: baseFontSize + "px",
         lineHeight: 1.45,
-        daySize: "".concat(baseSpacing * 16 / 7, "px"),
+        daySize: baseSpacing * 16 / 7 + "px",
         slideDuration: '0.5s'
       },
       large: {
-        fontSize: "".concat(baseFontSize + 3 * fontScale, "px"),
+        fontSize: baseFontSize + 3 * fontScale + "px",
         lineHeight: 1.11,
-        daySize: "".concat(baseSpacing * 32 / 7, "px"),
+        daySize: baseSpacing * 32 / 7 + "px",
         slideDuration: '0.8s'
       },
       icons: {
@@ -388,15 +390,15 @@ var generate = function generate() {
           }
         }
       },
-      size: "".concat(baseSpacing, "px"),
+      size: baseSpacing + "px",
       // color: { dark: undefined, light: undefined },
       toggle: {
         color: {
           dark: '#d9d9d9',
           light: '#d9d9d9'
         },
-        radius: "".concat(baseSpacing, "px"),
-        size: "".concat(baseSpacing * 2, "px"),
+        radius: baseSpacing + "px",
+        size: baseSpacing * 2 + "px",
         // extend: undefined,
         knob: {// extend: undefined,
         }
@@ -410,8 +412,8 @@ var generate = function generate() {
             dark: 'light-2',
             light: 'dark-3'
           },
-          width: "".concat(baseSpacing / 3, "px"),
-          size: "".concat(baseSpacing, "px"),
+          width: baseSpacing / 3 + "px",
+          size: baseSpacing + "px",
           shape: 'round'
         },
         minute: {
@@ -419,8 +421,8 @@ var generate = function generate() {
             dark: 'light-4',
             light: 'dark-3'
           },
-          width: "".concat(baseSpacing / 6, "px"),
-          size: "".concat(Math.round(baseSpacing / 2), "px"),
+          width: baseSpacing / 6 + "px",
+          size: Math.round(baseSpacing / 2) + "px",
           shape: 'round'
         },
         second: {
@@ -428,42 +430,42 @@ var generate = function generate() {
             dark: 'accent-1',
             light: 'accent-1'
           },
-          width: "".concat(baseSpacing / 8, "px"),
-          size: "".concat(Math.round(baseSpacing / 2.666), "px"),
+          width: baseSpacing / 8 + "px",
+          size: Math.round(baseSpacing / 2.666) + "px",
           shape: 'round'
         },
         size: {
-          small: "".concat(baseSpacing * 3, "px"),
-          medium: "".concat(baseSpacing * 4, "px"),
-          large: "".concat(baseSpacing * 6, "px"),
-          xlarge: "".concat(baseSpacing * 9, "px"),
-          huge: "".concat(baseSpacing * 12, "px")
+          small: baseSpacing * 3 + "px",
+          medium: baseSpacing * 4 + "px",
+          large: baseSpacing * 6 + "px",
+          xlarge: baseSpacing * 9 + "px",
+          huge: baseSpacing * 12 + "px"
         }
       },
       digital: {
         text: {
           xsmall: {
-            size: "".concat(baseFontSize - 2 * fontScale, "px"),
+            size: baseFontSize - 2 * fontScale + "px",
             height: 1.5
           },
           small: {
-            size: "".concat(baseFontSize - fontScale, "px"),
+            size: baseFontSize - fontScale + "px",
             height: 1.43
           },
           medium: {
-            size: "".concat(baseFontSize, "px"),
+            size: baseFontSize + "px",
             height: 1.375
           },
           large: {
-            size: "".concat(baseFontSize + fontScale, "px"),
+            size: baseFontSize + fontScale + "px",
             height: 1.167
           },
           xlarge: {
-            size: "".concat(baseFontSize + 2 * fontScale, "px"),
+            size: baseFontSize + 2 * fontScale + "px",
             height: 1.1875
           },
           xxlarge: {
-            size: "".concat(baseFontSize + 4 * fontScale, "px"),
+            size: baseFontSize + 4 * fontScale + "px",
             height: 1.125
           }
         }
@@ -544,55 +546,55 @@ var generate = function generate() {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(4)),
-          medium: _objectSpread({}, fontSizing(8)),
-          large: _objectSpread({}, fontSizing(16)),
-          xlarge: _objectSpread({}, fontSizing(24))
+          small: _extends({}, fontSizing(4)),
+          medium: _extends({}, fontSizing(8)),
+          large: _extends({}, fontSizing(16)),
+          xlarge: _extends({}, fontSizing(24))
         },
         2: {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(2)),
-          medium: _objectSpread({}, fontSizing(4)),
-          large: _objectSpread({}, fontSizing(8)),
-          xlarge: _objectSpread({}, fontSizing(12))
+          small: _extends({}, fontSizing(2)),
+          medium: _extends({}, fontSizing(4)),
+          large: _extends({}, fontSizing(8)),
+          xlarge: _extends({}, fontSizing(12))
         },
         3: {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(1)),
-          medium: _objectSpread({}, fontSizing(2)),
-          large: _objectSpread({}, fontSizing(4)),
-          xlarge: _objectSpread({}, fontSizing(6))
+          small: _extends({}, fontSizing(1)),
+          medium: _extends({}, fontSizing(2)),
+          large: _extends({}, fontSizing(4)),
+          xlarge: _extends({}, fontSizing(6))
         },
         4: {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(0)),
-          medium: _objectSpread({}, fontSizing(0)),
-          large: _objectSpread({}, fontSizing(0)),
-          xlarge: _objectSpread({}, fontSizing(0))
+          small: _extends({}, fontSizing(0)),
+          medium: _extends({}, fontSizing(0)),
+          large: _extends({}, fontSizing(0)),
+          xlarge: _extends({}, fontSizing(0))
         },
         5: {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(-0.5)),
-          medium: _objectSpread({}, fontSizing(-0.5)),
-          large: _objectSpread({}, fontSizing(-0.5)),
-          xlarge: _objectSpread({}, fontSizing(-0.5))
+          small: _extends({}, fontSizing(-0.5)),
+          medium: _extends({}, fontSizing(-0.5)),
+          large: _extends({}, fontSizing(-0.5)),
+          xlarge: _extends({}, fontSizing(-0.5))
         },
         6: {
           font: {// family: undefined,
             // weight: undefined,
           },
-          small: _objectSpread({}, fontSizing(-1)),
-          medium: _objectSpread({}, fontSizing(-1)),
-          large: _objectSpread({}, fontSizing(-1)),
-          xlarge: _objectSpread({}, fontSizing(-1))
+          small: _extends({}, fontSizing(-1)),
+          medium: _extends({}, fontSizing(-1)),
+          large: _extends({}, fontSizing(-1)),
+          xlarge: _extends({}, fontSizing(-1))
         }
       },
       responsiveBreakpoint: 'small',
@@ -622,11 +624,11 @@ var generate = function generate() {
       }
     },
     paragraph: {
-      small: _objectSpread({}, fontSizing(-1)),
-      medium: _objectSpread({}, fontSizing(0)),
-      large: _objectSpread({}, fontSizing(1)),
-      xlarge: _objectSpread({}, fontSizing(2)),
-      xxlarge: _objectSpread({}, fontSizing(4))
+      small: _extends({}, fontSizing(-1)),
+      medium: _extends({}, fontSizing(0)),
+      large: _extends({}, fontSizing(1)),
+      xlarge: _extends({}, fontSizing(2)),
+      xxlarge: _extends({}, fontSizing(4))
     },
     radioButton: {
       border: {
@@ -655,7 +657,7 @@ var generate = function generate() {
       icons: {// circle: undefined,
       },
       gap: 'small',
-      size: "".concat(baseSpacing, "px")
+      size: baseSpacing + "px"
     },
     rangeInput: {
       track: {
@@ -769,12 +771,12 @@ var generate = function generate() {
       }
     },
     text: {
-      xsmall: _objectSpread({}, fontSizing(-1.5)),
-      small: _objectSpread({}, fontSizing(-1)),
-      medium: _objectSpread({}, fontSizing(0)),
-      large: _objectSpread({}, fontSizing(1)),
-      xlarge: _objectSpread({}, fontSizing(2)),
-      xxlarge: _objectSpread({}, fontSizing(4))
+      xsmall: _extends({}, fontSizing(-1.5)),
+      small: _extends({}, fontSizing(-1)),
+      medium: _extends({}, fontSizing(0)),
+      large: _extends({}, fontSizing(1)),
+      xlarge: _extends({}, fontSizing(2)),
+      xxlarge: _extends({}, fontSizing(4))
     },
     // textInput: {
     //   extend: undefined,

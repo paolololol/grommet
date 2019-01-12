@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.AnnounceContext = void 0;
 
 var _react = _interopRequireDefault(require("react"));
@@ -19,8 +17,11 @@ var createAnnouncer = function createAnnouncer() {
   return announcer;
 };
 
-var AnnounceContext = _react.default.createContext(function (message) {
-  var mode = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'polite';
+var AnnounceContext = _react.default.createContext(function (message, mode) {
+  if (mode === void 0) {
+    mode = 'polite';
+  }
+
   // we only create a new container if we don't have one already
   // we create a separate node so that grommet does not set aria-hidden to it
   var announcer = document.body.querySelector('[aria-live]') || createAnnouncer();

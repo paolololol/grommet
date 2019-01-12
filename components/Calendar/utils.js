@@ -1,18 +1,7 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.updateDateRange = exports.withinDates = exports.betweenDates = exports.daysApart = exports.sameDayOrBefore = exports.sameDayOrAfter = exports.sameDay = exports.endOfMonth = exports.startOfMonth = exports.subtractMonths = exports.addMonths = exports.subtractDays = exports.addDays = void 0;
-
-function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
-
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
-
-function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
-
-function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-
 // Utility functions for the Calendar.
 // Just what's needed to avoid having to include a dependency like momentjs.
 var DAY_MILLISECONDS = 24 * 60 * 60 * 1000;
@@ -108,9 +97,8 @@ var betweenDates = function betweenDates(date, dates) {
     var _dates$map = dates.map(function (d) {
       return new Date(d);
     }),
-        _dates$map2 = _slicedToArray(_dates$map, 2),
-        from = _dates$map2[0],
-        to = _dates$map2[1];
+        from = _dates$map[0],
+        to = _dates$map[1];
 
     if (sameDay(date, from) || sameDay(date, to)) {
       result = 2;
@@ -191,20 +179,12 @@ var updateDateRange = function updateDateRange(selectedDate, _ref) {
 
     if (_nextDate.getTime() === priorDates[0].getTime()) {
       result.dates = undefined;
-
-      var _dates = _slicedToArray(dates, 1);
-
-      var _dates$ = _slicedToArray(_dates[0], 2);
-
+      var _dates$ = dates[0];
       result.date = _dates$[1];
     } else if (_nextDate.getTime() === priorDates[1].getTime()) {
       result.dates = undefined;
-
-      var _dates2 = _slicedToArray(dates, 1);
-
-      var _dates2$ = _slicedToArray(_dates2[0], 1);
-
-      result.date = _dates2$[0];
+      var _dates$2 = dates[0];
+      result.date = _dates$2[0];
     } else if (_nextDate.getTime() < previousDate.getTime()) {
       if (_nextDate.getTime() < priorDates[0].getTime()) {
         result.dates = [[selectedDate, dates[0][1]]];

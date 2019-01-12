@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Clock", {
-  enumerable: true,
-  get: function get() {
-    return _Clock.Clock;
-  }
-});
+exports.__esModule = true;
+exports.Clock = void 0;
 
 var _Clock = require("./Clock");
+
+exports.Clock = _Clock.Clock;

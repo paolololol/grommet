@@ -21,7 +21,7 @@ var All = function All() {
       margin: "small"
     }, _react.default.createElement(_grommet.Text, {
       size: size
-    }, "Text ".concat(size)));
+    }, "Text " + size));
   }));
 };
 

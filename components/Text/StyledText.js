@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledText = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -16,31 +14,31 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var marginStyle = function marginStyle(props) {
   if (typeof props.margin === 'string') {
     var margin = props.theme.global.edgeSize[props.margin];
-    return "\n      margin-top: ".concat(margin, ";\n      margin-bottom: ").concat(margin, ";\n      margin-left: ").concat(margin, ";\n      margin-right: ").concat(margin, ";\n    ");
+    return "\n      margin-top: " + margin + ";\n      margin-bottom: " + margin + ";\n      margin-left: " + margin + ";\n      margin-right: " + margin + ";\n    ";
   }
 
   if (props.margin.vertical) {
-    return "\n      margin-top: ".concat(props.theme.global.edgeSize[props.margin.vertical], ";\n      margin-bottom: ").concat(props.theme.global.edgeSize[props.margin.vertical], ";\n    ");
+    return "\n      margin-top: " + props.theme.global.edgeSize[props.margin.vertical] + ";\n      margin-bottom: " + props.theme.global.edgeSize[props.margin.vertical] + ";\n    ";
   }
 
   if (props.margin.horizontal) {
-    return "\n      margin-left: ".concat(props.theme.global.edgeSize[props.margin.horizontal], ";\n      margin-right: ").concat(props.theme.global.edgeSize[props.margin.horizontal], ";\n    ");
+    return "\n      margin-left: " + props.theme.global.edgeSize[props.margin.horizontal] + ";\n      margin-right: " + props.theme.global.edgeSize[props.margin.horizontal] + ";\n    ";
   }
 
   if (props.margin.top) {
-    return "margin-top: ".concat(props.theme.global.edgeSize[props.margin.top], ";");
+    return "margin-top: " + props.theme.global.edgeSize[props.margin.top] + ";";
   }
 
   if (props.margin.bottom) {
-    return "margin-bottom: ".concat(props.theme.global.edgeSize[props.margin.bottom], ";");
+    return "margin-bottom: " + props.theme.global.edgeSize[props.margin.bottom] + ";";
   }
 
   if (props.margin.left) {
-    return "margin-left: ".concat(props.theme.global.edgeSize[props.margin.left], ";");
+    return "margin-left: " + props.theme.global.edgeSize[props.margin.left] + ";";
   }
 
   if (props.margin.right) {
-    return "margin-right: ".concat(props.theme.global.edgeSize[props.margin.right], ";");
+    return "margin-right: " + props.theme.global.edgeSize[props.margin.right] + ";";
   }
 
   return '';

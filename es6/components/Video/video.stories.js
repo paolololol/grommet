@@ -1,36 +1,29 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Box, Grommet, Video } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 var SimpleVideo = function SimpleVideo() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Video, null, _react.default.createElement("source", {
+  }, React.createElement(Video, null, React.createElement("source", {
     src: "http://techslides.com/demos/sample-videos/small.webm",
     type: "video/webm"
-  }), _react.default.createElement("source", {
+  }), React.createElement("source", {
     src: "http://techslides.com/demos/sample-videos/small.ogv",
     type: "video/ogg"
-  }), _react.default.createElement("source", {
+  }), React.createElement("source", {
     src: "http://techslides.com/demos/sample-videos/small.mp4",
     type: "video/mp4"
-  }), _react.default.createElement("source", {
+  }), React.createElement("source", {
     src: "http://techslides.com/demos/sample-videos/small.3gp",
     type: "video/3gp"
   }))));
 };
 
-(0, _react2.storiesOf)('Video', module).add('Simple Video', function () {
-  return _react.default.createElement(SimpleVideo, null);
+storiesOf('Video', module).add('Simple Video', function () {
+  return React.createElement(SimpleVideo, null);
 });

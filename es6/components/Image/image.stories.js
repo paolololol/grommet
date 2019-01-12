@@ -1,48 +1,41 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Box, Image } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 var Simple = function Simple() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Image, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Image, {
     src: "//v2.grommet.io/assets/IMG_4245.jpg"
   }));
 };
 
 var Fit = function Fit() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "start",
     gap: "medium"
-  }, _react.default.createElement(_grommet.Box, {
+  }, React.createElement(Box, {
     height: "small",
     width: "small",
     border: true
-  }, _react.default.createElement(_grommet.Image, {
+  }, React.createElement(Image, {
     src: "//v2.grommet.io/assets/IMG_4245.jpg",
     fit: "contain"
-  })), _react.default.createElement(_grommet.Box, {
+  })), React.createElement(Box, {
     height: "small",
     width: "small",
     border: true
-  }, _react.default.createElement(_grommet.Image, {
+  }, React.createElement(Image, {
     src: "//v2.grommet.io/assets/IMG_4245.jpg",
     fit: "cover"
   }))));
 };
 
-(0, _react2.storiesOf)('Image', module).add('Simple', function () {
-  return _react.default.createElement(Simple, null);
+storiesOf('Image', module).add('Simple', function () {
+  return React.createElement(Simple, null);
 }).add('Fit', function () {
-  return _react.default.createElement(Fit, null);
+  return React.createElement(Fit, null);
 });

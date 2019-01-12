@@ -1,21 +1,17 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
 var _utils = require("../../utils");
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 var doc = function doc(DataTable) {
   var DocumentedDataTable = (0, _reactDesc.describe)(DataTable).availableAt((0, _utils.getAvailableAtBadge)('DataTable')).description('A data driven table.').usage("import { DataTable } from 'grommet';\n<DataTable />").intrinsicElement('table');
-  DocumentedDataTable.propTypes = _objectSpread({}, _utils.genericProps, {
+  DocumentedDataTable.propTypes = _extends({}, _utils.genericProps, {
     columns: _reactDesc.PropTypes.arrayOf(_reactDesc.PropTypes.shape({
       align: _reactDesc.PropTypes.oneOf(['center', 'start', 'end']),
       aggregate: _reactDesc.PropTypes.oneOf(['avg', 'max', 'min', 'sum']),

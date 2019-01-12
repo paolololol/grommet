@@ -1,26 +1,15 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.doc = void 0;
-
-var _reactDesc = require("react-desc");
-
-var _utils = require("../../utils");
-
-var doc = function doc(RangeInput) {
-  var DocumentedRangeInput = (0, _reactDesc.describe)(RangeInput).availableAt((0, _utils.getAvailableAtBadge)('RangeInput')).description('A slider control to input a value within a fixed range.').usage("import { RangeInput } from 'grommet';\n<RangeInput />").intrinsicElement('input');
+import { describe, PropTypes } from 'react-desc';
+import { getAvailableAtBadge } from '../../utils';
+export var doc = function doc(RangeInput) {
+  var DocumentedRangeInput = describe(RangeInput).availableAt(getAvailableAtBadge('RangeInput')).description('A slider control to input a value within a fixed range.').usage("import { RangeInput } from 'grommet';\n<RangeInput />").intrinsicElement('input');
   DocumentedRangeInput.propTypes = {
-    id: _reactDesc.PropTypes.string.description('The id attribute of the range input.'),
-    min: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.number, _reactDesc.PropTypes.string]).description('The minimum value permitted.'),
-    max: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.number, _reactDesc.PropTypes.string]).description('The maximum value permitted.'),
-    name: _reactDesc.PropTypes.string.description('The name attribute of the range input.'),
-    onChange: _reactDesc.PropTypes.func.description("Function that will be called when the user changes the value. It will\n      be passed an event object. The new input value will be available\n      via 'event.target.value'."),
-    step: _reactDesc.PropTypes.number.description('The step interval between values.'),
-    value: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.number, _reactDesc.PropTypes.string]).description('The current value.')
+    id: PropTypes.string.description('The id attribute of the range input.'),
+    min: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).description('The minimum value permitted.'),
+    max: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).description('The maximum value permitted.'),
+    name: PropTypes.string.description('The name attribute of the range input.'),
+    onChange: PropTypes.func.description("Function that will be called when the user changes the value. It will\n      be passed an event object. The new input value will be available\n      via 'event.target.value'."),
+    step: PropTypes.number.description('The step interval between values.'),
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).description('The current value.')
   };
   return DocumentedRangeInput;
 };
-
-exports.doc = doc;

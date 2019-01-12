@@ -36,6 +36,6 @@ var customBreakpoints = (0, _utils.deepMerge)(_themes.grommet, {
     return _react.default.createElement(_grommet.Box, {
       fill: true,
       background: "brand"
-    }, _react.default.createElement(_grommet.Heading, null, "Hi, I'm ".concat(size, ", resize me!")));
+    }, _react.default.createElement(_grommet.Heading, null, "Hi, I'm " + size + ", resize me!"));
   }));
 });

@@ -1,14 +1,2 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TableContext = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var TableContext = _react.default.createContext(undefined);
-
-exports.TableContext = TableContext;
+import React from 'react';
+export var TableContext = React.createContext(undefined);

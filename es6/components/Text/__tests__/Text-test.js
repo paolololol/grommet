@@ -1,136 +1,117 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Text } from '..';
 test('renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, null, "text")));
-
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, null, "text")));
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('renders size', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     size: "xsmall"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     size: "small"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     size: "medium"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     size: "large"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     size: "xlarge"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     size: "xxlarge"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('renders textAlign', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     textAlign: "start"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     textAlign: "center"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     textAlign: "end"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('renders margin', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     margin: "small"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: "medium"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: "large"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: "none"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       vertical: 'small'
     }
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       horizontal: 'small'
     }
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       bottom: 'small'
     }
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       top: 'small'
     }
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       left: 'small'
     }
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     margin: {
       right: 'small'
     }
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 var LONG = 'a b c d e f g h i j k l m n o p q r s t u v w x y z';
 test('renders truncate', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     truncate: false
-  }, LONG), _react.default.createElement(_.Text, {
+  }, LONG), React.createElement(Text, {
     truncate: true
   }, LONG)));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('renders color', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     color: "status-critical"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('renders tag', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     as: "div"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('proxies tag', function () {
-  var tagComponent = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var tagComponent = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     tag: "div"
   })));
-
-  var asComponent = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var asComponent = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     as: "div"
   })));
-
   expect(tagComponent.toJSON()).toEqual(asComponent.toJSON());
 });
 test('renders weight', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Text, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Text, {
     weight: "normal"
-  }), _react.default.createElement(_.Text, {
+  }), React.createElement(Text, {
     weight: "bold"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

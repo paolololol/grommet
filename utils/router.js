@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.ROUTER_PROPS = void 0;
 
 var _reactDesc = require("react-desc");

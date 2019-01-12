@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledButton = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -75,7 +73,7 @@ var StyledButton = _styledComponents.default.button.withConfig({
 }, function (props) {
   return props.fillContainer && fillStyle;
 }, function (props) {
-  return props.hasIcon && !props.hasLabel && "\n    padding: ".concat(props.theme.global.edgeSize.small, ";\n  ");
+  return props.hasIcon && !props.hasLabel && "\n    padding: " + props.theme.global.edgeSize.small + ";\n  ";
 }, function (props) {
   return props.theme.button.extend;
 });

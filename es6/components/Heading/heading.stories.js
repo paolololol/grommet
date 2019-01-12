@@ -1,37 +1,28 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _propTypes = _interopRequireDefault(require("prop-types"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-var _utils = require("grommet/utils");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import PropTypes from 'prop-types';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Grid, Heading } from 'grommet';
+import { grommet } from 'grommet/themes';
+import { deepMerge } from 'grommet/utils';
 
 var H = function H(_ref) {
   var level = _ref.level,
       size = _ref.size;
-  return _react.default.createElement(_grommet.Heading, {
+  return React.createElement(Heading, {
     level: level,
     size: size
-  }, "Heading ".concat(level, " ").concat(size));
+  }, "Heading " + level + " " + size);
 };
 
 H.propTypes = {
-  level: _propTypes.default.number.isRequired,
-  size: _propTypes.default.string.isRequired
+  level: PropTypes.number.isRequired,
+  size: PropTypes.string.isRequired
 };
 
 var Set = function Set(_ref2) {
   var size = _ref2.size;
-  return _react.default.createElement("div", null, [1, 2, 3, 4, 5, 6].map(function (level) {
-    return _react.default.createElement(H, {
+  return React.createElement("div", null, [1, 2, 3, 4, 5, 6].map(function (level) {
+    return React.createElement(H, {
       key: level,
       level: level,
       size: size
@@ -40,35 +31,35 @@ var Set = function Set(_ref2) {
 };
 
 Set.propTypes = {
-  size: _propTypes.default.string.isRequired
+  size: PropTypes.string.isRequired
 };
 
 var All = function All() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Grid, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Grid, {
     columns: "large",
     gap: "medium"
-  }, _react.default.createElement(Set, {
+  }, React.createElement(Set, {
     size: "medium"
-  }), _react.default.createElement(Set, {
+  }), React.createElement(Set, {
     size: "small"
-  }), _react.default.createElement(Set, {
+  }), React.createElement(Set, {
     size: "large"
-  }), _react.default.createElement(Set, {
+  }), React.createElement(Set, {
     size: "xlarge"
   })));
 };
 
 var Color = function Color() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Heading, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Heading, {
     color: "accent-1"
   }, "Colored Heading"));
 };
 
-var customlevel = (0, _utils.deepMerge)(_themes.grommet, {
+var customlevel = deepMerge(grommet, {
   heading: {
     level: {
       5: {
@@ -90,17 +81,17 @@ var customlevel = (0, _utils.deepMerge)(_themes.grommet, {
 });
 
 var CustomLevel = function CustomLevel() {
-  return _react.default.createElement(_grommet.Grommet, {
+  return React.createElement(Grommet, {
     theme: customlevel
-  }, _react.default.createElement(_grommet.Heading, {
+  }, React.createElement(Heading, {
     level: 5
   }, "Heading level 5"));
 };
 
-(0, _react2.storiesOf)('Heading', module).add('All', function () {
-  return _react.default.createElement(All, null);
+storiesOf('Heading', module).add('All', function () {
+  return React.createElement(All, null);
 }).add('Color', function () {
-  return _react.default.createElement(Color, null);
+  return React.createElement(Color, null);
 }).add('Custom Level', function () {
-  return _react.default.createElement(CustomLevel, null);
+  return React.createElement(CustomLevel, null);
 });

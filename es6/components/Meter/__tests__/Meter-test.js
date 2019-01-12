@@ -1,17 +1,8 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Meter } from '..';
 var VALUES = [{
   value: 20,
   label: 'twenty',
@@ -19,21 +10,19 @@ var VALUES = [{
 }];
 describe('Meter', function () {
   test('default', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, null)));
-
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, null)));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('basic', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('many values', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       values: [{
         value: 5
       }, {
@@ -52,139 +41,134 @@ describe('Meter', function () {
         value: 5
       }]
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('type', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       type: "bar",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('size', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       size: "xsmall",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       size: "small",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       size: "medium",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       size: "large",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       size: "xlarge",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       size: "xsmall",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       size: "small",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       size: "medium",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       size: "large",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       size: "xlarge",
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('thickness', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       thickness: "xsmall",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       thickness: "small",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       thickness: "medium",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       thickness: "large",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       thickness: "xlarge",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       thickness: "55px",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "xsmall",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "small",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "medium",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "large",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "xlarge",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       thickness: "55px",
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('round', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       round: true,
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       round: true,
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('background', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Meter, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Meter, {
       background: "light-3",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       background: {
         color: 'light-3',
         opacity: 'medium'
       },
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       background: "light-3",
       values: VALUES
-    }), _react.default.createElement(_.Meter, {
+    }), React.createElement(Meter, {
       type: "circle",
       background: {
         color: 'light-3',
@@ -192,7 +176,6 @@ describe('Meter', function () {
       },
       values: VALUES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

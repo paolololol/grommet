@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "TableRow", {
-  enumerable: true,
-  get: function get() {
-    return _TableRow.TableRow;
-  }
-});
+exports.__esModule = true;
+exports.TableRow = void 0;
 
 var _TableRow = require("./TableRow");
+
+exports.TableRow = _TableRow.TableRow;

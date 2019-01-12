@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.translateEndAngle = exports.arcCommands = exports.polarToCartesian = exports.baseUnit = void 0;
 var POST_DECIMAL_DIGITS = 10;
 var baseUnit = 24;

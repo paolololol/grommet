@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledRadioButton = exports.StyledRadioButtonBox = exports.StyledRadioButtonIcon = exports.StyledRadioButtonInput = exports.StyledRadioButtonContainer = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));

@@ -1,67 +1,45 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StyledSuggestions = exports.StyledPlaceholder = exports.StyledTextInputContainer = exports.StyledTextInput = void 0;
-
-var _styledComponents = _interopRequireWildcard(require("styled-components"));
-
-var _utils = require("../../utils");
-
-var _defaultProps = require("../../default-props");
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+import styled, { css } from 'styled-components';
+import { focusStyle, inputStyle, parseMetricToNum, placeholderStyle } from '../../utils';
+import { defaultProps } from '../../default-props';
 
 var sizeStyle = function sizeStyle(props) {
   var data = props.theme.text[props.size];
-  return (0, _styledComponents.css)(["font-size:", ";line-height:", ";"], data.size, data.height);
+  return css(["font-size:", ";line-height:", ";"], data.size, data.height);
 };
 
-var plainStyle = (0, _styledComponents.css)(["border:none;"]);
-
-var StyledTextInput = _styledComponents.default.input.withConfig({
+var plainStyle = css(["border:none;"]);
+var StyledTextInput = styled.input.withConfig({
   displayName: "StyledTextInput",
   componentId: "sc-1x30a0s-0"
-})(["", " width:100%;", " ", " ", " &::-moz-focus-inner{border:none;outline:none;}", ";", ";"], _utils.inputStyle, function (props) {
+})(["", " width:100%;", " ", " ", " &::-moz-focus-inner{border:none;outline:none;}", ";", ";"], inputStyle, function (props) {
   return props.size && sizeStyle(props);
 }, function (props) {
   return props.plain && plainStyle;
-}, _utils.placeholderStyle, function (props) {
-  return props.focus && !props.plain && _utils.focusStyle;
+}, placeholderStyle, function (props) {
+  return props.focus && !props.plain && focusStyle;
 }, function (props) {
   return props.theme.textInput && props.theme.textInput.extend;
 });
-
-exports.StyledTextInput = StyledTextInput;
 StyledTextInput.defaultProps = {};
-Object.setPrototypeOf(StyledTextInput.defaultProps, _defaultProps.defaultProps);
-
-var StyledTextInputContainer = _styledComponents.default.div.withConfig({
+Object.setPrototypeOf(StyledTextInput.defaultProps, defaultProps);
+var StyledTextInputContainer = styled.div.withConfig({
   displayName: "StyledTextInput__StyledTextInputContainer",
   componentId: "sc-1x30a0s-1"
 })(["position:relative;width:100%;"]);
-
-exports.StyledTextInputContainer = StyledTextInputContainer;
 StyledTextInputContainer.defaultProps = {};
-Object.setPrototypeOf(StyledTextInputContainer.defaultProps, _defaultProps.defaultProps);
-
-var StyledPlaceholder = _styledComponents.default.div.withConfig({
+Object.setPrototypeOf(StyledTextInputContainer.defaultProps, defaultProps);
+var StyledPlaceholder = styled.div.withConfig({
   displayName: "StyledTextInput__StyledPlaceholder",
   componentId: "sc-1x30a0s-2"
 })(["position:absolute;left:", "px;top:50%;transform:translateY(-50%);display:flex;justify-content:center;"], function (props) {
-  return (0, _utils.parseMetricToNum)(props.theme.global.input.padding) - (0, _utils.parseMetricToNum)(props.theme.global.control.border.width);
+  return parseMetricToNum(props.theme.global.input.padding) - parseMetricToNum(props.theme.global.control.border.width);
 });
-
-exports.StyledPlaceholder = StyledPlaceholder;
 StyledPlaceholder.defaultProps = {};
-Object.setPrototypeOf(StyledPlaceholder.defaultProps, _defaultProps.defaultProps);
-
-var StyledSuggestions = _styledComponents.default.ol.withConfig({
+Object.setPrototypeOf(StyledPlaceholder.defaultProps, defaultProps);
+var StyledSuggestions = styled.ol.withConfig({
   displayName: "StyledTextInput__StyledSuggestions",
   componentId: "sc-1x30a0s-3"
 })(["border-top-left-radius:0;border-top-right-radius:0;margin:0;padding:0;list-style-type:none;"]);
-
-exports.StyledSuggestions = StyledSuggestions;
 StyledSuggestions.defaultProps = {};
-Object.setPrototypeOf(StyledSuggestions.defaultProps, _defaultProps.defaultProps);
+Object.setPrototypeOf(StyledSuggestions.defaultProps, defaultProps);
+export { StyledTextInput, StyledTextInputContainer, StyledPlaceholder, StyledSuggestions };

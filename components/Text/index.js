@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Text", {
-  enumerable: true,
-  get: function get() {
-    return _Text.Text;
-  }
-});
+exports.__esModule = true;
+exports.Text = void 0;
 
 var _Text = require("./Text");
+
+exports.Text = _Text.Text;

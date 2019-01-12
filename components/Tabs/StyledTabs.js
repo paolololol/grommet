@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledTabs = exports.StyledTabPanel = exports.StyledTabsHeader = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -15,8 +13,6 @@ var _FLEX_MAP;
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var StyledTabsHeader = _styledComponents.default.div.withConfig({
   displayName: "StyledTabs__StyledTabsHeader",
   componentId: "a4fwxl-0"
@@ -27,9 +23,9 @@ var StyledTabsHeader = _styledComponents.default.div.withConfig({
 exports.StyledTabsHeader = StyledTabsHeader;
 StyledTabsHeader.defaultProps = {};
 Object.setPrototypeOf(StyledTabsHeader.defaultProps, _defaultProps.defaultProps);
-var FLEX_MAP = (_FLEX_MAP = {}, _defineProperty(_FLEX_MAP, true, '1 1'), _defineProperty(_FLEX_MAP, false, '0 0'), _defineProperty(_FLEX_MAP, "grow", '1 0'), _defineProperty(_FLEX_MAP, "shrink", '0 1'), _FLEX_MAP);
+var FLEX_MAP = (_FLEX_MAP = {}, _FLEX_MAP[true] = '1 1', _FLEX_MAP[false] = '0 0', _FLEX_MAP.grow = '1 0', _FLEX_MAP.shrink = '0 1', _FLEX_MAP);
 var flexStyle = (0, _styledComponents.css)(["flex:", ";"], function (props) {
-  return "".concat(FLEX_MAP[props.flex]).concat(props.flex !== true ? ' auto' : '');
+  return "" + FLEX_MAP[props.flex] + (props.flex !== true ? ' auto' : '');
 });
 
 var StyledTabPanel = _styledComponents.default.div.withConfig({

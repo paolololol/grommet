@@ -1,21 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.extendDefaultTheme = exports.defaultProps = void 0;
-
-var _utils = require("./utils");
-
-var _themes = require("./themes");
-
-var defaultProps = {
-  theme: _themes.base
+import { deepMerge } from './utils';
+import { base } from './themes';
+export var defaultProps = {
+  theme: base
 };
-exports.defaultProps = defaultProps;
-
-var extendDefaultTheme = function extendDefaultTheme(theme) {
-  defaultProps.theme = (0, _utils.deepMerge)(_themes.base, theme);
+export var extendDefaultTheme = function extendDefaultTheme(theme) {
+  defaultProps.theme = deepMerge(base, theme);
 };
-
-exports.extendDefaultTheme = extendDefaultTheme;

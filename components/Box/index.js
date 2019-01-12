@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Box", {
-  enumerable: true,
-  get: function get() {
-    return _Box.Box;
-  }
-});
+exports.__esModule = true;
+exports.Box = void 0;
 
 var _Box = require("./Box");
+
+exports.Box = _Box.Box;

@@ -1,24 +1,14 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-require("jest-styled-components");
-
-var _reactTestingLibrary = require("react-testing-library");
-
-var _domTestingLibrary = require("dom-testing-library");
-
-var _portal = require("../../../utils/portal");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import 'jest-styled-components';
+import { cleanup, fireEvent, render } from 'react-testing-library';
+import { getByText } from 'dom-testing-library';
+import { createPortal, expectPortal } from '../../../utils/portal';
+import { MaskedInput } from '..';
 describe('MaskedInput', function () {
-  beforeEach(_portal.createPortal);
-  afterEach(_reactTestingLibrary.cleanup);
+  beforeEach(createPortal);
+  afterEach(cleanup);
   test('basic', function () {
-    var _render = (0, _reactTestingLibrary.render)(_react.default.createElement(_.MaskedInput, {
+    var _render = render(React.createElement(MaskedInput, {
       name: "item"
     })),
         container = _render.container;
@@ -29,7 +19,7 @@ describe('MaskedInput', function () {
     var onChange = jest.fn();
     var onFocus = jest.fn();
 
-    var _render2 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.MaskedInput, {
+    var _render2 = render(React.createElement(MaskedInput, {
       "data-testid": "test-input",
       id: "item",
       name: "item",
@@ -51,11 +41,9 @@ describe('MaskedInput', function () {
         container = _render2.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.focus(getByTestId('test-input'));
-
+    fireEvent.focus(getByTestId('test-input'));
     setTimeout(function () {
-      (0, _portal.expectPortal)('masked-input-drop__item').toMatchSnapshot();
+      expectPortal('masked-input-drop__item').toMatchSnapshot();
       expect(onChange).not.toBeCalled();
       expect(onFocus).toBeCalled();
       done();
@@ -64,7 +52,7 @@ describe('MaskedInput', function () {
   test('option via mouse', function (done) {
     var onChange = jest.fn();
 
-    var _render3 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.MaskedInput, {
+    var _render3 = render(React.createElement(MaskedInput, {
       "data-testid": "test-input",
       plain: true,
       size: "large",
@@ -84,14 +72,10 @@ describe('MaskedInput', function () {
         container = _render3.container;
 
     expect(container.firstChild).toMatchSnapshot();
-
-    _reactTestingLibrary.fireEvent.focus(getByTestId('test-input'));
-
+    fireEvent.focus(getByTestId('test-input'));
     setTimeout(function () {
-      (0, _portal.expectPortal)('masked-input-drop__item').toMatchSnapshot();
-
-      _reactTestingLibrary.fireEvent.click((0, _domTestingLibrary.getByText)(document, 'aa'));
-
+      expectPortal('masked-input-drop__item').toMatchSnapshot();
+      fireEvent.click(getByText(document, 'aa'));
       expect(container.firstChild).toMatchSnapshot();
       expect(onChange).toBeCalledWith(expect.objectContaining({
         target: {
@@ -104,7 +88,7 @@ describe('MaskedInput', function () {
   test('option via keyboard', function (done) {
     var onChange = jest.fn();
 
-    var _render4 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.MaskedInput, {
+    var _render4 = render(React.createElement(MaskedInput, {
       "data-testid": "test-input",
       id: "item",
       name: "item",
@@ -123,35 +107,28 @@ describe('MaskedInput', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     var input = getByTestId('test-input');
-
-    _reactTestingLibrary.fireEvent.focus(input);
-
+    fireEvent.focus(input);
     setTimeout(function () {
       // pressing enter here nothing will happen
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 13
       }); // enter
 
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 40
       }); // down
 
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 40
       }); // down
 
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 38
       }); // up
 
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 13
       }); // enter
-
 
       expect(onChange).toBeCalledWith(expect.objectContaining({
         target: {
@@ -164,7 +141,7 @@ describe('MaskedInput', function () {
   test('next and previous without options', function (done) {
     var onChange = jest.fn();
 
-    var _render5 = (0, _reactTestingLibrary.render)(_react.default.createElement(_.MaskedInput, {
+    var _render5 = render(React.createElement(MaskedInput, {
       "data-testid": "test-input",
       id: "item",
       name: "item",
@@ -182,26 +159,20 @@ describe('MaskedInput', function () {
 
     expect(container.firstChild).toMatchSnapshot();
     var input = getByTestId('test-input');
-
-    _reactTestingLibrary.fireEvent.focus(input);
-
+    fireEvent.focus(input);
     setTimeout(function () {
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 40
       });
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 40
       });
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 38
       });
-
-      _reactTestingLibrary.fireEvent.keyDown(input, {
+      fireEvent.keyDown(input, {
         keyCode: 13
       }); // enter
-
 
       expect(onChange).not.toBeCalled();
       expect(container.firstChild).toMatchSnapshot();

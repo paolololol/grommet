@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "MaskedInput", {
-  enumerable: true,
-  get: function get() {
-    return _MaskedInput.MaskedInput;
-  }
-});
+exports.__esModule = true;
+exports.MaskedInput = void 0;
 
 var _MaskedInput = require("./MaskedInput");
+
+exports.MaskedInput = _MaskedInput.MaskedInput;

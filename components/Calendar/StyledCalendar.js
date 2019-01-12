@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledDay = exports.StyledDayContainer = exports.StyledWeek = exports.StyledWeeks = exports.StyledWeeksContainer = exports.StyledCalendar = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -35,7 +33,7 @@ var StyledWeeksContainer = _styledComponents.default.div.withConfig({
   displayName: "StyledCalendar__StyledWeeksContainer",
   componentId: "sc-1y4xhmp-1"
 })(["overflow:hidden;", ";"], function (props) {
-  return "height: ".concat((0, _utils.parseMetricToNum)(props.theme.calendar[props.sizeProp].daySize) * 6, "px;");
+  return "height: " + (0, _utils.parseMetricToNum)(props.theme.calendar[props.sizeProp].daySize) * 6 + "px;";
 });
 
 exports.StyledWeeksContainer = StyledWeeksContainer;
@@ -52,8 +50,8 @@ var slideStyle = function slideStyle(props) {
       daySize = _theme$calendar$sizeP.daySize,
       slideDuration = _theme$calendar$sizeP.slideDuration;
   var amount = (0, _utils.parseMetricToNum)(daySize) * weeks;
-  var translateYFrom = direction === 'down' ? "-".concat(amount, "px") : '0';
-  var translateYTo = direction === 'up' ? "-".concat(amount, "px") : '0';
+  var translateYFrom = direction === 'down' ? "-" + amount + "px" : '0';
+  var translateYTo = direction === 'up' ? "-" + amount + "px" : '0';
   var slideTransition = (0, _styledComponents.css)(["0%{transform:translateY(", ");}100%{transform:translateY(", ");}"], translateYFrom, translateYTo);
   return (0, _styledComponents.css)(["animation:", " ", " forwards;"], (0, _styledComponents.keyframes)(["", ""], slideTransition), slideDuration);
 };

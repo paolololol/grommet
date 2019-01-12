@@ -1,41 +1,34 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Box, Stack } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 var SimpleStack = function SimpleStack() {
-  return _react.default.createElement(_grommet.Grommet, null, _react.default.createElement(_grommet.Stack, {
+  return React.createElement(Grommet, null, React.createElement(Stack, {
     anchor: "center"
-  }, _react.default.createElement(_grommet.Box, {
+  }, React.createElement(Box, {
     pad: "large",
     background: "neutral-1"
-  }), _react.default.createElement(_grommet.Box, {
+  }), React.createElement(Box, {
     pad: "small",
     background: "accent-1"
   })));
 };
 
 var FillStack = function FillStack() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet,
+  return React.createElement(Grommet, {
+    theme: grommet,
     full: true
-  }, _react.default.createElement(_grommet.Stack, {
+  }, React.createElement(Stack, {
     fill: true
-  }, _react.default.createElement(_grommet.Box, {
+  }, React.createElement(Box, {
     background: "brand",
     fill: true
   }, "Test")));
 };
 
-(0, _react2.storiesOf)('Stack', module).add('Simple Stack', function () {
-  return _react.default.createElement(SimpleStack, null);
+storiesOf('Stack', module).add('Simple Stack', function () {
+  return React.createElement(SimpleStack, null);
 }).add('Fill Stack', function () {
-  return _react.default.createElement(FillStack, null);
+  return React.createElement(FillStack, null);
 });

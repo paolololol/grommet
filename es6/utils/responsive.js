@@ -1,11 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getDeviceBreakpoint = exports.getBreakpoint = void 0;
-
-var getBreakpoint = function getBreakpoint(windowWidth, theme) {
+export var getBreakpoint = function getBreakpoint(windowWidth, theme) {
   var result;
   Object.keys(theme.global.breakpoints).sort(function (a, b) {
     var first = theme.global.breakpoints[a];
@@ -29,11 +22,6 @@ var getBreakpoint = function getBreakpoint(windowWidth, theme) {
   });
   return result;
 };
-
-exports.getBreakpoint = getBreakpoint;
-
-var getDeviceBreakpoint = function getDeviceBreakpoint(type, theme) {
+export var getDeviceBreakpoint = function getDeviceBreakpoint(type, theme) {
   return theme.global.deviceBreakpoints[type];
 };
-
-exports.getDeviceBreakpoint = getDeviceBreakpoint;

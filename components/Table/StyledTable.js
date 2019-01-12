@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledTable = exports.StyledTableFooter = exports.StyledTableHeader = exports.StyledTableBody = exports.StyledTableRow = exports.StyledTableDataCaption = exports.StyledTableCell = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -30,10 +28,10 @@ var sizeStyle = (0, _styledComponents.css)(["width:", ";max-width:", ";overflow:
 var StyledTableCell = _styledComponents.default.td.withConfig({
   displayName: "StyledTable__StyledTableCell",
   componentId: "sc-1m3u5g-0"
-})(["margin:0;padding:0;font-weight:inherit;text-align:inherit;", " ", " ", ""], function (props) {
+})(["margin:0;padding:0;font-weight:inherit;text-align:inherit;height:100%;", " ", " ", ""], function (props) {
   return props.size && sizeStyle;
 }, function (props) {
-  return props.verticalAlign && "vertical-align: ".concat(props.verticalAlign, ";");
+  return props.verticalAlign && "vertical-align: " + props.verticalAlign + ";";
 }, function (props) {
   return props.tableContextTheme && props.tableContextTheme.extend;
 });
@@ -54,7 +52,7 @@ Object.setPrototypeOf(StyledTableDataCaption.defaultProps, _defaultProps.default
 var StyledTableRow = _styledComponents.default.tr.withConfig({
   displayName: "StyledTable__StyledTableRow",
   componentId: "sc-1m3u5g-2"
-})([""]);
+})(["height:100%;"]);
 
 exports.StyledTableRow = StyledTableRow;
 StyledTableRow.defaultProps = {};
@@ -90,7 +88,7 @@ Object.setPrototypeOf(StyledTableFooter.defaultProps, _defaultProps.defaultProps
 var StyledTable = _styledComponents.default.table.withConfig({
   displayName: "StyledTable",
   componentId: "sc-1m3u5g-6"
-})(["border-spacing:0;border-collapse:collapse;width:100%;", " ", ";"], _utils.genericStyles, function (props) {
+})(["border-spacing:0;border-collapse:collapse;", " ", ";"], _utils.genericStyles, function (props) {
   return props.theme.table && props.theme.table.extend;
 });
 

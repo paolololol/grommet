@@ -1,40 +1,32 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Box, Grommet, Text } from 'grommet';
+import { grommet } from 'grommet/themes';
 var sizes = ['xxlarge', 'xlarge', 'large', 'medium', 'small', 'xsmall', '77px'];
 
 var All = function All() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
+  return React.createElement(Grommet, {
+    theme: grommet
   }, sizes.map(function (size) {
-    return _react.default.createElement(_grommet.Box, {
+    return React.createElement(Box, {
       key: size,
       margin: "small"
-    }, _react.default.createElement(_grommet.Text, {
+    }, React.createElement(Text, {
       size: size
-    }, "Text ".concat(size)));
+    }, "Text " + size));
   }));
 };
 
 var Color = function Color() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Text, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Text, {
     color: "accent-1"
   }, "Colored Text"));
 };
 
-(0, _react2.storiesOf)('Text', module).add('All', function () {
-  return _react.default.createElement(All, null);
+storiesOf('Text', module).add('All', function () {
+  return React.createElement(All, null);
 }).add('Color', function () {
-  return _react.default.createElement(Color, null);
+  return React.createElement(Color, null);
 });

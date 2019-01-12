@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledContainer = exports.StyledOverlay = exports.StyledLayer = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -67,8 +65,10 @@ var getMargin = function getMargin(margin, theme, position) {
   return !marginInTheme && typeof marginValue !== 'string' ? '0px' : marginApplied;
 };
 
-var MARGINS = function MARGINS(margin, theme) {
-  var position = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : undefined;
+var MARGINS = function MARGINS(margin, theme, position) {
+  if (position === void 0) {
+    position = undefined;
+  }
 
   if (position) {
     return getMargin(margin, theme, position);
@@ -119,10 +119,11 @@ var KEYFRAMES = {
   }
 };
 
-var getAnimationStyle = function getAnimationStyle() {
-  var animate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-  var position = arguments.length > 1 ? arguments[1] : undefined;
-  var full = arguments.length > 2 ? arguments[2] : undefined;
+var getAnimationStyle = function getAnimationStyle(animate, position, full) {
+  if (animate === void 0) {
+    animate = true;
+  }
+
   var defaultAnimation = (0, _styledComponents.css)(["animation:", " 0.2s ease-in-out forwards"], KEYFRAMES[position][full]);
   return animate ? defaultAnimation : '';
 }; // POSITIONS combines 'position', 'full', and 'margin' properties, since
@@ -336,9 +337,9 @@ var POSITIONS = {
 var desktopContainerStyle = (0, _styledComponents.css)(["position:", ";max-height:", ";max-width:", ";border-radius:", ";", ";"], function (props) {
   return props.modal ? 'absolute' : 'fixed';
 }, function (props) {
-  return "calc(100% - ".concat(MARGINS(props.margin, props.theme, 'top'), " - ").concat(MARGINS(props.margin, props.theme, 'bottom'), ")");
+  return "calc(100% - " + MARGINS(props.margin, props.theme, 'top') + " - " + MARGINS(props.margin, props.theme, 'bottom') + ")";
 }, function (props) {
-  return "calc(100% - ".concat(MARGINS(props.margin, props.theme, 'left'), " - ").concat(MARGINS(props.margin, props.theme, 'right'), ")");
+  return "calc(100% - " + MARGINS(props.margin, props.theme, 'left') + " - " + MARGINS(props.margin, props.theme, 'right') + ")";
 }, function (props) {
   return props.plain ? 0 : props.theme.layer.border.radius;
 }, function (props) {

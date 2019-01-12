@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "AccordionPanel", {
-  enumerable: true,
-  get: function get() {
-    return _AccordionPanel.AccordionPanel;
-  }
-});
+exports.__esModule = true;
+exports.AccordionPanel = void 0;
 
 var _AccordionPanel = require("./AccordionPanel");
+
+exports.AccordionPanel = _AccordionPanel.AccordionPanel;

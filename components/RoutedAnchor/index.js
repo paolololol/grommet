@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "RoutedAnchor", {
-  enumerable: true,
-  get: function get() {
-    return _RoutedAnchor.RoutedAnchor;
-  }
-});
+exports.__esModule = true;
+exports.RoutedAnchor = void 0;
 
 var _RoutedAnchor = require("./RoutedAnchor");
+
+exports.RoutedAnchor = _RoutedAnchor.RoutedAnchor;

@@ -1,11 +1,4 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.normalizeBounds = exports.normalizeValues = void 0;
-
-var normalizeValues = function normalizeValues(values) {
+export var normalizeValues = function normalizeValues(values) {
   return (values || []).map(function (value, index) {
     if (Array.isArray(value)) {
       return {
@@ -22,10 +15,7 @@ var normalizeValues = function normalizeValues(values) {
     return value;
   });
 };
-
-exports.normalizeValues = normalizeValues;
-
-var normalizeBounds = function normalizeBounds(bounds, values) {
+export var normalizeBounds = function normalizeBounds(bounds, values) {
   var result = bounds;
 
   if (!result) {
@@ -40,5 +30,3 @@ var normalizeBounds = function normalizeBounds(bounds, values) {
 
   return result;
 };
-
-exports.normalizeBounds = normalizeBounds;

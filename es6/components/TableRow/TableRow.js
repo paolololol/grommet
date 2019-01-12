@@ -1,18 +1,8 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.TableRow = void 0;
-
-var _react = _interopRequireDefault(require("react"));
-
-var _StyledTable = require("../Table/StyledTable");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { StyledTableRow } from '../Table/StyledTable';
 
 var TableRow = function TableRow(props) {
-  return _react.default.createElement(_StyledTable.StyledTableRow, props);
+  return React.createElement(StyledTableRow, props);
 };
 
 var TableRowDoc;
@@ -22,4 +12,4 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var TableRowWrapper = TableRowDoc || TableRow;
-exports.TableRow = TableRowWrapper;
+export { TableRowWrapper as TableRow };

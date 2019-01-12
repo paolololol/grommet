@@ -1,16 +1,6 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.dark = void 0;
-
-var _polished = require("polished");
-
-var _styledComponents = require("styled-components");
-
-var _utils = require("../utils");
-
+import { rgba } from 'polished';
+import { css } from 'styled-components';
+import { normalizeColor, deepFreeze } from '../utils';
 var controlColor = '#FFCA58';
 var accentColors = ['#FD6FFF', '#60EB9F', '#60EBE1', '#FFCA58'];
 var neutralColors = ['#EB6060', '#01C781', '#6095EB', '#FFB200'];
@@ -24,8 +14,8 @@ var statusColors = {
 };
 var backgroundColor = '#111111';
 var textColor = '#eeeeee';
-var borderColor = (0, _polished.rgba)(255, 255, 255, 0.33);
-var activeColor = (0, _polished.rgba)(102, 102, 102, 0.5);
+var borderColor = rgba(255, 255, 255, 0.33);
+var activeColor = rgba(102, 102, 102, 0.5);
 var colors = {
   active: activeColor,
   background: backgroundColor,
@@ -41,16 +31,16 @@ var colors = {
 
 var colorArray = function colorArray(array, prefix) {
   return array.forEach(function (color, index) {
-    colors["".concat(prefix, "-").concat(index + 1)] = color;
+    colors[prefix + "-" + (index + 1)] = color;
   });
 };
 
 colorArray(accentColors, 'accent');
 colorArray(neutralColors, 'neutral');
 Object.keys(statusColors).forEach(function (color) {
-  colors["status-".concat(color)] = statusColors[color];
+  colors["status-" + color] = statusColors[color];
 });
-var dark = (0, _utils.deepFreeze)({
+export var dark = deepFreeze({
   global: {
     colors: colors,
     drop: {
@@ -58,8 +48,8 @@ var dark = (0, _utils.deepFreeze)({
     },
     focus: {
       border: {
-        color: (0, _styledComponents.css)(["", ";"], function (props) {
-          return (0, _utils.normalizeColor)('focus', props.theme);
+        color: css(["", ";"], function (props) {
+          return normalizeColor('focus', props.theme);
         }),
         width: '2px'
       }
@@ -85,8 +75,7 @@ var dark = (0, _utils.deepFreeze)({
   layer: {
     background: backgroundColor,
     overlay: {
-      background: (0, _polished.rgba)(48, 48, 48, 0.5)
+      background: rgba(48, 48, 48, 0.5)
     }
   }
 });
-exports.dark = dark;

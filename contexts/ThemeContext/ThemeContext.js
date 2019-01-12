@@ -1,20 +1,14 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "ThemeContext", {
-  enumerable: true,
-  get: function get() {
-    return _styledComponents.ThemeContext;
-  }
-});
+exports.__esModule = true;
 
 var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _styledComponents = require("styled-components");
+
+exports.ThemeContext = _styledComponents.ThemeContext;
 
 var _utils = require("../../utils");
 

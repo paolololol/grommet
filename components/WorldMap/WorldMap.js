@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.WorldMap = void 0;
 
 var _react = _interopRequireWildcard(require("react"));
@@ -19,41 +17,15 @@ var _StyledWorldMap = require("./StyledWorldMap");
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
 
-function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; var ownKeys = Object.keys(source); if (typeof Object.getOwnPropertySymbols === 'function') { ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) { return Object.getOwnPropertyDescriptor(source, sym).enumerable; })); } ownKeys.forEach(function (key) { _defineProperty(target, key, source[key]); }); } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 // The graphic is drawn as a rectangular grid using coordinates spaced
 // by FACTOR pixels. The contents have both an area boundary for interaction
@@ -146,9 +118,7 @@ var buildContinentState = function buildContinentState(_ref) {
   var area = _ref.area,
       dots = _ref.dots,
       origin = _ref.origin;
-
-  var extent = _toConsumableArray(origin);
-
+  var extent = [].concat(origin);
   var stateDots = dots.map(function (segment) {
     var count = segment[2];
     var spots = [];
@@ -161,13 +131,13 @@ var buildContinentState = function buildContinentState(_ref) {
     var x = FACTOR * (origin[0] + segment[0] + 1);
     var y = FACTOR * (origin[1] + segment[1] + 1);
     extent = maxCoordinate(extent, [origin[0] + segment[0] + segment[2], origin[1] + segment[1]]);
-    return "M".concat(x, ",").concat(y, " ").concat(dotCommands);
+    return "M" + x + "," + y + " " + dotCommands;
   }).join(' ');
-  var stateArea = "".concat(area.map(function (point, index) {
+  var stateArea = area.map(function (point, index) {
     var x = FACTOR * (point[0] + origin[0] + 1);
     var y = FACTOR * (point[1] + origin[1] + 1);
-    return "".concat(index === 0 ? 'M' : 'L').concat(x, ",").concat(y);
-  }).join(' '), " Z");
+    return "" + (index === 0 ? 'M' : 'L') + x + "," + y;
+  }).join(' ') + " Z";
   var mid = [origin[0] + (extent[0] - origin[0]) / 2, origin[1] + (extent[1] - origin[1]) / 2];
   return {
     area: stateArea,
@@ -202,20 +172,20 @@ var updateState = function updateState(state, _ref2) {
   var continents = _ref2.continents,
       places = _ref2.places;
 
-  var nextState = _objectSpread({}, state);
+  var nextState = _extends({}, state);
 
   if (continents) {
     continents.forEach(function (continent) {
-      nextState.continents[continent.name] = _objectSpread({}, state.continents[continent.name], continent);
+      nextState.continents[continent.name] = _extends({}, state.continents[continent.name], continent);
     });
   }
 
   nextState.places = (places || []).map(function (_ref3) {
     var location = _ref3.location,
-        place = _objectWithoutProperties(_ref3, ["location"]);
+        place = _objectWithoutPropertiesLoose(_ref3, ["location"]);
 
     var coords = latLonToCoord(location, state.origin, state.extent);
-    return _objectSpread({
+    return _extends({
       coords: coords,
       key: location.join(',')
     }, place);
@@ -271,20 +241,16 @@ var buildInteractiveProps = function buildInteractiveProps(_ref4, activeFunc, ac
 var WorldMap =
 /*#__PURE__*/
 function (_Component) {
-  _inherits(WorldMap, _Component);
+  _inheritsLoose(WorldMap, _Component);
 
   function WorldMap() {
-    var _getPrototypeOf2;
-
     var _this;
-
-    _classCallCheck(this, WorldMap);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
 
-    _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(WorldMap)).call.apply(_getPrototypeOf2, [this].concat(args)));
+    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {});
 
@@ -320,149 +286,147 @@ function (_Component) {
     return _this;
   }
 
-  _createClass(WorldMap, [{
-    key: "render",
-    value: function render() {
-      var _this2 = this;
+  WorldMap.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+    if (!prevState.continents) {
+      return updateState(buildState(), nextProps);
+    }
 
-      var _this$props = this.props,
-          color = _this$props.color,
-          onSelectPlace = _this$props.onSelectPlace,
-          hoverColor = _this$props.hoverColor,
-          theme = _this$props.theme,
-          rest = _objectWithoutProperties(_this$props, ["color", "onSelectPlace", "hoverColor", "theme"]);
+    return updateState(prevState, nextProps);
+  };
 
-      delete rest.places;
-      delete rest.continents;
-      var _this$state = this.state,
-          activeContinent = _this$state.activeContinent,
-          activeCoords = _this$state.activeCoords,
-          activePlace = _this$state.activePlace,
-          continentStates = _this$state.continents,
-          extent = _this$state.extent,
-          origin = _this$state.origin,
-          over = _this$state.over,
-          placeStates = _this$state.places,
-          x = _this$state.x,
-          y = _this$state.y,
-          width = _this$state.width,
-          height = _this$state.height;
-      var continents = Object.keys(continentStates).map(function (name) {
-        var _continentStates$name = continentStates[name],
-            area = _continentStates$name.area,
-            continentColor = _continentStates$name.color,
-            dots = _continentStates$name.dots,
-            onClick = _continentStates$name.onClick,
-            onHover = _continentStates$name.onHover;
-        var active = activeContinent && activeContinent === name;
-        var interactiveProps = {};
+  var _proto = WorldMap.prototype;
 
-        if (onClick || onHover) {
-          interactiveProps = buildInteractiveProps(continentStates[name], function (activate) {
-            return _this2.setState({
-              activeContinent: activate
-            });
-          }, active);
-        }
+  _proto.render = function render() {
+    var _this2 = this;
 
-        return _react.default.createElement("g", _extends({
-          key: name
-        }, interactiveProps), _react.default.createElement("path", {
-          stroke: "none",
-          fill: "#fff",
-          fillOpacity: "0.01",
-          d: area
-        }), _react.default.createElement("path", {
-          d: dots,
-          strokeLinecap: "round",
-          strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.continent[active ? 'active' : 'base']),
-          stroke: (0, _utils.normalizeColor)(continentColor || color || theme.worldMap.color, theme)
-        }));
-      });
-      var places = placeStates.map(function (place) {
-        var placeColor = place.color,
-            coords = place.coords,
-            key = place.key,
-            name = place.name,
-            onClick = place.onClick,
-            onHover = place.onHover,
-            restPlace = _objectWithoutProperties(place, ["color", "coords", "key", "name", "onClick", "onHover"]);
+    var _this$props = this.props,
+        color = _this$props.color,
+        onSelectPlace = _this$props.onSelectPlace,
+        hoverColor = _this$props.hoverColor,
+        theme = _this$props.theme,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["color", "onSelectPlace", "hoverColor", "theme"]);
 
-        var d = "M".concat(FACTOR * coords[0], ", ").concat(FACTOR * coords[1], " h0");
-        var active = activePlace && activePlace === name;
-        var interactiveProps = {};
-
-        if (onClick || onHover) {
-          interactiveProps = buildInteractiveProps(place, function (activate) {
-            return _this2.setState({
-              activePlace: activate
-            });
-          }, active);
-        }
-
-        return _react.default.createElement("path", _extends({
-          key: key,
-          strokeLinecap: "round",
-          strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.place[active ? 'active' : 'base']),
-          stroke: (0, _utils.normalizeColor)(placeColor || color || theme.worldMap.color, theme)
-        }, interactiveProps, restPlace, {
-          d: d
-        }));
-      }); // If the caller is interested in onSelectPlace changes, track where the
-
+    delete rest.places;
+    delete rest.continents;
+    var _this$state = this.state,
+        activeContinent = _this$state.activeContinent,
+        activeCoords = _this$state.activeCoords,
+        activePlace = _this$state.activePlace,
+        continentStates = _this$state.continents,
+        extent = _this$state.extent,
+        origin = _this$state.origin,
+        over = _this$state.over,
+        placeStates = _this$state.places,
+        x = _this$state.x,
+        y = _this$state.y,
+        width = _this$state.width,
+        height = _this$state.height;
+    var continents = Object.keys(continentStates).map(function (name) {
+      var _continentStates$name = continentStates[name],
+          area = _continentStates$name.area,
+          continentColor = _continentStates$name.color,
+          dots = _continentStates$name.dots,
+          onClick = _continentStates$name.onClick,
+          onHover = _continentStates$name.onHover;
+      var active = activeContinent && activeContinent === name;
       var interactiveProps = {};
 
-      if (onSelectPlace) {
-        interactiveProps = {
-          onMouseOver: this.onMouseOver,
-          onMouseMove: over ? this.onMouseMove : undefined,
-          onMouseLeave: this.onMouseLeave
-        };
+      if (onClick || onHover) {
+        interactiveProps = buildInteractiveProps(continentStates[name], function (activate) {
+          return _this2.setState({
+            activeContinent: activate
+          });
+        }, active);
       }
 
-      var active;
+      return _react.default.createElement("g", _extends({
+        key: name
+      }, interactiveProps), _react.default.createElement("path", {
+        stroke: "none",
+        fill: "#fff",
+        fillOpacity: "0.01",
+        d: area
+      }), _react.default.createElement("path", {
+        d: dots,
+        strokeLinecap: "round",
+        strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.continent[active ? 'active' : 'base']),
+        stroke: (0, _utils.normalizeColor)(continentColor || color || theme.worldMap.color, theme)
+      }));
+    });
+    var places = placeStates.map(function (place) {
+      var placeColor = place.color,
+          coords = place.coords,
+          key = place.key,
+          name = place.name,
+          onClick = place.onClick,
+          onHover = place.onHover,
+          restPlace = _objectWithoutPropertiesLoose(place, ["color", "coords", "key", "name", "onClick", "onHover"]);
 
-      if (activeCoords) {
-        var d = "M".concat(FACTOR * activeCoords[0], ", ").concat(FACTOR * activeCoords[1], " h0");
-        active = _react.default.createElement("g", {
-          stroke: "none",
-          fill: "none",
-          fillRule: "evenodd",
-          onClick: function onClick() {
-            return onSelectPlace(coordToLatLon(activeCoords, origin, extent));
-          }
-        }, _react.default.createElement("path", {
-          strokeLinecap: "round",
-          strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.place.active),
-          stroke: (0, _utils.normalizeColor)(hoverColor || color || theme.worldMap.hover.color, theme),
-          d: d
-        }));
+      var d = "M" + FACTOR * coords[0] + ", " + FACTOR * coords[1] + " h0";
+      var active = activePlace && activePlace === name;
+      var interactiveProps = {};
+
+      if (onClick || onHover) {
+        interactiveProps = buildInteractiveProps(place, function (activate) {
+          return _this2.setState({
+            activePlace: activate
+          });
+        }, active);
       }
 
-      return _react.default.createElement(_StyledWorldMap.StyledWorldMap, _extends({
-        viewBox: "".concat(x, " ").concat(y, " ").concat(width, " ").concat(height),
-        preserveAspectRatio: "xMinYMin meet",
-        width: width,
-        height: height
-      }, interactiveProps, rest), _react.default.createElement("g", {
-        ref: function ref(_ref5) {
-          _this2.containerRef = _ref5;
-        },
+      return _react.default.createElement("path", _extends({
+        key: key,
+        strokeLinecap: "round",
+        strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.place[active ? 'active' : 'base']),
+        stroke: (0, _utils.normalizeColor)(placeColor || color || theme.worldMap.color, theme)
+      }, interactiveProps, restPlace, {
+        d: d
+      }));
+    }); // If the caller is interested in onSelectPlace changes, track where the
+
+    var interactiveProps = {};
+
+    if (onSelectPlace) {
+      interactiveProps = {
+        onMouseOver: this.onMouseOver,
+        onMouseMove: over ? this.onMouseMove : undefined,
+        onMouseLeave: this.onMouseLeave
+      };
+    }
+
+    var active;
+
+    if (activeCoords) {
+      var d = "M" + FACTOR * activeCoords[0] + ", " + FACTOR * activeCoords[1] + " h0";
+      active = _react.default.createElement("g", {
         stroke: "none",
         fill: "none",
-        fillRule: "evenodd"
-      }, continents), places, active);
+        fillRule: "evenodd",
+        onClick: function onClick() {
+          return onSelectPlace(coordToLatLon(activeCoords, origin, extent));
+        }
+      }, _react.default.createElement("path", {
+        strokeLinecap: "round",
+        strokeWidth: (0, _utils.parseMetricToNum)(theme.worldMap.place.active),
+        stroke: (0, _utils.normalizeColor)(hoverColor || color || theme.worldMap.hover.color, theme),
+        d: d
+      }));
     }
-  }], [{
-    key: "getDerivedStateFromProps",
-    value: function getDerivedStateFromProps(nextProps, prevState) {
-      if (!prevState.continents) {
-        return updateState(buildState(), nextProps);
-      }
 
-      return updateState(prevState, nextProps);
-    }
-  }]);
+    return _react.default.createElement(_StyledWorldMap.StyledWorldMap, _extends({
+      viewBox: x + " " + y + " " + width + " " + height,
+      preserveAspectRatio: "xMinYMin meet",
+      width: width,
+      height: height
+    }, interactiveProps, rest), _react.default.createElement("g", {
+      ref: function ref(_ref5) {
+        _this2.containerRef = _ref5;
+      },
+      stroke: "none",
+      fill: "none",
+      fillRule: "evenodd"
+    }, continents), places, active);
+  };
 
   return WorldMap;
 }(_react.Component);

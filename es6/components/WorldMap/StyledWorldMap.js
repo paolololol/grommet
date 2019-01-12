@@ -1,25 +1,12 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.StyledWorldMap = void 0;
-
-var _styledComponents = _interopRequireDefault(require("styled-components"));
-
-var _utils = require("../../utils");
-
-var _defaultProps = require("../../default-props");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var StyledWorldMap = _styledComponents.default.svg.withConfig({
+import styled from 'styled-components';
+import { genericStyles } from '../../utils';
+import { defaultProps } from '../../default-props';
+var StyledWorldMap = styled.svg.withConfig({
   displayName: "StyledWorldMap",
   componentId: "had4c3-0"
-})(["width:100%;", " ", ";"], _utils.genericStyles, function (props) {
+})(["width:100%;", " ", ";"], genericStyles, function (props) {
   return props.theme.worldMap && props.theme.worldMap.extend;
 });
-
-exports.StyledWorldMap = StyledWorldMap;
 StyledWorldMap.defaultProps = {};
-Object.setPrototypeOf(StyledWorldMap.defaultProps, _defaultProps.defaultProps);
+Object.setPrototypeOf(StyledWorldMap.defaultProps, defaultProps);
+export { StyledWorldMap };

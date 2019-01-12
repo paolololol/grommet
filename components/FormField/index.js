@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "FormField", {
-  enumerable: true,
-  get: function get() {
-    return _FormField.FormField;
-  }
-});
+exports.__esModule = true;
+exports.FormField = void 0;
 
 var _FormField = require("./FormField");
+
+exports.FormField = _FormField.FormField;

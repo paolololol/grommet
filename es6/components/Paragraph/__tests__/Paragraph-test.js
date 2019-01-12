@@ -1,70 +1,57 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _Grommet = require("../../Grommet");
-
-var _ = require("..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { Grommet } from '../../Grommet';
+import { Paragraph } from '..';
 test('Paragraph renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Paragraph, null)));
-
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Paragraph, null)));
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Paragraph size renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Paragraph, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Paragraph, {
     size: "small"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     size: "medium"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     size: "large"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     size: "xlarge"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     size: "xxlarge"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Paragraph margin renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Paragraph, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Paragraph, {
     margin: "small"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     margin: "medium"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     margin: "large"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     margin: "none"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     margin: {
       bottom: 'small'
     }
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     margin: {
       top: 'small'
     }
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
 test('Paragraph textAlign renders', function () {
-  var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Paragraph, {
+  var component = renderer.create(React.createElement(Grommet, null, React.createElement(Paragraph, {
     textAlign: "start"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     textAlign: "center"
-  }), _react.default.createElement(_.Paragraph, {
+  }), React.createElement(Paragraph, {
     textAlign: "end"
   })));
-
   var tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

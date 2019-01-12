@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Select", {
-  enumerable: true,
-  get: function get() {
-    return _Select.Select;
-  }
-});
+exports.__esModule = true;
+exports.Select = void 0;
 
 var _Select = require("./Select");
+
+exports.Select = _Select.Select;

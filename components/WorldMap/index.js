@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "WorldMap", {
-  enumerable: true,
-  get: function get() {
-    return _WorldMap.WorldMap;
-  }
-});
+exports.__esModule = true;
+exports.WorldMap = void 0;
 
 var _WorldMap = require("./WorldMap");
+
+exports.WorldMap = _WorldMap.WorldMap;

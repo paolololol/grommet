@@ -86,7 +86,7 @@ describe('Clock', function () {
   ['analog', 'digital'].forEach(function (type) {
     return ['hours', 'minutes', 'seconds'].forEach(function (precision) {
       return ['xsmall', 'small', 'medium', 'large', 'xlarge'].forEach(function (size) {
-        return test("type ".concat(type, " precision ").concat(precision, " size ").concat(size), function () {
+        return test("type " + type + " precision " + precision + " size " + size, function () {
           var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, _react.default.createElement(_.Clock, {
             run: false,
             type: type,

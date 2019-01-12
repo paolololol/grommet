@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledStackLayer = exports.StyledStack = void 0;
 
 var _styledComponents = _interopRequireDefault(require("styled-components"));
@@ -48,7 +46,7 @@ var StyledStackLayer = _styledComponents.default.div.withConfig({
 }, function (props) {
   return props.guiding && 'display: block;';
 }, function (props) {
-  return !props.guiding && "".concat(styleMap[props.anchor || 'fill'], ";");
+  return !props.guiding && styleMap[props.anchor || 'fill'] + ";";
 }, function (props) {
   return props.fillContainer && "\n    width: 100%;\n    height: 100%;\n  ";
 });

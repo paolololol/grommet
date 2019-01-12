@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.expectPortal = exports.createPortal = void 0;
 
 var _css = _interopRequireDefault(require("css"));
@@ -43,7 +41,7 @@ var expectPortal = function expectPortal(portalId) {
         expect(document.getElementById(portalId)).toMatchSnapshot();
         expect(_css.default.stringify(styles)).toMatchSnapshot();
       } else {
-        fail("".concat(portalId, " portal does not exist"));
+        fail(portalId + " portal does not exist");
       }
     }
   };

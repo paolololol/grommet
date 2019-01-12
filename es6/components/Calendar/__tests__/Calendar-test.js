@@ -1,76 +1,61 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
-
-require("jest-styled-components");
-
-var _FormNextLink = require("grommet-icons/es6/icons/FormNextLink");
-
-var _FormPreviousLink = require("grommet-icons/es6/icons/FormPreviousLink");
-
-var _ = require("../..");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import renderer from 'react-test-renderer';
+import 'jest-styled-components';
+import { FormNextLink } from "grommet-icons/es6/icons/FormNextLink";
+import { FormPreviousLink } from "grommet-icons/es6/icons/FormPreviousLink";
+import { Box, Button, Calendar, Grommet, Text } from '../..';
 var DATE = '2018-01-15T00:00:00-08:00';
 var DATES = ['2018-01-12T00:00:00-08:00', ['2018-01-8T00:00:00-08:00', '2018-01-10T00:00:00-08:00']];
 describe('Calendar', function () {
   test('date', function () {
     // need to set the date to avoid snapshot drift over time
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       date: DATE
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('dates', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       dates: DATES
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('size', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       size: "small",
       date: DATE
-    }), _react.default.createElement(_.Calendar, {
+    }), React.createElement(Calendar, {
       size: "medium",
       date: DATE
-    }), _react.default.createElement(_.Calendar, {
+    }), React.createElement(Calendar, {
       size: "large",
       date: DATE
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('firstDayOfWeek', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       firstDayOfWeek: 0,
       date: DATE
-    }), _react.default.createElement(_.Calendar, {
+    }), React.createElement(Calendar, {
       firstDayOfWeek: 1,
       date: DATE
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('reference', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       reference: DATE
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
   test('header', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Grommet, null, _react.default.createElement(_.Calendar, {
+    var component = renderer.create(React.createElement(Grommet, null, React.createElement(Calendar, {
       date: DATE,
       onSelect: function onSelect() {},
       size: "small",
@@ -82,23 +67,22 @@ describe('Calendar', function () {
             onNextMonth = _ref.onNextMonth,
             previousInBound = _ref.previousInBound,
             nextInBound = _ref.nextInBound;
-        return _react.default.createElement(_.Box, {
+        return React.createElement(Box, {
           direction: "row",
           align: "center",
           justify: "between"
-        }, _react.default.createElement(_.Button, {
+        }, React.createElement(Button, {
           onClick: previousInBound && onPreviousMonth
-        }, _react.default.createElement(_.Box, null, _react.default.createElement(_FormPreviousLink.FormPreviousLink, null))), _react.default.createElement(_.Text, {
+        }, React.createElement(Box, null, React.createElement(FormPreviousLink, null))), React.createElement(Text, {
           size: "small"
-        }, _react.default.createElement("strong", null, date.toLocaleDateString(locale, {
+        }, React.createElement("strong", null, date.toLocaleDateString(locale, {
           month: 'long',
           year: 'numeric'
-        }))), _react.default.createElement(_.Button, {
+        }))), React.createElement(Button, {
           onClick: nextInBound && onNextMonth
-        }, _react.default.createElement(_.Box, null, _react.default.createElement(_FormNextLink.FormNextLink, null))));
+        }, React.createElement(Box, null, React.createElement(FormNextLink, null))));
       }
     })));
-
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

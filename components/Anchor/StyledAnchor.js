@@ -1,8 +1,6 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+exports.__esModule = true;
 exports.StyledAnchor = void 0;
 
 var _styledComponents = _interopRequireWildcard(require("styled-components"));
@@ -33,13 +31,13 @@ var StyledAnchor = _styledComponents.default.a.withConfig({
 }, function (props) {
   return (0, _utils.normalizeColor)(props.colorProp || props.theme.anchor.color, props.theme);
 }, function (props) {
-  return props.theme.anchor.fontWeight && "font-weight: ".concat(props.theme.anchor.fontWeight, ";");
+  return props.theme.anchor.fontWeight && "font-weight: " + props.theme.anchor.fontWeight + ";";
 }, function (props) {
   return props.hasIcon ? 'none' : props.theme.anchor.textDecoration;
 }, _utils.genericStyles, function (props) {
-  return !props.disabled && props.theme.anchor.hover && (0, _styledComponents.css)(["&:hover{", " ", " ", "}"], props.theme.anchor.hover.textDecoration && "text-decoration: ".concat(props.theme.anchor.hover.textDecoration, ";"), props.theme.anchor.hover.fontWeight && "font-weight: ".concat(props.theme.anchor.hover.fontWeight, ";"), props.theme.anchor.hover.extend);
+  return !props.disabled && props.theme.anchor.hover && (0, _styledComponents.css)(["&:hover{", " ", " ", "}"], props.theme.anchor.hover.textDecoration && "text-decoration: " + props.theme.anchor.hover.textDecoration + ";", props.theme.anchor.hover.fontWeight && "font-weight: " + props.theme.anchor.hover.fontWeight + ";", props.theme.anchor.hover.extend);
 }, function (props) {
-  return props.hasIcon && !props.hasLabel && "\n    padding: ".concat(props.theme.global.edgeSize.small, ";\n  ");
+  return props.hasIcon && !props.hasLabel && "\n    padding: " + props.theme.global.edgeSize.small + ";\n  ";
 }, function (props) {
   return props.disabled && disabledStyle;
 }, function (props) {

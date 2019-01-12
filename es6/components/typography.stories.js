@@ -1,113 +1,105 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Box, Heading, Paragraph, Text } from 'grommet';
+import { grommet } from 'grommet/themes';
 var paragraphFiller = "\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod\ntempor incididunt ut labore et dolore magna aliqua.\n";
 
 var Medium = function Medium() {
   var margin = undefined;
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     pad: "medium"
-  }, _react.default.createElement("div", null, _react.default.createElement(_grommet.Heading, {
+  }, React.createElement("div", null, React.createElement(Heading, {
     margin: margin
-  }, "Heading 1 - Medium"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 1 - Medium"), React.createElement(Text, {
     size: "xlarge"
-  }, "Text XLarge"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text XLarge"), React.createElement(Paragraph, {
     size: "large",
     margin: margin
-  }, "Paragraph - Large", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - Large", paragraphFiller), React.createElement(Heading, {
     level: 2,
     margin: margin
-  }, "Heading 2 - Medium"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 2 - Medium"), React.createElement(Text, {
     size: "large"
-  }, "Text Large"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text Large"), React.createElement(Paragraph, {
     margin: margin
-  }, "Paragraph - Medium", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - Medium", paragraphFiller), React.createElement(Heading, {
     level: 3,
     margin: margin
-  }, "Heading 3 - Medium"), _react.default.createElement(_grommet.Text, null, "Text Medium"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Heading 3 - Medium"), React.createElement(Text, null, "Text Medium"), React.createElement(Paragraph, {
     margin: margin
-  }, "Paragraph - Medium", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - Medium", paragraphFiller), React.createElement(Heading, {
     level: 4,
     margin: margin
-  }, "Heading 4 - Medium"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 4 - Medium"), React.createElement(Text, {
     size: "small"
-  }, "Text Small"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text Small"), React.createElement(Paragraph, {
     size: "small",
     margin: margin
   }, "Paragraph - Small", paragraphFiller))));
 };
 
 var Small = function Small() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     pad: "medium"
-  }, _react.default.createElement("div", null, _react.default.createElement(_grommet.Heading, {
+  }, React.createElement("div", null, React.createElement(Heading, {
     size: "small"
-  }, "Heading 1 - Small"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 1 - Small"), React.createElement(Text, {
     size: "large"
-  }, "Text Large"), _react.default.createElement(_grommet.Paragraph, null, "Paragraph - Medium", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Text Large"), React.createElement(Paragraph, null, "Paragraph - Medium", paragraphFiller), React.createElement(Heading, {
     level: 2,
     size: "small"
-  }, "Heading 2 - Small"), _react.default.createElement(_grommet.Text, null, "Text Medium"), _react.default.createElement(_grommet.Paragraph, null, "Paragraph - Medium", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Heading 2 - Small"), React.createElement(Text, null, "Text Medium"), React.createElement(Paragraph, null, "Paragraph - Medium", paragraphFiller), React.createElement(Heading, {
     level: 3,
     size: "small"
-  }, "Heading 3 - Small"), _react.default.createElement(_grommet.Text, null, "Text Medium"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Heading 3 - Small"), React.createElement(Text, null, "Text Medium"), React.createElement(Paragraph, {
     size: "small"
-  }, "Paragraph - Small", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - Small", paragraphFiller), React.createElement(Heading, {
     level: 4,
     size: "small"
-  }, "Heading 4 - Small"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 4 - Small"), React.createElement(Text, {
     size: "small"
-  }, "Text Small"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text Small"), React.createElement(Paragraph, {
     size: "small"
   }, "Paragraph - Small", paragraphFiller))));
 };
 
 var Large = function Large() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     pad: "medium"
-  }, _react.default.createElement("div", null, _react.default.createElement(_grommet.Heading, {
+  }, React.createElement("div", null, React.createElement(Heading, {
     size: "large"
-  }, "Heading 1 - Large"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 1 - Large"), React.createElement(Text, {
     size: "xxlarge"
-  }, "Text XXLarge"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text XXLarge"), React.createElement(Paragraph, {
     size: "xlarge"
-  }, "Paragraph - XLarge", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - XLarge", paragraphFiller), React.createElement(Heading, {
     level: 2,
     size: "large"
-  }, "Heading 2 - Large"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 2 - Large"), React.createElement(Text, {
     size: "xlarge"
-  }, "Text XLarge"), _react.default.createElement(_grommet.Paragraph, {
+  }, "Text XLarge"), React.createElement(Paragraph, {
     size: "large"
-  }, "Paragraph - Large", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Paragraph - Large", paragraphFiller), React.createElement(Heading, {
     level: 3,
     size: "large"
-  }, "Heading 3 - Large"), _react.default.createElement(_grommet.Text, {
+  }, "Heading 3 - Large"), React.createElement(Text, {
     size: "large"
-  }, "Text Large"), _react.default.createElement(_grommet.Paragraph, null, "Paragraph - Medium", paragraphFiller), _react.default.createElement(_grommet.Heading, {
+  }, "Text Large"), React.createElement(Paragraph, null, "Paragraph - Medium", paragraphFiller), React.createElement(Heading, {
     level: 4,
     size: "large"
-  }, "Heading 4 - Large"), _react.default.createElement(_grommet.Text, null, "Text Medium"), _react.default.createElement(_grommet.Paragraph, null, "Paragraph - Medium", paragraphFiller))));
+  }, "Heading 4 - Large"), React.createElement(Text, null, "Text Medium"), React.createElement(Paragraph, null, "Paragraph - Medium", paragraphFiller))));
 };
 
-(0, _react2.storiesOf)('Typography', module).add('Small', function () {
-  return _react.default.createElement(Small, null);
+storiesOf('Typography', module).add('Small', function () {
+  return React.createElement(Small, null);
 }).add('Medium', function () {
-  return _react.default.createElement(Medium, null);
+  return React.createElement(Medium, null);
 }).add('Large', function () {
-  return _react.default.createElement(Large, null);
+  return React.createElement(Large, null);
 });

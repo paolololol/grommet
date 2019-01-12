@@ -1,13 +1,8 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "Carousel", {
-  enumerable: true,
-  get: function get() {
-    return _Carousel.Carousel;
-  }
-});
+exports.__esModule = true;
+exports.Carousel = void 0;
 
 var _Carousel = require("./Carousel");
+
+exports.Carousel = _Carousel.Carousel;

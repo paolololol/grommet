@@ -1,13 +1,1 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-Object.defineProperty(exports, "TextArea", {
-  enumerable: true,
-  get: function get() {
-    return _TextArea.TextArea;
-  }
-});
-
-var _TextArea = require("./TextArea");
+export { TextArea } from './TextArea';

@@ -1,22 +1,15 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Box, Menu } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 var SimpleMenu = function SimpleMenu() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Menu, {
+  }, React.createElement(Menu, {
     label: "Actions",
     items: [{
       label: 'Launch',
@@ -28,6 +21,6 @@ var SimpleMenu = function SimpleMenu() {
   })));
 };
 
-(0, _react2.storiesOf)('Menu', module).add('Simple Menu', function () {
-  return _react.default.createElement(SimpleMenu, null);
+storiesOf('Menu', module).add('Simple Menu', function () {
+  return React.createElement(SimpleMenu, null);
 });

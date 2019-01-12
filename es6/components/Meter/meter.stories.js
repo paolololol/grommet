@@ -1,22 +1,15 @@
-"use strict";
-
-var _react = _interopRequireDefault(require("react"));
-
-var _react2 = require("@storybook/react");
-
-var _grommet = require("grommet");
-
-var _themes = require("grommet/themes");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+import React from 'react';
+import { storiesOf } from '@storybook/react';
+import { Grommet, Box, Meter, Stack, Text } from 'grommet';
+import { grommet } from 'grommet/themes';
 
 var BarMeter = function BarMeter() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Meter, {
+  }, React.createElement(Meter, {
     type: "bar",
     background: "light-2",
     values: [{
@@ -26,12 +19,12 @@ var BarMeter = function BarMeter() {
 };
 
 var CircleMeter = function CircleMeter() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Meter, {
+  }, React.createElement(Meter, {
     type: "circle",
     background: "light-2",
     values: [{
@@ -41,14 +34,14 @@ var CircleMeter = function CircleMeter() {
 };
 
 var LabelledMeter = function LabelledMeter() {
-  return _react.default.createElement(_grommet.Grommet, {
-    theme: _themes.grommet
-  }, _react.default.createElement(_grommet.Box, {
+  return React.createElement(Grommet, {
+    theme: grommet
+  }, React.createElement(Box, {
     align: "center",
     pad: "large"
-  }, _react.default.createElement(_grommet.Stack, {
+  }, React.createElement(Stack, {
     anchor: "center"
-  }, _react.default.createElement(_grommet.Meter, {
+  }, React.createElement(Meter, {
     type: "circle",
     background: "light-2",
     values: [{
@@ -56,24 +49,24 @@ var LabelledMeter = function LabelledMeter() {
     }],
     size: "xsmall",
     thickness: "small"
-  }), _react.default.createElement(_grommet.Box, {
+  }), React.createElement(Box, {
     direction: "row",
     align: "center",
     pad: {
       bottom: 'xsmall'
     }
-  }, _react.default.createElement(_grommet.Text, {
+  }, React.createElement(Text, {
     size: "xlarge",
     weight: "bold"
-  }, "30"), _react.default.createElement(_grommet.Text, {
+  }, "30"), React.createElement(Text, {
     size: "small"
   }, "%")))));
 };
 
-(0, _react2.storiesOf)('Meter', module).add('Bar', function () {
-  return _react.default.createElement(BarMeter, null);
+storiesOf('Meter', module).add('Bar', function () {
+  return React.createElement(BarMeter, null);
 }).add('Circle', function () {
-  return _react.default.createElement(CircleMeter, null);
+  return React.createElement(CircleMeter, null);
 }).add('Labelled', function () {
-  return _react.default.createElement(LabelledMeter, null);
+  return React.createElement(LabelledMeter, null);
 });
