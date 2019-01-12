@@ -79,7 +79,6 @@ function (_Component) {
         onChange: function onChange(event) {
           return update(name, event.value || event.target.value);
         },
-        plain: true,
         focusIndicator: false
       }, rest));
     });
@@ -159,11 +158,7 @@ function (_Component) {
         contents = React.createElement(Box, {
           ref: function ref(_ref) {
             _this2.childContainerRef = _ref;
-          },
-          border: border.position === 'inner' ? _extends({}, border, {
-            side: border.side || 'bottom',
-            color: borderColor
-          }) : undefined
+          }
         }, normalizedChildren);
         abut = border.position === 'outer' && (border.side === 'all' || border.side === 'horizontal' || !border.side);
 
@@ -184,9 +179,6 @@ function (_Component) {
       }
 
       return React.createElement(Box, {
-        border: border && border.position === 'outer' ? _extends({}, border, {
-          color: borderColor
-        }) : undefined,
         margin: abut ? undefined : {
           bottom: 'small'
         },
