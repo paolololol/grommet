@@ -165,7 +165,6 @@ function (_Component) {
         var normalizedChildren = children ? _react.Children.map(children, function (child) {
           if (child) {
             return (0, _react.cloneElement)(child, {
-              plain: true,
               focusIndicator: false
             });
           }

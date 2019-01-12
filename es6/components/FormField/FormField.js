@@ -148,7 +148,6 @@ function (_Component) {
         var normalizedChildren = children ? Children.map(children, function (child) {
           if (child) {
             return cloneElement(child, {
-              plain: true,
               focusIndicator: false
             });
           }

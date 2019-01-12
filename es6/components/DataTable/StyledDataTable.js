@@ -4,7 +4,7 @@ import { defaultProps } from '../../default-props';
 var StyledDataTable = styled.table.withConfig({
   displayName: "StyledDataTable",
   componentId: "xrlyjm-0"
-})(["border-spacing:0;border-collapse:collapse;", ";"], genericStyles);
+})(["border-spacing:0;border-collapse:collapse;width:100%;", ";"], genericStyles);
 StyledDataTable.defaultProps = {};
 Object.setPrototypeOf(StyledDataTable.defaultProps, defaultProps);
 var StyledDataTableRow = styled.tr.withConfig({

@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var StyledDataTable = _styledComponents.default.table.withConfig({
   displayName: "StyledDataTable",
   componentId: "xrlyjm-0"
-})(["border-spacing:0;border-collapse:collapse;", ";"], _utils.genericStyles);
+})(["border-spacing:0;border-collapse:collapse;width:100%;", ";"], _utils.genericStyles);
 
 exports.StyledDataTable = StyledDataTable;
 StyledDataTable.defaultProps = {};
