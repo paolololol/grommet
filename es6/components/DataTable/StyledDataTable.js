@@ -11,7 +11,7 @@ var StyledDataTableRow = styled.tr.withConfig({
   displayName: "StyledDataTable__StyledDataTableRow",
   componentId: "xrlyjm-1"
 })(["", ";"], function (props) {
-  return props.size && "\n    display: table;\n    table-layout: fixed;\n  ";
+  return "\n    &:hover {\n      background: " + props.theme.global.colors.tableHover + ";\n    }\n    " + (props.onClick && "\n          cursor: pointer;\n      ") + "\n    " + (props.size && "\n      display: table;\n      table-layout: fixed;  \n    ") + "\n  ";
 });
 StyledDataTableRow.defaultProps = {};
 Object.setPrototypeOf(StyledDataTableRow.defaultProps, defaultProps);
