@@ -15,7 +15,8 @@ export var Body = function Body(_ref) {
       primaryProperty = _ref.primaryProperty,
       size = _ref.size,
       theme = _ref.theme,
-      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "data", "onMore", "primaryProperty", "size", "theme"]);
+      rowClickHandler = _ref.rowClickHandler,
+      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "data", "onMore", "primaryProperty", "size", "theme", "rowClickHandler"]);
 
   return React.createElement(StyledDataTableBody, _extends({
     size: size
@@ -32,6 +33,9 @@ export var Body = function Body(_ref) {
       size: size
     }, columns.map(function (column) {
       return React.createElement(Cell, {
+        onClick: function onClick() {
+          return rowClickHandler(datum);
+        },
         key: column.property,
         context: "body",
         column: column,

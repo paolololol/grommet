@@ -28,7 +28,8 @@ var Body = function Body(_ref) {
       primaryProperty = _ref.primaryProperty,
       size = _ref.size,
       theme = _ref.theme,
-      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "data", "onMore", "primaryProperty", "size", "theme"]);
+      rowClickHandler = _ref.rowClickHandler,
+      rest = _objectWithoutPropertiesLoose(_ref, ["columns", "data", "onMore", "primaryProperty", "size", "theme", "rowClickHandler"]);
 
   return _react.default.createElement(_StyledDataTable.StyledDataTableBody, _extends({
     size: size
@@ -45,6 +46,9 @@ var Body = function Body(_ref) {
       size: size
     }, columns.map(function (column) {
       return _react.default.createElement(_Cell.Cell, {
+        onClick: function onClick() {
+          return rowClickHandler(datum);
+        },
         key: column.property,
         context: "body",
         column: column,
