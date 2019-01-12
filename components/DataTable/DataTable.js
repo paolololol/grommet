@@ -150,8 +150,8 @@ function (_Component) {
         size = _this$props.size,
         sortable = _this$props.sortable,
         onSearch = _this$props.onSearch,
-        rowCickHandler = _this$props.rowCickHandler,
-        rest = _objectWithoutPropertiesLoose(_this$props, ["columns", "data", "groupBy", "onMore", "resizeable", "size", "sortable", "onSearch", "rowCickHandler"]);
+        rowClickHandler = _this$props.rowClickHandler,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["columns", "data", "groupBy", "onMore", "resizeable", "size", "sortable", "onSearch", "rowClickHandler"]);
 
     var _this$state = this.state,
         data = _this$state.data,
@@ -196,7 +196,7 @@ function (_Component) {
       onMore: onMore,
       primaryProperty: primaryProperty,
       size: size,
-      rowClickHandler: rowCickHandler
+      rowClickHandler: rowClickHandler
     }), showFooter && _react.default.createElement(_Footer.Footer, {
       columns: columns,
       footerValues: footerValues,
