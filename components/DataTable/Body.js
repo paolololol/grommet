@@ -43,12 +43,12 @@ var Body = function Body(_ref) {
   }, function (datum) {
     return _react.default.createElement(_StyledDataTable.StyledDataTableRow, {
       key: datum[primaryProperty],
-      size: size
+      size: size,
+      onClick: function onClick() {
+        return rowClickHandler(datum);
+      }
     }, columns.map(function (column) {
       return _react.default.createElement(_Cell.Cell, {
-        onClick: function onClick() {
-          return rowClickHandler(datum);
-        },
         key: column.property,
         context: "body",
         column: column,
