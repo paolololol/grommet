@@ -15,8 +15,8 @@ export interface CalendarProps {
   firstDayOfWeek?: "0" | "1";
   header?: ((...args: any[]) => any);
   locale?: string;
-  onReference?: ((arg: string | DateRange[] | undefined) => any);
-  onSelect?: ((...args: any[]) => any);
+  onReference?: ((...args: any[]) => any);
+  onSelect?: ((arg: string | DateRange[] | undefined) => any);
   range?: boolean;
   reference?: string;
   showAdjacentDays?: boolean;
