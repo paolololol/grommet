@@ -201,10 +201,8 @@ function (_Component) {
         style: outerStyle
       }, label && component !== _CheckBox.CheckBox || help ? _react.default.createElement(_Box.Box, {
         margin: {
-          vertical: 'xsmall',
-          horizontal: 'small'
-        },
-        gap: "xsmall"
+          vertical: 'xsmall'
+        }
       }, label && component !== _CheckBox.CheckBox ? _react.default.createElement(_Text.Text, _extends({
         as: "label",
         htmlFor: htmlFor
@@ -212,8 +210,7 @@ function (_Component) {
         color: formField.help.color[theme.dark ? 'dark' : 'light']
       }), help) : undefined) : undefined, contents, normalizedError ? _react.default.createElement(_Box.Box, {
         margin: {
-          vertical: 'xsmall',
-          horizontal: 'small'
+          vertical: 'xsmall'
         }
       }, _react.default.createElement(_Text.Text, _extends({}, formField.error, {
         color: formField.error.color[theme.dark ? 'dark' : 'light']

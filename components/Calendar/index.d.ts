@@ -1,5 +1,7 @@
 import * as React from "react";
 
+type DateRange = [string,string]
+
 export interface CalendarProps {
   a11yTitle?: string;
   alignSelf?: "start" | "center" | "end" | "stretch";
@@ -13,7 +15,7 @@ export interface CalendarProps {
   firstDayOfWeek?: "0" | "1";
   header?: ((...args: any[]) => any);
   locale?: string;
-  onReference?: ((...args: any[]) => any);
+  onReference?: ((arg: string | DateRange[] | undefined) => any);
   onSelect?: ((...args: any[]) => any);
   range?: boolean;
   reference?: string;
