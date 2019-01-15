@@ -104,7 +104,8 @@ function (_Component) {
         required = _this$props2.required,
         style = _this$props2.style,
         theme = _this$props2.theme,
-        validate = _this$props2.validate;
+        validate = _this$props2.validate,
+        noMarginBottom = _this$props2.noMarginBottom;
     var formField = theme.formField;
     var border = formField.border;
     return React.createElement(FormContext.Consumer, null, function (context) {
@@ -178,7 +179,7 @@ function (_Component) {
       }
 
       return React.createElement(Box, {
-        margin: abut ? undefined : {
+        margin: abut ? undefined : noMarginBottom ? 'none' : {
           bottom: 'small'
         },
         style: outerStyle

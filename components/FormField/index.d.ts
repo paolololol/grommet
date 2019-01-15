@@ -8,6 +8,7 @@ export interface FormFieldProps {
   name?: string;
   pad?: boolean;
   required?: boolean;
+  noMarginBottom?: boolean;
   validate?: {regexp?: object,message?: string} | ((...args: any[]) => any);
 }
 
