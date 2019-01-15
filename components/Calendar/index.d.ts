@@ -1,6 +1,7 @@
 import * as React from "react";
 
 type DateRange = [string,string]
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
 
 export interface CalendarProps {
   a11yTitle?: string;
@@ -23,6 +24,6 @@ export interface CalendarProps {
   size?: "small" | "medium" | "large" | string;
 }
 
-declare const Calendar: React.ComponentType<CalendarProps & JSX.IntrinsicElements['div']>;
+declare const Calendar: React.ComponentType<CalendarProps & Omit<JSX.IntrinsicElements['div'], 'onSelect'>>;
 
 export { Calendar };
