@@ -1,5 +1,8 @@
 import * as React from "react";
 
+type DateRange = [string,string]
+type Omit<T, K> = Pick<T, Exclude<keyof T, K>>
+
 export interface CalendarProps {
   a11yTitle?: string;
   alignSelf?: "start" | "center" | "end" | "stretch";
@@ -14,13 +17,13 @@ export interface CalendarProps {
   header?: ((...args: any[]) => any);
   locale?: string;
   onReference?: ((...args: any[]) => any);
-  onSelect?: ((...args: any[]) => any);
+  onSelect?: ((arg: string | DateRange[] | undefined) => any);
   range?: boolean;
   reference?: string;
   showAdjacentDays?: boolean;
   size?: "small" | "medium" | "large" | string;
 }
 
-declare const Calendar: React.ComponentType<CalendarProps & JSX.IntrinsicElements['div']>;
+declare const Calendar: React.ComponentType<CalendarProps & Omit<JSX.IntrinsicElements['div'], 'onSelect'>>;
 
 export { Calendar };

@@ -68,6 +68,7 @@ class FormField extends Component {
       style,
       theme,
       validate,
+      noMarginBottom,
     } = this.props;
     const { formField } = theme;
     const { border } = formField;
@@ -150,13 +151,12 @@ class FormField extends Component {
 
           return (
             <Box
-              margin={abut ? undefined : { bottom: 'small' }}
+              margin={abut ? undefined : noMarginBottom ? 'none' : { bottom: 'small' }}
               style={outerStyle}
             >
               {(label && component !== CheckBox) || help ? (
                 <Box
-                  margin={{ vertical: 'xsmall', horizontal: 'small' }}
-                  gap="xsmall"
+                  margin={{ vertical: 'xsmall' }}
                 >
                   {label && component !== CheckBox ? (
                     <Text as="label" htmlFor={htmlFor} {...formField.label}>
@@ -183,7 +183,7 @@ class FormField extends Component {
               )}
               {contents}
               {normalizedError ? (
-                <Box margin={{ vertical: 'xsmall', horizontal: 'small' }}>
+                <Box margin={{ vertical: 'xsmall' }}>
                   <Text
                     {...formField.error}
                     color={formField.error.color[theme.dark ? 'dark' : 'light']}

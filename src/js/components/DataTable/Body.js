@@ -1,22 +1,22 @@
 import React from 'react';
 
-import { InfiniteScroll } from '../InfiniteScroll';
-import { TableRow } from '../TableRow';
-import { TableCell } from '../TableCell';
+import {InfiniteScroll} from '../InfiniteScroll';
+import {TableRow} from '../TableRow';
+import {TableCell} from '../TableCell';
 
-import { Cell } from './Cell';
-import { StyledDataTableBody, StyledDataTableRow } from './StyledDataTable';
+import {Cell} from './Cell';
+import {StyledDataTableBody, StyledDataTableRow} from './StyledDataTable';
 
 export const Body = ({
-  columns,
-  data,
-  onMore,
-  primaryProperty,
-  size,
-  theme,
-  rowClickHandler,
-  ...rest
-}) => (
+                       columns,
+                       data,
+                       onMore,
+                       primaryProperty,
+                       size,
+                       theme,
+                       rowClickHandler,
+                       ...rest
+                     }) => (
   <StyledDataTableBody size={size} {...rest}>
     <InfiniteScroll
       items={data}
@@ -29,10 +29,9 @@ export const Body = ({
       )}
     >
       {datum => (
-        <StyledDataTableRow key={datum[primaryProperty]} size={size}>
+        <StyledDataTableRow key={datum[primaryProperty]} size={size} onClick={() => rowClickHandler(datum)}>
           {columns.map(column => (
             <Cell
-              onClick={() => rowClickHandler(datum)}
               key={column.property}
               context="body"
               column={column}
