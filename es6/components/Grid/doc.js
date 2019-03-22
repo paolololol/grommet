@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import { describe, PropTypes } from 'react-desc';
-import { genericProps, getAvailableAtBadge } from '../../utils';
+import { genericProps, getAvailableAtBadge, themeDocUtils } from '../../utils';
 var fixedSizes = ['xsmall', 'small', 'medium', 'large', 'xlarge'];
 var sizes = ['xsmall', 'small', 'medium', 'large', 'xlarge', 'full', '1/2', '1/3', '2/3', '1/4', '2/4', '3/4', 'flex', 'auto'];
 var edgeSizes = ['small', 'medium', 'large', 'none'];
@@ -15,7 +15,7 @@ export var doc = function doc(Grid) {
       start: PropTypes.arrayOf(PropTypes.number),
       end: PropTypes.arrayOf(PropTypes.number)
     })).description('Area names and column,row coordinates.'),
-    columns: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.oneOf(sizes), PropTypes.arrayOf(PropTypes.oneOf(sizes)), PropTypes.string])), PropTypes.oneOf(fixedSizes), PropTypes.shape({
+    columns: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.oneOf(sizes), PropTypes.string])), PropTypes.oneOf(sizes), PropTypes.string])), PropTypes.oneOf(fixedSizes), PropTypes.shape({
       count: PropTypes.oneOfType([PropTypes.oneOf(['fit', 'fill']), PropTypes.number]),
       size: PropTypes.oneOfType([PropTypes.oneOf(fixedSizes), PropTypes.arrayOf(PropTypes.oneOf(sizes)), PropTypes.string])
     }), PropTypes.string]).description("Column sizes.\n      If an array value is an array, the inner array indicates the\n      minimum and maximum sizes for the column.\n      Specifying a single string will repeat multiple columns\n      of that size, as long as there is room for more.\n      Specifying an object allows indicating how the columns\n      stretch to fit the available space."),
@@ -26,18 +26,13 @@ export var doc = function doc(Grid) {
     }), PropTypes.string]).description('Gap sizes between rows and/or columns.'),
     justify: PropTypes.oneOf(['start', 'center', 'end', 'stretch']).description("How to align the individual items inside the grid when there is extra\nspace in the row axis.").defaultValue('stretch'),
     justifyContent: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around', 'stretch']).description('How to align the contents along the row axis.'),
-    rows: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.oneOf(sizes), PropTypes.arrayOf(PropTypes.oneOf(sizes)), PropTypes.string])), PropTypes.oneOf(fixedSizes), PropTypes.string]).description("Row sizes.\n      If an array value is an array, the inner array indicates the\n      minimum and maximum sizes for the row.\n      Specifying a single string will cause automatically added rows to be\n      the specified size."),
-    tag: PropTypes.string.description("The DOM tag to use for the element. NOTE: This is deprecated in favor\nof indicating the DOM tag via the 'as' property."),
-    as: PropTypes.string.description('The DOM tag to use for the element.').defaultValue('div')
+    rows: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.oneOf(sizes), PropTypes.string])), PropTypes.oneOf(sizes), PropTypes.string])), PropTypes.oneOf(fixedSizes), PropTypes.string]).description("Row sizes.\n      If an array value is an array, the inner array indicates the\n      minimum and maximum sizes for the row.\n      Specifying a single string will cause automatically added rows to be\n      the specified size."),
+    tag: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).description("The DOM tag to use for the element. NOTE: This is deprecated\n      in favor of indicating the DOM tag via the 'as' property."),
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).description('The DOM tag or react component to use for the element.').defaultValue('div')
   });
   return DocumentedGrid;
 };
-export var themeDoc = {
-  'global.edgeSize': {
-    description: 'The possible sizes for the grid gap.',
-    type: 'object',
-    defaultValue: "{\n      edgeSize: {\n        none: '0px',\n        hair: '1px',\n        xxsmall: '3px',\n        xsmall: '6px',\n        small: '12px',\n        medium: '24px',\n        large: '48px',\n        xlarge: '96px',\n        responsiveBreakpoint: 'small',\n      },\n    }"
-  },
+export var themeDoc = _extends({
   'global.size': {
     description: 'The possible sizes for row and column.',
     type: 'object',
@@ -48,4 +43,4 @@ export var themeDoc = {
     type: 'string | (props) => {}',
     defaultValue: undefined
   }
-};
+}, themeDocUtils.edgeStyle('The possible sizes for the grid margin and gap.'));

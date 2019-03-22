@@ -66,7 +66,7 @@ var directionStyle = function directionStyle(direction, theme) {
 };
 
 var elevationStyle = (0, _styledComponents.css)(["box-shadow:", ";"], function (props) {
-  return props.theme.global.elevation[props.theme.dark ? 'dark' : 'light'][props.elevationProp];
+  return props.theme.global.elevation[props.theme.dark && !props.theme.darkChanged || !props.theme.dark && props.theme.darkChanged ? 'dark' : 'light'][props.elevationProp];
 });
 var FLEX_MAP = (_FLEX_MAP = {}, _FLEX_MAP[true] = '1 1', _FLEX_MAP[false] = '0 0', _FLEX_MAP.grow = '1 0', _FLEX_MAP.shrink = '0 1', _FLEX_MAP);
 
@@ -99,9 +99,11 @@ var fillStyle = function fillStyle(fillProp) {
 };
 
 var JUSTIFY_MAP = {
+  around: 'space-around',
   between: 'space-between',
   center: 'center',
   end: 'flex-end',
+  evenly: 'space-evenly',
   start: 'flex-start'
 };
 var justifyStyle = (0, _styledComponents.css)(["justify-content:", ";"], function (props) {
@@ -440,13 +442,13 @@ var gapStyle = function gapStyle(directionProp, gap, responsive, theme) {
   var styles = [];
 
   if (directionProp === 'column') {
-    styles.push((0, _styledComponents.css)(["height:", ";"], theme.global.edgeSize[gap]));
+    styles.push((0, _styledComponents.css)(["height:", ";"], theme.global.edgeSize[gap] || gap));
 
     if (responsiveSize) {
       styles.push((0, _utils.breakpointStyle)(breakpoint, "height: " + responsiveSize + ";"));
     }
   } else {
-    styles.push("width: " + theme.global.edgeSize[gap] + ";");
+    styles.push("width: " + (theme.global.edgeSize[gap] || gap) + ";");
 
     if (responsive && directionProp === 'row-responsive') {
       styles.push((0, _utils.breakpointStyle)(breakpoint, "\n        width: auto;\n        height: " + responsiveSize + ";\n      "));

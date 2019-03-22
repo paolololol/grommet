@@ -7,9 +7,10 @@ var _polished = require("polished");
 
 var _styledComponents = require("styled-components");
 
-var _utils = require("../utils");
+var _object = require("../utils/object");
 
-var controlColor = '#FFCA58';
+var _colors = require("../utils/colors");
+
 var accentColors = ['#FD6FFF', '#60EB9F', '#60EBE1', '#FFCA58'];
 var neutralColors = ['#EB6060', '#01C781', '#6095EB', '#FFB200'];
 var statusColors = {
@@ -21,19 +22,25 @@ var statusColors = {
   disabled: '#a8a8a8'
 };
 var backgroundColor = '#111111';
-var textColor = '#eeeeee';
-var borderColor = (0, _polished.rgba)(255, 255, 255, 0.33);
-var activeColor = (0, _polished.rgba)(102, 102, 102, 0.5);
 var colors = {
-  active: activeColor,
+  active: (0, _polished.rgba)(102, 102, 102, 0.5),
   background: backgroundColor,
   black: '#000000',
-  border: borderColor,
   brand: '#FD6FFF',
-  control: controlColor,
-  focus: controlColor,
+  control: {
+    dark: '#FFCA58',
+    light: '#403216'
+  },
+  focus: '#FFCA58',
+  icon: {
+    dark: '#f8f8f8',
+    light: '#666666'
+  },
   placeholder: '#AAAAAA',
-  text: textColor,
+  text: {
+    dark: '#eeeeee',
+    light: '#444444'
+  },
   white: '#FFFFFF'
 };
 
@@ -48,7 +55,7 @@ colorArray(neutralColors, 'neutral');
 Object.keys(statusColors).forEach(function (color) {
   colors["status-" + color] = statusColors[color];
 });
-var dark = (0, _utils.deepFreeze)({
+var dark = (0, _object.deepFreeze)({
   global: {
     colors: colors,
     drop: {
@@ -57,7 +64,7 @@ var dark = (0, _utils.deepFreeze)({
     focus: {
       border: {
         color: (0, _styledComponents.css)(["", ";"], function (props) {
-          return (0, _utils.normalizeColor)('focus', props.theme);
+          return (0, _colors.normalizeColor)('focus', props.theme);
         }),
         width: '2px'
       }
@@ -67,18 +74,10 @@ var dark = (0, _utils.deepFreeze)({
     },
     input: {
       weight: 700
-    },
-    text: {
-      dark: textColor,
-      light: '#000000'
     }
   },
   anchor: {
-    color: controlColor
-  },
-  icon: {
-    color: textColor,
-    colors: colors
+    color: 'control'
   },
   layer: {
     background: backgroundColor,

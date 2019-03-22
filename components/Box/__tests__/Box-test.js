@@ -26,6 +26,10 @@ describe('Box', function () {
       direction: "row-responsive"
     }), _react.default.createElement(_.Box, {
       direction: "column"
+    }), _react.default.createElement(_.Box, {
+      direction: "column-reverse"
+    }), _react.default.createElement(_.Box, {
+      direction: "row-reverse"
     })));
 
     var tree = component.toJSON();
@@ -58,6 +62,10 @@ describe('Box', function () {
       justify: "center"
     }), _react.default.createElement(_.Box, {
       justify: "between"
+    }), _react.default.createElement(_.Box, {
+      justify: "around"
+    }), _react.default.createElement(_.Box, {
+      justify: "evenly"
     }), _react.default.createElement(_.Box, {
       justify: "end"
     })));
@@ -148,6 +156,16 @@ describe('Box', function () {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         color: 'accent-1'
       }
+    }), _react.default.createElement(_.Box, {
+      background: {
+        image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
+        size: 'contain'
+      }
+    }), _react.default.createElement(_.Box, {
+      background: {
+        image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
+        repeat: 'repeat'
+      }
     })));
 
     var tree = component.toJSON();
@@ -233,7 +251,7 @@ describe('Box', function () {
     expect(tree).toMatchSnapshot();
   });
   test('gap', function () {
-    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, ['xsmall', 'small', 'medium', 'large'].map(function (gap) {
+    var component = _reactTestRenderer.default.create(_react.default.createElement(_Grommet.Grommet, null, ['xsmall', 'small', 'medium', 'large', '80px'].map(function (gap) {
       return _react.default.createElement(_.Box, {
         key: gap,
         gap: gap,

@@ -42,6 +42,11 @@ test('Grid columns renders', function () {
       count: 'fit',
       size: 'small'
     }
+  }), _react.default.createElement(_.Grid, {
+    columns: {
+      count: 'fill',
+      size: ['small', 'medium']
+    }
   })));
 
   var tree = component.toJSON();

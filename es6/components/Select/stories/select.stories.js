@@ -1,5 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
 
 function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -9,6 +11,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 import React, { createRef, Component, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { storiesOf } from '@storybook/react';
+import { CaretDown } from "grommet-icons/es6/icons/CaretDown";
 import { FormClose } from "grommet-icons/es6/icons/FormClose";
 import { Box, Button, CheckBox, Grommet, Select, Text } from 'grommet';
 import { grommet } from 'grommet/themes';
@@ -69,7 +72,10 @@ function (_Component) {
   _proto.render = function render() {
     var _this2 = this;
 
-    var theme = this.props.theme;
+    var _this$props = this.props,
+        theme = _this$props.theme,
+        rest = _objectWithoutPropertiesLoose(_this$props, ["theme"]);
+
     var _this$state = this.state,
         options = _this$state.options,
         value = _this$state.value;
@@ -81,7 +87,7 @@ function (_Component) {
       align: "center",
       justify: "start",
       pad: "large"
-    }, React.createElement(Select, {
+    }, React.createElement(Select, _extends({
       id: "select",
       name: "select",
       placeholder: "Select",
@@ -93,7 +99,7 @@ function (_Component) {
           value: option
         });
       }
-    })));
+    }, rest))));
   };
 
   return SimpleSelect;
@@ -766,9 +772,9 @@ function (_PureComponent) {
   var _proto8 = Option.prototype;
 
   _proto8.render = function render() {
-    var _this$props = this.props,
-        value = _this$props.value,
-        selected = _this$props.selected;
+    var _this$props2 = this.props,
+        value = _this$props2.value,
+        selected = _this$props2.selected;
     return React.createElement(Box, {
       direction: "row",
       gap: "small",
@@ -877,6 +883,71 @@ function (_Component8) {
   return ManyOptions;
 }(Component);
 
+var CustomSelectValue =
+/*#__PURE__*/
+function (_Component9) {
+  _inheritsLoose(CustomSelectValue, _Component9);
+
+  function CustomSelectValue() {
+    var _this17;
+
+    for (var _len9 = arguments.length, args = new Array(_len9), _key9 = 0; _key9 < _len9; _key9++) {
+      args[_key9] = arguments[_key9];
+    }
+
+    _this17 = _Component9.call.apply(_Component9, [this].concat(args)) || this;
+
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this17)), "state", {
+      options: ['one', 'two'],
+      value: undefined
+    });
+
+    return _this17;
+  }
+
+  var _proto10 = CustomSelectValue.prototype;
+
+  _proto10.render = function render() {
+    var _this18 = this;
+
+    var _this$state8 = this.state,
+        options = _this$state8.options,
+        value = _this$state8.value;
+    return React.createElement(Grommet, {
+      full: true,
+      theme: grommet
+    }, React.createElement(Box, {
+      fill: true,
+      align: "center",
+      justify: "start",
+      pad: "large"
+    }, React.createElement(Select, _extends({
+      id: "select",
+      name: "select",
+      placeholder: "Select",
+      value: value,
+      options: options,
+      onChange: function onChange(_ref13) {
+        var option = _ref13.option;
+        return _this18.setState({
+          value: option
+        });
+      },
+      plain: true,
+      valueLabel: React.createElement(Box, {
+        background: "brand",
+        width: "small",
+        round: "small",
+        overflow: "hidden",
+        align: "center"
+      }, value || 'Select...'),
+      icon: false
+    }, this.props))));
+  };
+
+  return CustomSelectValue;
+}(Component);
+
 storiesOf('Select', module).add('Simple', function () {
   return React.createElement(SimpleSelect, null);
 }).add('Search', function () {
@@ -905,10 +976,17 @@ storiesOf('Select', module).add('Simple', function () {
       }
     }
   });
-}).add('Custom Rounded', function () {
+}).add('Custom', function () {
   return React.createElement(SimpleSelect, {
+    open: true,
     theme: customRoundedTheme
   });
 }).add('Lots of options', function () {
   return React.createElement(ManyOptions, null);
+}).add('Custom Value', function () {
+  return React.createElement(CustomSelectValue, null);
+}).add('Custom Icon', function () {
+  return React.createElement(CustomSelectValue, {
+    icon: CaretDown
+  });
 });

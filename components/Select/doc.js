@@ -29,7 +29,9 @@ var doc = function doc(Select) {
     }),
     dropHeight: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description('The height of the drop container.'),
     dropTarget: _reactDesc.PropTypes.object.description("Target where the options drop will be aligned to. This should be\n      a React reference. Typically, this is not required as the drop will be\n      aligned to the Select itself by default."),
+    dropProps: _reactDesc.PropTypes.object.description('Any valid Drop prop.'),
     focusIndicator: _reactDesc.PropTypes.bool.description("Whether when 'plain' it should receive a focus outline."),
+    icon: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.bool, _reactDesc.PropTypes.func]).description('A custom icon to be used when rendering the select. You can use false to not render an icon at all.'),
     labelKey: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.func]).description("When the options array contains objects, this property indicates how\n      to determine the label of each option. If a string is\n      provided, it is used as the key to retrieve each option's label.\n      If a function is provided, it is called with the option and the\n      return value indicates the label."),
     messages: _reactDesc.PropTypes.shape({
       multiple: _reactDesc.PropTypes.string
@@ -40,6 +42,7 @@ var doc = function doc(Select) {
     onOpen: _reactDesc.PropTypes.func.description('Function that will be called when the Select drop opens.'),
     onSearch: _reactDesc.PropTypes.func.description("Function that will be called when the user types in the search input.\n      If this property is not provided, no search field will be rendered."),
     options: _reactDesc.PropTypes.arrayOf(_reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.element, _reactDesc.PropTypes.object])).description("Options can be either a string or an object. If an object is used, use\n      children callback in order to render anything based on the current item.").isRequired,
+    open: _reactDesc.PropTypes.bool.description("Initial state of the select component"),
     placeholder: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.node]).description('Placeholder text to use when no value is provided.'),
     plain: _reactDesc.PropTypes.bool.description('Whether this is a plain Select input with no border or padding.'),
     searchPlaceholder: _reactDesc.PropTypes.string.description('Placeholder text to use in the search box when the search input is empty.'),
@@ -61,6 +64,16 @@ var themeDoc = {
     type: 'string',
     defaultValue: undefined
   },
+  'select.options.container': {
+    description: 'Any valid Box prop for the options container.',
+    type: 'object',
+    defaultValue: "{ align: 'start', pad: 'small' }"
+  },
+  'select.options.text': {
+    description: 'Any valid Text prop for text used inside the options container.',
+    type: 'object',
+    defaultValue: "{ margin: 'none }"
+  },
   'select.container.extend': {
     description: 'Any additional style for the container of the Select component.',
     type: 'string | (props) => {}',
@@ -78,12 +91,12 @@ var themeDoc = {
   },
   'select.icons.down': {
     description: 'The down icon to use for opening the Select.',
-    type: 'React.element',
+    type: 'React.Element',
     defaultValue: '<FormDown />'
   },
   'select.searchInput': {
     description: "Component for the Select search input field.",
-    type: 'React.component',
+    type: 'React.Component',
     defaultValue: undefined
   },
   'select.step': {

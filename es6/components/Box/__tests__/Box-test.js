@@ -16,6 +16,10 @@ describe('Box', function () {
       direction: "row-responsive"
     }), React.createElement(Box, {
       direction: "column"
+    }), React.createElement(Box, {
+      direction: "column-reverse"
+    }), React.createElement(Box, {
+      direction: "row-reverse"
     })));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -45,6 +49,10 @@ describe('Box', function () {
       justify: "center"
     }), React.createElement(Box, {
       justify: "between"
+    }), React.createElement(Box, {
+      justify: "around"
+    }), React.createElement(Box, {
+      justify: "evenly"
     }), React.createElement(Box, {
       justify: "end"
     })));
@@ -131,6 +139,16 @@ describe('Box', function () {
         image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
         color: 'accent-1'
       }
+    }), React.createElement(Box, {
+      background: {
+        image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
+        size: 'contain'
+      }
+    }), React.createElement(Box, {
+      background: {
+        image: 'url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABGdBTUEAALGPC/xhBQAAAA9JREFUCB1jYMAC/mOIAQASFQEAlwuUYwAAAABJRU5ErkJggg==)',
+        repeat: 'repeat'
+      }
     })));
     var tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -212,7 +230,7 @@ describe('Box', function () {
     expect(tree).toMatchSnapshot();
   });
   test('gap', function () {
-    var component = renderer.create(React.createElement(Grommet, null, ['xsmall', 'small', 'medium', 'large'].map(function (gap) {
+    var component = renderer.create(React.createElement(Grommet, null, ['xsmall', 'small', 'medium', 'large', '80px'].map(function (gap) {
       return React.createElement(Box, {
         key: gap,
         gap: gap,

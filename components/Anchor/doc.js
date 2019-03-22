@@ -20,18 +20,14 @@ var doc = function doc(Anchor) {
     onClick: _reactDesc.PropTypes.func.description("Click handler. It can be used, for example,\n        to add analytics and track who clicked in the anchor."),
     reverse: _reactDesc.PropTypes.bool.description("Whether an icon and label should be reversed so that the\n        icon is at the end of the anchor.").defaultValue(false),
     size: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']), _reactDesc.PropTypes.string]).description("The font size is typically driven by the components containing\nthis component. But, it can be adjusted directly via this size property, typically\nwhen it is not contained in a 'Heading', 'Paragraph', or 'Text'."),
-    as: _reactDesc.PropTypes.string.description("The DOM tag to use for the element.")
+    as: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.func]).description("The DOM tag or react component to use for the element.")
   });
   return DocumentedAnchor;
 };
 
 exports.doc = doc;
-var themeDoc = {
-  'global.focus.border.color': {
-    description: 'The color around the Anchor when in focus.',
-    type: 'string | { dark: string, light: string }',
-    defaultValue: 'focus'
-  },
+
+var themeDoc = _extends({
   'anchor.color': {
     description: 'The color of the label text and icon strokes.',
     type: 'string | { dark: string, light: string }',
@@ -66,6 +62,17 @@ var themeDoc = {
     description: 'Any additional style for the Anchor.',
     type: 'string | (props) => {}',
     defaultValue: undefined
+  },
+  'text.medium.size': {
+    description: 'The font size of the text label.',
+    type: 'string',
+    defaultValue: '18px'
+  },
+  'text.medium.height': {
+    description: 'The line height of the text label.',
+    type: 'string',
+    defaultValue: '24px'
   }
-};
+}, _utils.themeDocUtils.focusStyle, _utils.themeDocUtils.edgeStyle('The possible sizes for margin.'));
+
 exports.themeDoc = themeDoc;

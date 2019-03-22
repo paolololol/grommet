@@ -161,6 +161,23 @@ Column sizes.
 
 ```
 [
+  [
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    full
+    1/2
+    1/3
+    2/3
+    1/4
+    2/4
+    3/4
+    flex
+    auto
+    string
+  ]
   xsmall
   small
   medium
@@ -175,20 +192,6 @@ Column sizes.
   3/4
   flex
   auto
-  [xsmall
-small
-medium
-large
-xlarge
-full
-1/2
-1/3
-2/3
-1/4
-2/4
-3/4
-flex
-auto]
   string
 ]
 xsmall
@@ -297,6 +300,23 @@ Row sizes.
 
 ```
 [
+  [
+    xsmall
+    small
+    medium
+    large
+    xlarge
+    full
+    1/2
+    1/3
+    2/3
+    1/4
+    2/4
+    3/4
+    flex
+    auto
+    string
+  ]
   xsmall
   small
   medium
@@ -311,20 +331,6 @@ Row sizes.
   3/4
   flex
   auto
-  [xsmall
-small
-medium
-large
-xlarge
-full
-1/2
-1/3
-2/3
-1/4
-2/4
-3/4
-flex
-auto]
   string
 ]
 xsmall
@@ -337,19 +343,21 @@ string
 
 **tag**
 
-The DOM tag to use for the element. NOTE: This is deprecated in favor
-of indicating the DOM tag via the 'as' property.
+The DOM tag to use for the element. NOTE: This is deprecated
+      in favor of indicating the DOM tag via the 'as' property.
 
 ```
 string
+function
 ```
 
 **as**
 
-The DOM tag to use for the element. Defaults to `div`.
+The DOM tag or react component to use for the element. Defaults to `div`.
 
 ```
 string
+function
 ```
   
 ## Intrinsic element
@@ -359,28 +367,6 @@ div
 ```
 ## Theme
   
-**global.edgeSize**
-
-The possible sizes for the grid gap. Expects `object`.
-
-Defaults to
-
-```
-{
-      edgeSize: {
-        none: '0px',
-        hair: '1px',
-        xxsmall: '3px',
-        xsmall: '6px',
-        small: '12px',
-        medium: '24px',
-        large: '48px',
-        xlarge: '96px',
-        responsiveBreakpoint: 'small',
-      },
-    }
-```
-
 **global.size**
 
 The possible sizes for row and column. Expects `object`.
@@ -408,4 +394,26 @@ Defaults to
 
 ```
 undefined
+```
+
+**global.edgeSize**
+
+The possible sizes for the grid margin and gap. Expects `object`.
+
+Defaults to
+
+```
+{
+    edgeSize: {
+      none: '0px',
+      hair: '1px',
+      xxsmall: '3px',
+      xsmall: '6px',
+      small: '12px',
+      medium: '24px',
+      large: '48px',
+      xlarge: '96px',
+      responsiveBreakpoint: 'small',
+    },
+  }
 ```

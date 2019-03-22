@@ -39,18 +39,10 @@ var Select =
 function (_Component) {
   _inheritsLoose(Select, _Component);
 
-  function Select() {
+  function Select(props) {
     var _this;
 
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    _this = _Component.call.apply(_Component, [this].concat(args)) || this;
-
-    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
-      open: false
-    });
+    _this = _Component.call(this, props) || this;
 
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "inputRef", React.createRef());
 
@@ -78,6 +70,9 @@ function (_Component) {
       });
     });
 
+    _this.state = {
+      open: props.open
+    };
     return _this;
   }
 
@@ -93,10 +88,12 @@ function (_Component) {
         closeOnChange = _this$props.closeOnChange,
         disabled = _this$props.disabled,
         dropAlign = _this$props.dropAlign,
+        dropProps = _this$props.dropProps,
         dropTarget = _this$props.dropTarget,
         forwardRef = _this$props.forwardRef,
         gridArea = _this$props.gridArea,
         id = _this$props.id,
+        icon = _this$props.icon,
         labelKey = _this$props.labelKey,
         margin = _this$props.margin,
         messages = _this$props.messages,
@@ -110,7 +107,7 @@ function (_Component) {
         theme = _this$props.theme,
         value = _this$props.value,
         valueLabel = _this$props.valueLabel,
-        rest = _objectWithoutPropertiesLoose(_this$props, ["a11yTitle", "alignSelf", "children", "closeOnChange", "disabled", "dropAlign", "dropTarget", "forwardRef", "gridArea", "id", "labelKey", "margin", "messages", "onChange", "onClose", "options", "placeholder", "plain", "selected", "size", "theme", "value", "valueLabel"]);
+        rest = _objectWithoutPropertiesLoose(_this$props, ["a11yTitle", "alignSelf", "children", "closeOnChange", "disabled", "dropAlign", "dropProps", "dropTarget", "forwardRef", "gridArea", "id", "icon", "labelKey", "margin", "messages", "onChange", "onClose", "options", "placeholder", "plain", "selected", "size", "theme", "value", "valueLabel"]);
 
     var open = this.state.open;
     delete rest.onSearch;
@@ -121,8 +118,8 @@ function (_Component) {
       }
 
       if (onChange) {
-        for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
-          args[_key2 - 1] = arguments[_key2];
+        for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+          args[_key - 1] = arguments[_key];
         }
 
         onChange.apply(void 0, [_extends({}, event, {
@@ -131,7 +128,21 @@ function (_Component) {
       }
     };
 
-    var SelectIcon = theme.select.icons.down;
+    var SelectIcon;
+
+    switch (icon) {
+      case false:
+        break;
+
+      case true:
+      case undefined:
+        SelectIcon = theme.select.icons.down;
+        break;
+
+      default:
+        SelectIcon = icon;
+    }
+
     var selectValue;
     var inputValue = '';
 
@@ -201,7 +212,8 @@ function (_Component) {
       dropContent: React.createElement(SelectContainer, _extends({}, this.props, {
         onChange: onSelectChange
       })),
-      plain: plain
+      plain: plain,
+      dropProps: _extends({}, dropProps)
     }, React.createElement(Box, {
       align: "center",
       direction: "row",
@@ -224,7 +236,7 @@ function (_Component) {
       value: inputValue,
       size: size,
       onClick: disabled === true ? undefined : this.onOpen
-    }))), React.createElement(Box, {
+    }))), SelectIcon && React.createElement(Box, {
       margin: {
         horizontal: 'small'
       },

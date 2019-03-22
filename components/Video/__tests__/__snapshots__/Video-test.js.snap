@@ -165,6 +165,7 @@ exports[`Video autoPlay renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -240,8 +241,8 @@ exports[`Video autoPlay renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -283,6 +284,8 @@ exports[`Video autoPlay renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -397,6 +400,8 @@ exports[`Video autoPlay renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -472,6 +477,8 @@ exports[`Video autoPlay renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -724,6 +731,7 @@ exports[`Video controls renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -767,6 +775,7 @@ exports[`Video controls renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -824,8 +833,8 @@ exports[`Video controls renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -877,6 +886,8 @@ exports[`Video controls renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -1003,6 +1014,8 @@ exports[`Video controls renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -1078,6 +1091,8 @@ exports[`Video controls renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -1148,6 +1163,8 @@ exports[`Video controls renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -1186,7 +1203,9 @@ exports[`Video controls renders 1`] = `
                   <path
                     d="M 0,6 L 288,6"
                     fill="none"
+                    stroke="#F2F2F2"
                     strokeLinecap="square"
+                    strokeOpacity="0.4"
                     strokeWidth={12}
                   />
                 </svg>
@@ -1222,6 +1241,8 @@ exports[`Video controls renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -1415,6 +1436,7 @@ exports[`Video fit renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -1490,8 +1512,8 @@ exports[`Video fit renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -1551,6 +1573,8 @@ exports[`Video fit renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -1665,6 +1689,8 @@ exports[`Video fit renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -1740,6 +1766,8 @@ exports[`Video fit renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -1813,6 +1841,8 @@ exports[`Video fit renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -1888,6 +1918,8 @@ exports[`Video fit renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -2081,6 +2113,7 @@ exports[`Video loop renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -2156,8 +2189,8 @@ exports[`Video loop renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -2199,6 +2232,8 @@ exports[`Video loop renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -2313,6 +2348,8 @@ exports[`Video loop renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -2388,6 +2425,8 @@ exports[`Video loop renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -2581,6 +2620,7 @@ exports[`Video mute renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -2656,8 +2696,8 @@ exports[`Video mute renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -2699,6 +2739,8 @@ exports[`Video mute renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -2813,6 +2855,8 @@ exports[`Video mute renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -2888,6 +2932,8 @@ exports[`Video mute renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div
@@ -3081,6 +3127,7 @@ exports[`Video renders 1`] = `
   border: none;
   padding: 0;
   text-align: inherit;
+  line-height: 0;
   padding: 12px;
 }
 
@@ -3156,8 +3203,8 @@ exports[`Video renders 1`] = `
 }
 
 .c11 path {
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
+  -webkit-transition: stroke 0.3s,stroke-width 0.3s;
+  transition: stroke 0.3s,stroke-width 0.3s;
 }
 
 .c2 {
@@ -3199,6 +3246,8 @@ exports[`Video renders 1`] = `
 
 .c13 {
   cursor: pointer;
+  width: 100%;
+  height: 100%;
 }
 
 @media only screen and (max-width:768px) {
@@ -3313,6 +3362,8 @@ exports[`Video renders 1`] = `
           onBlur={[Function]}
           onClick={[Function]}
           onFocus={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <svg
@@ -3388,6 +3439,8 @@ exports[`Video renders 1`] = `
           onClick={[Function]}
           onFocus={[Function]}
           onKeyDown={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
           type="button"
         >
           <div

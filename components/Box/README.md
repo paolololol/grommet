@@ -228,6 +228,14 @@ string
     medium
     strong
     boolean,
+  repeat: 
+    no-repeat
+    repeat
+    string,
+  size: 
+    cover
+    contain
+    string,
   light: string
 }
 ```
@@ -243,6 +251,7 @@ small
 medium
 large
 xlarge
+xxlarge
 full
 1/2
 1/3
@@ -310,6 +319,8 @@ The orientation to layout the child components in. Defaults to `column`.
 row
 column
 row-responsive
+row-reverse
+column-reverse
 ```
 
 **elevation**
@@ -358,6 +369,7 @@ The amount of spacing between child elements. This
         will not wrap gracefully.
 
 ```
+xxsmall
 xsmall
 small
 medium
@@ -371,23 +383,28 @@ string
 A fixed height.
 
 ```
+xxsmall
 xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string
 ```
 
 **justify**
 
-How to align the contents along the main axis.
+How to align the contents along the main axis. Defaults to `stretch`.
 
 ```
-start
-center
+around
 between
+center
 end
+evenly
+start
+stretch
 ```
 
 **overflow**
@@ -530,14 +547,16 @@ of indicating the DOM tag via the 'as' property.
 
 ```
 string
+function
 ```
 
 **as**
 
-The DOM tag to use for the element. Defaults to `div`.
+The DOM tag or react component to use for the element. Defaults to `div`.
 
 ```
 string
+function
 ```
 
 **width**
@@ -545,11 +564,13 @@ string
 A fixed width.
 
 ```
+xxsmall
 xsmall
 small
 medium
 large
 xlarge
+xxlarge
 string
 ```
 
@@ -600,72 +621,6 @@ Defaults to
 }
 ```
 
-**global.breakpoints**
-
-The possible breakpoints that could affect border, direction, gap, margin, pad, and round. Expects `object`.
-
-Defaults to
-
-```
-{
-  small: {
-    value: '768px',
-    borderSize: {
-      xsmall: '1px',
-      small: '2px',
-      medium: '4px',
-      large: '6px',
-      xlarge: '12px',
-    },
-    edgeSize: {
-      none: '0px',
-      hair: '1px',
-      xxsmall: '2px',
-      xsmall: '3px',
-      small: '6px',
-      medium: '12px',
-      large: '24px',
-      xlarge: '48px',
-    },
-    size: {
-      xxsmall: '24px',
-      xsmall: '48px',
-      small: '96px',
-      medium: '192px',
-      large: '384px',
-      xlarge: '768px',
-      full: '100%',
-    },
-  },
-  medium: {
-    value: '1536px',
-  },
-  large: {},
-}
-```
-
-**global.edgeSize**
-
-The possible sizes for gap, margin, and pad. Expects `object`.
-
-Defaults to
-
-```
-{
-  edgeSize: {
-    none: '0px',
-    hair: '1px',
-    xxsmall: '3px',
-    xsmall: '6px',
-    small: '12px',
-    medium: '24px',
-    large: '48px',
-    xlarge: '96px',
-    responsiveBreakpoint: 'small',
-  },
-}
-```
-
 **global.elevation**
 
 The possible shadows in Box elevation. Expects `object`.
@@ -693,14 +648,14 @@ Defaults to
 }
 ```
 
-**global.colors.text**
+**global.colors.border**
 
-The text color used inside the Box. Expects `string | { dark: string, light: string }`.
+The color of the border Expects `string | { dark: string, light: string }`.
 
 Defaults to
 
 ```
-{ dark: '#f8f8f8', light: '#444444' }
+{ dark: rgba(255, 255, 255, 0.33), light: rgba(0, 0, 0, 0.33), }
 ```
 
 **global.opacity.medium**
@@ -750,4 +705,70 @@ Defaults to
 
 ```
 small
+```
+
+**global.edgeSize**
+
+The possible sizes for any of gap, margin, and pad. Expects `object`.
+
+Defaults to
+
+```
+{
+    edgeSize: {
+      none: '0px',
+      hair: '1px',
+      xxsmall: '3px',
+      xsmall: '6px',
+      small: '12px',
+      medium: '24px',
+      large: '48px',
+      xlarge: '96px',
+      responsiveBreakpoint: 'small',
+    },
+  }
+```
+
+**global.breakpoints**
+
+The possible breakpoints that could affect border, direction, gap, margin, pad, and round. Expects `object`.
+
+Defaults to
+
+```
+{
+    small: {
+      value: '768px',
+      borderSize: {
+        xsmall: '1px',
+        small: '2px',
+        medium: '4px',
+        large: '6px',
+        xlarge: '12px',
+      },
+      edgeSize: {
+        none: '0px',
+        hair: '1px',
+        xxsmall: '2px',
+        xsmall: '3px',
+        small: '6px',
+        medium: '12px',
+        large: '24px',
+        xlarge: '48px',
+      },
+      size: {
+        xxsmall: '24px',
+        xsmall: '48px',
+        small: '96px',
+        medium: '192px',
+        large: '384px',
+        xlarge: '768px',
+        full: '100%',
+      },
+    },
+    medium: {
+      value: '1536px',
+    },
+    large: {},
+  }
 ```

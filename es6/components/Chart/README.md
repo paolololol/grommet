@@ -257,3 +257,73 @@ Required. Array of value objects describing the data.
 ]
 ```
   
+## Theme
+  
+**chart.extend**
+
+Any additional style for the Chart. Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
+```
+
+**global.colors**
+
+color options used for Chart fill area. Expects `object`.
+
+Defaults to
+
+```
+accent-1
+```
+
+**global.edgeSize**
+
+The possible sizes for the thickness in the Chart. Expects `object`.
+
+Defaults to
+
+```
+{
+        none: '0px',
+        hair: '1px',
+        xxsmall: '3px',
+        xsmall: '6px',
+        small: '12px',
+        medium: '24px',
+        large: '48px',
+        xlarge: '96px',
+        responsiveBreakpoint: 'small',
+    }
+```
+
+**global.opacity**
+
+The opacity of the Chart stroke. Expects `string`.
+
+Defaults to
+
+```
+undefined
+```
+
+**global.size**
+
+The possible sizes for Chart width and height. Expects `object`.
+
+Defaults to
+
+```
+{
+      xxsmall: '48px',
+      xsmall: '96px',
+      small: '192px',
+      medium: '384px',
+      large: '768px',
+      xlarge: '1152px',
+      xxlarge: '1536px',
+      full: '100%',
+      }
+```

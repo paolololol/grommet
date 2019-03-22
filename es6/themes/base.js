@@ -2,22 +2,23 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 import { rgba } from 'polished';
 import { css } from 'styled-components';
-import { Actions } from "grommet-icons/es6/icons/Actions";
-import { ClosedCaption } from "grommet-icons/es6/icons/ClosedCaption";
-import { Expand } from "grommet-icons/es6/icons/Expand";
-import { FormDown } from "grommet-icons/es6/icons/FormDown";
-import { FormNext } from "grommet-icons/es6/icons/FormNext";
-import { FormPrevious } from "grommet-icons/es6/icons/FormPrevious";
-import { FormUp } from "grommet-icons/es6/icons/FormUp";
-import { Next } from "grommet-icons/es6/icons/Next";
-import { Pause } from "grommet-icons/es6/icons/Pause";
-import { Play } from "grommet-icons/es6/icons/Play";
-import { Previous } from "grommet-icons/es6/icons/Previous";
-import { Subtract } from "grommet-icons/es6/icons/Subtract";
-import { Volume } from "grommet-icons/es6/icons/Volume";
-import { VolumeLow } from "grommet-icons/es6/icons/VolumeLow";
-import { base as iconBase } from "grommet-icons/es6/themes/base";
-import { deepMerge, deepFreeze, normalizeColor } from '../utils';
+import { Actions } from 'grommet-icons/icons/Actions';
+import { ClosedCaption } from 'grommet-icons/icons/ClosedCaption';
+import { Expand } from 'grommet-icons/icons/Expand';
+import { FormDown } from 'grommet-icons/icons/FormDown';
+import { FormNext } from 'grommet-icons/icons/FormNext';
+import { FormPrevious } from 'grommet-icons/icons/FormPrevious';
+import { FormUp } from 'grommet-icons/icons/FormUp';
+import { Next } from 'grommet-icons/icons/Next';
+import { Pause } from 'grommet-icons/icons/Pause';
+import { Play } from 'grommet-icons/icons/Play';
+import { Previous } from 'grommet-icons/icons/Previous';
+import { Subtract } from 'grommet-icons/icons/Subtract';
+import { Volume } from 'grommet-icons/icons/Volume';
+import { VolumeLow } from 'grommet-icons/icons/VolumeLow';
+import { base as iconBase } from 'grommet-icons/themes/base';
+import { deepFreeze, deepMerge } from '../utils/object';
+import { normalizeColor } from '../utils/colors';
 var brandColor = '#7D4CDB';
 var accentColors = ['#6FFFB0', '#FD6FFF', '#81FCED', '#FFCA58'];
 var neutralColors = ['#00873D', '#3D138D', '#00739D', '#A2423D'];
@@ -180,6 +181,9 @@ export var generate = function generate(baseSpacing, scale) {
           width: '1px',
           radius: '4px',
           color: 'border'
+        },
+        disabled: {
+          opacity: 0.3
         }
       },
       debounceDelay: 300,
@@ -187,7 +191,6 @@ export var generate = function generate(baseSpacing, scale) {
       drop: {
         background: '#ffffff',
         border: {
-          width: '0px',
           radius: '0px'
         },
         shadowSize: 'small',
@@ -284,6 +287,14 @@ export var generate = function generate(baseSpacing, scale) {
       }
     },
     accordion: {
+      border: {
+        side: 'bottom',
+        color: 'border'
+      },
+      heading: {
+        level: '4'
+      },
+      // level ranges from 1-6
       icons: {
         collapse: FormUp,
         expand: FormDown // color: { dark: undefined, light: undefined },
@@ -318,11 +329,7 @@ export var generate = function generate(baseSpacing, scale) {
       // color: { dark: undefined, light: undefined }
       primary: {// color: { dark: undefined, light: undefined }
       },
-      disabled: {
-        opacity: 0.3
-      },
-      minWidth: baseSpacing * 4 + "px",
-      maxWidth: baseSpacing * 16 + "px",
+      // disabled: { opacity: undefined },
       padding: {
         vertical: baseSpacing / 4 - borderWidth + "px",
         horizontal: baseSpacing - borderWidth + "px"
@@ -364,6 +371,8 @@ export var generate = function generate(baseSpacing, scale) {
         previous: Previous // color: undefined,
 
       }
+    },
+    chart: {// extend: undefined,
     },
     checkBox: {
       border: {
@@ -409,6 +418,7 @@ export var generate = function generate(baseSpacing, scale) {
     },
     clock: {
       analog: {
+        // extend: undefined,
         hour: {
           color: {
             dark: 'light-2',
@@ -510,7 +520,14 @@ export var generate = function generate(baseSpacing, scale) {
         weight: 'bold'
       }
     },
+    diagram: {
+      // extend: undefined,
+      line: {
+        color: 'accent-1'
+      }
+    },
     // drop: {
+    //   extend: undefined,
     //   maxHeight: undefined,
     // },
     formField: {
@@ -525,19 +542,41 @@ export var generate = function generate(baseSpacing, scale) {
           }
         }
       },
+      content: {
+        pad: {
+          horizontal: 'small',
+          bottom: 'small'
+        }
+      },
       error: {
+        margin: {
+          vertical: 'xsmall',
+          horizontal: 'small'
+        },
         color: {
           dark: 'status-critical',
           light: 'status-critical'
         }
       },
       help: {
+        margin: {
+          left: 'small'
+        },
         color: {
           dark: 'dark-3',
           light: 'dark-3'
         }
       },
-      label: {}
+      label: {
+        margin: {
+          vertical: 'xsmall',
+          horizontal: 'small'
+        }
+      },
+      margin: {
+        bottom: 'small'
+      } // extend: undefined,
+
     },
     grommet: {},
     heading: {
@@ -618,12 +657,18 @@ export var generate = function generate(baseSpacing, scale) {
       // when Layer takes over the full screen
       zIndex: '10'
     },
+    maskedInput: {// extend: undefined,
+    },
     menu: {
       // background: undefined,
       // extend: undefined,
       icons: {
         down: FormDown
       }
+    },
+    meter: {
+      color: 'accent-1' // extend: undefined,
+
     },
     paragraph: {
       small: _extends({}, fontSizing(-1)),
@@ -671,6 +716,16 @@ export var generate = function generate(baseSpacing, scale) {
       thumb: {// color: { dark: undefined, light: undefined },
       }
     },
+    rangeSelector: {
+      background: {
+        invert: {
+          color: 'light-4'
+        }
+      } // edge: {
+      //   type: undefined,
+      // },
+
+    },
     select: {
       // background: undefined,
       container: {// extend: undefined,
@@ -680,6 +735,15 @@ export var generate = function generate(baseSpacing, scale) {
       icons: {
         // color: { dark: undefined, light: undefined },
         down: FormDown
+      },
+      options: {
+        box: {
+          align: 'start',
+          pad: 'small'
+        },
+        text: {
+          margin: 'none'
+        }
       },
       // searchInput: undefined,
       step: 20
@@ -707,7 +771,8 @@ export var generate = function generate(baseSpacing, scale) {
           color: {
             dark: 'white',
             light: 'black'
-          }
+          } // extend: undefined,
+
         }
       },
       color: 'control',
@@ -731,12 +796,12 @@ export var generate = function generate(baseSpacing, scale) {
     tabs: {
       // background: undefined,
       // extend: undefined,
+      // gap: undefined,
       header: {// background: undefined,
         // extend: undefined,
       },
       panel: {// extend: undefined,
-      } // gap: undefined,
-
+      }
     },
     table: {
       header: {
@@ -780,9 +845,12 @@ export var generate = function generate(baseSpacing, scale) {
       xlarge: _extends({}, fontSizing(2)),
       xxlarge: _extends({}, fontSizing(4))
     },
-    // textInput: {
-    //   extend: undefined,
-    // },
+    textArea: {// extend: undefined,
+      // disabled: { opacity: undefined },
+    },
+    textInput: {// extend: undefined,
+      // disabled: { opacity: undefined },
+    },
     video: {
       captions: {
         background: 'rgba(0, 0, 0, 0.7)'
@@ -797,8 +865,11 @@ export var generate = function generate(baseSpacing, scale) {
         reduceVolume: VolumeLow,
         volume: Volume // color: { dark: undefined, light: undefined },
 
-      } // scrubber: { track: { color: undefined } },
-
+      },
+      // scrubber: { track: { color: undefined } },
+      scrubber: {
+        color: 'light-4'
+      }
     },
     worldMap: {
       color: 'light-3',

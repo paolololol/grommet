@@ -5,7 +5,7 @@ import { genericProps, getAvailableAtBadge } from '../../utils';
 var VERTICAL_ALIGN_OPTIONS = ['top', 'bottom'];
 var HORIZONTAL_ALIGN_OPTIONS = ['right', 'left'];
 export var doc = function doc(Menu) {
-  var DocumentedMenu = describe(Menu).availableAt(getAvailableAtBadge('Menu')).description("A control that opens a Drop containing plain Buttons. The labels\n      and behavior of the contained Buttons are described via the `items`\n      property.").usage("import { Menu } from 'grommet';\n<Menu />").intrinsicElement('button');
+  var DocumentedMenu = describe(Menu).availableAt(getAvailableAtBadge('Menu')).description("A control that opens a Drop containing plain Buttons.").details("The labels and behavior of the contained Buttons are described\n      via the `items` property.\n      You can provide a single function child that will be called with\n      'hover', 'focus', and 'drop' keys. This allows you to customize\n      the rendering of the Menu button in those cases.").usage("import { Menu } from 'grommet';\n<Menu />").intrinsicElement('button');
   DocumentedMenu.propTypes = _extends({}, genericProps, {
     disabled: PropTypes.bool.description('Whether the menu should be disabled.').defaultValue(false),
     dropAlign: PropTypes.shape({
@@ -22,6 +22,8 @@ export var doc = function doc(Menu) {
       opacity: PropTypes.oneOfType([PropTypes.oneOf(['weak', 'medium', 'strong']), PropTypes.bool])
     })]).description('Background color when drop is active'),
     dropTarget: PropTypes.object.description("Target where the drop will be aligned to. This should be\n      a React reference. Typically, this is not required as the drop will be\n      aligned to the Menu itself by default."),
+    dropProps: PropTypes.object.description('Any valid Drop prop.'),
+    justifyContent: PropTypes.oneOf(['start', 'center', 'end', 'between', 'around', 'stretch']).description('How to align the contents along the row axis.').defaultValue('start'),
     icon: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]).description('Indicates the icon shown as a control to open it.'),
     items: PropTypes.arrayOf(PropTypes.object).description("Menu items to be placed inside the drop down.\nThe object values can be any Button prop, for example: label and onClick.").isRequired,
     label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).description('Indicates the label shown as a control to open it.'),
@@ -54,7 +56,7 @@ export var themeDoc = {
   },
   'menu.icons.down': {
     description: 'The icon to show to the right of the label.',
-    type: 'React.element',
+    type: 'React.Element',
     defaultValue: '<FormDown />'
   }
 };

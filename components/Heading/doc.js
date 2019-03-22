@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.doc = void 0;
+exports.themeDoc = exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
@@ -23,3 +23,33 @@ var doc = function doc(Heading) {
 };
 
 exports.doc = doc;
+
+var themeDoc = _extends({}, _utils.themeDocUtils.breakpointStyle('The possible breakpoints that could affect font-size and max-width'), _utils.themeDocUtils.edgeStyle('The possible sizes for margin.'), {
+  'heading.extend': {
+    description: 'Any additional style for Heading.',
+    type: 'string | (props) => {}',
+    defaultValue: undefined
+  },
+  'heading.level': {
+    description: 'The level that impacts line height, max width, font size, weight and family of the Heading.',
+    type: 'object',
+    defaultValue: "\n      1: {\n        medium: {\n          size: 34px,\n          height: 40px,\n          width: 826px,\n        },\n      },\n      weight: 600,\n      font:\n        {\n          family: undefined,\n        }"
+  },
+  'heading.weight': {
+    description: 'Default heading weight used unless a per level heading is defined.',
+    type: 'number',
+    defaultValue: 600
+  },
+  'heading.font': {
+    description: 'Default heading font used unless a per level heading is defined.',
+    type: 'object',
+    defaultValue: undefined
+  },
+  'heading.responsiveBreakpoint': {
+    description: 'The breakpoint to trigger changes in the Heading layout. The actual values will be derived from global.breakpoints.',
+    type: 'string',
+    defaultValue: 'small'
+  }
+});
+
+exports.themeDoc = themeDoc;

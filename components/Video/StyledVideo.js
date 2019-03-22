@@ -59,7 +59,7 @@ Object.setPrototypeOf(StyledVideoControls.defaultProps, _defaultProps.defaultPro
 var headStyle = (0, _styledComponents.css)(["::after{content:'';height:100%;width:", ";background:", ";position:absolute;left:", ";}"], function (props) {
   return props.theme.global.edgeSize.xsmall;
 }, function (props) {
-  return (0, _utils.normalizeColor)('light-4', props.theme);
+  return (0, _utils.normalizeColor)(props.theme.video.scrubber.color, props.theme);
 }, function (props) {
   return props.value + "%";
 });
@@ -67,7 +67,7 @@ var headStyle = (0, _styledComponents.css)(["::after{content:'';height:100%;widt
 var StyledVideoScrubber = _styledComponents.default.div.withConfig({
   displayName: "StyledVideo__StyledVideoScrubber",
   componentId: "w4v8h9-3"
-})(["cursor:pointer;", ";"], function (props) {
+})(["cursor:pointer;width:100%;height:100%;", ";"], function (props) {
   return props.value && headStyle;
 });
 

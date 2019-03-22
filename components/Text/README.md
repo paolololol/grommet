@@ -139,18 +139,20 @@ string
 **tag**
 
 The DOM tag to use for the element. NOTE: This is deprecated in favor
-of indicating the DOM tag via the 'as' property.
+         of indicating the DOM tag via the 'as' property.
 
 ```
 string
+function
 ```
 
 **as**
 
-The DOM tag to use for the element. Defaults to `span`.
+The DOM tag or react component to use for the element. Defaults to `span`.
 
 ```
 string
+function
 ```
 
 **textAlign**
@@ -189,34 +191,14 @@ span
 ```
 ## Theme
   
-**color**
+**global.colors.text**
 
-The text color used for Text. Expects `string | { dark: string, light: string }`.
+The text color used for Text. Expects `object | { dark: string, light: string }`.
 
 Defaults to
 
 ```
 { dark: '#f8f8f8', light: '#444444' }
-```
-
-**global.edgeSize**
-
-The possible sizes for margin. Expects `object`.
-
-Defaults to
-
-```
-{
-        none: '0px',
-        hair: '1px',
-        xxsmall: '3px',
-        xsmall: '6px',
-        small: '12px',
-        medium: '24px',
-        large: '48px',
-        xlarge: '96px',
-        responsiveBreakpoint: 'small',
-    }
 ```
 
 **text**
@@ -262,4 +244,26 @@ Defaults to
 
 ```
 undefined
+```
+
+**global.edgeSize**
+
+The possible sizes for margin. Expects `object`.
+
+Defaults to
+
+```
+{
+    edgeSize: {
+      none: '0px',
+      hair: '1px',
+      xxsmall: '3px',
+      xsmall: '6px',
+      small: '12px',
+      medium: '24px',
+      large: '48px',
+      xlarge: '96px',
+      responsiveBreakpoint: 'small',
+    },
+  }
 ```

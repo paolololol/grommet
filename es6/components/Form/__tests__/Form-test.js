@@ -31,6 +31,9 @@ describe('Form', function () {
       required: true,
       validate: validate,
       placeholder: "test input"
+    }), React.createElement(FormField, {
+      name: "test2",
+      placeholder: "test-2 input"
     }), React.createElement(Button, {
       type: "submit",
       primary: true,
@@ -41,24 +44,124 @@ describe('Form', function () {
         container = _render.container;
 
     expect(container.firstChild).toMatchSnapshot();
-    fireEvent.click(getByText('Submit'));
     fireEvent.change(getByPlaceholderText('test input'), {
       target: {
         value: 'v'
       }
     });
-    expect(validate).toBeCalledWith('v');
+    fireEvent.click(getByText('Submit'));
+    expect(validate).toBeCalledWith('v', {
+      test: 'v'
+    });
     fireEvent.change(getByPlaceholderText('test input'), {
       target: {
         value: 'value'
       }
     });
-    expect(validate).toBeCalledWith('value');
+    fireEvent.change(getByPlaceholderText('test-2 input'), {
+      target: {
+        value: 'value-2'
+      }
+    });
     fireEvent.click(getByText('Submit'));
+    expect(validate).toBeCalledWith('value', {
+      test: 'value',
+      test2: 'value-2'
+    });
     expect(onSubmit).toBeCalledWith(expect.objectContaining({
       value: {
-        test: 'value'
+        test: 'value',
+        test2: 'value-2'
       }
     }));
+  });
+  test('regexp validation', function () {
+    var onSubmit = jest.fn();
+
+    var _render2 = render(React.createElement(Grommet, null, React.createElement(Form, {
+      onSubmit: onSubmit
+    }, React.createElement(FormField, {
+      name: "test",
+      required: true,
+      validate: {
+        regexp: /^[a-z]/i
+      },
+      placeholder: "test input"
+    }), React.createElement(Button, {
+      type: "submit",
+      primary: true,
+      label: "Submit"
+    })))),
+        getByPlaceholderText = _render2.getByPlaceholderText,
+        getByText = _render2.getByText,
+        queryByText = _render2.queryByText;
+
+    fireEvent.change(getByPlaceholderText('test input'), {
+      target: {
+        value: '1'
+      }
+    });
+    fireEvent.click(getByText('Submit'));
+    expect(getByText('invalid')).toMatchSnapshot();
+    fireEvent.change(getByPlaceholderText('test input'), {
+      target: {
+        value: 'a'
+      }
+    });
+    fireEvent.click(getByText('Submit'));
+    expect(queryByText('invalid')).toBeNull();
+  });
+  test('required validation', function () {
+    var onSubmit = jest.fn();
+
+    var _render3 = render(React.createElement(Grommet, null, React.createElement(Form, {
+      onSubmit: onSubmit
+    }, React.createElement(FormField, {
+      name: "test",
+      required: true,
+      placeholder: "test input"
+    }), React.createElement(Button, {
+      type: "submit",
+      primary: true,
+      label: "Submit"
+    })))),
+        getByPlaceholderText = _render3.getByPlaceholderText,
+        getByText = _render3.getByText,
+        queryByText = _render3.queryByText;
+
+    fireEvent.click(getByText('Submit'));
+    expect(queryByText('required')).toMatchSnapshot();
+    fireEvent.change(getByPlaceholderText('test input'), {
+      target: {
+        value: '1'
+      }
+    });
+    expect(queryByText('required')).toBeNull();
+  });
+  test('reset clears form', function () {
+    var onReset = jest.fn();
+
+    var _render4 = render(React.createElement(Grommet, null, React.createElement(Form, {
+      onReset: onReset
+    }, React.createElement(FormField, {
+      name: "test",
+      required: true,
+      placeholder: "test input"
+    }), React.createElement(Button, {
+      type: "reset",
+      primary: true,
+      label: "Reset"
+    })))),
+        getByPlaceholderText = _render4.getByPlaceholderText,
+        getByText = _render4.getByText,
+        queryByText = _render4.queryByText;
+
+    fireEvent.change(getByPlaceholderText('test input'), {
+      target: {
+        value: 'Input has changed'
+      }
+    });
+    fireEvent.click(getByText('Reset'));
+    expect(queryByText('Input has changed')).toBeNull();
   });
 });

@@ -15,7 +15,7 @@ export var baseStyle = css(["font-family:", ";font-size:", ";line-height:", ";fo
 export var controlBorderStyle = css(["border:", " solid ", ";border-radius:", ";"], function (props) {
   return props.theme.global.control.border.width;
 }, function (props) {
-  return normalizeColor('border', props.theme);
+  return normalizeColor(props.theme.global.control.border.color || 'border', props.theme);
 }, function (props) {
   return props.theme.global.control.border.radius;
 });
@@ -103,3 +103,8 @@ export var genericStyles = css(["", " ", " ", ""], function (props) {
 }, function (props) {
   return props.margin && edgeStyle('margin', props.margin, props.responsive, props.theme.global.edgeSize.responsiveBreakpoint, props.theme);
 });
+export var disabledStyle = function disabledStyle(componentStyle) {
+  return css(["opacity:", ";cursor:default;"], function (props) {
+    return componentStyle || props.theme.global.control.disabled.opacity;
+  });
+};

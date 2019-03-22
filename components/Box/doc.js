@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.themeDoc = exports.doc = void 0;
+exports.themeDoc = exports.doc = exports.OVERFLOW_VALUES = void 0;
 
 var _reactDesc = require("react-desc");
 
@@ -11,6 +11,7 @@ function _extends() { _extends = Object.assign || function (target) { for (var i
 
 var PAD_SIZES = ['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge'];
 var OVERFLOW_VALUES = ['auto', 'hidden', 'scroll', 'visible'];
+exports.OVERFLOW_VALUES = OVERFLOW_VALUES;
 
 var ANIMATION_TYPE = _reactDesc.PropTypes.oneOf(['fadeIn', 'fadeOut', 'jiggle', 'pulse', 'slideUp', 'slideDown', 'slideLeft', 'slideRight', 'zoomIn', 'zoomOut']);
 
@@ -19,7 +20,13 @@ var ANIMATION_SHAPE = _reactDesc.PropTypes.shape({
   delay: _reactDesc.PropTypes.number,
   duration: _reactDesc.PropTypes.number,
   size: _reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge'])
-});
+}); // if you update values here, make sure to update in Drop/doc too.
+
+
+var overflowPropType = _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(OVERFLOW_VALUES), _reactDesc.PropTypes.shape({
+  horizontal: _reactDesc.PropTypes.oneOf(OVERFLOW_VALUES),
+  vertical: _reactDesc.PropTypes.oneOf(OVERFLOW_VALUES)
+}), _reactDesc.PropTypes.string]);
 
 var doc = function doc(Box) {
   var DocumentedBox = (0, _reactDesc.describe)(Box).availableAt((0, _utils.getAvailableAtBadge)('Box')).description("A container that lays out its contents in one direction. Box\n      provides CSS flexbox capabilities for layout, as well as general\n      styling of things like background color, border, and animation.").usage("import { Box } from 'grommet';\n<Box />").intrinsicElement('div');
@@ -33,9 +40,11 @@ var doc = function doc(Box) {
       image: _reactDesc.PropTypes.string,
       position: _reactDesc.PropTypes.string,
       opacity: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['weak', 'medium', 'strong']), _reactDesc.PropTypes.bool]),
+      repeat: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['no-repeat', 'repeat']), _reactDesc.PropTypes.string]),
+      size: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['cover', 'contain']), _reactDesc.PropTypes.string]),
       light: _reactDesc.PropTypes.string
     })]).description("Either a color identifier to use for the background\n        color. For example: 'neutral-1'. Or, a 'url()' for an image. Dark\n        is not needed if color is provided."),
-    basis: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'full', '1/2', '1/3', '2/3', '1/4', '2/4', '3/4', 'auto']), _reactDesc.PropTypes.string]).description("A fixed or relative size along its container's main axis."),
+    basis: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge', 'full', '1/2', '1/3', '2/3', '1/4', '2/4', '3/4', 'auto']), _reactDesc.PropTypes.string]).description("A fixed or relative size along its container's main axis."),
     border: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.bool, _reactDesc.PropTypes.oneOf(['top', 'left', 'bottom', 'right', 'horizontal', 'vertical', 'all']), _reactDesc.PropTypes.shape({
       color: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.shape({
         dark: _reactDesc.PropTypes.string,
@@ -45,20 +54,17 @@ var doc = function doc(Box) {
       size: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]),
       style: _reactDesc.PropTypes.oneOf(['solid', 'dashed', 'dotted', 'double', 'groove', 'ridge', 'inset', 'outset', 'hidden']).defaultValue('solid')
     })]).description('Include a border.'),
-    direction: _reactDesc.PropTypes.oneOf(['row', 'column', 'row-responsive']).description('The orientation to layout the child components in.').defaultValue('column'),
+    direction: _reactDesc.PropTypes.oneOf(['row', 'column', 'row-responsive', 'row-reverse', 'column-reverse']).description('The orientation to layout the child components in.').defaultValue('column'),
     elevation: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['none', 'xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description("Elevated height above the underlying context, indicated\n        via a drop shadow.").defaultValue('none'),
     flex: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['grow', 'shrink']), _reactDesc.PropTypes.bool, _reactDesc.PropTypes.shape({
       grow: _reactDesc.PropTypes.number,
       shrink: _reactDesc.PropTypes.number
     })]).description('Whether flex-grow and/or flex-shrink is true and at a desired factor.'),
     fill: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['horizontal', 'vertical']), _reactDesc.PropTypes.bool]).description('Whether the width and/or height should fill the container.'),
-    gap: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description("The amount of spacing between child elements. This\n        should not be used in conjunction with 'wrap' as the gap elements\n        will not wrap gracefully."),
-    height: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description('A fixed height.'),
-    justify: _reactDesc.PropTypes.oneOf(['start', 'center', 'between', 'end']).description('How to align the contents along the main axis.'),
-    overflow: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(OVERFLOW_VALUES), _reactDesc.PropTypes.shape({
-      horizontal: _reactDesc.PropTypes.oneOf(OVERFLOW_VALUES),
-      vertical: _reactDesc.PropTypes.oneOf(OVERFLOW_VALUES)
-    }), _reactDesc.PropTypes.string]).description('box overflow.'),
+    gap: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description("The amount of spacing between child elements. This\n        should not be used in conjunction with 'wrap' as the gap elements\n        will not wrap gracefully."),
+    height: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']), _reactDesc.PropTypes.string]).description('A fixed height.'),
+    justify: _reactDesc.PropTypes.oneOf(['around', 'between', 'center', 'end', 'evenly', 'start', 'stretch']).description('How to align the contents along the main axis.').defaultValue('stretch'),
+    overflow: overflowPropType.description('box overflow.'),
     pad: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['none'].concat(PAD_SIZES)), _reactDesc.PropTypes.shape({
       bottom: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
       horizontal: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(PAD_SIZES), _reactDesc.PropTypes.string]),
@@ -72,16 +78,17 @@ var doc = function doc(Box) {
       corner: _reactDesc.PropTypes.oneOf(['top', 'left', 'bottom', 'right', 'top-left', 'top-right', 'bottom-left', 'bottom-right']),
       size: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string])
     })]).description('How much to round the corners.').defaultValue(false),
-    tag: _reactDesc.PropTypes.string.description("The DOM tag to use for the element. NOTE: This is deprecated in favor\nof indicating the DOM tag via the 'as' property."),
-    as: _reactDesc.PropTypes.string.description('The DOM tag to use for the element.').defaultValue('div'),
-    width: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']), _reactDesc.PropTypes.string]).description('A fixed width.'),
+    tag: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.func]).description("The DOM tag to use for the element. NOTE: This is deprecated in favor\nof indicating the DOM tag via the 'as' property."),
+    as: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.string, _reactDesc.PropTypes.func]).description('The DOM tag or react component to use for the element.').defaultValue('div'),
+    width: _reactDesc.PropTypes.oneOfType([_reactDesc.PropTypes.oneOf(['xxsmall', 'xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']), _reactDesc.PropTypes.string]).description('A fixed width.'),
     wrap: _reactDesc.PropTypes.bool.description("Whether children can wrap if they\n      can't all fit.").defaultValue(false)
   });
   return DocumentedBox;
 };
 
 exports.doc = doc;
-var themeDoc = {
+
+var themeDoc = _extends({
   'global.animation': {
     description: 'The animation configuration for the Box.',
     type: 'object',
@@ -92,25 +99,15 @@ var themeDoc = {
     type: 'object',
     defaultValue: "{\n  xsmall: '1px',\n  small: '2px',\n  medium: '4px',\n  large: '12px',\n  xlarge: '24px,\n}"
   },
-  'global.breakpoints': {
-    description: 'The possible breakpoints that could affect border, direction, gap, margin, pad, and round.',
-    type: 'object',
-    defaultValue: "{\n  small: {\n    value: '768px',\n    borderSize: {\n      xsmall: '1px',\n      small: '2px',\n      medium: '4px',\n      large: '6px',\n      xlarge: '12px',\n    },\n    edgeSize: {\n      none: '0px',\n      hair: '1px',\n      xxsmall: '2px',\n      xsmall: '3px',\n      small: '6px',\n      medium: '12px',\n      large: '24px',\n      xlarge: '48px',\n    },\n    size: {\n      xxsmall: '24px',\n      xsmall: '48px',\n      small: '96px',\n      medium: '192px',\n      large: '384px',\n      xlarge: '768px',\n      full: '100%',\n    },\n  },\n  medium: {\n    value: '1536px',\n  },\n  large: {},\n}"
-  },
-  'global.edgeSize': {
-    description: 'The possible sizes for gap, margin, and pad.',
-    type: 'object',
-    defaultValue: "{\n  edgeSize: {\n    none: '0px',\n    hair: '1px',\n    xxsmall: '3px',\n    xsmall: '6px',\n    small: '12px',\n    medium: '24px',\n    large: '48px',\n    xlarge: '96px',\n    responsiveBreakpoint: 'small',\n  },\n}"
-  },
   'global.elevation': {
     description: 'The possible shadows in Box elevation.',
     type: 'object',
     defaultValue: "{\n  light: {\n    none: 'none',\n    xsmall: '0px 1px 2px rgba(100, 100, 100, 0.50)',\n    small: '0px 2px 4px rgba(100, 100, 100, 0.50)',\n    medium: '0px 3px 8px rgba(100, 100, 100, 0.50)',\n    large: '0px 6px 12px rgba(100, 100, 100, 0.50)',\n    xlarge: '0px 8px 16px rgba(100, 100, 100, 0.50)',\n  },\n  dark: {\n    none: 'none',\n    xsmall: '0px 2px 2px rgba(255, 255, 255, 0.40)',\n    small: '0px 4px 4px rgba(255, 255, 255, 0.40)',\n    medium: '0px 6px 8px rgba(255, 255, 255, 0.40)',\n    large: '0px 8px 16px rgba(255, 255, 255, 0.40)',\n    xlarge: '0px 10px 24px rgba(255, 255, 255, 0.40)',\n  },\n}"
   },
-  'global.colors.text': {
-    description: 'The text color used inside the Box.',
+  'global.colors.border': {
+    description: 'The color of the border',
     type: 'string | { dark: string, light: string }',
-    defaultValue: "{ dark: '#f8f8f8', light: '#444444' }"
+    defaultValue: '{ dark: rgba(255, 255, 255, 0.33), light: rgba(0, 0, 0, 0.33), }'
   },
   'global.opacity.medium': {
     description: 'The value used when background opacity is set to true.',
@@ -132,5 +129,6 @@ var themeDoc = {
     type: 'string',
     defaultValue: 'small'
   }
-};
+}, _utils.themeDocUtils.edgeStyle('The possible sizes for any of gap, margin, and pad.'), _utils.themeDocUtils.breakpointStyle('The possible breakpoints that could affect border, direction, gap, margin, pad, and round.'));
+
 exports.themeDoc = themeDoc;

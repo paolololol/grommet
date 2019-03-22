@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.docCalcs = exports.doc = void 0;
+exports.themeDoc = exports.docCalcs = exports.doc = void 0;
 
 var _reactDesc = require("react-desc");
 
@@ -51,3 +51,31 @@ var docCalcs = function docCalcs(calcs) {
 };
 
 exports.docCalcs = docCalcs;
+var themeDoc = {
+  'chart.extend': {
+    description: 'Any additional style for the Chart.',
+    type: 'string | (props) => {}',
+    defaultValue: undefined
+  },
+  'global.colors': {
+    description: 'color options used for Chart fill area.',
+    type: 'object',
+    defaultValue: 'accent-1'
+  },
+  'global.edgeSize': {
+    description: 'The possible sizes for the thickness in the Chart.',
+    type: 'object',
+    defaultValue: "{\n        none: '0px',\n        hair: '1px',\n        xxsmall: '3px',\n        xsmall: '6px',\n        small: '12px',\n        medium: '24px',\n        large: '48px',\n        xlarge: '96px',\n        responsiveBreakpoint: 'small',\n    }"
+  },
+  'global.opacity': {
+    description: 'The opacity of the Chart stroke.',
+    type: 'string',
+    defaultValue: undefined
+  },
+  'global.size': {
+    description: 'The possible sizes for Chart width and height.',
+    type: 'object',
+    defaultValue: "{\n      xxsmall: '48px',\n      xsmall: '96px',\n      small: '192px',\n      medium: '384px',\n      large: '768px',\n      xlarge: '1152px',\n      xxlarge: '1536px',\n      full: '100%',\n      }"
+  }
+};
+exports.themeDoc = themeDoc;

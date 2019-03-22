@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import { describe, PropTypes } from 'react-desc';
-import { colorPropType, genericProps, getAvailableAtBadge } from '../../utils';
+import { colorPropType, genericProps, getAvailableAtBadge, themeDocUtils } from '../../utils';
 export var doc = function doc(Heading) {
   var DocumentedHeading = describe(Heading).availableAt(getAvailableAtBadge('Heading')).description('Heading text structed in levels.').usage("import { Heading } from 'grommet';\n<Heading />").intrinsicElement(['h1', 'h2', 'h3', 'h4']);
   DocumentedHeading.propTypes = _extends({}, genericProps, {
@@ -14,3 +14,30 @@ export var doc = function doc(Heading) {
   });
   return DocumentedHeading;
 };
+export var themeDoc = _extends({}, themeDocUtils.breakpointStyle('The possible breakpoints that could affect font-size and max-width'), themeDocUtils.edgeStyle('The possible sizes for margin.'), {
+  'heading.extend': {
+    description: 'Any additional style for Heading.',
+    type: 'string | (props) => {}',
+    defaultValue: undefined
+  },
+  'heading.level': {
+    description: 'The level that impacts line height, max width, font size, weight and family of the Heading.',
+    type: 'object',
+    defaultValue: "\n      1: {\n        medium: {\n          size: 34px,\n          height: 40px,\n          width: 826px,\n        },\n      },\n      weight: 600,\n      font:\n        {\n          family: undefined,\n        }"
+  },
+  'heading.weight': {
+    description: 'Default heading weight used unless a per level heading is defined.',
+    type: 'number',
+    defaultValue: 600
+  },
+  'heading.font': {
+    description: 'Default heading font used unless a per level heading is defined.',
+    type: 'object',
+    defaultValue: undefined
+  },
+  'heading.responsiveBreakpoint': {
+    description: 'The breakpoint to trigger changes in the Heading layout. The actual values will be derived from global.breakpoints.',
+    type: 'string',
+    defaultValue: 'small'
+  }
+});

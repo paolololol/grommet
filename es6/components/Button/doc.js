@@ -1,9 +1,9 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import { describe, PropTypes } from 'react-desc';
-import { colorPropType, genericProps, getAvailableAtBadge } from '../../utils';
+import { colorPropType, genericProps, getAvailableAtBadge, themeDocUtils } from '../../utils';
 export var doc = function doc(Button) {
-  var DocumentedButton = describe(Button).availableAt(getAvailableAtBadge('Button')).description('A button.').usage("import { Button } from 'grommet';\n<Button primary={true} label='Label' />").intrinsicElement('button');
+  var DocumentedButton = describe(Button).availableAt(getAvailableAtBadge('Button')).description('A button.').details("You can provide a single function child that will be called with\n      'hover' and 'focus' keys. This allows you to customize the rendering\n      of the Button in those cases.").usage("import { Button } from 'grommet';\n<Button primary={true} label='Label' />").intrinsicElement('button');
   DocumentedButton.propTypes = _extends({}, genericProps, {
     active: PropTypes.bool.description('Whether the button is active.').defaultValue(false),
     color: colorPropType.description('Fill color for primary, border color otherwise.'),
@@ -17,15 +17,15 @@ export var doc = function doc(Button) {
     icon: PropTypes.element.description('Icon element to place in the button.'),
     label: PropTypes.node.description('Label text to place in the button.'),
     onClick: PropTypes.func.description("Click handler. Not setting this property and not specifying a href\ncauses the Button to be disabled."),
-    plain: PropTypes.bool.description('Whether this is a plain button with no border or padding.').defaultValue(false),
+    plain: PropTypes.bool.description("Whether this is a plain button with no border or pad. \nNon plain button will show both pad and border. \nThe plain button has no border and unless the icon prop exist it has no pad as well.").defaultValue(false),
     primary: PropTypes.bool.description('Whether this is a primary button. There should be at most one per page or screen.').defaultValue(false),
     reverse: PropTypes.bool.description("Whether an icon and label should be reversed so that the icon is at the\nend of the anchor.").defaultValue(false),
     type: PropTypes.oneOf(['button', 'reset', 'submit']).description('The type of button. Set the type to submit for the default button on forms.').defaultValue('button'),
-    as: PropTypes.string.description("The DOM tag to use for the element.")
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).description("The DOM tag or react component to use for the element.")
   });
   return DocumentedButton;
 };
-export var themeDoc = {
+export var themeDoc = _extends({
   'global.hover.color': {
     description: 'The background color when hovering.',
     type: 'string',
@@ -35,6 +35,21 @@ export var themeDoc = {
     description: 'The padding around an icon-only button.',
     type: 'string',
     defaultValue: '12px'
+  },
+  'global.colors.control': {
+    description: 'The color of the border.',
+    type: 'string | { dark: string, light: string }',
+    defaultValue: "{ dark: 'accent-1', light: 'brand', }"
+  },
+  'global.colors.brand': {
+    description: 'The light version of the border.',
+    type: 'string',
+    defaultValue: '#7D4CDB'
+  },
+  'global.colors.text': {
+    description: 'The color of the text label.',
+    type: 'string | { dark: string, light: string }',
+    defaultValue: "{ dark: '#f8f8f8', light: '#444444' }"
   },
   'text.medium.size': {
     description: 'The font size of the text label.',
@@ -73,16 +88,6 @@ export var themeDoc = {
     type: 'number',
     defaultValue: 0.3
   },
-  'button.minWidth': {
-    description: "The minimum width.",
-    type: 'string',
-    defaultValue: '96px'
-  },
-  'button.maxWidth': {
-    description: "The maximum width.",
-    type: 'string',
-    defaultValue: '384px'
-  },
   'button.padding.horizontal': {
     description: 'The horizontal padding.',
     type: 'string',
@@ -97,4 +102,4 @@ export var themeDoc = {
     description: 'Any additional style for the Button.',
     type: 'string | (props) => {}'
   }
-};
+}, themeDocUtils.focusStyle, themeDocUtils.disabledStyle);

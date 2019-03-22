@@ -10,7 +10,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 import React, { Children, cloneElement, Component } from 'react';
 import { compose } from 'recompose';
-import { withTheme } from 'styled-components';
+import styled, { withTheme } from 'styled-components';
 import { defaultProps } from '../../default-props';
 import { parseMetricToNum } from '../../utils';
 import { Box } from '../Box';
@@ -21,16 +21,16 @@ import { withFocus } from '../hocs';
 import { FormContext } from '../Form/FormContext';
 
 var validateField = function validateField(required, validate, messages) {
-  return function (data) {
+  return function (value, data) {
     var error;
 
-    if (required && (data === undefined || data === '')) {
+    if (required && (value === undefined || value === '')) {
       error = messages.required;
     } else if (validate) {
       if (typeof validate === 'function') {
-        error = validate(data);
+        error = validate(value, data);
       } else if (validate.regexp) {
-        if (!validate.regexp.test(data)) {
+        if (!validate.regexp.test(value)) {
           error = validate.message || messages.invalid;
         }
       }
@@ -39,6 +39,13 @@ var validateField = function validateField(required, validate, messages) {
     return error;
   };
 };
+
+var FormFieldBox = styled(Box).withConfig({
+  displayName: "FormField__FormFieldBox",
+  componentId: "m9hood-0"
+})(["", ""], function (props) {
+  return props.theme.formField.extend;
+});
 
 var FormField =
 /*#__PURE__*/
@@ -61,6 +68,7 @@ function (_Component) {
           required = _this$props.required,
           rest = _objectWithoutPropertiesLoose(_this$props, ["name", "component", "required"]);
 
+      delete rest.className;
       var Input = component || TextInput;
 
       if (Input === CheckBox) {
@@ -93,6 +101,7 @@ function (_Component) {
 
     var _this$props2 = this.props,
         children = _this$props2.children,
+        className = _this$props2.className,
         component = _this$props2.component,
         error = _this$props2.error,
         focus = _this$props2.focus,
@@ -105,7 +114,8 @@ function (_Component) {
         style = _this$props2.style,
         theme = _this$props2.theme,
         validate = _this$props2.validate,
-        noMarginBottom = _this$props2.noMarginBottom;
+        onBlur = _this$props2.onBlur,
+        onFocus = _this$props2.onFocus;
     var formField = theme.formField;
     var border = formField.border;
     return React.createElement(FormContext.Consumer, null, function (context) {
@@ -124,17 +134,12 @@ function (_Component) {
       }
 
       if (pad) {
-        contents = React.createElement(Box, {
-          pad: {
-            horizontal: 'small',
-            bottom: 'small'
-          }
-        }, contents);
+        contents = React.createElement(Box, formField.content, contents);
       }
 
       var borderColor;
 
-      if (focus) {
+      if (focus && !normalizedError) {
         borderColor = 'focus';
       } else if (normalizedError) {
         borderColor = border && border.error.color || 'status-critical';
@@ -149,7 +154,9 @@ function (_Component) {
         var normalizedChildren = children ? Children.map(children, function (child) {
           if (child) {
             return cloneElement(child, {
-              focusIndicator: false
+              focusIndicator: false,
+              onBlur: onBlur,
+              onFocus: onFocus
             });
           }
 
@@ -178,27 +185,21 @@ function (_Component) {
         }
       }
 
-      return React.createElement(Box, {
-        margin: abut ? undefined : noMarginBottom ? 'none' : {
-          bottom: 'small'
-        },
+      return React.createElement(FormFieldBox, {
+        className: className,
+        border: border && border.position === 'outer' ? _extends({}, border, {
+          color: borderColor
+        }) : undefined,
+        margin: abut ? undefined : _extends({}, formField.margin),
         style: outerStyle
-      }, label && component !== CheckBox || help ? React.createElement(Box, {
-        margin: {
-          vertical: 'xsmall'
-        }
-      }, label && component !== CheckBox ? React.createElement(Text, _extends({
+      }, label && component !== CheckBox || help ? React.createElement(React.Fragment, null, label && component !== CheckBox && React.createElement(Text, _extends({
         as: "label",
         htmlFor: htmlFor
-      }, formField.label), label) : undefined, help ? React.createElement(Text, _extends({}, formField.help, {
+      }, formField.label), label), help && React.createElement(Text, _extends({}, formField.help, {
         color: formField.help.color[theme.dark ? 'dark' : 'light']
-      }), help) : undefined) : undefined, contents, normalizedError ? React.createElement(Box, {
-        margin: {
-          vertical: 'xsmall'
-        }
-      }, React.createElement(Text, _extends({}, formField.error, {
+      }), help)) : undefined, contents, normalizedError && React.createElement(Text, _extends({}, formField.error, {
         color: formField.error.color[theme.dark ? 'dark' : 'light']
-      }), normalizedError)) : undefined);
+      }), normalizedError));
     });
   };
 
@@ -213,5 +214,7 @@ if (process.env.NODE_ENV !== 'production') {
   FormFieldDoc = require('./doc').doc(FormField); // eslint-disable-line global-require
 }
 
-var FormFieldWrapper = compose(withFocus, withTheme)(FormFieldDoc || FormField);
+var FormFieldWrapper = compose(withFocus({
+  focusWithMouse: true
+}), withTheme)(FormFieldDoc || FormField);
 export { FormFieldWrapper as FormField };

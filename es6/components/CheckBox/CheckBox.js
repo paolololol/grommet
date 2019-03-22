@@ -130,7 +130,7 @@ function (_Component) {
       as: Box,
       align: "center",
       justify: "center",
-      margin: (_ref = {}, _ref[side] = theme.checkBox.gap || 'small', _ref)
+      margin: label && (_ref = {}, _ref[side] = theme.checkBox.gap || 'small', _ref)
     }, themeableProps), React.createElement(StyledCheckBoxInput, _extends({}, rest, {
       ref: forwardRef,
       type: "checkbox"
@@ -166,5 +166,5 @@ if (process.env.NODE_ENV !== 'production') {
   CheckBoxDoc = require('./doc').doc(CheckBox); // eslint-disable-line global-require
 }
 
-var CheckBoxWrapper = compose(withFocus, withTheme, withForwardRef)(CheckBoxDoc || CheckBox);
+var CheckBoxWrapper = compose(withFocus(), withTheme, withForwardRef)(CheckBoxDoc || CheckBox);
 export { CheckBoxWrapper as CheckBox };

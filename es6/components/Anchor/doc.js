@@ -1,7 +1,7 @@
 function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 
 import { describe, PropTypes } from 'react-desc';
-import { colorPropType, genericProps, getAvailableAtBadge } from '../../utils';
+import { colorPropType, genericProps, getAvailableAtBadge, themeDocUtils } from '../../utils';
 export var doc = function doc(Anchor) {
   var DocumentedAnchor = describe(Anchor).availableAt(getAvailableAtBadge('Anchor')).description('A text link.').details("We have a separate component from the browser\nbase so we can style it. You can either set the icon and/or label properties\nor just use children.").usage("import { Anchor } from 'grommet';\n<Anchor href={location} label='Label' />").intrinsicElement('a');
   DocumentedAnchor.propTypes = _extends({}, genericProps, {
@@ -13,16 +13,11 @@ export var doc = function doc(Anchor) {
     onClick: PropTypes.func.description("Click handler. It can be used, for example,\n        to add analytics and track who clicked in the anchor."),
     reverse: PropTypes.bool.description("Whether an icon and label should be reversed so that the\n        icon is at the end of the anchor.").defaultValue(false),
     size: PropTypes.oneOfType([PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge', 'xxlarge']), PropTypes.string]).description("The font size is typically driven by the components containing\nthis component. But, it can be adjusted directly via this size property, typically\nwhen it is not contained in a 'Heading', 'Paragraph', or 'Text'."),
-    as: PropTypes.string.description("The DOM tag to use for the element.")
+    as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]).description("The DOM tag or react component to use for the element.")
   });
   return DocumentedAnchor;
 };
-export var themeDoc = {
-  'global.focus.border.color': {
-    description: 'The color around the Anchor when in focus.',
-    type: 'string | { dark: string, light: string }',
-    defaultValue: 'focus'
-  },
+export var themeDoc = _extends({
   'anchor.color': {
     description: 'The color of the label text and icon strokes.',
     type: 'string | { dark: string, light: string }',
@@ -57,5 +52,15 @@ export var themeDoc = {
     description: 'Any additional style for the Anchor.',
     type: 'string | (props) => {}',
     defaultValue: undefined
+  },
+  'text.medium.size': {
+    description: 'The font size of the text label.',
+    type: 'string',
+    defaultValue: '18px'
+  },
+  'text.medium.height': {
+    description: 'The line height of the text label.',
+    type: 'string',
+    defaultValue: '24px'
   }
-};
+}, themeDocUtils.focusStyle, themeDocUtils.edgeStyle('The possible sizes for margin.'));

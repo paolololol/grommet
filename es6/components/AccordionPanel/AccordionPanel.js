@@ -152,7 +152,7 @@ function (_Component) {
           horizontal: 'xsmall'
         }
       }, React.createElement(Heading, {
-        level: 4,
+        level: theme.accordion.heading && theme.accordion.heading.level || 4,
         color: hover
       }, label)) : label, AccordionIcon && React.createElement(Box, {
         pad: {
@@ -161,10 +161,7 @@ function (_Component) {
       }, React.createElement(AccordionIcon, {
         color: iconColor
       })))), React.createElement(Box, {
-        border: {
-          side: 'bottom',
-          color: 'border'
-        }
+        border: theme.accordion.border
       }, animate ? React.createElement(Collapsible, {
         open: active
       }, children) : active && children));

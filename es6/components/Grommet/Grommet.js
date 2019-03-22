@@ -22,22 +22,19 @@ function _taggedTemplateLiteralLoose(strings, raw) { if (!raw) { raw = strings.s
 
 import React, { Component } from 'react';
 import { createGlobalStyle } from 'styled-components';
-import MobileDetect from 'mobile-detect';
 import { colorIsDark } from 'grommet-styles';
 import { ResponsiveContext, ThemeContext } from '../../contexts';
 import { deepMerge, getBreakpoint, getDeviceBreakpoint } from '../../utils';
 import { base as baseTheme } from '../../themes';
-import { withDocs } from '../hocs';
 import { StyledGrommet } from './StyledGrommet';
-var wrapWithHocs = withDocs('Grommet');
 var FullGlobalStyle = createGlobalStyle(_templateObject());
 
-var GrommetImpl =
+var Grommet =
 /*#__PURE__*/
 function (_Component) {
-  _inheritsLoose(GrommetImpl, _Component);
+  _inheritsLoose(Grommet, _Component);
 
-  function GrommetImpl() {
+  function Grommet() {
     var _this;
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -64,7 +61,7 @@ function (_Component) {
     return _this;
   }
 
-  GrommetImpl.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
+  Grommet.getDerivedStateFromProps = function getDerivedStateFromProps(nextProps, prevState) {
     var _nextProps$theme = nextProps.theme,
         theme = _nextProps$theme === void 0 ? {} : _nextProps$theme;
     var stateTheme = prevState.theme,
@@ -89,7 +86,7 @@ function (_Component) {
     return null;
   };
 
-  var _proto = GrommetImpl.prototype;
+  var _proto = Grommet.prototype;
 
   _proto.componentDidMount = function componentDidMount() {
     window.addEventListener('resize', this.onResize);
@@ -103,16 +100,21 @@ function (_Component) {
   _proto.deviceResponsive = function deviceResponsive() {
     var userAgent = this.props.userAgent;
     var theme = this.state.theme;
+    /*
+     * Regexes provided for mobile and tablet detection are meant to replace
+     * a full-featured specific library due to contributing a considerable size
+     * into the bundle.
+     *
+     * User agents found https://deviceatlas.com/blog/list-of-user-agent-strings
+     */
 
     if (userAgent) {
-      var md = new MobileDetect(userAgent);
-
-      if (md.phone()) {
-        return getDeviceBreakpoint('phone', theme);
+      if (/(tablet|ipad|playbook|silk)|(android(?!.*mobile))/i.test(userAgent)) {
+        return getDeviceBreakpoint('tablet', theme);
       }
 
-      if (md.tablet()) {
-        return getDeviceBreakpoint('tablet', theme);
+      if (/Mobile|iPhone|Android/.test(userAgent)) {
+        return getDeviceBreakpoint('phone', theme);
       }
 
       return getDeviceBreakpoint('computer', theme);
@@ -143,9 +145,16 @@ function (_Component) {
     }, rest), children), full && React.createElement(FullGlobalStyle, null)));
   };
 
-  return GrommetImpl;
+  return Grommet;
 }(Component);
 
-_defineProperty(GrommetImpl, "displayName", 'Grommet');
+_defineProperty(Grommet, "displayName", 'Grommet');
 
-export var Grommet = wrapWithHocs(GrommetImpl);
+var GrommetDoc;
+
+if (process.env.NODE_ENV !== 'production') {
+  GrommetDoc = require('./doc').doc(Grommet); // eslint-disable-line global-require
+}
+
+var GrommetWrapper = GrommetDoc || Grommet;
+export { GrommetWrapper as Grommet };

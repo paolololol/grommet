@@ -27,6 +27,14 @@ Whether or not Grommet should apply a global font-family, font-size, and line-he
 boolean
 ```
 
+**cssVars**
+
+Whether to expose the css variables.
+
+```
+boolean
+```
+
 **theme**
 
 Custom styles for Grommet app component.
@@ -47,4 +55,25 @@ string
 
 ```
 div
+```
+## Theme
+  
+**grommet.extend**
+
+Any additional style for Grommet. Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
+```
+
+**global.font.face**
+
+Custom font face declaration Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
 ```

@@ -169,7 +169,7 @@ function (_Component) {
           horizontal: 'xsmall'
         }
       }, _react.default.createElement(_Heading.Heading, {
-        level: 4,
+        level: theme.accordion.heading && theme.accordion.heading.level || 4,
         color: hover
       }, label)) : label, AccordionIcon && _react.default.createElement(_Box.Box, {
         pad: {
@@ -178,10 +178,7 @@ function (_Component) {
       }, _react.default.createElement(AccordionIcon, {
         color: iconColor
       })))), _react.default.createElement(_Box.Box, {
-        border: {
-          side: 'bottom',
-          color: 'border'
-        }
+        border: theme.accordion.border
       }, animate ? _react.default.createElement(_Collapsible.Collapsible, {
         open: active
       }, children) : active && children));

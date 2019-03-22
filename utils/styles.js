@@ -1,7 +1,7 @@
 "use strict";
 
 exports.__esModule = true;
-exports.genericStyles = exports.evalStyle = exports.placeholderStyle = exports.overflowStyle = exports.inputStyle = exports.focusStyle = exports.edgeStyle = exports.controlBorderStyle = exports.baseStyle = void 0;
+exports.disabledStyle = exports.genericStyles = exports.evalStyle = exports.placeholderStyle = exports.overflowStyle = exports.inputStyle = exports.focusStyle = exports.edgeStyle = exports.controlBorderStyle = exports.baseStyle = void 0;
 
 var _styledComponents = require("styled-components");
 
@@ -24,7 +24,7 @@ exports.baseStyle = baseStyle;
 var controlBorderStyle = (0, _styledComponents.css)(["border:", " solid ", ";border-radius:", ";"], function (props) {
   return props.theme.global.control.border.width;
 }, function (props) {
-  return (0, _colors.normalizeColor)('border', props.theme);
+  return (0, _colors.normalizeColor)(props.theme.global.control.border.color || 'border', props.theme);
 }, function (props) {
   return props.theme.global.control.border.radius;
 });
@@ -126,3 +126,11 @@ var genericStyles = (0, _styledComponents.css)(["", " ", " ", ""], function (pro
   return props.margin && edgeStyle('margin', props.margin, props.responsive, props.theme.global.edgeSize.responsiveBreakpoint, props.theme);
 });
 exports.genericStyles = genericStyles;
+
+var disabledStyle = function disabledStyle(componentStyle) {
+  return (0, _styledComponents.css)(["opacity:", ";cursor:default;"], function (props) {
+    return componentStyle || props.theme.global.control.disabled.opacity;
+  });
+};
+
+exports.disabledStyle = disabledStyle;

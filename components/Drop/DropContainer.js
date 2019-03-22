@@ -244,6 +244,22 @@ function (_Component) {
       }
     });
 
+    _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "preventClickBubbling", function (event) {
+      event.stopPropagation();
+      /**
+       * the React event system actually listens to all events at the top level
+       * and then handles its own bubbling / capturing virtually. This means that
+       * even if we call stopPropagation, it only affects the React synthetic
+       * event, and the native event still bubbles upward.
+       * Any code that uses native events (like the close listener in this class)
+       * will still get the bubbled event, unless we also call
+       * event.nativeEvent.stopImmediatePropagation, which bridges the gap from
+       * React synthetic event to native DOM event.
+       */
+
+      event.nativeEvent.stopImmediatePropagation();
+    });
+
     return _this;
   }
 
@@ -275,13 +291,13 @@ function (_Component) {
     var _this$props3 = this.props,
         alignProp = _this$props3.align,
         children = _this$props3.children,
+        elevation = _this$props3.elevation,
         onClickOutside = _this$props3.onClickOutside,
         onEsc = _this$props3.onEsc,
         onKeyDown = _this$props3.onKeyDown,
-        elevation = _this$props3.elevation,
         plain = _this$props3.plain,
         propsTheme = _this$props3.theme,
-        rest = _objectWithoutPropertiesLoose(_this$props3, ["align", "children", "onClickOutside", "onEsc", "onKeyDown", "elevation", "plain", "theme"]);
+        rest = _objectWithoutPropertiesLoose(_this$props3, ["align", "children", "elevation", "onClickOutside", "onEsc", "onKeyDown", "plain", "theme"]);
 
     var theme = this.context || propsTheme;
 
@@ -291,7 +307,8 @@ function (_Component) {
       elevation: !plain ? elevation || theme.global.drop.shadowSize || 'small' : undefined,
       tabIndex: "-1",
       ref: this.dropRef,
-      alignProp: alignProp
+      alignProp: alignProp,
+      onMouseDown: this.preventClickBubbling
     }, rest), children);
 
     if (theme.global.drop.background) {
@@ -327,6 +344,7 @@ _defineProperty(DropContainer, "defaultProps", {
     top: 'top',
     left: 'left'
   },
+  overflow: 'auto',
   stretch: 'width'
 });
 

@@ -32,7 +32,7 @@ exports[`RadioButton checked renders 1`] = `
   padding: 0px;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -49,7 +49,7 @@ exports[`RadioButton checked renders 1`] = `
   padding: 0px;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -91,30 +91,22 @@ exports[`RadioButton checked renders 1`] = `
   border-color: #000000;
 }
 
-.c5 {
-  position: absolute;
+.c4 {
   opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  -moz-appearance: none;
+  width: 0;
+  height: 0;
   margin: 0;
-  z-index: 1;
   cursor: pointer;
 }
 
-.c7 {
+.c6 {
   box-sizing: border-box;
-  position: absolute;
   width: 24px;
   height: 24px;
   fill: #7D4CDB;
 }
 
-.c3 {
-  position: relative;
-}
-
 @media only screen and (max-width:768px) {
   .c2 {
     margin: 0px;
@@ -128,31 +120,31 @@ exports[`RadioButton checked renders 1`] = `
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     margin-right: 6px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     padding: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     margin: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     border: solid 2px #7D4CDB;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
@@ -165,21 +157,19 @@ exports[`RadioButton checked renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
         checked={true}
-        className="c5"
+        className="c4"
         name="test checked"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       >
         <svg
-          className="c7"
+          className="c6"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24"
         >
@@ -227,7 +217,7 @@ exports[`RadioButton disabled renders 1`] = `
   padding: 0px;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -244,7 +234,7 @@ exports[`RadioButton disabled renders 1`] = `
   padding: 0px;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -273,7 +263,7 @@ exports[`RadioButton disabled renders 1`] = `
   border-radius: 100%;
 }
 
-.c7 {
+.c6 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -316,29 +306,21 @@ exports[`RadioButton disabled renders 1`] = `
   border-color: #000000;
 }
 
-.c5 {
-  position: absolute;
+.c4 {
   opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  -moz-appearance: none;
+  width: 0;
+  height: 0;
   margin: 0;
-  z-index: 1;
 }
 
-.c8 {
+.c7 {
   box-sizing: border-box;
-  position: absolute;
   width: 24px;
   height: 24px;
   fill: #7D4CDB;
 }
 
-.c3 {
-  position: relative;
-}
-
 @media only screen and (max-width:768px) {
   .c2 {
     margin: 0px;
@@ -352,49 +334,49 @@ exports[`RadioButton disabled renders 1`] = `
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     margin-right: 6px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     padding: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     margin: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     border: solid 2px rgba(0,0,0,0.15);
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c7 {
+  .c6 {
     margin: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c7 {
+  .c6 {
     border: solid 2px #7D4CDB;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c7 {
+  .c6 {
     padding: 0px;
   }
 }
@@ -408,18 +390,16 @@ exports[`RadioButton disabled renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         disabled={true}
         name="test disabled"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       />
     </div>
   </label>
@@ -429,22 +409,20 @@ exports[`RadioButton disabled renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
         checked={true}
-        className="c5"
+        className="c4"
         disabled={true}
         name="test checked disabled"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c7"
+        className="c6"
       >
         <svg
-          className="c8"
+          className="c7"
           preserveAspectRatio="xMidYMid meet"
           viewBox="0 0 24 24"
         >
@@ -492,7 +470,7 @@ exports[`RadioButton label renders 1`] = `
   padding: 0px;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -509,7 +487,7 @@ exports[`RadioButton label renders 1`] = `
   padding: 0px;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -551,20 +529,13 @@ exports[`RadioButton label renders 1`] = `
   border-color: #000000;
 }
 
-.c5 {
-  position: absolute;
+.c4 {
   opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  -moz-appearance: none;
+  width: 0;
+  height: 0;
   margin: 0;
-  z-index: 1;
   cursor: pointer;
-}
-
-.c3 {
-  position: relative;
 }
 
 @media only screen and (max-width:768px) {
@@ -580,31 +551,31 @@ exports[`RadioButton label renders 1`] = `
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     margin-right: 6px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     padding: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     margin: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     border: solid 2px rgba(0,0,0,0.15);
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
@@ -617,17 +588,15 @@ exports[`RadioButton label renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         name="test label"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       />
     </div>
     <span>
@@ -639,17 +608,15 @@ exports[`RadioButton label renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         name="test div label"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       />
     </div>
     <div>
@@ -691,7 +658,7 @@ exports[`RadioButton renders 1`] = `
   padding: 0px;
 }
 
-.c4 {
+.c3 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -708,7 +675,7 @@ exports[`RadioButton renders 1`] = `
   padding: 0px;
 }
 
-.c6 {
+.c5 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -750,20 +717,13 @@ exports[`RadioButton renders 1`] = `
   border-color: #000000;
 }
 
-.c5 {
-  position: absolute;
+.c4 {
   opacity: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  -moz-appearance: none;
+  width: 0;
+  height: 0;
   margin: 0;
-  z-index: 1;
   cursor: pointer;
-}
-
-.c3 {
-  position: relative;
 }
 
 @media only screen and (max-width:768px) {
@@ -779,31 +739,31 @@ exports[`RadioButton renders 1`] = `
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     margin-right: 6px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c4 {
+  .c3 {
     padding: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     margin: 0px;
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     border: solid 2px rgba(0,0,0,0.15);
   }
 }
 
 @media only screen and (max-width:768px) {
-  .c6 {
+  .c5 {
     padding: 0px;
   }
 }
@@ -816,17 +776,15 @@ exports[`RadioButton renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         name="test empty"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       />
     </div>
   </label>
@@ -836,18 +794,16 @@ exports[`RadioButton renders 1`] = `
     onClick={[Function]}
   >
     <div
-      className="c3 c4"
+      className="c3"
     >
       <input
-        className="c5"
+        className="c4"
         id="test id"
         name="test name"
-        onBlur={[Function]}
-        onFocus={[Function]}
         type="radio"
       />
       <div
-        className="c6"
+        className="c5"
       />
     </div>
   </label>

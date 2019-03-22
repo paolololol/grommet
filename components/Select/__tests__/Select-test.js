@@ -8,6 +8,8 @@ var _reactTestRenderer = _interopRequireDefault(require("react-test-renderer"));
 
 var _reactTestingLibrary = require("react-testing-library");
 
+var _grommetIcons = require("grommet-icons");
+
 var _portal = require("../../../utils/portal");
 
 var _ = require("..");
@@ -358,5 +360,41 @@ describe('Select', function () {
     _reactTestingLibrary.fireEvent.input(document.activeElement);
 
     expect(document.activeElement).toMatchSnapshot();
+  });
+  test('open default state', function () {
+    (0, _reactTestingLibrary.render)(_react.default.createElement(_.Select, {
+      open: true,
+      id: "test-select",
+      placeholder: "test select",
+      options: ['one', 'two']
+    }));
+    expect(document.getElementById('test-select__drop')).not.toBeNull();
+  });
+  test('renders without icon', function () {
+    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Select, {
+      id: "test-select",
+      options: ['one', 'two'],
+      icon: false
+    }));
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+  test('renders custom icon', function () {
+    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Select, {
+      id: "test-select",
+      options: ['one', 'two'],
+      icon: _grommetIcons.CaretDown
+    }));
+
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+  test('renders default icon', function () {
+    var component = _reactTestRenderer.default.create(_react.default.createElement(_.Select, {
+      id: "test-select",
+      options: ['one', 'two'],
+      icon: true
+    }));
+
+    expect(component.toJSON()).toMatchSnapshot();
   });
 });

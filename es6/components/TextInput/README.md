@@ -58,6 +58,14 @@ Target where any suggestions drop will be aligned to. This should be
 object
 ```
 
+**dropProps**
+
+Any valid Drop prop.
+
+```
+object
+```
+
 **id**
 
 The id attribute of the input.
@@ -184,6 +192,7 @@ What text to put in the input.
 
 ```
 string
+number
 ```
   
 ## Intrinsic element
@@ -193,14 +202,34 @@ input
 ```
 ## Theme
   
-**global.colors.placeholder**
+**global.colors.border**
 
-The placeholder color used for TextInput. Expects `string`.
+The color of the border. Expects `object`.
 
 Defaults to
 
 ```
-#AAAAAA
+[object Object]
+```
+
+**global.control.border.color**
+
+The border color. Expects `string`.
+
+Defaults to
+
+```
+border
+```
+
+**global.control.border.radius**
+
+The border radius. Expects `string`.
+
+Defaults to
+
+```
+4px
 ```
 
 **global.control.border.width**
@@ -211,26 +240,6 @@ Defaults to
 
 ```
 1px
-```
-
-**global.input.padding**
-
-The padding of the text. Expects `string`.
-
-Defaults to
-
-```
-12px
-```
-
-**global.input.weight**
-
-The font weight of the text. Expects `number`.
-
-Defaults to
-
-```
-600
 ```
 
 **select.step**
@@ -286,4 +295,84 @@ Defaults to
 
 ```
 undefined
+```
+
+**textInput.placeholder.extend**
+
+Any additional style for non-string placeholder inside TextInput. Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
+```
+
+**textInput.suggestions.extend**
+
+Any additional style for TextInput suggestions. Expects `string | (props) => {}`.
+
+Defaults to
+
+```
+undefined
+```
+
+**textInput.disabled.opacity**
+
+The opacity when the textInput is disabled. Expects `number`.
+
+Defaults to
+
+```
+0.3
+```
+
+**global.focus.border.color**
+
+The color around the component when in focus. Expects `string | { dark: string, light: string }`.
+
+Defaults to
+
+```
+focus
+```
+
+**global.colors.placeholder**
+
+The placeholder color used for the component. Expects `string`.
+
+Defaults to
+
+```
+#AAAAAA
+```
+
+**global.control.disabled.opacity**
+
+The opacity when a component is disabled. Expects `number`.
+
+Defaults to
+
+```
+0.3
+```
+
+**global.input.weight**
+
+The font weight of the text entered. Expects `number`.
+
+Defaults to
+
+```
+600
+```
+
+**global.input.padding**
+
+The padding of the text. Expects `string`.
+
+Defaults to
+
+```
+12px
 ```

@@ -10,7 +10,7 @@ function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) r
 
 import React, { Component } from 'react';
 import { storiesOf } from '@storybook/react';
-import { Grommet, Accordion, AccordionPanel, Anchor, Box, Button, Calendar, Chart, CheckBox, Clock, DataTable, Diagram, Distribution, FormField, Grid, Heading, Menu, Meter, Paragraph, RadioButton, RangeInput, RangeSelector, Select, Stack, Tab, Tabs, Text, TextArea, TextInput, Video } from 'grommet';
+import { Grommet, Accordion, AccordionPanel, Anchor, Box, Button, Calendar, Chart, CheckBox, Clock, DataTable, Diagram, Distribution, FormField, Grid, Heading, Menu, Meter, Paragraph, RadioButtonGroup, RangeInput, RangeSelector, Select, Stack, Tab, Tabs, Text, TextArea, TextInput, Video } from 'grommet';
 import { grommet, dark } from 'grommet/themes';
 import { generate } from 'grommet/themes/base';
 import { deepMerge } from 'grommet/utils';
@@ -76,7 +76,7 @@ function (_Component) {
     _defineProperty(_assertThisInitialized(_assertThisInitialized(_this)), "state", {
       baseSize: 24,
       checkBox: true,
-      radioButton: true,
+      radioButton: 'RadioButton 1',
       rangeSelector: [1, 2],
       themeName: 'grommet'
     });
@@ -90,6 +90,7 @@ function (_Component) {
     var _this2 = this;
 
     var _this$state = this.state,
+        background = _this$state.background,
         baseSize = _this$state.baseSize,
         checkBox = _this$state.checkBox,
         radioButton = _this$state.radioButton,
@@ -143,13 +144,13 @@ function (_Component) {
           checkBox: event.target.checked
         });
       }
-    }), React.createElement(RadioButton, {
+    }), React.createElement(RadioButtonGroup, {
       name: "radio",
-      checked: radioButton,
-      label: "RadioButton",
+      options: ['RadioButton 1', 'RadioButton 2'],
+      value: radioButton,
       onChange: function onChange(event) {
         return _this2.setState({
-          radioButton: event.target.checked
+          radioButton: event.target.value
         });
       }
     }), React.createElement(TextInput, {
@@ -327,8 +328,17 @@ function (_Component) {
       src: "http://techslides.com/demos/sample-videos/small.3gp",
       type: "video/3gp"
     })))];
-    return React.createElement(React.Fragment, null, React.createElement(Grommet, {
-      theme: grommet
+    return React.createElement("div", {
+      style: {
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column'
+      }
+    }, React.createElement(Grommet, {
+      theme: grommet,
+      style: {
+        flex: '0 0 auto'
+      }
     }, React.createElement(Box, {
       direction: "row-responsive",
       gap: "medium",
@@ -349,6 +359,19 @@ function (_Component) {
       }
     })), React.createElement(Box, {
       basis: "small"
+    }, React.createElement(Select, {
+      plain: true,
+      placeholder: "background",
+      size: "small",
+      options: ['default', 'dark-1', 'light-1'],
+      value: background,
+      onChange: function onChange(event) {
+        return _this2.setState({
+          background: event.option
+        });
+      }
+    })), React.createElement(Box, {
+      basis: "small"
     }, React.createElement(RangeInput, {
       min: 16,
       max: 36,
@@ -362,10 +385,14 @@ function (_Component) {
     })), React.createElement(Text, {
       size: "small"
     }, baseSize + "px base spacing"))), React.createElement(Grommet, {
-      theme: theme
+      theme: theme,
+      style: {
+        flex: '1 1'
+      }
     }, React.createElement(Box, {
+      fill: true,
       pad: "medium",
-      background: theme.global.colors.background || theme.global.colors.white,
+      background: background || theme.global.colors.background,
       overflow: "auto"
     }, Grid.available ? React.createElement(Grid, {
       columns: "small",
